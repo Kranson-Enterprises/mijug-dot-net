@@ -8,12 +8,12 @@
 
     <!-- CSP tailored to MIJUG .NET requirements -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' https://cdn.jsdelivr.net ;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
       img-src 'self' data: https: https://www.google-analytics.com;
       font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
-      connect-src 'self' https://www.google-analytics.com ;
+      connect-src 'self'  https://www.google-analytics.com ;
       frame-src 'self' ;
       object-src 'none';
       base-uri 'self';
@@ -146,11 +146,6 @@
   .modern-nav-content a:focus {
     background-color: #f0f0f0;
     color: #2c5aa0;
-  }
-
-  /* Legacy nav fallback - hidden by default */
-  .legacy-nav-fallback {
-    display: none;
   }
 
   /* Body scroll lock when overlay is open */
@@ -555,8 +550,18 @@ img {
   will-change: transform;
 }
 </style>
-<link rel="preload" href="/assets/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
 <noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
 
 
     <title>
@@ -573,12 +578,12 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251119192849" />
+    <meta name="cache-version" content="20251215172517" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=20251206210813" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251206210813" media="print">
+    <link rel="preload" as="style" href="/assets/main.css?v=20251215174419" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251215174419" media="print">
 
     <noscript>
-      <link rel="stylesheet" href="/assets/main.css?v=20251206210813">
+      <link rel="stylesheet" href="/assets/main.css?v=20251215174419">
     </noscript>
 
     <link
@@ -589,8 +594,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
     
     <link
       rel="shortcut icon"
@@ -607,20 +612,25 @@ img {
 
     
 
-    <script>
+    <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251119192849";
+  window.MIJUG.cacheVersion = "20251215172517";
 </script>
 
   
-  <script>
+  <script nonce="abc123">
     window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
   </script>
   
   </head>
-  
-    <body oncontextmenu="return false;">
-  
+  <body>
     <header class="site-header" role="banner">
       <noscript>
         <div class="legacy-browser-notice" role="alert">
@@ -636,7 +646,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -674,28 +684,13 @@ img {
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
         <nav
           id="primary-navigation"
-          class="primary-nav js-enhanced-nav"
+          class="primary-nav"
           role="dialog"
           aria-modal="true"
           aria-hidden="true">
-
-          <!-- Basic navigation shown to legacy browsers -->
-          <div class="legacy-nav-fallback">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Full navigation for modern browsers -->
-          <div class="modern-nav-content">
+            <button class="nav-close" type="button" aria-label="Close navigation menu">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <ul role="list">
               
                 <li role="listitem">
@@ -973,22 +968,10 @@ img {
       purposes.
     </p>
 
-    <!-- Browser Support Messages -->
+    <!-- Browser Support Message (Modern Browsers Only) -->
     <div id="browser-support-message">
-      <!-- Fallback for legacy browsers -->
-      <p class="browser-legacy">
-        ⚠️ Please update your browser for a better experience. This means your browser may be older than the year 2020.
-      </p>
+      <p class="browser-modern">✅ Thank you for using a modern browser!</p>
     </div>
-
-    <!-- This script will run only on modern browsers that support ES modules -->
-    <script type="module">
-      // Replace the fallback message with modern browser message
-      const container = document.getElementById("browser-support-message");
-      if (container) {
-        container.innerHTML = '<p class="browser-modern">✅ Thank you for using a modern browser!</p>';
-      }
-    </script>
 
     <noscript>
       <p class="browser-no-js">⚠️ JavaScript is disabled. Some features may not work properly.</p>
@@ -1141,14 +1124,14 @@ img {
   </section>
 </article>
 
-<script>
+<script nonce="abc123">
   // Browser Session Information Script with Cache Busting
   (function () {
     'use strict';
 
     // Cache busting configuration
     
-    const CACHE_VERSION = '20251119192849';
+    const CACHE_VERSION = '20251215172517';
     
     const PAGE_LOAD_TIME = Date.now();
 
@@ -1217,50 +1200,55 @@ img {
         age: 'Unknown'
       };
 
-      // Browser version detection patterns
+      // Browser version detection patterns (aligned with browserslist)
       const patterns = {
+        Edge: /Edg\/(\d+\.?\d*)/,        // Check Edge before Chrome (uses Chromium)
+        Opera: /OPR\/(\d+\.?\d*)/,       // Check Opera before Chrome (uses Chromium)
         Chrome: /Chrome\/(\d+\.?\d*)/,
         Firefox: /Firefox\/(\d+\.?\d*)/,
-        Safari: /Version\/(\d+\.?\d*)/,
-        Edge: /Edg\/(\d+\.?\d*)/,
-        Opera: /Opera\/(\d+\.?\d*)/
+        Safari: /Version\/(\d+\.?\d*)/
       };
 
-      // Release dates for age calculation (major versions) - Updated for 2025
+      // Release dates for age calculation (major versions) - December 2025
       const releaseDates = {
         Chrome: {
-          // 2025 releases
-          128: '2024-08-20', 127: '2024-07-16', 126: '2024-06-11', 125: '2024-05-14',
-          124: '2024-04-16', 123: '2024-03-19', 122: '2024-02-20', 121: '2024-01-23',
-          // 2023 releases
-          120: '2023-11-21', 119: '2023-10-24', 118: '2023-10-10', 117: '2023-09-12',
-          116: '2023-08-15', 115: '2023-07-18', 114: '2023-05-30', 113: '2023-05-02',
-          112: '2023-04-04', 111: '2023-03-07', 110: '2023-02-07', 109: '2023-01-10'
+          // 2024-2025 releases (browserslist minimum: 88)
+          133: '2024-12-10', 132: '2024-11-12', 131: '2024-10-15', 130: '2024-09-17',
+          129: '2024-08-20', 128: '2024-08-20', 127: '2024-07-16', 126: '2024-06-11',
+          125: '2024-05-14', 124: '2024-04-16', 123: '2024-03-19', 122: '2024-02-20',
+          121: '2024-01-23', 120: '2023-11-21', 119: '2023-10-24', 118: '2023-10-10',
+          // Minimum supported version (browserslist)
+          88: '2020-01-20'
         },
         Firefox: {
-          // 2025 releases
-          142: '2025-08-05', 141: '2025-07-08', 140: '2025-06-10', 139: '2025-05-13',
-          138: '2025-04-15', 137: '2025-03-18', 136: '2025-02-18', 135: '2025-01-21',
+          // 2024-2025 releases (browserslist minimum: 103)
           134: '2024-12-17', 133: '2024-11-19', 132: '2024-10-22', 131: '2024-09-24',
-          130: '2024-09-03', 129: '2024-08-06', 128: '2024-07-09', 127: '2024-06-11', 126: '2024-05-14',
-          125: '2024-04-16', 124: '2024-03-19', 123: '2024-02-20', 122: '2024-01-23',
-          // 2023 releases
-          121: '2023-12-19', 120: '2023-11-21', 119: '2023-10-24', 118: '2023-09-26',
-          117: '2023-08-29', 116: '2023-08-01', 115: '2023-07-04', 114: '2023-06-06',
-          113: '2023-05-09', 112: '2023-04-11', 111: '2023-03-14', 110: '2023-02-14'
+          130: '2024-09-03', 129: '2024-08-06', 128: '2024-07-09', 127: '2024-06-11',
+          126: '2024-05-14', 125: '2024-04-16', 124: '2024-03-19', 123: '2024-02-20',
+          122: '2024-01-23', 121: '2023-12-19', 120: '2023-11-21',
+          // Minimum supported version (browserslist)
+          103: '2022-05-31'
         },
         Safari: {
-          // 2025 releases
-          18: '2024-09-16', 17: '2023-09-18', 16: '2022-09-12', 15: '2021-09-20',
-          14: '2020-09-16', 13: '2019-09-19', 12: '2018-09-17', 11: '2017-09-19', 10: '2016-09-20'
+          // 2024-2025 releases (browserslist minimum: 15.4)
+          18: '2024-09-16', 17: '2023-09-18', 16: '2022-09-12',
+          // Minimum supported version (browserslist)
+          15.4: '2022-03-14', 15: '2021-09-20'
         },
         Edge: {
-          // 2025 releases
-          128: '2024-08-22', 127: '2024-07-18', 126: '2024-06-13', 125: '2024-05-16',
-          124: '2024-04-18', 123: '2024-03-21', 122: '2024-02-22', 121: '2024-01-25',
-          // 2023 releases
-          120: '2023-12-07', 119: '2023-10-26', 118: '2023-10-12', 117: '2023-09-14',
-          116: '2023-08-17', 115: '2023-07-20', 114: '2023-06-01', 113: '2023-05-04'
+          // 2024-2025 releases (browserslist minimum: 88)
+          133: '2024-12-12', 132: '2024-11-14', 131: '2024-10-17', 130: '2024-09-19',
+          129: '2024-08-22', 128: '2024-08-22', 127: '2024-07-18', 126: '2024-06-13',
+          125: '2024-05-16', 124: '2024-04-18', 123: '2024-03-21', 122: '2024-02-22',
+          121: '2024-01-25', 120: '2023-12-07',
+          // Minimum supported version (browserslist)
+          88: '2020-01-15'
+        },
+        Opera: {
+          // Opera releases (browserslist minimum: 74)
+          105: '2024-11-12', 104: '2024-10-08', 103: '2024-09-10', 102: '2024-07-23',
+          // Minimum supported version (browserslist)
+          74: '2020-11-10'
         }
       };
 
@@ -1290,13 +1278,15 @@ img {
               browserInfo.age = `${years} year${years > 1 ? 's' : ''} old`;
             }
 
-            // Add warning for very old browsers
-            if (ageInDays > 365) {
-              browserInfo.age += ' ⚠️ (Outdated)';
-            } else if (ageInDays > 180) {
+            // Add status indicators for browser age
+            if (ageInDays > 730) {
+              browserInfo.age += ' ⚠️ (Very outdated - update recommended)';
+            } else if (ageInDays > 365) {
               browserInfo.age += ' ⚡ (Consider updating)';
-            } else if (ageInDays < 30) {
-              browserInfo.age += ' ✨ (Recent)';
+            } else if (ageInDays > 180) {
+              browserInfo.age += ' 📅 (Older version)';
+            } else if (ageInDays < 60) {
+              browserInfo.age += ' ✨ (Current)';
             }
           } else {
             // Handle newer versions not in our database
@@ -1484,7 +1474,7 @@ img {
     </footer>
 
     <!-- Bot detection for no-ads layout -->
-    <script>
+    <script nonce="abc123">
       (function() {
         if (navigator.userAgent && typeof isbot === 'function' && isbot(navigator.userAgent)) {
           window.addEventListener('DOMContentLoaded', function() {
@@ -1497,30 +1487,16 @@ img {
 
     
 
-    <script>
+    <script nonce="abc123">
       // Enhanced module support detection and navigation management
       (function() {
         'use strict';
 
         var html = document.documentElement;
         html.setAttribute('lang', "en");
-        var supportsModules = 'noModule' in HTMLScriptElement.prototype;
 
         // Update HTML classes for navigation management
         html.className = html.className.replace("no-js", "js");
-
-        if (supportsModules) {
-          html.classList.add('supports-modules');
-        } else {
-          html.classList.add('no-modules');
-          // Show legacy browser notice for commerce functionality
-          document.write('<div class="legacy-browser-notice" role="alert"><strong>No Commerce Available</strong><span class="notice-detail">Your browser does not support modern features required for commerce functionality.</span></div>');
-        }
-
-        // Only initialize advanced navigation for modern browsers
-        if (!supportsModules) {
-          return; // Exit early for legacy browsers
-        }
 
         // Advanced navigation logic for modern browsers
         var toggleBtn = document.querySelector('.nav-toggle');

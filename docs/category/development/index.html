@@ -8,12 +8,12 @@
 
     <!-- CSP tailored to MIJUG .NET requirements -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' https://cdn.jsdelivr.net ;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
       img-src 'self' data: https: https://www.google-analytics.com;
       font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
-      connect-src 'self' https://www.google-analytics.com ;
+      connect-src 'self'  https://www.google-analytics.com ;
       frame-src 'self' ;
       object-src 'none';
       base-uri 'self';
@@ -146,11 +146,6 @@
   .modern-nav-content a:focus {
     background-color: #f0f0f0;
     color: #2c5aa0;
-  }
-
-  /* Legacy nav fallback - hidden by default */
-  .legacy-nav-fallback {
-    display: none;
   }
 
   /* Body scroll lock when overlay is open */
@@ -555,8 +550,18 @@ img {
   will-change: transform;
 }
 </style>
-<link rel="preload" href="/assets/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
 <noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
 
 
     <title>
@@ -567,18 +572,18 @@ img {
       content="MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by ..."
     />
     
-    <meta name="version" content="Dec 06, 2025" />
+    <meta name="version" content="Dec 15, 2025" />
     
 
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251119192849" />
+    <meta name="cache-version" content="20251215172517" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=20251206210813" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251206210813" media="print">
+    <link rel="preload" as="style" href="/assets/main.css?v=20251215174419" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251215174419" media="print">
 
     <noscript>
-      <link rel="stylesheet" href="/assets/main.css?v=20251206210813">
+      <link rel="stylesheet" href="/assets/main.css?v=20251215174419">
     </noscript>
 
     <link
@@ -589,8 +594,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
     
     <link
       rel="shortcut icon"
@@ -607,20 +612,25 @@ img {
 
     
 
-    <script>
+    <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251119192849";
+  window.MIJUG.cacheVersion = "20251215172517";
 </script>
 
   
-  <script>
+  <script nonce="abc123">
     window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
   </script>
   
   </head>
-  
-    <body oncontextmenu="return false;">
-  
+  <body>
     <header class="site-header" role="banner">
       <noscript>
         <div class="legacy-browser-notice" role="alert">
@@ -631,7 +641,7 @@ img {
       <div class="wrapper">
         <a class="site-title" rel="home" href="/">
           
-          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" alt="My Info Just Under Glass" width="50" height="50">
+          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" alt="My Info Just Under Glass" width="50" height="50">
            My Info Just Under Glass
         </a>
 
@@ -658,25 +668,10 @@ img {
         </noscript>
 
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
-        <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
-
-          <!-- Basic navigation shown to legacy browsers -->
-          <div class="legacy-nav-fallback">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Full navigation for modern browsers -->
-          <div class="modern-nav-content">
+        <nav id="primary-navigation" class="primary-nav" role="dialog" aria-modal="true" aria-hidden="true">
+            <button class="nav-close" type="button" aria-label="Close navigation menu">
+              <span aria-hidden="true">×</span>
+            </button>
             <ul role="list">
               
                 <li role="listitem">
@@ -800,11 +795,12 @@ img {
                 </li>
               
             </ul>
-          </div>
-        </nav>
+          </nav>
+</div>
+        
 
         <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
-      </div>
+      
     </header>
 
     <main class="page-content" aria-label="Content">
@@ -815,9 +811,23 @@ img {
 
   <div class="archive-content">
 <p class="archive-count">
-      1 post in this category</p>
+      2 posts in this category</p>
 
-    <ul class="post-list"><li class="post-item">
+    <ul class="post-list">
+<li class="post-item">
+        <span class="post-meta">Nov 24, 2025</span>
+        <h3 class="post-title">
+          <a class="post-link" href="/2025/11/24/ditching-es5-after-a-wordpress-build/"> Moving to ES2020 (ES11) for Better Security </a>
+        </h3>
+<p class="post-excerpt">A readable guide about modern JavaScript security and why ES2020 should be your minimum baseline in 2025.</p>
+<div class="post-meta-tags">
+<span class="post-categories">
+            Categories: <a href="/category/development" class="category-link">development</a>, <a href="/category/web-development" class="category-link">web-development</a>, <a href="/category/security" class="category-link">security</a></span><span class="post-meta-separator"><br></span>
+            <span class="post-tags">
+            Tags: <a href="/tag/javascript" class="tag-link">javascript</a>, <a href="/tag/es2020" class="tag-link">es2020</a>, <a href="/tag/security" class="tag-link">security</a>, <a href="/tag/wordpress" class="tag-link">wordpress</a>, <a href="/tag/jekyll" class="tag-link">jekyll</a>, <a href="/tag/browser-support" class="tag-link">browser-support</a>, <a href="/tag/accessibility" class="tag-link">accessibility</a></span>
+</div>
+</li>
+<li class="post-item">
         <span class="post-meta">Oct 6, 2025</span>
         <h3 class="post-title">
           <a class="post-link" href="/posts/2025/10/06/typescript-jekyll-workspace/"> Building a Modern TypeScript + Jekyll Workspace in 2025 </a>
@@ -829,7 +839,8 @@ img {
             <span class="post-tags">
             Tags: <a href="/tag/typescript" class="tag-link">typescript</a>, <a href="/tag/jekyll" class="tag-link">jekyll</a>, <a href="/tag/nodejs" class="tag-link">nodejs</a>, <a href="/tag/ruby" class="tag-link">ruby</a>, <a href="/tag/performance" class="tag-link">performance</a>, <a href="/tag/automation" class="tag-link">automation</a>, <a href="/tag/ci-cd" class="tag-link">ci-cd</a>, <a href="/tag/accessibility" class="tag-link">accessibility</a></span>
 </div>
-</li></ul>
+</li>
+</ul>
 </div>
 
   <div class="archive-navigation">
@@ -935,7 +946,7 @@ img {
     </footer>
 
     <!-- Bot detection for no-ads layout -->
-    <script>
+    <script nonce="abc123">
       (function() {
         if (navigator.userAgent && typeof isbot === 'function' && isbot(navigator.userAgent)) {
           window.addEventListener('DOMContentLoaded', function() {
@@ -948,30 +959,16 @@ img {
 
     
 
-    <script>
+    <script nonce="abc123">
       // Enhanced module support detection and navigation management
       (function() {
         'use strict';
 
         var html = document.documentElement;
         html.setAttribute('lang', "en");
-        var supportsModules = 'noModule' in HTMLScriptElement.prototype;
 
         // Update HTML classes for navigation management
         html.className = html.className.replace("no-js", "js");
-
-        if (supportsModules) {
-          html.classList.add('supports-modules');
-        } else {
-          html.classList.add('no-modules');
-          // Show legacy browser notice for commerce functionality
-          document.write('<div class="legacy-browser-notice" role="alert"><strong>No Commerce Available</strong><span class="notice-detail">Your browser does not support modern features required for commerce functionality.</span></div>');
-        }
-
-        // Only initialize advanced navigation for modern browsers
-        if (!supportsModules) {
-          return; // Exit early for legacy browsers
-        }
 
         // Advanced navigation logic for modern browsers
         var toggleBtn = document.querySelector('.nav-toggle');

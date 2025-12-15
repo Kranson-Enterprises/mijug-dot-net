@@ -7,12 +7,12 @@
 
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
       img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
       font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
-      connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
       frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
       object-src 'none';
       base-uri 'self';
@@ -154,11 +154,6 @@
   .modern-nav-content a:focus {
     background-color: #f0f0f0;
     color: #2c5aa0;
-  }
-
-  /* Legacy nav fallback - hidden by default */
-  .legacy-nav-fallback {
-    display: none;
   }
 
   /* Body scroll lock when overlay is open */
@@ -563,31 +558,101 @@ img {
   will-change: transform;
 }
 </style>
-<link rel="preload" href="/assets/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
 <noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
 
 
     <title>
-      Ditching ES5 after a WordPress Build | My Info Just Under Glass
+      Moving to ES2020 (ES11) for Better Security | My Info Just Under Glass
     </title>
     <meta
       name="description"
-      content="MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by ..."
+      content="Learn why targeting ES2020 (ES11) instead of older JavaScript versions reduces security risks and provides better protection for your website visitors."
     />
     
-    <meta name="version" content="Dec 06, 2025" />
+    <meta name="version" content="Nov 25, 2025" />
     
 
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251119192849" />
+    <meta name="cache-version" content="20251215172517" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=20251206210813" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251206210813" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20251215174419" media="print">
 
-    <noscript>
-      <link rel="stylesheet" href="/assets/main.css?v=20251206210813">
-    </noscript>
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection and navigation management
+    (function() {
+      'use strict';
+
+      var html = document.documentElement;
+      html.setAttribute('lang', "en");
+
+      // Add .js class immediately to enable CSS-based navigation hiding
+      html.classList.remove('no-js');
+      html.classList.add('js');
+
+      var supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Only initialize advanced navigation for modern browsers
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript11 = false;
+      const html = document.documentElement;
+      try {
+        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
+        if (mod && typeof mod.testES11Features === 'function') {
+          try {
+            mod.testES11Features();
+            supportsEcmascript11 = true;
+          } catch (e) { console.error('ES11 test failed:', e); }
+        } else if (typeof window.testES11Features === 'function') {
+          try { window.testES11Features();
+            supportsEcmascript11 = true;
+           } catch (e) { console.error('ES11 test failed:', e); }
+        } else {
+          console.debug('ES11 test module loaded but `testES11Features` not found.');
+        }
+      } catch (err) {
+        console.debug('ES11 test module not present or failed to import:', err);
+      }
+      if (!supportsEcmascript11) {
+        html.classList.add('no-ES2020');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
 
     <link
       rel="alternate"
@@ -597,8 +662,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
     
     <link
       rel="shortcut icon"
@@ -607,32 +672,37 @@ img {
     />
     
 
-    <meta name="description" content="A humorous, readable discussion about modern browser support and why we can move on from ES5 templating exceptions." />
-<meta property="og:title" content="Ditching ES5 after a WordPress Build" />
-<meta property="og:description" content="A humorous, readable discussion about modern browser support and why we can move on from ES5 templating exceptions." />
+    <meta name="description" content="A readable guide about modern JavaScript security and why ES2020 should be your minimum baseline in 2025." />
+<meta property="og:title" content="Moving to ES2020 (ES11) for Better Security" />
+<meta property="og:description" content="A readable guide about modern JavaScript security and why ES2020 should be your minimum baseline in 2025." />
 <meta property="og:url" content="https://www.mijug.net/2025/11/24/ditching-es5-after-a-wordpress-build/" />
 <meta property="og:site_name" content="My Info Just Under Glass" />
-<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/2025/11/24/ditching-es5-after-a-wordpress-build/" />
+<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/2025/11/24/ditching-es5-after-a-wordpress-build/" />
 
 
     
 
     
 
-    <script>
+    <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251119192849";
+  window.MIJUG.cacheVersion = "20251215172517";
 </script>
 
   
-  <script>
+  <script nonce="abc123">
     window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
   </script>
   
   </head>
-  
-    <body oncontextmenu="return false;">
-  
+  <body>
     <header class="site-header" role="banner">
       <noscript>
         <div class="legacy-browser-notice" role="alert">
@@ -649,7 +719,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -668,23 +738,6 @@ img {
           &nbsp;Menu
         </button>
 
-        <!-- Fallback navigation for no-JS and legacy browsers -->
-        <noscript>
-          <nav class="primary-nav fallback-nav" role="navigation" aria-label="Main navigation">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </nav>
-        </noscript>
-
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
         <nav
           id="primary-navigation"
@@ -692,21 +745,6 @@ img {
           role="dialog"
           aria-modal="true"
           aria-hidden="true">
-
-          <!-- Basic navigation shown to legacy browsers -->
-          <div class="legacy-nav-fallback">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </div>
 
           <!-- Full navigation for modern browsers -->
           <div class="modern-nav-content">
@@ -886,36 +924,53 @@ img {
     <main class="page-content" aria-label="Content">
       <div class="wrapper"><article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Ditching ES5 after a WordPress Build</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Moving to ES2020 (ES11) for Better Security</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="2025-11-24T19:01:03-05:00" itemprop="datePublished">
         Published Nov 24, 2025
       </time><span class="post-meta-separator"> • </span>
-      <time class="dt-modified" datetime="2025-11-24T21:11:09-05:00" itemprop="dateModified">
-        Updated Nov 24, 2025
+      <time class="dt-modified" datetime="2025-12-15T17:15:31-05:00" itemprop="dateModified">
+        Updated Dec 15, 2025
       </time><span class="post-meta-separator"> • </span>
       <span itemprop="author" itemscope itemtype="http://schema.org/Person">
         <span class="p-author h-card" itemprop="name">MIJUG Team</span>
-      </span></p><p class="post-description">A humorous, readable discussion about modern browser support and why we can move on from ES5 templating exceptions.</p></header>
+      </span></p><p class="post-description">A readable guide about modern JavaScript security and why ES2020 should be your minimum baseline in 2025.</p><div class="post-tags"><a href="/tag/javascript" class="tag-link">#javascript</a><a href="/tag/es2020" class="tag-link">#es2020</a><a href="/tag/security" class="tag-link">#security</a><a href="/tag/wordpress" class="tag-link">#wordpress</a><a href="/tag/jekyll" class="tag-link">#jekyll</a><a href="/tag/browser-support" class="tag-link">#browser-support</a><a href="/tag/accessibility" class="tag-link">#accessibility</a></div></header>
 
   <div class="post-content e-content" itemprop="articleBody">
-<p>&lt;!-* prettier-ignore-start –&gt;</p>
+<!-- prettier-ignore-start -->
 
-<ul>
-  <li>TOC</li>
+<ul id="markdown-toc">
+  <li><a href="#introduction--security-locks-get-better-over-time" id="markdown-toc-introduction--security-locks-get-better-over-time">Introduction — Security Locks Get Better Over Time</a></li>
+  <li><a href="#es2020-es11-security-features-built-into-the-language" id="markdown-toc-es2020-es11-security-features-built-into-the-language">ES2020 (ES11): Security Features Built Into the Language</a></li>
+  <li><a href="#quick-facts" id="markdown-toc-quick-facts">Quick facts:</a></li>
+  <li><a href="#security-improvements-es6-to-es2020-reducing-risk-exposure" id="markdown-toc-security-improvements-es6-to-es2020-reducing-risk-exposure">Security Improvements: ES6 to ES2020 (Reducing Risk Exposure)</a>    <ul>
+      <li><a href="#key-security-improvements-by-version" id="markdown-toc-key-security-improvements-by-version">Key Security Improvements by Version:</a></li>
+      <li><a href="#real-world-security-example" id="markdown-toc-real-world-security-example">Real-World Security Example:</a></li>
+      <li><a href="#reducing-risk-exposure-degrees" id="markdown-toc-reducing-risk-exposure-degrees">Reducing Risk Exposure Degrees:</a></li>
+    </ul>
+  </li>
+  <li><a href="#wordpress-classic-themes-a-gracious-retirement-plan-but-people-keep-inviting-them-to-parties" id="markdown-toc-wordpress-classic-themes-a-gracious-retirement-plan-but-people-keep-inviting-them-to-parties">WordPress Classic Themes: A Gracious Retirement Plan (But People Keep Inviting Them to Parties)</a></li>
+  <li><a href="#block-themes-and-the-gutenberg-project-design-objectives" id="markdown-toc-block-themes-and-the-gutenberg-project-design-objectives">Block themes and the Gutenberg project: design objectives</a></li>
+  <li><a href="#object-management-group-omg--model-driven-architecture-mda" id="markdown-toc-object-management-group-omg--model-driven-architecture-mda">Object Management Group (OMG) &amp; Model-Driven Architecture (MDA)</a></li>
+  <li><a href="#jekyll-markdown-and-a-brief-timeline" id="markdown-toc-jekyll-markdown-and-a-brief-timeline">Jekyll, Markdown, and a Brief Timeline</a></li>
+  <li><a href="#templating-exceptions-noscript-fallbacks-and-es5-support-in-2025--why-we-should-stop-stalling" id="markdown-toc-templating-exceptions-noscript-fallbacks-and-es5-support-in-2025--why-we-should-stop-stalling">Templating Exceptions, Noscript Fallbacks, and ES5 Support in 2025 — Why We Should Stop Stalling</a></li>
+  <li><a href="#accessibility-wins-by-letting-go" id="markdown-toc-accessibility-wins-by-letting-go">Accessibility Wins by Letting Go</a></li>
+  <li><a href="#a-security-first-proposal" id="markdown-toc-a-security-first-proposal">A Security-First Proposal</a></li>
+  <li><a href="#what-does-this-mean-for-you" id="markdown-toc-what-does-this-mean-for-you">What does this mean for you?</a></li>
+  <li><a href="#conclusion--security-is-not-optional" id="markdown-toc-conclusion--security-is-not-optional">Conclusion — Security Is Not Optional</a></li>
 </ul>
 
-<p>&lt;!-* prettier-ignore-end –&gt;</p>
+<!-- prettier-ignore-end -->
 
-<h2 id="introduction--a-short-story-about-a-long-browser">Introduction — A Short Story About a Long Browser</h2>
+<h2 id="introduction--security-locks-get-better-over-time">Introduction — Security Locks Get Better Over Time</h2>
 
-<p>Have you ever kept an old appliance around “just in case”? Building websites can feel the same way. After a recent WordPress project, I realized we spend a lot of time making sure very old browsers still work—like keeping the heat on for a guest who never leaves.</p>
+<p>Have you ever kept an old lock on your door even though newer, safer ones are available? Building websites can feel the same way. After a recent WordPress project, I realized we spend a lot of time supporting very old JavaScript versions that have known security limitations—like keeping an old lock “just in case” even though it’s easier to pick.</p>
 
-<p>This article is a friendly, slightly cheeky look at why, in 2025, it’s okay to use modern web tools and let go of outdated habits. If you’re not a techie, don’t worry! I’ll use simple analogies and plain language throughout.</p>
+<p>This article explains why, in 2025, you should target ES2020 (also called ES11) as your minimum JavaScript version. If you’re not a techie, don’t worry! I’ll use simple analogies and plain language throughout.</p>
 
 <p><strong>Summary:</strong></p>
 
-<p>Modern web tools make websites easier to build and maintain. It’s okay to move on from old ways.</p>
+<p>Newer JavaScript versions have better security features that protect your site and visitors. ES2020 (from 2020) should be your minimum baseline in 2025.</p>
 
 <p><strong>Release years for context:</strong></p>
 
@@ -925,7 +980,7 @@ img {
   <li>“The Year of the Web” * 1995</li>
 </ul>
 
-<p><em><strong>Windows &amp; Apple/iOS at a glance (selected years):</strong></em></p>
+<p><strong>Windows &amp; Apple/iOS at a glance (selected years):</strong></p>
 
 <ul>
   <li>2003 — Windows: Windows XP era (widely used). Apple/iOS: pre-iPhone (Mac OS X 10.3 Panther released 2003).</li>
@@ -939,83 +994,221 @@ img {
 
 <hr />
 
-<h2 id="es6-modules-the-new-streetlights-everyone-can-see">ES6 Modules: The New Streetlights Everyone Can See</h2>
+<h2 id="es2020-es11-security-features-built-into-the-language">ES2020 (ES11): Security Features Built Into the Language</h2>
 
-<p><strong>What JavaScript actually does (plain language):</strong></p>
+<p><strong>What is ES2020 (ES11)?</strong></p>
 
-<p>JavaScript is the language that makes web pages move, respond, and change without reloading. It listens for clicks and typing, updates what you see on the page, runs small animations, fetches data from servers, and can even run on servers themselves (for example, with Node.js). Without JavaScript most sites would be static documents — useful, but less interactive and less helpful for modern tasks.</p>
+<p>ES2020 (also called ES11) is a version of JavaScript from 2020 that includes important safety features. The two most important security improvements are:</p>
 
-<p><strong>JavaScript standards explained:</strong></p>
+<ol>
+  <li><strong>Optional Chaining (?.)</strong> — Prevents crashes when accessing data that might not exist</li>
+  <li><strong>Nullish Coalescing (??)</strong> — Safely handles missing or empty values</li>
+</ol>
+
+<p><strong>Why does this matter for security?</strong></p>
+
+<p>Many security vulnerabilities happen when code tries to access data that doesn’t exist or makes wrong assumptions about values. ES2020’s features prevent these common mistakes at the language level.</p>
+
+<p><strong>Security Analogy:</strong></p>
+
+<p>Think of ES2020 features like safety guards on power tools:</p>
 
 <ul>
-  <li>ES5 (ECMAScript 5) was released in 2009 and became the standard for browser compatibility for many years.</li>
-  <li>ES6 (ECMAScript 2015) was released in 2015, introducing modules and many modern features now widely supported.</li>
+  <li><strong>Old way (ES5/ES6):</strong> Like a table saw without a blade guard — you have to be very careful not to make mistakes</li>
+  <li><strong>New way (ES2020):</strong> Like a modern table saw with automatic blade guards — the tool itself prevents common accidents</li>
 </ul>
 
-<p><strong>Short ECMAScript timeline:</strong></p>
+<p>Over the last decade, devices and browsers have largely stabilized and toolchains have matured. That stability means teams can now focus on security-first development rather than maintaining compatibility hacks for outdated browsers.</p>
 
-<ul>
-  <li>First edition: ECMAScript 1 (1997).</li>
-  <li>2003: ES3-era (ECMAScript 3 was published in 1999; there was no new edition in 2003).</li>
-  <li>2009: ES5 (ECMAScript 5) — broad compatibility baseline for many years.</li>
-  <li>2015: ES6 (ECMAScript 2015) — modules, modern syntax and features.</li>
-  <li>2022: ECMAScript 2022 (ES2022) — newer yearly updates with incremental features.</li>
-</ul>
+<h2 id="quick-facts">Quick facts:</h2>
 
-<p><strong>What is ES6?</strong></p>
-
-<p>ES6 (also called ECMAScript 2015) is a newer version of JavaScript, the language that powers most websites. ES6 modules are a way to organize code into neat, reusable pieces—like putting ingredients into labelled jars.</p>
-
-<p><strong>Why does this matter?</strong></p>
-
-<p>Most modern phones and computers (made after 2019) understand ES6 modules. This means websites can be built in a cleaner, more organized way.</p>
-
-<p>Over the last decade, devices and browsers have largely stabilized and toolchains have matured. That stability means a lot of the painful, device-specific complexity has been abstracted away by platforms and build tools, so teams can focus on crafting and publishing targeted experiences instead of maintaining dozens of small compatibility hacks. The old tools and fallbacks still exist for edge cases, but modern workflows make it much easier and faster to build custom, device-aware experiences for Edge, Chrome, Safari, and newer mobile browsers.</p>
-
-<p><strong>Analogy:</strong></p>
-
-<p>ES6 modules are like labelled jars in your kitchen. Instead of dumping everything into one pot and hoping for the best, you can grab exactly what you need.</p>
-
-<h2 id="quick-facts"><strong>Quick facts:</strong></h2>
-
-<p>The iPhone 12 (2020) and most phones since 2017 support ES6 modules.</p>
+<p>Most devices from 2020 and newer fully support ES2020 (ES11) features.</p>
 
 <table>
+  <thead>
+    <tr>
+      <th>Device / Platform</th>
+      <th>ES2020 Full Support</th>
+      <th>Security Benefits</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
-      <td>Device / Platform</td>
-      <td>Approx. Year ES6 Support Became Widely Available</td>
+      <td>iPhone 12+ / iOS 14+</td>
+      <td>2020</td>
+      <td>Optional chaining, nullish coalescing</td>
     </tr>
     <tr>
-      <td>—————————–_</td>
-      <td>———————————————–_</td>
+      <td>Android 10+ (Chrome 80+)</td>
+      <td>2020</td>
+      <td>Full ES2020 security features</td>
     </tr>
     <tr>
-      <td>iPhone / Mobile Safari</td>
-      <td>~2016–2018</td>
+      <td>Google Pixel 4+</td>
+      <td>2020</td>
+      <td>Complete ES2020 support</td>
     </tr>
     <tr>
-      <td>Android phones (Chrome)</td>
-      <td>~2017</td>
+      <td>Samsung Galaxy S20+</td>
+      <td>2020</td>
+      <td>All ES2020 safety features</td>
     </tr>
     <tr>
-      <td>Google Pixel series</td>
-      <td>~2017</td>
-    </tr>
-    <tr>
-      <td>Samsung Galaxy (modern models)</td>
-      <td>~2017–2018</td>
-    </tr>
-    <tr>
-      <td>Firefox for Android</td>
-      <td>~2017–2018</td>
+      <td>Modern desktop browsers</td>
+      <td>2020</td>
+      <td>Chrome 80+, Firefox 74+, Safari 13.1+, Edge 80+</td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>Tip:</strong> If you use a phone or computer made in the last five years, you’re probably fine!</p>
+<p><strong>Tip:</strong> If you use a phone or computer from 2020 or newer, you have full ES2020 security features!</p>
 
-<p><strong>Summary:</strong> Modern devices support new web features. You don’t need to worry about most old browser problems anymore.</p>
+<p><strong>Security Coverage in 2025:</strong></p>
+
+<ul>
+  <li>Devices from 2020-2025 (5 years): <strong>95%+ of web users</strong> have ES2020 support</li>
+  <li>Devices from 2017-2019 (3 years): May need polyfills for some ES2020 features</li>
+  <li>Devices older than 2017: Represent less than 2% of users and have known security limitations</li>
+</ul>
+
+<p><strong>Summary:</strong> By requiring ES2020, you reduce security risks for 95%+ of your users while excluding only very old, potentially insecure devices.</p>
+
+<hr />
+
+<h2 id="security-improvements-es6-to-es2020-reducing-risk-exposure">Security Improvements: ES6 to ES2020 (Reducing Risk Exposure)</h2>
+
+<p><strong>What is “risk exposure degrees”?</strong></p>
+
+<p>Think of it like layers of protection in your home:</p>
+
+<ul>
+  <li>One lock on the door = some protection</li>
+  <li>Deadbolt + chain lock + alarm = multiple layers = less risk</li>
+</ul>
+
+<p>Each JavaScript version from ES6 to ES2020 added security layers. By skipping to ES2020, you get all those layers at once instead of the minimal protection of ES6.</p>
+
+<h3 id="key-security-improvements-by-version">Key Security Improvements by Version:</h3>
+
+<p><strong>ES2016 (ES7) - Safer Array Checking:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Array.includes()</code> — Safer than old <code class="language-plaintext highlighter-rouge">indexOf()</code> method</li>
+  <li><strong>Security benefit:</strong> Prevents bugs from confusing -1 with valid array positions</li>
+  <li><strong>Analogy:</strong> Like having a “yes/no” answer instead of checking if a number is “not -1”</li>
+</ul>
+
+<p><strong>ES2017 (ES8) - Better Error Handling:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">async/await</code> — Cleaner error handling for asynchronous code</li>
+  <li><code class="language-plaintext highlighter-rouge">Object.entries()</code> / <code class="language-plaintext highlighter-rouge">Object.values()</code> — Safer object iteration</li>
+  <li><strong>Security benefit:</strong> Easier to catch and handle errors properly; prevents accidental data leaks</li>
+  <li><strong>Analogy:</strong> Like having airbags that deploy properly vs. hoping your seatbelt catches you</li>
+</ul>
+
+<p><strong>ES2018 (ES9) - Improved Promise Handling:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Promise.finally()</code> — Ensures cleanup code always runs</li>
+  <li>Rest/spread for objects — Safer object copying</li>
+  <li><strong>Security benefit:</strong> Resources are properly cleaned up even when errors occur</li>
+  <li><strong>Analogy:</strong> Like making sure you lock the door even if you forget your keys</li>
+</ul>
+
+<p><strong>ES2019 (ES10) - Safer Object Operations:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Array.flat()</code> / <code class="language-plaintext highlighter-rouge">flatMap()</code> — Prevents deeply nested data structure bugs</li>
+  <li><code class="language-plaintext highlighter-rouge">Object.fromEntries()</code> — Safer object construction</li>
+  <li>Optional <code class="language-plaintext highlighter-rouge">catch</code> binding — Cleaner error handling</li>
+  <li><strong>Security benefit:</strong> Reduces complexity that can hide security flaws</li>
+  <li><strong>Analogy:</strong> Like organizing a messy closet so you can see what you have</li>
+</ul>
+
+<p><strong>ES2020 (ES11) - Critical Security Features:</strong></p>
+
+<ul>
+  <li><strong>Optional Chaining (<code class="language-plaintext highlighter-rouge">?.</code>)</strong> — Prevents runtime crashes from null/undefined access</li>
+  <li><strong>Nullish Coalescing (<code class="language-plaintext highlighter-rouge">??</code>)</strong> — Safely handles missing values without false-positive bugs</li>
+  <li><strong>BigInt</strong> — Prevents integer overflow vulnerabilities</li>
+  <li><strong>Promise.allSettled()</strong> — Better error handling for multiple operations</li>
+  <li><strong>Dynamic import</strong> — Code splitting reduces attack surface</li>
+  <li><strong>Security benefit:</strong> Language-level protection against the most common JavaScript vulnerabilities</li>
+  <li><strong>Analogy:</strong> Like having automatic brakes that stop your car when sensors detect danger</li>
+</ul>
+
+<h3 id="real-world-security-example">Real-World Security Example:</h3>
+
+<p><strong>Old way (ES5/ES6) - Vulnerable:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This can crash your app if user.profile is null</span>
+<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+
+<span class="c1">// This treats 0 and "" as missing, causing bugs</span>
+<span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">count</span> <span class="o">||</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>New way (ES2020) - Protected:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Safely returns undefined instead of crashing</span>
+<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">user</span><span class="p">?.</span><span class="nx">profile</span><span class="p">?.</span><span class="nx">name</span><span class="p">;</span>
+
+<span class="c1">// Only treats null/undefined as missing, not 0 or ""</span>
+<span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">count</span> <span class="o">??</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters for security:</strong>
+When apps crash or behave unexpectedly, attackers can exploit those moments to inject malicious code or access data they shouldn’t. ES2020 prevents these crashes at the language level.</p>
+
+<h3 id="reducing-risk-exposure-degrees">Reducing Risk Exposure Degrees:</h3>
+
+<p>By requiring ES2020 instead of ES6, you eliminate 5 years of potential security gaps:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Support Level</th>
+      <th>Risk Exposure</th>
+      <th>Security Layers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ES5 (2009)</td>
+      <td>Very High</td>
+      <td>Basic only</td>
+    </tr>
+    <tr>
+      <td>ES6 (2015)</td>
+      <td>High</td>
+      <td>Basic + modules</td>
+    </tr>
+    <tr>
+      <td>ES2017 (ES8)</td>
+      <td>Medium</td>
+      <td>+ error handling</td>
+    </tr>
+    <tr>
+      <td>ES2019 (ES10)</td>
+      <td>Medium-Low</td>
+      <td>+ safer object operations</td>
+    </tr>
+    <tr>
+      <td><strong>ES2020 (ES11)</strong></td>
+      <td><strong>Low</strong></td>
+      <td><strong>+ crash prevention + null safety</strong></td>
+    </tr>
+    <tr>
+      <td>ES2023+</td>
+      <td>Very Low</td>
+      <td>+ continued security enhancements</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Security Analogy:</strong>
+Requiring ES2020 is like requiring modern seatbelts (3-point with airbags) instead of accepting old lap belts. Yes, old lap belts provide <em>some</em> protection, but modern safety features save lives.</p>
 
 <hr />
 
@@ -1046,9 +1239,11 @@ img {
 <ul>
   <li>WordPress first launched in 2003.</li>
   <li>In 2019, WordPress was at version 5.2, which introduced broader ES6 support and the block editor (Gutenberg).</li>
-  <li>As of 2025, WordPress is at version 6.5+, with even stronger ES6 and block theme support, plus many modern features.
+  <li>In 2021, WordPress 5.9 began supporting more ES2020 features in the block editor.</li>
+  <li>As of 2025, WordPress 6.5+ fully supports ES2020 (ES11) in block themes and modern plugins.
     <ul>
       <li>WordPress supported ES5 JavaScript since around version 2.8 (2009), which enabled compatibility with older browsers and classic themes for many years.</li>
+      <li><strong>Security recommendation for 2025:</strong> New WordPress sites should target ES2020 as the minimum to take advantage of built-in security features.</li>
     </ul>
   </li>
 </ul>
@@ -1124,17 +1319,29 @@ img {
 
 <hr />
 
-<h2 id="a-modest-proposal">A Modest Proposal</h2>
+<h2 id="a-security-first-proposal">A Security-First Proposal</h2>
 
-<p><strong>Practical advice:</strong></p>
+<p><strong>Practical advice for 2025:</strong></p>
 
 <ol>
-  <li>Use modern web tools (ES6 modules, block themes) for new projects.</li>
-  <li>Exchange content as Markdown documents — they’re easier to move into target pages and reduce formatting drift.</li>
-  <li>Limit multiple nesting, colors, or inline styles in text — this improves accessibility and keeps documentation structures easy to manage.</li>
-  <li>Keep classic themes for legacy sites.</li>
-  <li>If you really need to support very old browsers, make a special version—don’t complicate your main site.</li>
+  <li><strong>Target ES2020 (ES11) as your minimum</strong> — Use optional chaining (<code class="language-plaintext highlighter-rouge">?.</code>) and nullish coalescing (<code class="language-plaintext highlighter-rouge">??</code>) to prevent common security bugs.</li>
+  <li><strong>Use modern web tools</strong> (ES2020 modules, block themes) for new projects — they have security features built in.</li>
+  <li><strong>Exchange content as Markdown documents</strong> — they’re easier to move into target pages and reduce formatting drift.</li>
+  <li><strong>Limit multiple nesting, colors, or inline styles in text</strong> — this improves accessibility and keeps documentation structures easy to manage.</li>
+  <li><strong>Keep classic themes for legacy sites only</strong> — but update the JavaScript to ES2020 where possible.</li>
+  <li><strong>If you must support very old browsers (pre-2020)</strong>, create a basic fallback version with reduced functionality—don’t compromise security for 5% of users.</li>
+  <li><strong>Use browser analytics</strong> to understand your actual audience before making support decisions.</li>
 </ol>
+
+<p><strong>Security-specific recommendations:</strong></p>
+
+<ul>
+  <li>Always use optional chaining when accessing nested properties: <code class="language-plaintext highlighter-rouge">user?.profile?.name</code></li>
+  <li>Always use nullish coalescing for default values: <code class="language-plaintext highlighter-rouge">count ?? 0</code></li>
+  <li>Use <code class="language-plaintext highlighter-rouge">Promise.allSettled()</code> instead of <code class="language-plaintext highlighter-rouge">Promise.all()</code> for better error handling</li>
+  <li>Implement dynamic imports to reduce the attack surface: only load code when needed</li>
+  <li>Use BigInt for financial calculations to prevent overflow vulnerabilities</li>
+</ul>
 
 <hr />
 
@@ -1157,14 +1364,29 @@ img {
 
 <hr />
 
-<h2 id="conclusion--progress-is-not-personal">Conclusion — Progress Is Not Personal</h2>
+<h2 id="conclusion--security-is-not-optional">Conclusion — Security Is Not Optional</h2>
 
-<p>We’re not abandoning anyone. We’re choosing to spend our time and care where it helps most. Modern browsers and phones make it easier to build fast, accessible, and enjoyable websites for everyone.</p>
+<p>We’re not abandoning anyone. We’re choosing to protect the 95%+ of users who have modern, secure browsers. By requiring ES2020 (ES11) as your minimum JavaScript version in 2025, you:</p>
 
-<p>— Multiple drafts. Slightly opinionated. Definitely caffeinated.</p>
-</div><footer class="post-footer">
+<ul>
+  <li><strong>Reduce security vulnerabilities</strong> by using language-level safety features</li>
+  <li><strong>Prevent common bugs</strong> with optional chaining and nullish coalescing</li>
+  <li><strong>Improve error handling</strong> with modern promise methods</li>
+  <li><strong>Reduce attack surface</strong> with dynamic imports and code splitting</li>
+  <li><strong>Protect user data</strong> with safer type handling (BigInt)</li>
+</ul>
+
+<p>Modern browsers and phones make it easier to build fast, accessible, secure, and enjoyable websites for everyone. The small percentage of users on very old devices (pre-2020) can use a basic fallback version or should upgrade for their own security.</p>
+
+<p><strong>Final analogy:</strong> You wouldn’t install a lock from 2009 on your door today. Don’t use JavaScript from 2009 (ES5) or even 2015 (ES6) when 2020 (ES2020) provides better security for the same effort.</p>
+
+<p>— Multiple drafts. Security-focused. Definitely caffeinated.</p>
+</div><div class="post-categories">
+    <strong>Categories:</strong>&nbsp;<a href="/category/development" class="category-link">development</a>,<a href="/category/web-development" class="category-link">web-development</a>,<a href="/category/security" class="category-link">security</a></div><footer class="post-footer">
     <div class="post-nav"><div class="prev-post">
         <a rel="prev" href="/posts/2025/10/06/typescript-jekyll-workspace/" class="prev-link"> ← Building a Modern TypeScript + Jekyll Workspace in 2025 </a>
+      </div><div class="next-post">
+        <a rel="next" href="/posts/2025/12/15/computer-backup-checklist/" class="next-link"> Computer Backup Checklist → </a>
       </div></div>
   </footer>
 
@@ -1270,100 +1492,8 @@ img {
 
     
 
-    <script>
-      // Enhanced module support detection and navigation management
-      (function() {
-        'use strict';
-
-        var html = document.documentElement;
-        html.setAttribute('lang', "en");
-        var supportsModules = 'noModule' in HTMLScriptElement.prototype;
-
-        // Update HTML classes for navigation management
-        html.className = html.className.replace("no-js", "js");
-
-        if (supportsModules) {
-          html.classList.add('supports-modules');
-        } else {
-          html.classList.add('no-modules');
-          // Show legacy browser notice for commerce functionality
-          document.write('<div class="legacy-browser-notice" role="alert"><strong>No Commerce Available</strong><span class="notice-detail">Your browser does not support modern features required for commerce functionality.</span></div>');
-        }
-
-        // Only initialize advanced navigation for modern browsers
-        if (!supportsModules) {
-          return; // Exit early for legacy browsers
-        }
-
-        // Advanced navigation logic for modern browsers
-        var toggleBtn = document.querySelector('.nav-toggle');
-        var nav = document.getElementById('primary-navigation');
-        var statusEl = document.getElementById('menu-status');
-        var body = document.body;
-
-        if (!toggleBtn || !nav || !statusEl) {
-          console.warn('Navigation elements not found - falling back to basic behavior');
-          return;
-        }
-
-        nav.classList.add('nav-overlay');
-
-        function toggleNavigation() {
-          var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-
-          if (isExpanded) {
-            nav.classList.remove('nav-visible');
-            toggleBtn.setAttribute('aria-expanded', 'false');
-            nav.setAttribute('aria-hidden', 'true');
-            toggleBtn.textContent = 'Menu';
-            statusEl.textContent = 'Menu closed';
-            body.classList.remove('nav-open');
-          } else {
-            nav.classList.add('nav-visible');
-            toggleBtn.setAttribute('aria-expanded', 'true');
-            nav.removeAttribute('aria-hidden');
-            toggleBtn.textContent = 'Close';
-            statusEl.textContent = 'Menu opened';
-            body.classList.add('nav-open');
-          }
-        }
-
-        toggleBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          toggleNavigation();
-        });
-
-        // Close button event handler
-        var closeBtn = nav.querySelector('.nav-close');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleNavigation();
-          });
-        }
-
-        document.addEventListener('click', function(e) {
-          if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
-
-          if ((!nav.contains(e.target) && !toggleBtn.contains(e.target)) ||
-              (e.target.tagName === 'A' && nav.contains(e.target))) {
-            toggleNavigation();
-          }
-        });
-
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
-            toggleNavigation();
-            toggleBtn.focus();
-          }
-        });
-
-        nav.setAttribute('aria-hidden', 'true');
-      })();
-    </script>
-
     
-    <script>
+    <script nonce="abc123">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -1388,13 +1518,13 @@ img {
     
 
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script src="/assets/js/mijug-es6.min.js?v=20251206210813" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es11.min.js?v=20251215174419" defer crossorigin="anonymous"></script>
 
     <!-- Cookie consent system -->
     <!-- %  include google-adsense.html % -->
     <!-- % include cookie-consent.html % -->}
     <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
-    <script>
+    <script nonce="abc123">
       (function() {
         'use strict';
 
@@ -1435,6 +1565,72 @@ img {
         } else {
           enhanceCodeBlocks();
         }
+      })();
+    </script>
+
+    <script nonce="abc123">
+      // Navigation toggle functionality
+      (function() {
+        'use strict';
+
+        var toggleBtn = document.querySelector('.nav-toggle');
+        var closeBtn = document.querySelector('.nav-close');
+        var nav = document.getElementById('primary-navigation');
+        var statusEl = document.getElementById('menu-status');
+        var body = document.body;
+
+        if (!toggleBtn || !nav || !statusEl) {
+          return;
+        }
+
+        // Initialize navigation as overlay
+        nav.classList.add('nav-overlay');
+
+        function toggleNavigation() {
+          var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            nav.classList.remove('nav-visible');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            nav.setAttribute('aria-hidden', 'true');
+            statusEl.textContent = 'Menu closed';
+            body.classList.remove('nav-open');
+          } else {
+            nav.classList.add('nav-visible');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            nav.setAttribute('aria-hidden', 'false');
+            statusEl.textContent = 'Menu opened';
+            body.classList.add('nav-open');
+          }
+        }
+
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleNavigation();
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleNavigation();
+          });
+        }
+
+        // Close on click outside
+        document.addEventListener('click', function(e) {
+          if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+          if (!nav.contains(e.target) && !toggleBtn.contains(e.target)) {
+            toggleNavigation();
+          }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            toggleBtn.focus();
+          }
+        });
       })();
     </script>
 

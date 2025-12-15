@@ -8,12 +8,12 @@
 
     <!-- CSP tailored to MIJUG .NET requirements -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' https://cdn.jsdelivr.net ;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
       img-src 'self' data: https: https://www.google-analytics.com;
       font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
-      connect-src 'self' https://www.google-analytics.com ;
+      connect-src 'self'  https://www.google-analytics.com ;
       frame-src 'self' ;
       object-src 'none';
       base-uri 'self';
@@ -146,11 +146,6 @@
   .modern-nav-content a:focus {
     background-color: #f0f0f0;
     color: #2c5aa0;
-  }
-
-  /* Legacy nav fallback - hidden by default */
-  .legacy-nav-fallback {
-    display: none;
   }
 
   /* Body scroll lock when overlay is open */
@@ -555,8 +550,18 @@ img {
   will-change: transform;
 }
 </style>
-<link rel="preload" href="/assets/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
 <noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
 
 
     <title>
@@ -567,18 +572,18 @@ img {
       content="MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by ..."
     />
     
-    <meta name="version" content="Dec 06, 2025" />
+    <meta name="version" content="Dec 15, 2025" />
     
 
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251119192849" />
+    <meta name="cache-version" content="20251215172517" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=20251206210813" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251206210813" media="print">
+    <link rel="preload" as="style" href="/assets/main.css?v=20251215174419" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251215174419" media="print">
 
     <noscript>
-      <link rel="stylesheet" href="/assets/main.css?v=20251206210813">
+      <link rel="stylesheet" href="/assets/main.css?v=20251215174419">
     </noscript>
 
     <link
@@ -589,8 +594,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
     
     <link
       rel="shortcut icon"
@@ -607,20 +612,25 @@ img {
 
     
 
-    <script>
+    <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251119192849";
+  window.MIJUG.cacheVersion = "20251215172517";
 </script>
 
   
-  <script>
+  <script nonce="abc123">
     window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
   </script>
   
   </head>
-  
-    <body oncontextmenu="return false;">
-  
+  <body>
     <header class="site-header" role="banner">
       <noscript>
         <div class="legacy-browser-notice" role="alert">
@@ -636,7 +646,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -674,28 +684,13 @@ img {
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
         <nav
           id="primary-navigation"
-          class="primary-nav js-enhanced-nav"
+          class="primary-nav"
           role="dialog"
           aria-modal="true"
           aria-hidden="true">
-
-          <!-- Basic navigation shown to legacy browsers -->
-          <div class="legacy-nav-fallback">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Full navigation for modern browsers -->
-          <div class="modern-nav-content">
+            <button class="nav-close" type="button" aria-label="Close navigation menu">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <ul role="list">
               
                 <li role="listitem">
@@ -882,7 +877,7 @@ img {
           <a href="/tag/accessibility" class="tag-link">
             #accessibility
             <span class="tag-count">
-              (1 post)
+              (2 posts)
             </span>
           </a>
         </li>
@@ -926,7 +921,7 @@ img {
           <a href="/tag/backup" class="tag-link">
             #backup
             <span class="tag-count">
-              (2 posts)
+              (3 posts)
             </span>
           </a>
         </li>
@@ -936,6 +931,28 @@ img {
         <li class="tag-item">
           <a href="/tag/bitlocker" class="tag-link">
             #bitlocker
+            <span class="tag-count">
+              (1 post)
+            </span>
+          </a>
+        </li>
+      
+        
+        
+        <li class="tag-item">
+          <a href="/tag/browser-support" class="tag-link">
+            #browser-support
+            <span class="tag-count">
+              (1 post)
+            </span>
+          </a>
+        </li>
+      
+        
+        
+        <li class="tag-item">
+          <a href="/tag/checklist" class="tag-link">
+            #checklist
             <span class="tag-count">
               (1 post)
             </span>
@@ -980,6 +997,17 @@ img {
         <li class="tag-item">
           <a href="/tag/cpus" class="tag-link">
             #cpus
+            <span class="tag-count">
+              (1 post)
+            </span>
+          </a>
+        </li>
+      
+        
+        
+        <li class="tag-item">
+          <a href="/tag/data-protection" class="tag-link">
+            #data-protection
             <span class="tag-count">
               (1 post)
             </span>
@@ -1077,6 +1105,17 @@ img {
         
         
         <li class="tag-item">
+          <a href="/tag/es2020" class="tag-link">
+            #es2020
+            <span class="tag-count">
+              (1 post)
+            </span>
+          </a>
+        </li>
+      
+        
+        
+        <li class="tag-item">
           <a href="/tag/evening-schedules" class="tag-link">
             #evening-schedules
             <span class="tag-count">
@@ -1165,10 +1204,21 @@ img {
         
         
         <li class="tag-item">
+          <a href="/tag/javascript" class="tag-link">
+            #javascript
+            <span class="tag-count">
+              (1 post)
+            </span>
+          </a>
+        </li>
+      
+        
+        
+        <li class="tag-item">
           <a href="/tag/jekyll" class="tag-link">
             #jekyll
             <span class="tag-count">
-              (1 post)
+              (2 posts)
             </span>
           </a>
         </li>
@@ -1201,7 +1251,7 @@ img {
           <a href="/tag/linux" class="tag-link">
             #linux
             <span class="tag-count">
-              (7 posts)
+              (8 posts)
             </span>
           </a>
         </li>
@@ -1211,6 +1261,17 @@ img {
         <li class="tag-item">
           <a href="/tag/memory" class="tag-link">
             #memory
+            <span class="tag-count">
+              (1 post)
+            </span>
+          </a>
+        </li>
+      
+        
+        
+        <li class="tag-item">
+          <a href="/tag/migration" class="tag-link">
+            #migration
             <span class="tag-count">
               (1 post)
             </span>
@@ -1311,7 +1372,7 @@ img {
           <a href="/tag/security" class="tag-link">
             #security
             <span class="tag-count">
-              (2 posts)
+              (3 posts)
             </span>
           </a>
         </li>
@@ -1432,7 +1493,7 @@ img {
           <a href="/tag/windows" class="tag-link">
             #windows
             <span class="tag-count">
-              (2 posts)
+              (3 posts)
             </span>
           </a>
         </li>
@@ -1444,6 +1505,17 @@ img {
             #windows-11
             <span class="tag-count">
               (4 posts)
+            </span>
+          </a>
+        </li>
+      
+        
+        
+        <li class="tag-item">
+          <a href="/tag/wordpress" class="tag-link">
+            #wordpress
+            <span class="tag-count">
+              (1 post)
             </span>
           </a>
         </li>
@@ -1464,6 +1536,17 @@ img {
         <li class="tag-item">
           <a href="/tag/workshop-preview" class="tag-link">
             #workshop-preview
+            <span class="tag-count">
+              (1 post)
+            </span>
+          </a>
+        </li>
+      
+        
+        
+        <li class="tag-item">
+          <a href="/tag/wsl" class="tag-link">
+            #wsl
             <span class="tag-count">
               (1 post)
             </span>
@@ -1507,7 +1590,7 @@ img {
     </footer>
 
     <!-- Bot detection for no-ads layout -->
-    <script>
+    <script nonce="abc123">
       (function() {
         if (navigator.userAgent && typeof isbot === 'function' && isbot(navigator.userAgent)) {
           window.addEventListener('DOMContentLoaded', function() {
@@ -1520,30 +1603,16 @@ img {
 
     
 
-    <script>
+    <script nonce="abc123">
       // Enhanced module support detection and navigation management
       (function() {
         'use strict';
 
         var html = document.documentElement;
         html.setAttribute('lang', "en");
-        var supportsModules = 'noModule' in HTMLScriptElement.prototype;
 
         // Update HTML classes for navigation management
         html.className = html.className.replace("no-js", "js");
-
-        if (supportsModules) {
-          html.classList.add('supports-modules');
-        } else {
-          html.classList.add('no-modules');
-          // Show legacy browser notice for commerce functionality
-          document.write('<div class="legacy-browser-notice" role="alert"><strong>No Commerce Available</strong><span class="notice-detail">Your browser does not support modern features required for commerce functionality.</span></div>');
-        }
-
-        // Only initialize advanced navigation for modern browsers
-        if (!supportsModules) {
-          return; // Exit early for legacy browsers
-        }
 
         // Advanced navigation logic for modern browsers
         var toggleBtn = document.querySelector('.nav-toggle');

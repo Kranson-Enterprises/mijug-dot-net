@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+    
+    
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+    <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+    
+
+    <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation toggle button - ALWAYS VISIBLE */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - make sure it applies */
+  nav.primary-nav.nav-overlay {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    z-index: 100 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-20px) !important;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  nav.primary-nav.nav-overlay.nav-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Navigation content styling */
+  .modern-nav-content {
+    display: block !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: white !important;
+    border-radius: 8px !important;
+    padding: 2rem !important;
+    max-width: 90vw !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    z-index: 101 !important;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute !important;
+    top: 0.75rem !important;
+    right: 0.75rem !important;
+    background: none !important;
+    border: none !important;
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    color: #666 !important;
+    cursor: pointer !important;
+    padding: 0.25rem !important;
+    border-radius: 4px !important;
+    transition: color 0.2s ease, background-color 0.2s ease !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333 !important;
+    background-color: #f0f0f0 !important;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* No-JS fallback */
+  html.no-js .nav-toggle {
+    display: none;
+  }
+
+  /* Accessibility - visually hidden elements */
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Performance optimization for font loading */
+  html {
+    font-display: swap;
+  }
+
+  /* Reduce layout shift during navigation initialization */
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+    <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+
+    <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0066cc;
+  --nav-bg: #f8f8f8;
+  --border-color: #e8e8e8;
+  --header-color: #424242;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cookie consent banner styles */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
+  overflow: hidden;
+}
+
+#cookie-consent-banner.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+    <title>
+      Computer Backup Checklist | My Info Just Under Glass
+    </title>
+    <meta
+      name="description"
+      content="A step-by-step guide to safely back up your computer before making any changes. Perfect for older users or anyone who wants to be extra careful."
+    />
+    
+    <meta name="version" content="Dec 15, 2025" />
+    
+
+    
+
+    <meta name="google-site-verification" content="googlece83719b3f856e56" />
+    <meta name="cache-version" content="20251215172517" />
+
+    <link rel="stylesheet" href="/assets/main.css?v=20251215174419" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection and navigation management
+    (function() {
+      'use strict';
+
+      var html = document.documentElement;
+      html.setAttribute('lang', "en");
+
+      // Add .js class immediately to enable CSS-based navigation hiding
+      html.classList.remove('no-js');
+      html.classList.add('js');
+
+      var supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Only initialize advanced navigation for modern browsers
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript11 = false;
+      const html = document.documentElement;
+      try {
+        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
+        if (mod && typeof mod.testES11Features === 'function') {
+          try {
+            mod.testES11Features();
+            supportsEcmascript11 = true;
+          } catch (e) { console.error('ES11 test failed:', e); }
+        } else if (typeof window.testES11Features === 'function') {
+          try { window.testES11Features();
+            supportsEcmascript11 = true;
+           } catch (e) { console.error('ES11 test failed:', e); }
+        } else {
+          console.debug('ES11 test module loaded but `testES11Features` not found.');
+        }
+      } catch (err) {
+        console.debug('ES11 test module not present or failed to import:', err);
+      }
+      if (!supportsEcmascript11) {
+        html.classList.add('no-ES2020');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="My Info Just Under Glass"
+      href="/feed.xml"
+    />
+    
+    
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/favicon.ico"
+    />
+    
+
+    <meta name="description" content="A step-by-step guide to safely back up your computer before making any changes. Perfect for older users or anyone who wants to be extra careful." />
+<meta property="og:title" content="Computer Backup Checklist" />
+<meta property="og:description" content="A step-by-step guide to safely back up your computer before making any changes. Perfect for older users or anyone who wants to be extra careful." />
+<meta property="og:url" content="https://www.mijug.net/posts/2025/12/15/computer-backup-checklist/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/posts/2025/12/15/computer-backup-checklist/" />
+
+
+    
+
+    
+
+    <script nonce="abc123">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20251215172517";
+</script>
+
+  
+  <script nonce="abc123">
+    window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
+  </script>
+  
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <noscript>
+        <div class="legacy-browser-notice" role="alert">
+          <strong>No Commerce Available</strong>
+          <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+        </div>
+      </noscript>
+
+      <div class="wrapper">
+        <a
+          class="site-title"
+          rel="home"
+          href="/"
+        >
+          
+          <img
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517"
+            alt="My Info Just Under Glass"
+            width="50"
+            height="50"
+          />
+           My Info Just Under Glass
+        </a>
+
+        <!-- Mobile navigation toggle button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
+          &nbsp;Menu
+        </button>
+
+        <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+        <nav
+          id="primary-navigation"
+          class="primary-nav js-enhanced-nav"
+          role="dialog"
+          aria-modal="true"
+          aria-hidden="true">
+
+          <!-- Full navigation for modern browsers -->
+          <div class="modern-nav-content">
+            <button class="nav-close" type="button" aria-label="Close navigation menu">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <ul role="list">
+              
+                <li role="listitem">
+                  <a href="/blog/"
+                     
+                     aria-label="Navigate to Blog">
+                     Blog
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/about/"
+                     
+                     aria-label="Navigate to About">
+                     About
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/getting-started/"
+                     
+                     aria-label="Navigate to Getting Started">
+                     Getting Started
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/welcome-mijug-workspace/"
+                     
+                     aria-label="Navigate to Workspace Overview">
+                     Workspace Overview
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/frontmatter-cms/"
+                     
+                     aria-label="Navigate to FrontMatter CMS Usage">
+                     FrontMatter CMS Usage
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/accessibility-testing/"
+                     
+                     aria-label="Navigate to Accessibility Testing Configuration">
+                     Accessibility Testing Configuration
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/browser-management/"
+                     
+                     aria-label="Navigate to Browser Management for Testing">
+                     Browser Management for Testing
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/browser-compatibility-testing/"
+                     
+                     aria-label="Navigate to Browser Compatibility Testing">
+                     Browser Compatibility Testing
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/liquid-tags-examples/"
+                     
+                     aria-label="Navigate to Liquid Tags Examples">
+                     Liquid Tags Examples
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/tags-and-categories-guide/"
+                     
+                     aria-label="Navigate to Tags and Categories System Guide">
+                     Tags and Categories System Guide
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/performance-optimization/"
+                     
+                     aria-label="Navigate to Performance Optimization Guide">
+                     Performance Optimization Guide
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/testing-performance-evolution/"
+                     
+                     aria-label="Navigate to Testing Performance and Development Evolution">
+                     Testing Performance and Development Evolution
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/cache-management/"
+                     
+                     aria-label="Navigate to Cache Management Strategies">
+                     Cache Management Strategies
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-configuration-guide/"
+                     
+                     aria-label="Navigate to Mermaid Diagram Configuration Guide">
+                     Mermaid Diagram Configuration Guide
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-quick-start/"
+                     
+                     aria-label="Navigate to Mermaid Quick Start">
+                     Mermaid Quick Start
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-examples/"
+                     
+                     aria-label="Navigate to Mermaid Diagram Examples">
+                     Mermaid Diagram Examples
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-diagrams-sample/"
+                     
+                     aria-label="Navigate to Mermaid Diagrams Sample">
+                     Mermaid Diagrams Sample
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-test-runner/"
+                     
+                     aria-label="Navigate to Mermaid Diagrams Test Runner">
+                     Mermaid Diagrams Test Runner
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/rel-attribute-guide/"
+                     
+                     aria-label="Navigate to The rel Attribute in HTML Links: A Comprehensive Guide">
+                     The rel Attribute in HTML Links: A Comprehensive Guide
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/exploring-limitations-of-gitea-and-ruby/"
+                     
+                     aria-label="Navigate to Exploring the Limitations of Gitea and Ruby">
+                     Exploring the Limitations of Gitea and Ruby
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </nav>
+
+        <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper"><article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Computer Backup Checklist</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-12-15T10:45:00-05:00" itemprop="datePublished">
+        Published Dec 15, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <time class="dt-modified" datetime="2025-12-15T12:32:56-05:00" itemprop="dateModified">
+        Updated Dec 15, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-author h-card" itemprop="name">MIJUG Team</span>
+      </span></p><p class="post-description">A step-by-step guide to safely back up your computer before making any changes. Perfect for older users or anyone who wants to be extra careful.</p><div class="post-tags"><a href="/tag/backup" class="tag-link">#backup</a><a href="/tag/windows" class="tag-link">#windows</a><a href="/tag/linux" class="tag-link">#linux</a><a href="/tag/data-protection" class="tag-link">#data-protection</a><a href="/tag/checklist" class="tag-link">#checklist</a><a href="/tag/wsl" class="tag-link">#wsl</a><a href="/tag/migration" class="tag-link">#migration</a></div></header>
+
+  <div class="post-content e-content" itemprop="articleBody"><h2 id="-complete-computer-backup-checklist">📋 Complete Computer Backup Checklist</h2>
+
+<blockquote>
+  <p><strong>What This Is:</strong> A step-by-step guide developed at <a href="https://www.mijug.net/assets/backup-inventory-checklist.pdf">www.mijug.net</a> to safely back up your computer before making any changes. Perfect for older users or anyone who wants to be extra careful.</p>
+</blockquote>
+
+<h2 id="-why-use-this-checklist">🎯 Why Use This Checklist?</h2>
+
+<p><strong>Before you:</strong></p>
+
+<ul>
+  <li>Install Linux or try a new operating system</li>
+  <li>Make major computer changes</li>
+  <li>Give your computer to someone for repair</li>
+  <li>Upgrade your hard drive</li>
+  <li>Try Windows Subsystem for Linux (WSL)</li>
+</ul>
+
+<p><strong>This checklist helps you:</strong></p>
+
+<ul>
+  <li>✅ Find all your important files</li>
+  <li>✅ Know what programs you use</li>
+  <li>✅ Create proper backups</li>
+  <li>✅ Feel confident about changes</li>
+</ul>
+
+<hr />
+
+<h2 id="-download-printable-backup-inventory-sheet">📥 <strong>DOWNLOAD: Printable Backup Inventory Sheet</strong></h2>
+
+<p><strong>🖨️ <a href="/assets/backup-inventory-checklist.pdf">Download PDF Checklist</a></strong> <em>(Print this and fill it out by hand)</em></p>
+
+<hr />
+
+<h2 id="-phase-1-computer-detective-work">🔍 <strong>Phase 1: Computer Detective Work</strong></h2>
+
+<h3 id="-step-1-find-out-what-you-have">📊 <strong>Step 1: Find Out What You Have</strong></h3>
+
+<h4 id="11-check-your-windows-version"><strong>1.1 Check Your Windows Version</strong></h4>
+
+<ul>
+  <li>Press <strong>Win + R</strong>, type <strong><code class="language-plaintext highlighter-rouge">winver</code></strong>, press Enter</li>
+  <li>Write down:
+    <ul>
+      <li>✏️ Windows version: <strong>**</strong>____________________________________<strong>**</strong></li>
+      <li>✏️ Build number: <strong>**</strong>____________________________________<strong>**</strong></li>
+      <li>✏️ Your computer name: <strong>**</strong>____________________________________<strong>**</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="12-check-your-storage-space"><strong>1.2 Check Your Storage Space</strong></h4>
+
+<ul>
+  <li>Open <strong>File Explorer</strong> (folder icon in taskbar)</li>
+  <li>Click <strong>“This PC”</strong> on the left</li>
+  <li>Look at your <strong>C: drive</strong></li>
+  <li>Write down:
+    <ul>
+      <li>✏️ Total space: <strong>______</strong> GB</li>
+      <li>✏️ Used space: <strong>______</strong> GB</li>
+      <li>✏️ Free space: <strong>______</strong> GB</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="13-check-your-memory-ram"><strong>1.3 Check Your Memory (RAM)</strong></h4>
+
+<ul>
+  <li>Right-click <strong>“This PC”</strong> → <strong>“Properties”</strong></li>
+  <li>Write down:
+    <ul>
+      <li>✏️ Installed memory (RAM): <strong>______</strong> GB</li>
+      <li>✏️ Processor: <strong>**</strong>____________________________________<strong>**</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="-step-2-user-account-information">👤 <strong>Step 2: User Account Information</strong></h3>
+
+<h4 id="21-find-all-user-accounts"><strong>2.1 Find All User Accounts</strong></h4>
+
+<ul>
+  <li>Open <strong>Settings</strong> (gear icon)</li>
+  <li>Click <strong>“Accounts”</strong> → <strong>“Family &amp; other users”</strong></li>
+  <li>Write down each user:
+    <ul>
+      <li>✏️ User 1: <strong>**</strong>____________________________________<strong>**</strong> (Admin/Standard)</li>
+      <li>✏️ User 2: <strong>**</strong>____________________________________<strong>**</strong> (Admin/Standard)</li>
+      <li>✏️ User 3: <strong>**</strong>____________________________________<strong>**</strong> (Admin/Standard)</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="22-check-your-account-type"><strong>2.2 Check Your Account Type</strong></h4>
+
+<ul>
+  <li>In Settings → Accounts → <strong>“Your info”</strong></li>
+  <li>Write down:
+    <ul>
+      <li>✏️ Your username: <strong>**</strong>____________________________________<strong>**</strong></li>
+      <li>✏️ Account type: ☐ Administrator ☐ Standard User</li>
+      <li>✏️ Microsoft account email (if connected): <strong>**</strong>____________________________________<strong>**</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="-step-3-hardware-inventory">🔌 <strong>Step 3: Hardware Inventory</strong></h3>
+
+<p><strong>3.1 Check USB Ports</strong>
+Count and identify your USB ports:</p>
+
+<ul>
+  <li>✏️ USB 2.0 ports (black): <strong>______</strong> front, <strong>______</strong> back</li>
+  <li>✏️ USB 3.0+ ports (blue/red/teal): <strong>______</strong> front, <strong>______</strong> back</li>
+  <li>✏️ USB-C ports: <strong>______</strong> total</li>
+</ul>
+
+<p><strong>3.2 Check Connected Devices</strong>
+List what’s currently plugged in:</p>
+
+<ul>
+  <li>✏️ External hard drives: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ USB sticks: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Printer: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Other devices: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="-phase-2-file-location-detective-work">📁 <strong>Phase 2: File Location Detective Work</strong></h2>
+
+<h3 id="-step-4-find-your-personal-files">🏠 <strong>Step 4: Find Your Personal Files</strong></h3>
+
+<h4 id="41-documents-folder-check"><strong>4.1 Documents Folder Check</strong></h4>
+
+<ul>
+  <li>Open <strong>File Explorer</strong> → <strong>Documents</strong></li>
+  <li>Count approximate number of files: ✏️ <strong>______</strong></li>
+  <li>Estimate size: ✏️ <strong>______</strong> GB</li>
+  <li><strong>Important subfolders:</strong>
+    <ul>
+      <li>✏️ Work files location: <strong>**</strong>____________________________________<strong>**</strong></li>
+      <li>✏️ Tax documents: <strong>**</strong>____________________________________<strong>**</strong></li>
+      <li>✏️ Important papers: <strong>**</strong>____________________________________<strong>**</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="42-pictures-folder-check"><strong>4.2 Pictures Folder Check</strong></h4>
+
+<ul>
+  <li>Open <strong>File Explorer</strong> → <strong>Pictures</strong></li>
+  <li>Count approximate number of photos: ✏️ <strong>______</strong></li>
+  <li>Estimate size: ✏️ <strong>______</strong> GB</li>
+  <li><strong>Important photo folders:</strong>
+    <ul>
+      <li>✏️ Family photos: <strong>**</strong>____________________________________<strong>**</strong></li>
+      <li>✏️ Vacation photos: <strong>**</strong>____________________________________<strong>**</strong></li>
+      <li>✏️ Screenshots: <strong>**</strong>____________________________________<strong>**</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="43-music-and-videos-check"><strong>4.3 Music and Videos Check</strong></h4>
+
+<ul>
+  <li>Check <strong>Music</strong> folder: ✏️ <strong>______</strong> GB</li>
+  <li>Check <strong>Videos</strong> folder: ✏️ <strong>______</strong> GB</li>
+  <li>Check <strong>Downloads</strong> folder: ✏️ <strong>______</strong> GB</li>
+</ul>
+
+<h4 id="44-desktop-files"><strong>4.4 Desktop Files</strong></h4>
+
+<ul>
+  <li>Count files on desktop: ✏️ <strong>______</strong></li>
+  <li><strong>Important desktop items:</strong>
+    <ul>
+      <li>✏️ Important shortcuts: <strong>**</strong>____________________________________<strong>**</strong></li>
+      <li>✏️ Files that must be saved: <strong>**</strong>____________________________________<strong>**</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="-step-5-email-and-cloud-storage">📧 <strong>Step 5: Email and Cloud Storage</strong></h3>
+
+<p><strong>5.1 Email Programs</strong>
+Check which email programs you use:</p>
+
+<ul>
+  <li>☐ Outlook (Microsoft)</li>
+  <li>☐ Thunderbird</li>
+  <li>☐ Windows Mail app</li>
+  <li>☐ Web-based only (Gmail, Yahoo, etc.)</li>
+</ul>
+
+<p><strong>If using Outlook or Thunderbird:</strong></p>
+
+<ul>
+  <li>✏️ Email file location: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Estimated size: <strong>______</strong> GB</li>
+</ul>
+
+<p><strong>5.2 Cloud Storage</strong>
+Check which cloud services you use:</p>
+
+<ul>
+  <li>☐ OneDrive (Microsoft) - Folder location: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>☐ Google Drive - Folder location: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>☐ Dropbox - Folder location: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>☐ iCloud - Folder location: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>☐ Other: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<p><strong>For each cloud service:</strong></p>
+
+<ul>
+  <li>✏️ Sync status: ☐ Fully synced ☐ Needs syncing</li>
+  <li>✏️ Local folder size: <strong>______</strong> GB</li>
+</ul>
+
+<hr />
+
+<h2 id="-phase-3-software-and-programs-inventory">📦 <strong>Phase 3: Software and Programs Inventory</strong></h2>
+
+<h3 id="-step-6-essential-programs-list">💻 <strong>Step 6: Essential Programs List</strong></h3>
+
+<h4 id="61-check-installed-programs"><strong>6.1 Check Installed Programs</strong></h4>
+
+<ul>
+  <li>Open <strong>Settings</strong> → <strong>Apps</strong> → <strong>Apps &amp; features</strong></li>
+  <li>Write down your most important programs:</li>
+</ul>
+
+<p><strong>Essential Programs (you can’t live without):</strong></p>
+
+<ul>
+  <li>✏️ 1. <strong>**</strong>____________________________________<strong>**</strong> (Version: <strong>______</strong>)</li>
+  <li>✏️ 2. <strong>**</strong>____________________________________<strong>**</strong> (Version: <strong>______</strong>)</li>
+  <li>✏️ 3. <strong>**</strong>____________________________________<strong>**</strong> (Version: <strong>______</strong>)</li>
+  <li>✏️ 4. <strong>**</strong>____________________________________<strong>**</strong> (Version: <strong>______</strong>)</li>
+  <li>✏️ 5. <strong>**</strong>____________________________________<strong>**</strong> (Version: <strong>______</strong>)</li>
+</ul>
+
+<h4 id="62-check-for-license-keys"><strong>6.2 Check for License Keys</strong></h4>
+
+<p>For paid software, find your license information:</p>
+
+<ul>
+  <li>✏️ Microsoft Office: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Adobe products: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Antivirus software: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Other paid software: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<h4 id="63-browser-information"><strong>6.3 Browser Information</strong></h4>
+
+<ul>
+  <li>✏️ Main browser: ☐ Chrome ☐ Firefox ☐ Edge ☐ Other: <strong>______</strong></li>
+  <li>✏️ Bookmarks location: Check if synced to account</li>
+  <li>✏️ Important bookmarks: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<h3 id="-step-7-password-and-account-information">🔑 <strong>Step 7: Password and Account Information</strong></h3>
+
+<h4 id="71-password-manager-check"><strong>7.1 Password Manager Check</strong></h4>
+
+<ul>
+  <li>☐ Using password manager: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>☐ Master password written down safely: ☐ Yes ☐ No</li>
+  <li>☐ Password manager synced to phone: ☐ Yes ☐ No</li>
+</ul>
+
+<p><strong>7.2 Important Account List</strong>
+<strong>Banking and Financial:</strong></p>
+
+<ul>
+  <li>✏️ Bank 1: <strong>**</strong>____________________________________<strong>**</strong> (Username: <strong>______</strong>)</li>
+  <li>✏️ Bank 2: <strong>**</strong>____________________________________<strong>**</strong> (Username: <strong>______</strong>)</li>
+  <li>✏️ Credit cards: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Investment accounts: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<p><strong>Email and Communication:</strong></p>
+
+<ul>
+  <li>✏️ Primary email: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Backup email: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Social media accounts: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<p><strong>Work and Professional:</strong></p>
+
+<ul>
+  <li>✏️ Work email: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Professional accounts: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="-phase-4-backup-storage-planning">💾 <strong>Phase 4: Backup Storage Planning</strong></h2>
+
+<h3 id="-step-8-calculate-backup-storage-needs">📏 <strong>Step 8: Calculate Backup Storage Needs</strong></h3>
+
+<h4 id="81-add-up-your-data"><strong>8.1 Add Up Your Data</strong></h4>
+
+<ul>
+  <li>Documents: <strong>______</strong> GB</li>
+  <li>Pictures: <strong>______</strong> GB</li>
+  <li>Music: <strong>______</strong> GB</li>
+  <li>Videos: <strong>______</strong> GB</li>
+  <li>Email: <strong>______</strong> GB</li>
+  <li>Desktop: <strong>______</strong> GB</li>
+  <li>Cloud folders: <strong>______</strong> GB</li>
+  <li><strong>Total needed:</strong> <strong>______</strong> GB</li>
+</ul>
+
+<p><strong>8.2 Choose Backup Storage</strong>
+Based on your total, you need:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Your Total Data</th>
+      <th>Recommended USB Drive</th>
+      <th>Alternative Option</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Under 16GB</td>
+      <td>32GB USB stick (FAT32)</td>
+      <td>64GB for future growth</td>
+    </tr>
+    <tr>
+      <td>16GB - 64GB</td>
+      <td>128GB USB drive (exFAT)</td>
+      <td>External hard drive</td>
+    </tr>
+    <tr>
+      <td>64GB - 500GB</td>
+      <td>1TB external hard drive (NTFS)</td>
+      <td>Cloud backup + USB</td>
+    </tr>
+    <tr>
+      <td>Over 500GB</td>
+      <td>2TB external hard drive (NTFS)</td>
+      <td>Multiple drives or cloud</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Your choice:</strong> ✏️ <strong>**</strong>____________________________________<strong>**</strong></p>
+
+<h3 id="-step-9-usb-drive-format-planning">💿 <strong>Step 9: USB Drive Format Planning</strong></h3>
+
+<p><strong>9.1 Choose USB Format Based on Use</strong>
+Refer to our <a href="/workshops/windows-to-linux/session/56">filesystem guide</a> for details:</p>
+
+<ul>
+  <li>☐ <strong>FAT32</strong> - If sharing with very old computers</li>
+  <li>☐ <strong>exFAT</strong> - If sharing between Windows and Mac (recommended)</li>
+  <li>☐ <strong>NTFS</strong> - If using only with Windows computers</li>
+</ul>
+
+<p><strong>9.2 Test Your USB Drive</strong>
+Before backing up:</p>
+
+<ul>
+  <li>✏️ USB drive size: <strong>______</strong> GB</li>
+  <li>✏️ USB drive format: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ USB port type used: ☐ USB 2.0 ☐ USB 3.0+</li>
+  <li>✏️ Test copy speed: ☐ Fast ☐ Slow ☐ Very slow</li>
+</ul>
+
+<hr />
+
+<h2 id="-phase-5-pre-backup-verification">✅ <strong>Phase 5: Pre-Backup Verification</strong></h2>
+
+<h3 id="-step-10-final-safety-checks">🔍 <strong>Step 10: Final Safety Checks</strong></h3>
+
+<h4 id="101-verify-important-files"><strong>10.1 Verify Important Files</strong></h4>
+
+<ul>
+  <li>☐ Can open Documents folder without errors</li>
+  <li>☐ Can open Pictures folder without errors</li>
+  <li>☐ Can open email program (if applicable)</li>
+  <li>☐ All cloud folders are synced</li>
+  <li>☐ No “file in use” or “permission denied” errors</li>
+</ul>
+
+<h4 id="102-system-health-check"><strong>10.2 System Health Check</strong></h4>
+
+<ul>
+  <li>☐ Computer boots normally</li>
+  <li>☐ No error messages on startup</li>
+  <li>☐ Antivirus scan completed recently</li>
+  <li>☐ Windows updates installed</li>
+  <li>☐ No strange noises from hard drive</li>
+</ul>
+
+<h4 id="103-backup-equipment-ready"><strong>10.3 Backup Equipment Ready</strong></h4>
+
+<ul>
+  <li>☐ USB drive tested and working</li>
+  <li>☐ USB drive has enough space (at least 25% more than your data)</li>
+  <li>☐ Power adapter connected (for laptop backups)</li>
+  <li>☐ Backup will not be interrupted</li>
+</ul>
+
+<hr />
+
+<h2 id="-phase-6-create-emergency-contact-list">🚨 <strong>Phase 6: Create Emergency Contact List</strong></h2>
+
+<h3 id="-step-11-help-resources">📞 <strong>Step 11: Help Resources</strong></h3>
+
+<p><strong>If something goes wrong, contact:</strong></p>
+
+<p><strong>Technical Support:</strong></p>
+
+<ul>
+  <li>✏️ Computer manufacturer: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Local computer repair: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Tech-savvy family/friend: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<p><strong>Important Service Numbers:</strong></p>
+
+<ul>
+  <li>✏️ Internet provider: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Microsoft Support: 1-800-MICROSOFT</li>
+  <li>✏️ Password manager support: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<p><strong>Recovery Information:</strong></p>
+
+<ul>
+  <li>✏️ Windows product key location: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Router/WiFi password location: <strong>**</strong>____________________________________<strong>**</strong></li>
+  <li>✏️ Emergency contact who has backup info: <strong>**</strong>____________________________________<strong>**</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="-phase-7-backup-execution-plan">📝 <strong>Phase 7: Backup Execution Plan</strong></h2>
+
+<h3 id="-step-12-backup-strategy-selection">🎯 <strong>Step 12: Backup Strategy Selection</strong></h3>
+
+<p><strong>Choose your backup method:</strong></p>
+
+<h4 id="option-a-simple-file-copy-recommended-for-most-people"><strong>Option A: Simple File Copy (Recommended for most people)</strong></h4>
+
+<ul>
+  <li>☐ Copy Documents folder to USB</li>
+  <li>☐ Copy Pictures folder to USB</li>
+  <li>☐ Copy Desktop folder to USB</li>
+  <li>☐ Copy Downloads folder to USB</li>
+  <li>☐ Export browser bookmarks</li>
+  <li>☐ Test that files can be opened from USB</li>
+</ul>
+
+<h4 id="option-b-windows-backup-tool"><strong>Option B: Windows Backup Tool</strong></h4>
+
+<ul>
+  <li>☐ Use Control Panel → Backup and Restore</li>
+  <li>☐ Create system image backup</li>
+  <li>☐ Create file backup</li>
+  <li>☐ Test restore process</li>
+</ul>
+
+<h4 id="option-c-cloud--local-backup"><strong>Option C: Cloud + Local Backup</strong></h4>
+
+<ul>
+  <li>☐ Ensure all files synced to cloud</li>
+  <li>☐ Create local copy on USB as backup</li>
+  <li>☐ Verify cloud account access</li>
+</ul>
+
+<p><strong>Your chosen method:</strong> ✏️ <strong>**</strong>____________________________________<strong>**</strong></p>
+
+<h3 id="-step-13-time-planning">⏰ <strong>Step 13: Time Planning</strong></h3>
+
+<p><strong>Estimate backup time based on data size:</strong></p>
+
+<ul>
+  <li>Under 10GB: 30 minutes - 1 hour</li>
+  <li>10-50GB: 1-3 hours</li>
+  <li>50-200GB: 3-8 hours</li>
+  <li>Over 200GB: Plan for overnight</li>
+</ul>
+
+<p><strong>Your estimated time:</strong> ✏️ <strong>______</strong></p>
+
+<p><strong>Best time to start backup:</strong> ✏️ <strong>______</strong></p>
+
+<hr />
+
+<h2 id="-phase-8-final-checklist-before-changes">🏁 <strong>Phase 8: Final Checklist Before Changes</strong></h2>
+
+<h3 id="-step-14-ready-to-proceed-verification">✅ <strong>Step 14: Ready to Proceed Verification</strong></h3>
+
+<p><strong>Before making ANY system changes, verify:</strong></p>
+
+<p><strong>Backup Complete:</strong></p>
+
+<ul>
+  <li>☐ All important files copied and tested</li>
+  <li>☐ Backup stored in safe location</li>
+  <li>☐ Backup accessible from another computer</li>
+  <li>☐ Program list and license keys saved</li>
+  <li>☐ Account information secured</li>
+</ul>
+
+<p><strong>System Ready:</strong></p>
+
+<ul>
+  <li>☐ Computer running normally</li>
+  <li>☐ No pending Windows updates</li>
+  <li>☐ No running programs that could interfere</li>
+  <li>☐ Power adapter connected (laptops)</li>
+  <li>☐ Enough free disk space for changes</li>
+</ul>
+
+<p><strong>Support Ready:</strong></p>
+
+<ul>
+  <li>☐ This checklist printed and available</li>
+  <li>☐ Contact information for help ready</li>
+  <li>☐ Time set aside for the process</li>
+  <li>☐ Alternative computer available if needed</li>
+</ul>
+
+<p><strong>Knowledge Ready:</strong></p>
+
+<ul>
+  <li>☐ Read relevant guides (<a href="/workshops/windows-to-linux/session/57">WSL</a>, <a href="/workshops/windows-to-linux/session/53">Linux variants</a>, <a href="/workshops/windows-to-linux/session/56">filesystems</a>)</li>
+  <li>☐ Understand what changes you’re making</li>
+  <li>☐ Know how to undo changes if needed</li>
+</ul>
+
+<hr />
+
+<h2 id="-emergency-recovery-information">🆘 <strong>Emergency Recovery Information</strong></h2>
+
+<h3 id="-if-something-goes-wrong">🔄 <strong>If Something Goes Wrong</strong></h3>
+
+<h4 id="step-1-dont-panic"><strong>Step 1: Don’t Panic</strong></h4>
+
+<ul>
+  <li>Most problems can be fixed</li>
+  <li>Your backup should have all important files</li>
+  <li>Help is available</li>
+</ul>
+
+<h4 id="step-2-basic-recovery"><strong>Step 2: Basic Recovery</strong></h4>
+
+<ul>
+  <li>Restart computer</li>
+  <li>Try “Last Known Good Configuration” (F8 during startup)</li>
+  <li>Use Windows System Restore</li>
+  <li>Boot from Windows installation media</li>
+</ul>
+
+<h4 id="step-3-file-recovery"><strong>Step 3: File Recovery</strong></h4>
+
+<ul>
+  <li>Boot from USB with Linux Live environment</li>
+  <li>Access files even if Windows won’t start</li>
+  <li>Copy files to external drive</li>
+  <li>Use backup files created with this checklist</li>
+</ul>
+
+<h4 id="step-4-get-help"><strong>Step 4: Get Help</strong></h4>
+
+<ul>
+  <li>Contact technical support with your completed checklist</li>
+  <li>Bring backup drive and this documentation</li>
+  <li>Explain what you were trying to do when problems started</li>
+</ul>
+
+<hr />
+
+<p><strong>📋 Checklist Summary:</strong> This comprehensive backup checklist ensures you’re prepared for any computer changes. Print it out, fill it in completely, and keep it with your backup drive. When in doubt, always backup first, ask questions later!</p>
+
+<p><strong>🔗 Related Guides:</strong></p>
+
+<ul>
+  <li><a href="/workshops/windows-to-linux/session/52">Password Management</a></li>
+  <li><a href="/workshops/windows-to-linux/session/53">Linux Decision Guide</a></li>
+  <li><a href="/workshops/windows-to-linux/session/56">Filesystem Formats</a></li>
+  <li><a href="/workshops/windows-to-linux/session/57">WSL Installation</a></li>
+  <li><a href="/workshops/windows-to-linux/session/58">WSL Disk Management</a></li>
+</ul>
+</div><div class="post-categories">
+    <strong>Categories:</strong>&nbsp;<a href="/category/tutorial" class="category-link">tutorial</a>,<a href="/category/tools" class="category-link">tools</a></div><footer class="post-footer">
+    <div class="post-nav"><div class="prev-post">
+        <a rel="prev" href="/2025/11/24/ditching-es5-after-a-wordpress-build/" class="prev-link"> ← Moving to ES2020 (ES11) for Better Security </a>
+      </div></div>
+  </footer>
+
+  <a class="u-url" rel="canonical" href="/posts/2025/12/15/computer-backup-checklist/" hidden></a>
+</article>
+
+<style>
+  .post-meta-separator {
+    color: #666;
+  }
+
+  .post-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    color: #555;
+  }
+
+  .post-categories {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .category-link {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  .category-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .prev-link,
+  .next-link {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: 500;
+  }
+
+  .prev-link:hover,
+  .next-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-post {
+    text-align: right;
+  }
+</style>
+</div>
+      <div class="customad-container" id="adslot-1" data-ad-slot="12345678"></div>
+    </main>
+
+    <footer class="site-footer h-card">
+      <data class="u-url" href="/"></data>
+      <div class="wrapper">
+        <div class="footer-col-wrapper">
+          <div class="footer-col footer-col-1">
+            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/privacy-policy.html">Privacy Policy</a>
+          </div>
+          <div class="footer-col footer-col-2">
+            <a href="/contact/">Contact Us</a>
+          </div>
+          <div class="footer-col footer-col-3">
+            <p>
+              &copy; 2025
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
+                >Kranson Enterprises</a
+              ><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
+              <a href="/feed.xml"
+                >via RSS<svg class="svg-icon">
+                  <use
+                    xlink:href="/assets/minima-social-icons.svg#rss"
+                  ></use></svg>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+
+    
+    <script nonce="abc123">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'G-W1M1N0DCD4');
+    </script>
+
+    <script
+      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
+      crossorigin="anonymous"
+      async
+    ></script>
+    
+
+    <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+    <script type="module" src="/assets/js/mijug-es11.min.js?v=20251215174419" defer crossorigin="anonymous"></script>
+
+    <!-- Cookie consent system -->
+    <!-- %  include google-adsense.html % -->
+    <!-- % include cookie-consent.html % -->}
+    <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
+    <script nonce="abc123">
+      (function() {
+        'use strict';
+
+        function enhanceCodeBlocks() {
+          try {
+            var blocks = document.querySelectorAll('div.highlighter-rouge div.highlight');
+            blocks.forEach(function(el) {
+              if (!el.hasAttribute('role')) el.setAttribute('role', 'img');
+              if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+
+              if (!el.hasAttribute('aria-label')) {
+                var code = el.querySelector('pre code');
+                var preview = '';
+                if (code && code.textContent) {
+                  preview = code.textContent.trim().split('\n')[0] || '';
+                  if (preview.length > 60) preview = preview.slice(0, 57) + '...';
+                }
+
+                // try to detect language from ancestor class
+                var language = '';
+                var parent = el.parentElement;
+                if (parent && parent.className) {
+                  var m = parent.className.match(/language-(\w+)/);
+                  if (m) language = m[1];
+                }
+
+                var label = 'Code example' + (language ? (' in ' + language) : '') + (preview ? (': ' + preview) : '');
+                el.setAttribute('aria-label', label);
+              }
+            });
+          } catch (e) {
+            console.warn('EnhanceCodeBlocks error', e);
+          }
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', enhanceCodeBlocks);
+        } else {
+          enhanceCodeBlocks();
+        }
+      })();
+    </script>
+
+    <script nonce="abc123">
+      // Navigation toggle functionality
+      (function() {
+        'use strict';
+
+        var toggleBtn = document.querySelector('.nav-toggle');
+        var closeBtn = document.querySelector('.nav-close');
+        var nav = document.getElementById('primary-navigation');
+        var statusEl = document.getElementById('menu-status');
+        var body = document.body;
+
+        if (!toggleBtn || !nav || !statusEl) {
+          return;
+        }
+
+        // Initialize navigation as overlay
+        nav.classList.add('nav-overlay');
+
+        function toggleNavigation() {
+          var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            nav.classList.remove('nav-visible');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            nav.setAttribute('aria-hidden', 'true');
+            statusEl.textContent = 'Menu closed';
+            body.classList.remove('nav-open');
+          } else {
+            nav.classList.add('nav-visible');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            nav.setAttribute('aria-hidden', 'false');
+            statusEl.textContent = 'Menu opened';
+            body.classList.add('nav-open');
+          }
+        }
+
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleNavigation();
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleNavigation();
+          });
+        }
+
+        // Close on click outside
+        document.addEventListener('click', function(e) {
+          if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+          if (!nav.contains(e.target) && !toggleBtn.contains(e.target)) {
+            toggleNavigation();
+          }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            toggleBtn.focus();
+          }
+        });
+      })();
+    </script>
+
+  </body>
+</html>

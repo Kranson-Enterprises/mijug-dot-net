@@ -7,12 +7,12 @@
 
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
       img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
       font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
-      connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
       frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
       object-src 'none';
       base-uri 'self';
@@ -154,11 +154,6 @@
   .modern-nav-content a:focus {
     background-color: #f0f0f0;
     color: #2c5aa0;
-  }
-
-  /* Legacy nav fallback - hidden by default */
-  .legacy-nav-fallback {
-    display: none;
   }
 
   /* Body scroll lock when overlay is open */
@@ -563,8 +558,18 @@ img {
   will-change: transform;
 }
 </style>
-<link rel="preload" href="/assets/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
 <noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
 
 
     <title>
@@ -581,13 +586,73 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251119192849" />
+    <meta name="cache-version" content="20251215172517" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=20251206210813" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251206210813" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20251215174419" media="print">
 
-    <noscript>
-      <link rel="stylesheet" href="/assets/main.css?v=20251206210813">
-    </noscript>
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection and navigation management
+    (function() {
+      'use strict';
+
+      var html = document.documentElement;
+      html.setAttribute('lang', "en");
+
+      // Add .js class immediately to enable CSS-based navigation hiding
+      html.classList.remove('no-js');
+      html.classList.add('js');
+
+      var supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Only initialize advanced navigation for modern browsers
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript11 = false;
+      const html = document.documentElement;
+      try {
+        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
+        if (mod && typeof mod.testES11Features === 'function') {
+          try {
+            mod.testES11Features();
+            supportsEcmascript11 = true;
+          } catch (e) { console.error('ES11 test failed:', e); }
+        } else if (typeof window.testES11Features === 'function') {
+          try { window.testES11Features();
+            supportsEcmascript11 = true;
+           } catch (e) { console.error('ES11 test failed:', e); }
+        } else {
+          console.debug('ES11 test module loaded but `testES11Features` not found.');
+        }
+      } catch (err) {
+        console.debug('ES11 test module not present or failed to import:', err);
+      }
+      if (!supportsEcmascript11) {
+        html.classList.add('no-ES2020');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
 
     <link
       rel="alternate"
@@ -597,8 +662,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
     
     <link
       rel="shortcut icon"
@@ -619,20 +684,25 @@ img {
 
     
 
-    <script>
+    <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251119192849";
+  window.MIJUG.cacheVersion = "20251215172517";
 </script>
 
   
-  <script>
+  <script nonce="abc123">
     window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
   </script>
   
   </head>
-  
-    <body oncontextmenu="return false;">
-  
+  <body>
     <header class="site-header" role="banner">
       <noscript>
         <div class="legacy-browser-notice" role="alert">
@@ -649,7 +719,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -668,23 +738,6 @@ img {
           &nbsp;Menu
         </button>
 
-        <!-- Fallback navigation for no-JS and legacy browsers -->
-        <noscript>
-          <nav class="primary-nav fallback-nav" role="navigation" aria-label="Main navigation">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </nav>
-        </noscript>
-
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
         <nav
           id="primary-navigation"
@@ -692,21 +745,6 @@ img {
           role="dialog"
           aria-modal="true"
           aria-hidden="true">
-
-          <!-- Basic navigation shown to legacy browsers -->
-          <div class="legacy-nav-fallback">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </div>
 
           <!-- Full navigation for modern browsers -->
           <div class="modern-nav-content">
@@ -898,6 +936,47 @@ img {
 
 <li>
 
+<span class="post-meta">Aug 9, 2025</span>
+
+          
+            <span class="post-meta-separator"> • </span>
+            
+              <a href="/category/getting-started" class="category-link">Getting-started</a>
+              
+            
+          
+
+          <h3>
+            <a class="post-link" href="/posts/2025/08/09/evening-schedules-tbd/">
+              Evening Classes: Schedule Coming Soon!
+            </a>
+          </h3>
+
+          
+            <p class="post-excerpt">We&#39;re working on evening class schedules! Think of this as a friendly &#39;coming soon&#39; announcement while we get our ducks in a row.</p>
+          
+
+          
+            <div class="post-tags">
+              
+                <a href="/tag/evening-schedules" class="tag-link">#evening-schedules</a>
+              
+                <a href="/tag/organization" class="tag-link">#organization</a>
+              
+                <a href="/tag/planning" class="tag-link">#planning</a>
+              
+                <a href="/tag/productivity" class="tag-link">#productivity</a>
+              
+                <a href="/tag/time-management" class="tag-link">#time-management</a>
+              
+                <a href="/tag/work-life-balance" class="tag-link">#work-life-balance</a>
+              
+            </div>
+          
+        </li>
+      
+<li>
+
 <span class="post-meta">Aug 6, 2025</span>
 
           
@@ -1055,31 +1134,6 @@ img {
           
         </li>
       
-<li>
-
-<span class="post-meta">Jul 3, 2025</span>
-
-          
-            <span class="post-meta-separator"> • </span>
-            
-              <a href="/category/announcements" class="category-link">Announcements</a>
-              
-            
-          
-
-          <h3>
-            <a class="post-link" href="/posts/2025/07/03/welcome-to-mijug-net/">
-              Welcome to MIJUG.NET!
-            </a>
-          </h3>
-
-          
-            <p class="post-excerpt">Welcome Announcement for My Information Just Under Glass - MIJUG.NET</p>
-          
-
-          
-        </li>
-      
     </ul>
 
     
@@ -1114,18 +1168,22 @@ img {
                 <span class="pagination-link current" aria-current="page">4</span>
               
             
+              
+                <a href="/blog/page/5/" class="pagination-link">5</a>
+              
+            
 
             
           </div>
 
           
-            <span class="pagination-link pagination-next disabled" aria-hidden="true">Next →</span>
+            <a href="/blog/page/5/" class="pagination-link pagination-next" aria-label="Go to next page">Next →</a>
           
         </div>
 
         <div class="pagination-info">
-          Showing 5 of 20 posts
-          (Page 4 of 4)
+          Showing 5 of 21 posts
+          (Page 4 of 5)
         </div>
       </nav>
     
@@ -1198,7 +1256,7 @@ img {
           
             <a href="/category/security" class="topic-card">
               <strong>Security</strong>
-              <span class="archive-count">(2)</span>
+              <span class="archive-count">(3)</span>
             </a>
           
             <a href="/category/windows" class="topic-card">
@@ -1223,7 +1281,7 @@ img {
           
             <a href="/category/tools" class="topic-card">
               <strong>Tools</strong>
-              <span class="archive-count">(1)</span>
+              <span class="archive-count">(2)</span>
             </a>
           
             <a href="/category/evolution" class="topic-card">
@@ -1248,17 +1306,17 @@ img {
           
             <a href="/category/web-development" class="topic-card">
               <strong>Web-development</strong>
-              <span class="archive-count">(1)</span>
+              <span class="archive-count">(2)</span>
             </a>
           
             <a href="/category/tutorial" class="topic-card">
               <strong>Tutorial</strong>
-              <span class="archive-count">(2)</span>
+              <span class="archive-count">(3)</span>
             </a>
           
             <a href="/category/development" class="topic-card">
               <strong>Development</strong>
-              <span class="archive-count">(1)</span>
+              <span class="archive-count">(2)</span>
             </a>
           
             <a href="/category/workspace" class="topic-card">
@@ -1277,7 +1335,7 @@ img {
           
           
             <a href="/tag/accessibility" class="tag-link">
-              #accessibility <span class="tag-count">(1)</span>
+              #accessibility <span class="tag-count">(2)</span>
             </a>
           
             <a href="/tag/agenda" class="tag-link">
@@ -1293,11 +1351,19 @@ img {
             </a>
           
             <a href="/tag/backup" class="tag-link">
-              #backup <span class="tag-count">(2)</span>
+              #backup <span class="tag-count">(3)</span>
             </a>
           
             <a href="/tag/bitlocker" class="tag-link">
               #bitlocker <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/browser-support" class="tag-link">
+              #browser-support <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/checklist" class="tag-link">
+              #checklist <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/ci-cd" class="tag-link">
@@ -1314,6 +1380,10 @@ img {
           
             <a href="/tag/cpus" class="tag-link">
               #cpus <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/data-protection" class="tag-link">
+              #data-protection <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/development" class="tag-link">
@@ -1348,6 +1418,10 @@ img {
               #education <span class="tag-count">(3)</span>
             </a>
           
+            <a href="/tag/es2020" class="tag-link">
+              #es2020 <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/evening-schedules" class="tag-link">
               #evening-schedules <span class="tag-count">(1)</span>
             </a>
@@ -1380,8 +1454,12 @@ img {
               #home <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/javascript" class="tag-link">
+              #javascript <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/jekyll" class="tag-link">
-              #jekyll <span class="tag-count">(1)</span>
+              #jekyll <span class="tag-count">(2)</span>
             </a>
           
             <a href="/tag/labor-day" class="tag-link">
@@ -1393,11 +1471,15 @@ img {
             </a>
           
             <a href="/tag/linux" class="tag-link">
-              #linux <span class="tag-count">(7)</span>
+              #linux <span class="tag-count">(8)</span>
             </a>
           
             <a href="/tag/memory" class="tag-link">
               #memory <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/migration" class="tag-link">
+              #migration <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/music" class="tag-link">
@@ -1433,7 +1515,7 @@ img {
             </a>
           
             <a href="/tag/security" class="tag-link">
-              #security <span class="tag-count">(2)</span>
+              #security <span class="tag-count">(3)</span>
             </a>
           
             <a href="/tag/seminar" class="tag-link">
@@ -1477,11 +1559,15 @@ img {
             </a>
           
             <a href="/tag/windows" class="tag-link">
-              #windows <span class="tag-count">(2)</span>
+              #windows <span class="tag-count">(3)</span>
             </a>
           
             <a href="/tag/windows-11" class="tag-link">
               #windows-11 <span class="tag-count">(4)</span>
+            </a>
+          
+            <a href="/tag/wordpress" class="tag-link">
+              #wordpress <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/work-life-balance" class="tag-link">
@@ -1490,6 +1576,10 @@ img {
           
             <a href="/tag/workshop-preview" class="tag-link">
               #workshop-preview <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/wsl" class="tag-link">
+              #wsl <span class="tag-count">(1)</span>
             </a>
           
         </div>
@@ -1534,100 +1624,8 @@ img {
 
     
 
-    <script>
-      // Enhanced module support detection and navigation management
-      (function() {
-        'use strict';
-
-        var html = document.documentElement;
-        html.setAttribute('lang', "en");
-        var supportsModules = 'noModule' in HTMLScriptElement.prototype;
-
-        // Update HTML classes for navigation management
-        html.className = html.className.replace("no-js", "js");
-
-        if (supportsModules) {
-          html.classList.add('supports-modules');
-        } else {
-          html.classList.add('no-modules');
-          // Show legacy browser notice for commerce functionality
-          document.write('<div class="legacy-browser-notice" role="alert"><strong>No Commerce Available</strong><span class="notice-detail">Your browser does not support modern features required for commerce functionality.</span></div>');
-        }
-
-        // Only initialize advanced navigation for modern browsers
-        if (!supportsModules) {
-          return; // Exit early for legacy browsers
-        }
-
-        // Advanced navigation logic for modern browsers
-        var toggleBtn = document.querySelector('.nav-toggle');
-        var nav = document.getElementById('primary-navigation');
-        var statusEl = document.getElementById('menu-status');
-        var body = document.body;
-
-        if (!toggleBtn || !nav || !statusEl) {
-          console.warn('Navigation elements not found - falling back to basic behavior');
-          return;
-        }
-
-        nav.classList.add('nav-overlay');
-
-        function toggleNavigation() {
-          var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-
-          if (isExpanded) {
-            nav.classList.remove('nav-visible');
-            toggleBtn.setAttribute('aria-expanded', 'false');
-            nav.setAttribute('aria-hidden', 'true');
-            toggleBtn.textContent = 'Menu';
-            statusEl.textContent = 'Menu closed';
-            body.classList.remove('nav-open');
-          } else {
-            nav.classList.add('nav-visible');
-            toggleBtn.setAttribute('aria-expanded', 'true');
-            nav.removeAttribute('aria-hidden');
-            toggleBtn.textContent = 'Close';
-            statusEl.textContent = 'Menu opened';
-            body.classList.add('nav-open');
-          }
-        }
-
-        toggleBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          toggleNavigation();
-        });
-
-        // Close button event handler
-        var closeBtn = nav.querySelector('.nav-close');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleNavigation();
-          });
-        }
-
-        document.addEventListener('click', function(e) {
-          if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
-
-          if ((!nav.contains(e.target) && !toggleBtn.contains(e.target)) ||
-              (e.target.tagName === 'A' && nav.contains(e.target))) {
-            toggleNavigation();
-          }
-        });
-
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
-            toggleNavigation();
-            toggleBtn.focus();
-          }
-        });
-
-        nav.setAttribute('aria-hidden', 'true');
-      })();
-    </script>
-
     
-    <script>
+    <script nonce="abc123">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -1652,13 +1650,13 @@ img {
     
 
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script src="/assets/js/mijug-es6.min.js?v=20251206210813" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es11.min.js?v=20251215174419" defer crossorigin="anonymous"></script>
 
     <!-- Cookie consent system -->
     <!-- %  include google-adsense.html % -->
     <!-- % include cookie-consent.html % -->}
     <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
-    <script>
+    <script nonce="abc123">
       (function() {
         'use strict';
 
@@ -1699,6 +1697,72 @@ img {
         } else {
           enhanceCodeBlocks();
         }
+      })();
+    </script>
+
+    <script nonce="abc123">
+      // Navigation toggle functionality
+      (function() {
+        'use strict';
+
+        var toggleBtn = document.querySelector('.nav-toggle');
+        var closeBtn = document.querySelector('.nav-close');
+        var nav = document.getElementById('primary-navigation');
+        var statusEl = document.getElementById('menu-status');
+        var body = document.body;
+
+        if (!toggleBtn || !nav || !statusEl) {
+          return;
+        }
+
+        // Initialize navigation as overlay
+        nav.classList.add('nav-overlay');
+
+        function toggleNavigation() {
+          var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            nav.classList.remove('nav-visible');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            nav.setAttribute('aria-hidden', 'true');
+            statusEl.textContent = 'Menu closed';
+            body.classList.remove('nav-open');
+          } else {
+            nav.classList.add('nav-visible');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            nav.setAttribute('aria-hidden', 'false');
+            statusEl.textContent = 'Menu opened';
+            body.classList.add('nav-open');
+          }
+        }
+
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleNavigation();
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleNavigation();
+          });
+        }
+
+        // Close on click outside
+        document.addEventListener('click', function(e) {
+          if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+          if (!nav.contains(e.target) && !toggleBtn.contains(e.target)) {
+            toggleNavigation();
+          }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            toggleBtn.focus();
+          }
+        });
       })();
     </script>
 

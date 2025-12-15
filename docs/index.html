@@ -7,12 +7,12 @@
 
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
       img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
       font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
-      connect-src 'self' https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
       frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
       object-src 'none';
       base-uri 'self';
@@ -154,11 +154,6 @@
   .modern-nav-content a:focus {
     background-color: #f0f0f0;
     color: #2c5aa0;
-  }
-
-  /* Legacy nav fallback - hidden by default */
-  .legacy-nav-fallback {
-    display: none;
   }
 
   /* Body scroll lock when overlay is open */
@@ -563,8 +558,18 @@ img {
   will-change: transform;
 }
 </style>
-<link rel="preload" href="/assets/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
 <noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
 
 
     <title>
@@ -581,13 +586,73 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251119192849" />
+    <meta name="cache-version" content="20251215172517" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=20251206210813" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251206210813" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20251215174419" media="print">
 
-    <noscript>
-      <link rel="stylesheet" href="/assets/main.css?v=20251206210813">
-    </noscript>
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection and navigation management
+    (function() {
+      'use strict';
+
+      var html = document.documentElement;
+      html.setAttribute('lang', "en");
+
+      // Add .js class immediately to enable CSS-based navigation hiding
+      html.classList.remove('no-js');
+      html.classList.add('js');
+
+      var supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Only initialize advanced navigation for modern browsers
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript11 = false;
+      const html = document.documentElement;
+      try {
+        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
+        if (mod && typeof mod.testES11Features === 'function') {
+          try {
+            mod.testES11Features();
+            supportsEcmascript11 = true;
+          } catch (e) { console.error('ES11 test failed:', e); }
+        } else if (typeof window.testES11Features === 'function') {
+          try { window.testES11Features();
+            supportsEcmascript11 = true;
+           } catch (e) { console.error('ES11 test failed:', e); }
+        } else {
+          console.debug('ES11 test module loaded but `testES11Features` not found.');
+        }
+      } catch (err) {
+        console.debug('ES11 test module not present or failed to import:', err);
+      }
+      if (!supportsEcmascript11) {
+        html.classList.add('no-ES2020');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
 
     <link
       rel="alternate"
@@ -597,8 +662,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
     
     <link
       rel="shortcut icon"
@@ -621,20 +686,25 @@ img {
 
     
 
-    <script>
+    <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251119192849";
+  window.MIJUG.cacheVersion = "20251215172517";
 </script>
 
   
-  <script>
+  <script nonce="abc123">
     window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
   </script>
   
   </head>
-  
-    <body oncontextmenu="return false;">
-  
+  <body>
     <header class="site-header" role="banner">
       <noscript>
         <div class="legacy-browser-notice" role="alert">
@@ -651,7 +721,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251119192849"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -670,23 +740,6 @@ img {
           &nbsp;Menu
         </button>
 
-        <!-- Fallback navigation for no-JS and legacy browsers -->
-        <noscript>
-          <nav class="primary-nav fallback-nav" role="navigation" aria-label="Main navigation">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </nav>
-        </noscript>
-
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
         <nav
           id="primary-navigation"
@@ -694,21 +747,6 @@ img {
           role="dialog"
           aria-modal="true"
           aria-hidden="true">
-
-          <!-- Basic navigation shown to legacy browsers -->
-          <div class="legacy-nav-fallback">
-            <ul role="list">
-              <li role="listitem">
-                <a href="/about/" aria-label="Navigate to About">About</a>
-              </li>
-              <li role="listitem">
-                <a href="/blog/" aria-label="Navigate to Blog">Blog</a>
-              </li>
-              <li role="listitem">
-                <a href="/contact/" aria-label="Navigate to Contact">Contact</a>
-              </li>
-            </ul>
-          </div>
 
           <!-- Full navigation for modern browsers -->
           <div class="modern-nav-content">
@@ -887,6 +925,108 @@ img {
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper"><div class="home">
+  
+  
+  
+  
+
+  
+  <h2 class="post-list-heading">Latest Posts</h2>
+  <ul class="post-list">
+    
+    <li>
+      <span class="post-meta">Dec 15, 2025</span>
+      <h3>
+        <a class="post-link" href="/posts/2025/12/15/computer-backup-checklist/"> Computer Backup Checklist </a>
+      </h3>
+      
+        A step-by-step guide to safely back up your computer before making any changes. Perfect for older users or anyone who wants to be extra careful.
+      
+      
+      
+      <div class="post-meta-tags">
+        
+        <span class="post-categories">
+          <strong>Categories:</strong>
+          
+          <a href="/category/tutorial" class="category-link">tutorial</a>,  
+          <a href="/category/tools" class="category-link">tools</a> 
+        </span>
+        
+        
+        <span class="post-tags">
+          <strong>Tags:</strong>
+          
+          <a href="/tag/backup" class="tag-link">#backup</a>,
+           
+          <a href="/tag/windows" class="tag-link">#windows</a>,
+           
+          <a href="/tag/linux" class="tag-link">#linux</a>,
+           
+          <a href="/tag/data-protection" class="tag-link">#data-protection</a>,
+           
+          <a href="/tag/checklist" class="tag-link">#checklist</a>,
+           
+          <a href="/tag/wsl" class="tag-link">#wsl</a>,
+           
+          <a href="/tag/migration" class="tag-link">#migration</a> 
+        </span>
+        
+      </div>
+      
+    </li>
+    
+    <li>
+      <span class="post-meta">Nov 24, 2025</span>
+      <h3>
+        <a class="post-link" href="/2025/11/24/ditching-es5-after-a-wordpress-build/"> Moving to ES2020 (ES11) for Better Security </a>
+      </h3>
+      
+        Learn why targeting ES2020 (ES11) instead of older JavaScript versions reduces security risks and provides better protection for your website visitors.
+      
+      
+      
+      <div class="post-meta-tags">
+        
+        <span class="post-categories">
+          <strong>Categories:</strong>
+          
+          <a href="/category/development" class="category-link">development</a>,  
+          <a href="/category/web-development" class="category-link">web-development</a>,  
+          <a href="/category/security" class="category-link">security</a> 
+        </span>
+        
+        
+        <span class="post-tags">
+          <strong>Tags:</strong>
+          
+          <a href="/tag/javascript" class="tag-link">#javascript</a>,
+           
+          <a href="/tag/es2020" class="tag-link">#es2020</a>,
+           
+          <a href="/tag/security" class="tag-link">#security</a>,
+           
+          <a href="/tag/wordpress" class="tag-link">#wordpress</a>,
+           
+          <a href="/tag/jekyll" class="tag-link">#jekyll</a>,
+           
+          <a href="/tag/browser-support" class="tag-link">#browser-support</a>,
+           
+          <a href="/tag/accessibility" class="tag-link">#accessibility</a> 
+        </span>
+        
+      </div>
+      
+    </li>
+    
+  </ul>
+
+  
+  <p class="text-center">
+    <a href="/blog" class="post-link">View All Posts →</a>
+  </p>
+   
+
   <p>Welcome to <strong>My Information Just Under Glass (MIJUG)</strong>!</p>
 
 <p>MIJUG delivers expert technology consulting and web development services designed to help you get the most from your computers and your online presence. Our consultations are tailored to your needs—whether you want to repurpose an older computer, optimize your website, or launch something new.</p>
@@ -933,191 +1073,7 @@ img {
 </ul>
 
 <p><em>Our goal is to provide honest, helpful consulting and web development services so you can make the best decision for your situation—whether that’s repurposing, upgrading, or launching something new. Let MIJUG be your trusted technology consultant for every step of your journey.</em></p>
- 
-  <h2 class="post-list-heading">Latest Posts</h2>
-  <ul class="post-list">
-    
-    <li>
-      <span class="post-meta">Nov 24, 2025</span>
-      <h3>
-        <a class="post-link" href="/2025/11/24/ditching-es5-after-a-wordpress-build/"> Ditching ES5 after a WordPress Build </a>
-      </h3>
-      
-        
-      
-      
-      
-    </li>
-    
-    <li>
-      <span class="post-meta">Oct 6, 2025</span>
-      <h3>
-        <a class="post-link" href="/posts/2025/10/06/typescript-jekyll-workspace/"> Building a Modern TypeScript + Jekyll Workspace in 2025 </a>
-      </h3>
-      
-        Discover how MIJUG built a dual-repository TypeScript + Jekyll workspace with rapid setup, parallel builds, automated testing, and accessibility-first development. Learn about our performance benchmarks, smart cache management, and developer productivity strategies for 2025.
 
-      
-      
-      
-      <div class="post-meta-tags">
-        
-        <span class="post-categories">
-          <strong>Categories:</strong>
-          
-          <a href="/category/development" class="category-link">development</a>,  
-          <a href="/category/tutorial" class="category-link">tutorial</a>,  
-          <a href="/category/workspace" class="category-link">workspace</a> 
-        </span>
-        
-        
-        <span class="post-tags">
-          <strong>Tags:</strong>
-          
-          <a href="/tag/typescript" class="tag-link">#typescript</a>,
-           
-          <a href="/tag/jekyll" class="tag-link">#jekyll</a>,
-           
-          <a href="/tag/nodejs" class="tag-link">#nodejs</a>,
-           
-          <a href="/tag/ruby" class="tag-link">#ruby</a>,
-           
-          <a href="/tag/performance" class="tag-link">#performance</a>,
-           
-          <a href="/tag/automation" class="tag-link">#automation</a>,
-           
-          <a href="/tag/ci-cd" class="tag-link">#ci-cd</a>,
-           
-          <a href="/tag/accessibility" class="tag-link">#accessibility</a> 
-        </span>
-        
-      </div>
-      
-    </li>
-    
-    <li>
-      <span class="post-meta">Oct 3, 2025</span>
-      <h3>
-        <a class="post-link" href="/blog/browser-support-es5-es6-guide/"> The Great JavaScript Divide </a>
-      </h3>
-      
-        When a friend's old browser broke my navigation menu, it sparked a deep dive into JavaScript standards that changed how I think about web development forever.
-      
-      
-      
-      <div class="post-meta-tags">
-        
-        <span class="post-categories">
-          <strong>Categories:</strong>
-          
-          <a href="/category/web-development" class="category-link">web-development</a>,  
-          <a href="/category/tutorial" class="category-link">tutorial</a> 
-        </span>
-        
-        
-        <span class="post-tags">
-          <strong>Tags:</strong>
-          
-          <a href="/tag/typescript" class="tag-link">#typescript</a>,
-           
-          <a href="/tag/development" class="tag-link">#development</a>,
-           
-          <a href="/tag/testing" class="tag-link">#testing</a>,
-           
-          <a href="/tag/documentation" class="tag-link">#documentation</a>,
-           
-          <a href="/tag/guide" class="tag-link">#guide</a> 
-        </span>
-        
-      </div>
-      
-    </li>
-    
-    <li>
-      <span class="post-meta">Oct 1, 2025</span>
-      <h3>
-        <a class="post-link" href="/posts/2025/10/02/september-2025-a-look-back/"> September 2025: A Look Back at the Sessions </a>
-      </h3>
-      
-        Sometimes the best learning happens in intimate settings. Here's what we discovered during our September PC Refresh Workshop series.
-      
-      
-      
-      <div class="post-meta-tags">
-        
-        <span class="post-categories">
-          <strong>Categories:</strong>
-          
-          <a href="/category/announcements" class="category-link">announcements</a>,  
-          <a href="/category/linux" class="category-link">linux</a> 
-        </span>
-        
-        
-        <span class="post-tags">
-          <strong>Tags:</strong>
-          
-          <a href="/tag/linux" class="tag-link">#linux</a>,
-           
-          <a href="/tag/documentation" class="tag-link">#documentation</a>,
-           
-          <a href="/tag/guide" class="tag-link">#guide</a>,
-           
-          <a href="/tag/tutorial" class="tag-link">#tutorial</a> 
-        </span>
-        
-      </div>
-      
-    </li>
-    
-    <li>
-      <span class="post-meta">Sep 15, 2025</span>
-      <h3>
-        <a class="post-link" href="/posts/2025/09/15/evening-in-person-seminar-dates-announced/"> Evening In-Person Seminar Dates Announced! </a>
-      </h3>
-      
-        Join our Fall 2025 in-person seminar series designed for non-technical users who want to give new life to older computers that no longer support Windows 11.
-      
-      
-      
-      <div class="post-meta-tags">
-        
-        <span class="post-categories">
-          <strong>Categories:</strong>
-          
-          <a href="/category/announcements" class="category-link">announcements</a>,  
-          <a href="/category/getting-started" class="category-link">getting-started</a> 
-        </span>
-        
-        
-        <span class="post-tags">
-          <strong>Tags:</strong>
-          
-          <a href="/tag/seminar" class="tag-link">#seminar</a>,
-           
-          <a href="/tag/linux" class="tag-link">#linux</a>,
-           
-          <a href="/tag/e-waste" class="tag-link">#e-waste</a>,
-           
-          <a href="/tag/windows-11" class="tag-link">#windows-11</a>,
-           
-          <a href="/tag/education" class="tag-link">#education</a>,
-           
-          <a href="/tag/diy" class="tag-link">#diy</a>,
-           
-          <a href="/tag/sustainability" class="tag-link">#sustainability</a> 
-        </span>
-        
-      </div>
-      
-    </li>
-    
-  </ul>
-
-  
-  <p class="text-center">
-    <a href="/blog" class="post-link">View All Posts →</a>
-  </p>
-   
 
   <div class="mijug-highlight">
     <h1>My Info Just Under Glass</h1>
@@ -1141,7 +1097,7 @@ img {
         
           <a href="/category/tutorial" class="category-card">
             <strong>Tutorial</strong>
-            <span class="archive-count">(3)</span>
+            <span class="archive-count">(4)</span>
             
               <br /><small>Step-by-step learning guides</small>
             
@@ -1175,7 +1131,7 @@ img {
         
           <a href="/category/development" class="category-card">
             <strong>Development</strong>
-            <span class="archive-count">(14)</span>
+            <span class="archive-count">(15)</span>
             
               <br /><small>Software development topics</small>
             
@@ -1263,7 +1219,7 @@ img {
         
           <a href="/category/web-development" class="category-card">
             <strong>Web development</strong>
-            <span class="archive-count">(1)</span>
+            <span class="archive-count">(2)</span>
             
               <br /><small>General web development topics</small>
             
@@ -1346,7 +1302,7 @@ img {
     <a href="/tag/accessibility" class="tag-card">
       <strong>#accessibility</strong>
       <span class="archive-count"
-        >(1 post)</span
+        >(2 posts)</span
       >
     </a>
       
@@ -1374,12 +1330,26 @@ img {
     <a href="/tag/backup" class="tag-card">
       <strong>#backup</strong>
       <span class="archive-count"
-        >(2 posts)</span
+        >(3 posts)</span
       >
     </a>
       
     <a href="/tag/bitlocker" class="tag-card">
       <strong>#bitlocker</strong>
+      <span class="archive-count"
+        >(1 post)</span
+      >
+    </a>
+      
+    <a href="/tag/browser-support" class="tag-card">
+      <strong>#browser-support</strong>
+      <span class="archive-count"
+        >(1 post)</span
+      >
+    </a>
+      
+    <a href="/tag/checklist" class="tag-card">
+      <strong>#checklist</strong>
       <span class="archive-count"
         >(1 post)</span
       >
@@ -1398,24 +1368,10 @@ img {
         >(1 post)</span
       >
     </a>
-      
-    <a href="/tag/copyright" class="tag-card">
-      <strong>#copyright</strong>
-      <span class="archive-count"
-        >(1 post)</span
-      >
-    </a>
-      
-    <a href="/tag/cpus" class="tag-card">
-      <strong>#cpus</strong>
-      <span class="archive-count"
-        >(1 post)</span
-      >
-    </a>
      
     <a href="/tags/" class="tag-card tag-card-more">
       <strong>View All Tags</strong>
-      <span class="archive-count">(54 total)</span>
+      <span class="archive-count">(62 total)</span>
     </a>
     
   </div>
@@ -1457,100 +1413,8 @@ img {
 
     
 
-    <script>
-      // Enhanced module support detection and navigation management
-      (function() {
-        'use strict';
-
-        var html = document.documentElement;
-        html.setAttribute('lang', "en");
-        var supportsModules = 'noModule' in HTMLScriptElement.prototype;
-
-        // Update HTML classes for navigation management
-        html.className = html.className.replace("no-js", "js");
-
-        if (supportsModules) {
-          html.classList.add('supports-modules');
-        } else {
-          html.classList.add('no-modules');
-          // Show legacy browser notice for commerce functionality
-          document.write('<div class="legacy-browser-notice" role="alert"><strong>No Commerce Available</strong><span class="notice-detail">Your browser does not support modern features required for commerce functionality.</span></div>');
-        }
-
-        // Only initialize advanced navigation for modern browsers
-        if (!supportsModules) {
-          return; // Exit early for legacy browsers
-        }
-
-        // Advanced navigation logic for modern browsers
-        var toggleBtn = document.querySelector('.nav-toggle');
-        var nav = document.getElementById('primary-navigation');
-        var statusEl = document.getElementById('menu-status');
-        var body = document.body;
-
-        if (!toggleBtn || !nav || !statusEl) {
-          console.warn('Navigation elements not found - falling back to basic behavior');
-          return;
-        }
-
-        nav.classList.add('nav-overlay');
-
-        function toggleNavigation() {
-          var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-
-          if (isExpanded) {
-            nav.classList.remove('nav-visible');
-            toggleBtn.setAttribute('aria-expanded', 'false');
-            nav.setAttribute('aria-hidden', 'true');
-            toggleBtn.textContent = 'Menu';
-            statusEl.textContent = 'Menu closed';
-            body.classList.remove('nav-open');
-          } else {
-            nav.classList.add('nav-visible');
-            toggleBtn.setAttribute('aria-expanded', 'true');
-            nav.removeAttribute('aria-hidden');
-            toggleBtn.textContent = 'Close';
-            statusEl.textContent = 'Menu opened';
-            body.classList.add('nav-open');
-          }
-        }
-
-        toggleBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          toggleNavigation();
-        });
-
-        // Close button event handler
-        var closeBtn = nav.querySelector('.nav-close');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleNavigation();
-          });
-        }
-
-        document.addEventListener('click', function(e) {
-          if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
-
-          if ((!nav.contains(e.target) && !toggleBtn.contains(e.target)) ||
-              (e.target.tagName === 'A' && nav.contains(e.target))) {
-            toggleNavigation();
-          }
-        });
-
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
-            toggleNavigation();
-            toggleBtn.focus();
-          }
-        });
-
-        nav.setAttribute('aria-hidden', 'true');
-      })();
-    </script>
-
     
-    <script>
+    <script nonce="abc123">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -1575,13 +1439,13 @@ img {
     
 
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script src="/assets/js/mijug-es6.min.js?v=20251206210813" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es11.min.js?v=20251215174419" defer crossorigin="anonymous"></script>
 
     <!-- Cookie consent system -->
     <!-- %  include google-adsense.html % -->
     <!-- % include cookie-consent.html % -->}
     <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
-    <script>
+    <script nonce="abc123">
       (function() {
         'use strict';
 
@@ -1622,6 +1486,72 @@ img {
         } else {
           enhanceCodeBlocks();
         }
+      })();
+    </script>
+
+    <script nonce="abc123">
+      // Navigation toggle functionality
+      (function() {
+        'use strict';
+
+        var toggleBtn = document.querySelector('.nav-toggle');
+        var closeBtn = document.querySelector('.nav-close');
+        var nav = document.getElementById('primary-navigation');
+        var statusEl = document.getElementById('menu-status');
+        var body = document.body;
+
+        if (!toggleBtn || !nav || !statusEl) {
+          return;
+        }
+
+        // Initialize navigation as overlay
+        nav.classList.add('nav-overlay');
+
+        function toggleNavigation() {
+          var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            nav.classList.remove('nav-visible');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            nav.setAttribute('aria-hidden', 'true');
+            statusEl.textContent = 'Menu closed';
+            body.classList.remove('nav-open');
+          } else {
+            nav.classList.add('nav-visible');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            nav.setAttribute('aria-hidden', 'false');
+            statusEl.textContent = 'Menu opened';
+            body.classList.add('nav-open');
+          }
+        }
+
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleNavigation();
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleNavigation();
+          });
+        }
+
+        // Close on click outside
+        document.addEventListener('click', function(e) {
+          if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
+          if (!nav.contains(e.target) && !toggleBtn.contains(e.target)) {
+            toggleNavigation();
+          }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            toggleBtn.focus();
+          }
+        });
       })();
     </script>
 
