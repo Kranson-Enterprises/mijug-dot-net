@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <meta name="format-detection" content="telephone=no" />
 
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
       img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
@@ -19,6 +20,7 @@
       form-action 'self';
       manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
 
+    
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
     
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
@@ -29,10 +31,11 @@
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
     <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
     
+    
 
     <!-- Critical navigation styles - always inlined for immediate user interaction -->
 <style>
-  /* Navigation toggle button - ALWAYS VISIBLE */
+  /* Navigation Components - Performance Optimized */
   .nav-toggle {
     display: flex;
     align-items: center;
@@ -59,75 +62,66 @@
     display: none;
   }
 
-  /* Overlay navigation - make sure it applies */
+  /* Overlay navigation - use display:none for performance (optimization #1) */
   nav.primary-nav.nav-overlay {
-    display: block !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    background: rgba(0, 0, 0, 0.85) !important;
-    z-index: 100 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transform: translateY(-20px) !important;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease !important;
-    overflow-y: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
   }
 
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
   nav.primary-nav.nav-overlay.nav-visible {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
+    display: block;
   }
 
-  /* Navigation content styling */
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
   .modern-nav-content {
-    display: block !important;
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    background: white !important;
-    border-radius: 8px !important;
-    padding: 2rem !important;
-    max-width: 90vw !important;
-    max-height: 80vh !important;
-    overflow-y: auto !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-    z-index: 101 !important;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
   }
 
   /* Navigation close button */
   .nav-close {
-    position: absolute !important;
-    top: 0.75rem !important;
-    right: 0.75rem !important;
-    background: none !important;
-    border: none !important;
-    font-size: 1.5rem !important;
-    line-height: 1 !important;
-    color: #666 !important;
-    cursor: pointer !important;
-    padding: 0.25rem !important;
-    border-radius: 4px !important;
-    transition: color 0.2s ease, background-color 0.2s ease !important;
-    width: 2rem !important;
-    height: 2rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav-close:hover,
   .nav-close:focus {
-    color: #333 !important;
-    background-color: #f0f0f0 !important;
+    color: #333;
+    background-color: #f0f0f0;
   }
 
   .modern-nav-content ul {
@@ -163,30 +157,11 @@
     width: 100%;
   }
 
-  /* No-JS fallback */
-  html.no-js .nav-toggle {
-    display: none;
-  }
-
-  /* Accessibility - visually hidden elements */
-  .visually-hidden {
-    position: absolute !important;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  /* Performance optimization for font loading */
+  /* Performance optimizations */
   html {
     font-display: swap;
   }
 
-  /* Reduce layout shift during navigation initialization */
   .site-header .wrapper {
     min-height: 55.95px;
   }
@@ -201,6 +176,7 @@
     crossorigin="anonymous"
     immutable
   />
+  
   <link
     rel="preconnect"
     href="https://fonts.googleapis.com"
@@ -210,6 +186,7 @@
     href="https://fonts.gstatic.com"
     crossorigin
   />
+  
 
     <!-- Critical CSS for above-the-fold content -->
 <style>
@@ -586,9 +563,9 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251215172517" />
+    <meta name="cache-version" content="20251217213321" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20251215174419" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20251217220746" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -597,25 +574,26 @@ img {
     </div>
   </noscript>
   <script nonce="abc123">
-    // Enhanced module support detection and navigation management
-    (function() {
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
       'use strict';
 
-      var html = document.documentElement;
-      html.setAttribute('lang', "en");
+      const html = document.documentElement;
+      html.lang = "en";
 
-      // Add .js class immediately to enable CSS-based navigation hiding
-      html.classList.remove('no-js');
-      html.classList.add('js');
+      // Modern module support check (ES2020)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
 
-      var supportsModules = 'noModule' in HTMLScriptElement.prototype;
-
-      // Only initialize advanced navigation for modern browsers
+      // Early return for legacy browsers (optional chaining available in modern browsers)
       if (!supportsModules) {
         html.classList.add('no-modules');
-        // Show legacy browser notice for commerce functionality
-        document.write('<div class="legacy-browser-notice" role="alert"><strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
-        return; // Exit early for legacy browsers
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
       }
     })();
   </script>
@@ -653,6 +631,8 @@ img {
       }
     })();
   </script>
+    <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251217220746" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -662,8 +642,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
     
     <link
       rel="shortcut icon"
@@ -686,7 +666,7 @@ img {
 
     <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251215172517";
+  window.MIJUG.cacheVersion = "20251217213321";
 </script>
 
   
@@ -719,7 +699,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251215172517"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -751,8 +731,10 @@ img {
             <button class="nav-close" type="button" aria-label="Close navigation menu">
               <span aria-hidden="true">&times;</span>
             </button>
-            <ul role="list">
+            <ul role="list" id="nav-items-static">
+              <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
               
+                
                 <li role="listitem">
                   <a href="/blog/"
                      
@@ -760,7 +742,9 @@ img {
                      Blog
                   </a>
                 </li>
+                
               
+                
                 <li role="listitem">
                   <a href="/about/"
                      
@@ -768,7 +752,9 @@ img {
                      About
                   </a>
                 </li>
+                
               
+                
                 <li role="listitem">
                   <a href="/docs/getting-started/"
                      
@@ -776,7 +762,9 @@ img {
                      Getting Started
                   </a>
                 </li>
+                
               
+                
                 <li role="listitem">
                   <a href="/docs/welcome-mijug-workspace/"
                      
@@ -784,136 +772,43 @@ img {
                      Workspace Overview
                   </a>
                 </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/frontmatter-cms/"
-                     
-                     aria-label="Navigate to FrontMatter CMS Usage">
-                     FrontMatter CMS Usage
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/accessibility-testing/"
-                     
-                     aria-label="Navigate to Accessibility Testing Configuration">
-                     Accessibility Testing Configuration
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/browser-management/"
-                     
-                     aria-label="Navigate to Browser Management for Testing">
-                     Browser Management for Testing
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/browser-compatibility-testing/"
-                     
-                     aria-label="Navigate to Browser Compatibility Testing">
-                     Browser Compatibility Testing
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/liquid-tags-examples/"
-                     
-                     aria-label="Navigate to Liquid Tags Examples">
-                     Liquid Tags Examples
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/tags-and-categories-guide/"
-                     
-                     aria-label="Navigate to Tags and Categories System Guide">
-                     Tags and Categories System Guide
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/performance-optimization/"
-                     
-                     aria-label="Navigate to Performance Optimization Guide">
-                     Performance Optimization Guide
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/testing-performance-evolution/"
-                     
-                     aria-label="Navigate to Testing Performance and Development Evolution">
-                     Testing Performance and Development Evolution
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/cache-management/"
-                     
-                     aria-label="Navigate to Cache Management Strategies">
-                     Cache Management Strategies
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-configuration-guide/"
-                     
-                     aria-label="Navigate to Mermaid Diagram Configuration Guide">
-                     Mermaid Diagram Configuration Guide
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-quick-start/"
-                     
-                     aria-label="Navigate to Mermaid Quick Start">
-                     Mermaid Quick Start
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-examples/"
-                     
-                     aria-label="Navigate to Mermaid Diagram Examples">
-                     Mermaid Diagram Examples
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-diagrams-sample/"
-                     
-                     aria-label="Navigate to Mermaid Diagrams Sample">
-                     Mermaid Diagrams Sample
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-test-runner/"
-                     
-                     aria-label="Navigate to Mermaid Diagrams Test Runner">
-                     Mermaid Diagrams Test Runner
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/rel-attribute-guide/"
-                     
-                     aria-label="Navigate to The rel Attribute in HTML Links: A Comprehensive Guide">
-                     The rel Attribute in HTML Links: A Comprehensive Guide
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/exploring-limitations-of-gitea-and-ruby/"
-                     
-                     aria-label="Navigate to Exploring the Limitations of Gitea and Ruby">
-                     Exploring the Limitations of Gitea and Ruby
-                  </a>
-                </li>
+                
               
             </ul>
+            <!-- Dynamic navigation items load here via JavaScript -->
+            <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
           </div>
         </nav>
 
@@ -1105,120 +1000,241 @@ img {
     ></script>
     
 
-    <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es11.min.js?v=20251215174419" defer crossorigin="anonymous"></script>
-
     <!-- Cookie consent system -->
     <!-- %  include google-adsense.html % -->
     <!-- % include cookie-consent.html % -->}
     <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
     <script nonce="abc123">
-      (function() {
+      // Code block accessibility - ES2020 optimized
+      (() => {
         'use strict';
 
-        function enhanceCodeBlocks() {
+        const enhanceCodeBlocks = () => {
           try {
-            var blocks = document.querySelectorAll('div.highlighter-rouge div.highlight');
-            blocks.forEach(function(el) {
-              if (!el.hasAttribute('role')) el.setAttribute('role', 'img');
-              if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+            // Use :not() to skip already enhanced blocks (performance)
+            const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([role])');
+            if (blocks.length === 0) return;
 
-              if (!el.hasAttribute('aria-label')) {
-                var code = el.querySelector('pre code');
-                var preview = '';
-                if (code && code.textContent) {
-                  preview = code.textContent.trim().split('\n')[0] || '';
-                  if (preview.length > 60) preview = preview.slice(0, 57) + '...';
-                }
+            blocks.forEach((el) => {
+              const code = el.querySelector('pre code');
+              const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+              
+              // Extract language using optional chaining and nullish coalescing (ES2020)
+              const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+              const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
 
-                // try to detect language from ancestor class
-                var language = '';
-                var parent = el.parentElement;
-                if (parent && parent.className) {
-                  var m = parent.className.match(/language-(\w+)/);
-                  if (m) language = m[1];
-                }
-
-                var label = 'Code example' + (language ? (' in ' + language) : '') + (preview ? (': ' + preview) : '');
-                el.setAttribute('aria-label', label);
-              }
+              // Batch attribute updates
+              el.setAttribute('role', 'img');
+              el.setAttribute('tabindex', '0');
+              el.setAttribute('aria-label', label);
             });
           } catch (e) {
             console.warn('EnhanceCodeBlocks error', e);
           }
-        }
+        };
 
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', enhanceCodeBlocks);
-        } else {
-          enhanceCodeBlocks();
-        }
+        // Modern API check (ES2020)
+        document.readyState === 'loading'
+          ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+          : enhanceCodeBlocks();
       })();
     </script>
 
     <script nonce="abc123">
-      // Navigation toggle functionality
-      (function() {
+      // Navigation toggle functionality - ES2020 optimized
+      (() => {
         'use strict';
 
-        var toggleBtn = document.querySelector('.nav-toggle');
-        var closeBtn = document.querySelector('.nav-close');
-        var nav = document.getElementById('primary-navigation');
-        var statusEl = document.getElementById('menu-status');
-        var body = document.body;
+        // Cache DOM elements (ES2020 const, destructuring)
+        const elements = {
+          toggle: document.querySelector('.nav-toggle'),
+          close: document.querySelector('.nav-close'),
+          nav: document.getElementById('primary-navigation'),
+          status: document.getElementById('menu-status'),
+          body: document.body
+        };
 
-        if (!toggleBtn || !nav || !statusEl) {
+        // Early return if required elements missing (optional chaining ES2020)
+        if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
           return;
         }
 
         // Initialize navigation as overlay
-        nav.classList.add('nav-overlay');
+        elements.nav.classList.add('nav-overlay');
 
-        function toggleNavigation() {
-          var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        // Toggle navigation with modern API (arrow function ES2020)
+        const toggleNavigation = () => {
+          const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+          const action = isExpanded ? 'remove' : 'add';
+          
+          // Batch DOM updates for performance
+          elements.nav.classList[action]('nav-visible');
+          elements.body.classList[action]('nav-open');
+          elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+          elements.nav.setAttribute('aria-hidden', String(isExpanded));
+          elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+        };
 
-          if (isExpanded) {
-            nav.classList.remove('nav-visible');
-            toggleBtn.setAttribute('aria-expanded', 'false');
-            nav.setAttribute('aria-hidden', 'true');
-            statusEl.textContent = 'Menu closed';
-            body.classList.remove('nav-open');
-          } else {
-            nav.classList.add('nav-visible');
-            toggleBtn.setAttribute('aria-expanded', 'true');
-            nav.setAttribute('aria-hidden', 'false');
-            statusEl.textContent = 'Menu opened';
-            body.classList.add('nav-open');
-          }
-        }
-
-        toggleBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          toggleNavigation();
-        });
-
-        if (closeBtn) {
-          closeBtn.addEventListener('click', function(e) {
+        // Event delegation with passive listeners for scroll performance
+        const handleClick = (e) => {
+          // Check if toggle button or close button clicked
+          if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
             e.preventDefault();
             toggleNavigation();
+            return;
+          }
+
+          // Close on click outside (only when open)
+          if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+            if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+              toggleNavigation();
+            }
+          }
+        };
+
+        // Keyboard navigation (ES2020 nullish coalescing ??)
+        const handleKeydown = (e) => {
+          if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            elements.toggle.focus();
+          }
+        };
+
+        // Single event listener with delegation (better performance)
+        document.addEventListener('click', handleClick, { passive: false });
+        document.addEventListener('keydown', handleKeydown, { passive: true });
+      })();
+    </script>
+
+    <!-- Lazy-load dynamic navigation items (optimization #7) -->
+    <script nonce="abc123">
+      (() => {
+        'use strict';
+
+        // Load remaining navigation items on first interaction (optimization #7)
+        const loadDynamicNav = () => {
+          const staticList = document.getElementById('nav-items-static');
+          const dynamicList = document.getElementById('nav-items-dynamic');
+          
+          if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+          // All navigation items embedded as data (generated at build time)
+          const allItems = [
+            {
+              title: "FrontMatter CMS Usage",
+              permalink: "/docs/frontmatter-cms/",
+              ariaLabel: "Navigate to FrontMatter CMS Usage",
+              current: false
+            },{
+              title: "Accessibility Testing Configuration",
+              permalink: "/docs/accessibility-testing/",
+              ariaLabel: "Navigate to Accessibility Testing Configuration",
+              current: false
+            },{
+              title: "Browser Management for Testing",
+              permalink: "/docs/browser-management/",
+              ariaLabel: "Navigate to Browser Management for Testing",
+              current: false
+            },{
+              title: "Browser Compatibility Testing",
+              permalink: "/docs/browser-compatibility-testing/",
+              ariaLabel: "Navigate to Browser Compatibility Testing",
+              current: false
+            },{
+              title: "Liquid Tags Examples",
+              permalink: "/docs/liquid-tags-examples/",
+              ariaLabel: "Navigate to Liquid Tags Examples",
+              current: false
+            },{
+              title: "Tags and Categories System Guide",
+              permalink: "/docs/tags-and-categories-guide/",
+              ariaLabel: "Navigate to Tags and Categories System Guide",
+              current: false
+            },{
+              title: "Performance Optimization Guide",
+              permalink: "/docs/performance-optimization/",
+              ariaLabel: "Navigate to Performance Optimization Guide",
+              current: false
+            },{
+              title: "Testing Performance and Development Evolution",
+              permalink: "/docs/testing-performance-evolution/",
+              ariaLabel: "Navigate to Testing Performance and Development Evolution",
+              current: false
+            },{
+              title: "Cache Management Strategies",
+              permalink: "/docs/cache-management/",
+              ariaLabel: "Navigate to Cache Management Strategies",
+              current: false
+            },{
+              title: "Mermaid Diagram Configuration Guide",
+              permalink: "/docs/mermaid-configuration-guide/",
+              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
+              current: false
+            },{
+              title: "Mermaid Quick Start",
+              permalink: "/docs/mermaid-quick-start/",
+              ariaLabel: "Navigate to Mermaid Quick Start",
+              current: false
+            },{
+              title: "Mermaid Diagram Examples",
+              permalink: "/docs/mermaid-examples/",
+              ariaLabel: "Navigate to Mermaid Diagram Examples",
+              current: false
+            },{
+              title: "Mermaid Diagrams Sample",
+              permalink: "/docs/mermaid-diagrams-sample/",
+              ariaLabel: "Navigate to Mermaid Diagrams Sample",
+              current: false
+            },{
+              title: "Mermaid Diagrams Test Runner",
+              permalink: "/docs/mermaid-test-runner/",
+              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
+              current: false
+            },{
+              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
+              permalink: "/docs/rel-attribute-guide/",
+              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+              current: false
+            },{
+              title: "Exploring the Limitations of Gitea and Ruby",
+              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
+              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
+              current: false
+            },
+          ];
+
+          // Render dynamic items (optimization #7: deferred rendering)
+          allItems.forEach((item) => {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'listitem');
+            const a = document.createElement('a');
+            a.href = item.permalink;
+            a.setAttribute('aria-label', item.ariaLabel);
+            if (item.current) {
+              a.className = 'active';
+              a.setAttribute('aria-current', 'page');
+            }
+            a.textContent = item.title;
+            li.appendChild(a);
+            dynamicList.appendChild(li);
           });
+
+          // Show dynamic list
+          dynamicList.style.display = '';
+        };
+
+        // Load on first interaction with navigation toggle (optimization #7)
+        const toggleBtn = document.querySelector('.nav-toggle');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
         }
 
-        // Close on click outside
-        document.addEventListener('click', function(e) {
-          if (toggleBtn.getAttribute('aria-expanded') !== 'true') return;
-          if (!nav.contains(e.target) && !toggleBtn.contains(e.target)) {
-            toggleNavigation();
-          }
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
-            toggleNavigation();
-            toggleBtn.focus();
-          }
-        });
+        // Also load on requestIdleCallback if available (optimization #7)
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+        } else {
+          setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+        }
       })();
     </script>
 
