@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+    
+    
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+    <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+    
+    
+
+    <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+    <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+    <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0066cc;
+  --nav-bg: #f8f8f8;
+  --border-color: #e8e8e8;
+  --header-color: #424242;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cookie consent banner styles */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
+  overflow: hidden;
+}
+
+#cookie-consent-banner.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+    <title>
+      USB Backup Advice: Protect Photos, Documents &amp; Legacy | My Info Just Under Glass
+    </title>
+    <meta
+      name="description"
+      content="Learn how to safely back up your important files to USB drives and plan your digital legacy with easy steps and trusted resources."
+    />
+    
+    <meta name="version" content="Aug 31, 2025" />
+    
+
+    
+
+    <meta name="google-site-verification" content="googlece83719b3f856e56" />
+    <meta name="cache-version" content="20251217213321" />
+
+    <link rel="stylesheet" href="/assets/main.css?v=20251218073616" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2020)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript11 = false;
+      const html = document.documentElement;
+      try {
+        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
+        if (mod && typeof mod.testES11Features === 'function') {
+          try {
+            mod.testES11Features();
+            supportsEcmascript11 = true;
+          } catch (e) { console.error('ES11 test failed:', e); }
+        } else if (typeof window.testES11Features === 'function') {
+          try { window.testES11Features();
+            supportsEcmascript11 = true;
+           } catch (e) { console.error('ES11 test failed:', e); }
+        } else {
+          console.debug('ES11 test module loaded but `testES11Features` not found.');
+        }
+      } catch (err) {
+        console.debug('ES11 test module not present or failed to import:', err);
+      }
+      if (!supportsEcmascript11) {
+        html.classList.add('no-ES2020');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+    <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251218073616" defer crossorigin="anonymous"></script>
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="My Info Just Under Glass"
+      href="/feed.xml"
+    />
+    
+    
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
+    
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/favicon.ico"
+    />
+    
+
+    <meta name="description" content="Advice to backing up photos and documents to USB drives, with digital legacy tips for Google, Microsoft, Apple, and government." />
+<meta property="og:title" content="USB Backup Advice: Protect Photos, Documents &amp; Legacy" />
+<meta property="og:description" content="Advice to backing up photos and documents to USB drives, with digital legacy tips for Google, Microsoft, Apple, and government." />
+<meta property="og:url" content="https://www.mijug.net/2025/08/25/usb-backup-advice-protect-photos-documents-legacy/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/2025/08/25/usb-backup-advice-protect-photos-documents-legacy/" />
+
+
+    
+
+    
+
+    <script nonce="abc123">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20251217213321";
+</script>
+
+  
+  <script nonce="abc123">
+    window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
+  </script>
+  
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <noscript>
+        <div class="legacy-browser-notice" role="alert">
+          <strong>No Commerce Available</strong>
+          <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+        </div>
+      </noscript>
+
+      <div class="wrapper">
+        <a
+          class="site-title"
+          rel="home"
+          href="/"
+        >
+          
+          <img
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321"
+            alt="My Info Just Under Glass"
+            width="50"
+            height="50"
+          />
+           My Info Just Under Glass
+        </a>
+
+        <!-- Mobile navigation toggle button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
+          &nbsp;Menu
+        </button>
+
+        <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+        <nav
+          id="primary-navigation"
+          class="primary-nav js-enhanced-nav"
+          role="dialog"
+          aria-modal="true"
+          aria-hidden="true">
+
+          <!-- Full navigation for modern browsers -->
+          <div class="modern-nav-content">
+            <button class="nav-close" type="button" aria-label="Close navigation menu">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <ul role="list" id="nav-items-static">
+              <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
+              
+                
+                <li role="listitem">
+                  <a href="/blog/"
+                     
+                     aria-label="Navigate to Blog">
+                     Blog
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/about/"
+                     
+                     aria-label="Navigate to About">
+                     About
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/docs/getting-started/"
+                     
+                     aria-label="Navigate to Getting Started">
+                     Getting Started
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/docs/welcome-mijug-workspace/"
+                     
+                     aria-label="Navigate to Workspace Overview">
+                     Workspace Overview
+                  </a>
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </ul>
+            <!-- Dynamic navigation items load here via JavaScript -->
+            <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+          </div>
+        </nav>
+
+        <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper"><article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">USB Backup Advice: Protect Photos, Documents &amp; Legacy</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-08-25T20:00:00-04:00" itemprop="datePublished">
+        Published Aug 25, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <time class="dt-modified" datetime="2025-12-18T07:33:50-05:00" itemprop="dateModified">
+        Updated Dec 18, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-author h-card" itemprop="name">MIJUG Team</span>
+      </span></p><p class="post-description">Advice to backing up photos and documents to USB drives, with digital legacy tips for Google, Microsoft, Apple, and government.</p><div class="post-tags"><a href="/tag/usb" class="tag-link">#usb</a><a href="/tag/digital-legacy" class="tag-link">#digital-legacy</a></div></header>
+
+  <div class="post-content e-content" itemprop="articleBody"><h2 id="creating-backups-a-discussion-for-everyone">Creating Backups: A Discussion for Everyone</h2>
+
+<p>In our increasingly digital world, preserving precious memories and important documents is more vital than ever. For older adults and those who may not feel comfortable with technology, the idea of creating backups can seem overwhelming. This article is designed to help you to safely back up your photos and sensitive documents using dedicated USB drives, ensuring your information is protected and accessible only to you.</p>
+
+<h2 id="why-back-up-your-pictures-and-documents">Why Back Up Your Pictures and Documents?</h2>
+
+<p>Life’s most cherished moments—family photos, letters, certificates, and legal documents—are often stored on computers or phones. Unfortunately, devices can fail, be lost, or become inaccessible. Backing up your files to a USB drive provides peace of mind, knowing your memories and important information are safe, even if something happens to your main device.</p>
+
+<p>You might already use cloud-hosted accounts (like Google, Microsoft, or Apple) to back up your files. However, these cloud backups are not automatically accessible to your siblings or loved ones—unless you have set up special permissions or digital legacy access in advance. Without this, your important information may be locked away and inaccessible to those who need it most in an emergency or after you are gone.</p>
+
+<h2 id="what-is-a-usb-drive">What is a USB Drive?</h2>
+
+<p>A USB drive (sometimes called a flash drive or thumb drive) is a small, portable device that plugs into your computer’s USB port. It acts like a miniature hard drive, allowing you to store, move, and protect files easily. USB drives are affordable, reusable, and can be kept in a safe place for extra security.</p>
+
+<p>For best results, keep your USB backup drive in a clearly labeled envelope or attach it to a keychain. Consider including a handwritten note or instructions in the envelope or attached to the drive—this can provide extra information, such as what’s on the drive, who it’s for, or how to access the files. This simple step can make it much easier for loved ones to find and use your backup when needed.</p>
+
+<h2 id="step-by-step-backing-up-your-files">Step-by-Step: Backing Up Your Files</h2>
+
+<h3 id="1-choose-a-dedicated-usb-drive">1. Choose a Dedicated USB Drive</h3>
+
+<ul>
+  <li><strong>Buy a new, separate USB drive</strong> from a reputable store—avoid reusing old drives for backups if possible. This helps ensure your backup is reliable and easy to identify.</li>
+  <li>
+    <p><strong>Label your drive</strong> (e.g., “Family Photos Backup” or “Important Documents”) to avoid confusion.</p>
+
+    <p>It’s also a good practice to put a simple <code class="language-plaintext highlighter-rouge">readme.txt</code> file on the drive itself describing what is stored, when it was last updated, and any instructions or notes for future users. This makes it much easier for anyone who finds the drive to understand its purpose and contents.<br /></p>
+  </li>
+</ul>
+
+<h3 id="2-plug-in-the-usb-drive">2. Plug in the USB Drive</h3>
+
+<ul>
+  <li>Insert the USB drive into an available USB port on your computer. Most computers will recognize it automatically and show a notification or open a window displaying the drive’s contents.</li>
+</ul>
+
+<h3 id="3-locate-your-files">3. Locate Your Files</h3>
+
+<ul>
+  <li>Open the folder where your pictures or documents are stored (e.g., “Pictures,” “Documents,” or your desktop).</li>
+</ul>
+
+<h3 id="4-copy-files-to-the-usb-drive">4. Copy Files to the USB Drive</h3>
+
+<ul>
+  <li>Select the files or folders you want to back up. Right-click and choose “Copy.”</li>
+  <li>Open the USB drive window, right-click inside it, and choose “Paste.”</li>
+  <li>Wait for the files to finish copying. Larger files may take a few minutes.</li>
+</ul>
+
+<h3 id="5-safely-remove-the-usb-drive">5. Safely Remove the USB Drive</h3>
+
+<ul>
+  <li>When copying is complete, <strong>always safely eject</strong> the USB drive before removing it. On Windows, click the “Safely Remove Hardware” icon in the lower-right corner. On Mac, drag the drive icon to the Trash (which turns into an Eject symbol).</li>
+</ul>
+
+<h3 id="6-store-your-usb-drive-securely">6. Store Your USB Drive Securely</h3>
+
+<ul>
+  <li>Keep your backup USB drive in a safe, private place—such as a locked drawer or safe. Consider making a second backup and storing it in a different location (like with a trusted family member).</li>
+</ul>
+
+<h2 id="understanding-access-and-security">Understanding Access and Security</h2>
+
+<p>Your files on the USB drive are only accessible when the drive is plugged into a computer. If your computer requires a password to log in, this helps protect your files from others using your own computer. However, if you plug your USB drive into any other computer, anyone with access to that computer can view the contents of your USB drive—your computer password does not protect the drive itself. For stronger security, some USB drives offer built-in password protection or encryption. With these features enabled, even if someone finds your drive and plugs it into their own computer, they cannot open your files without the correct password.</p>
+
+<p>Alternatively, you can protect sensitive files by placing them in a password-protected zip file or archive on your USB drive. This way, even if the drive itself is not encrypted, the contents of the protected archive cannot be opened without the password. Most computers allow you to create password-protected zip files using built-in tools or free software. This is a simple option for adding an extra layer of security to specific files or folders.</p>
+
+<p>🏢 <em>For most non-technical people, storing your USB drive in a lockbox, safe, or other keyed storage is often more practical than using encryption or password protection. Physical security can be just as effective, and it makes it easier for trusted family members to access your backup if needed.</em></p>
+
+<h2 id="tips-for-older-and-non-technical-users">Tips for Older and Non-Technical Users</h2>
+
+<ul>
+  <li><strong>Ask for help</strong> from a trusted friend or family member if you’re unsure about any step.</li>
+  <li><strong>Write down instructions</strong> and keep them with your USB drive for future reference.</li>
+  <li><strong>Set a regular schedule</strong> (e.g., once a month or quarter or year) to update your backup.</li>
+  <li><strong>Do not share your USB drive</strong> or your computer password with anyone you do not trust completely.</li>
+</ul>
+
+<h2 id="what-about-phones-and-tablets">What About Phones and Tablets?</h2>
+
+<p>Many smartphones and tablets can also connect to USB drives (sometimes called “OTG” or “On-The-Go” drives). You may need a special adapter, but many phones already have USB connections that let you plug them directly into a computer. If your computer has two USB ports, you can connect both your phone and your USB drive at the same time—then simply copy files from your phone to the USB drive using your computer’s file manager. Most modern phones also allow you to copy photos and documents to a USB drive using the built-in file manager app. Ask a family member or check your phone manufacturer’s website for specific instructions.</p>
+
+<h2 id="planning-for-the-future-digital-legacy-management">Planning for the Future: Digital Legacy Management</h2>
+
+<p>It’s important to think about what happens to your digital files after you’re gone. Many major technology companies offer ways to manage your digital legacy, allowing you to choose who can access your accounts and files in the future.</p>
+
+<p>If you do not set up digital legacy access in advance, your loved ones may face specific and often arduous legal steps to gain access to your digital assets—especially if you become incapacitated or pass away. These processes can involve court orders, proof of relationship, and lengthy paperwork, and may still result in denied access. Planning ahead is essential to ensure your important files and accounts are available to those who need them.</p>
+
+<h3 id="helpful-digital-legacy-resources">Helpful Digital Legacy Resources</h3>
+
+<p>For more information on digital legacy management:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service/Resource</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>General Guide</strong></td>
+      <td><a href="https://digitallegacyassociation.org/" rel="external noopener noreferrer" target="_blank">Digital Legacy Association</a></td>
+    </tr>
+    <tr>
+      <td><strong>Google Account Inactive Manager</strong></td>
+      <td><a href="https://myaccount.google.com/inactive" rel="external noopener noreferrer" target="_blank">Google Inactive Account Manager</a></td>
+    </tr>
+    <tr>
+      <td><strong>Microsoft Digital Legacy</strong></td>
+      <td><a href="https://support.microsoft.com/en-us/account-billing/accessing-outlook-com-onedrive-and-other-microsoft-services-when-someone-has-died-ebbd2860-917e-4b39-9913-212362da6b2f" rel="external noopener noreferrer" target="_blank">Microsoft Legacy Contact</a></td>
+    </tr>
+    <tr>
+      <td><strong>Apple Digital Legacy</strong></td>
+      <td><a href="https://support.apple.com/en-us/HT212360" rel="external noopener noreferrer" target="_blank">Apple Digital Legacy</a></td>
+    </tr>
+    <tr>
+      <td><strong>USA Gov - Death of a Loved One</strong></td>
+      <td><a href="https://www.usa.gov/death-loved-one" rel="external noopener noreferrer" target="_blank">Dealing with the death of a loved one</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Taking the time to back up your pictures and sensitive documents is a gift to yourself and your loved ones. With a little preparation, you can ensure your memories and important information are safe, secure, and available when needed. Remember, you don’t have to do it alone—help is always available, and every step you take makes a difference.</p>
+
+<hr />
+
+<h2 id="related-resources--further-reading">Related Resources &amp; Further Reading</h2>
+
+<p>For more on digital legacy, e-waste, and making the most of older computers, check out these MIJUG.NET articles:</p>
+
+<ul>
+  <li><a href="/posts/2025/08/06/in-person-seminar-dates-announced/" rel="bookmark">In-Person Seminar Dates Announced!</a> — Join our hands-on workshops for non-technical users.</li>
+  <li><a href="/posts/2025/07/18/reusing-older-computers-in-2025/" rel="bookmark">Reusing Older Computers in 2025</a> — Tips for extending the life of your devices and reducing electronic waste.</li>
+  <li><a href="/posts/2025/08/22/tale-of-two-chips-windows-11-compatibility/" rel="bookmark">Tale of Two Chips: Windows 11 Compatibility</a> — Why some computers can’t run Windows 11 and what you can do about it.</li>
+  <li><a href="/posts/2025/07/30/mijug-mission/" rel="bookmark">MIJUG Mission: Linux Conversion Seminars</a> — Learn how to convert unsupported computers to Linux.</li>
+</ul>
+
+<p>If you’re interested in evening classes or want to get involved, see <a href="/posts/2025/08/09/evening-schedules-tbd/" rel="bookmark">Evening Classes: Schedule Coming Soon!</a>.</p>
+
+<hr />
+
+<p><em>This article is a first draft. Please share your feedback or questions so we can make this guide even more helpful for everyone.</em></p>
+</div><div class="post-categories">
+    <strong>Categories:</strong>&nbsp;<a href="/category/digital-legacy" class="category-link">digital-legacy</a>,<a href="/category/guides" class="category-link">guides</a></div><footer class="post-footer">
+    <div class="post-nav"><div class="prev-post">
+        <a rel="prev" href="/2025/08/22/agent-13-old-gpus-tribute-david-ketchum/" class="prev-link"> ← Agent 13 and Old GPUs: A Tribute to David Ketchum </a>
+      </div><div class="next-post">
+        <a rel="next" href="/2025/08/29/home-appliances-through-time-the-magnetic-ink-story/" class="next-link"> Home Appliances Through Time: The Magnetic Ink Story → </a>
+      </div></div>
+  </footer>
+
+  <a class="u-url" rel="canonical" href="/2025/08/25/usb-backup-advice-protect-photos-documents-legacy/" hidden></a>
+</article>
+
+<style>
+  .post-meta-separator {
+    color: #666;
+  }
+
+  .post-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    color: #555;
+  }
+
+  .post-categories {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .category-link {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  .category-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .prev-link,
+  .next-link {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: 500;
+  }
+
+  .prev-link:hover,
+  .next-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-post {
+    text-align: right;
+  }
+</style>
+</div>
+      <div class="customad-container" id="adslot-1" data-ad-slot="12345678"></div>
+    </main>
+
+    <footer class="site-footer h-card">
+      <data class="u-url" href="/"></data>
+      <div class="wrapper">
+        <div class="footer-col-wrapper">
+          <div class="footer-col footer-col-1">
+            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/privacy-policy.html">Privacy Policy</a>
+          </div>
+          <div class="footer-col footer-col-2">
+            <a href="/contact/">Contact Us</a>
+          </div>
+          <div class="footer-col footer-col-3">
+            <p>
+              &copy; 2025
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
+                >Kranson Enterprises</a
+              ><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
+              <a href="/feed.xml"
+                >via RSS<svg class="svg-icon">
+                  <use
+                    xlink:href="/assets/minima-social-icons.svg#rss"
+                  ></use></svg>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+
+    
+    <script nonce="abc123">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'G-W1M1N0DCD4');
+    </script>
+
+    <script
+      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
+      crossorigin="anonymous"
+      async
+    ></script>
+    
+
+    <!-- Cookie consent system -->
+    <!-- %  include google-adsense.html % -->
+    <!-- % include cookie-consent.html % -->}
+    <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
+    <script nonce="abc123">
+      // Code block accessibility - ES2020 optimized
+      (() => {
+        'use strict';
+
+        const enhanceCodeBlocks = () => {
+          try {
+            // Use :not() to skip already enhanced blocks (performance)
+            const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([role])');
+            if (blocks.length === 0) return;
+
+            blocks.forEach((el) => {
+              const code = el.querySelector('pre code');
+              const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+              
+              // Extract language using optional chaining and nullish coalescing (ES2020)
+              const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+              const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+              // Batch attribute updates
+              el.setAttribute('role', 'img');
+              el.setAttribute('tabindex', '0');
+              el.setAttribute('aria-label', label);
+            });
+          } catch (e) {
+            console.warn('EnhanceCodeBlocks error', e);
+          }
+        };
+
+        // Modern API check (ES2020)
+        document.readyState === 'loading'
+          ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+          : enhanceCodeBlocks();
+      })();
+    </script>
+
+    <script nonce="abc123">
+      // Navigation toggle functionality - ES2020 optimized
+      (() => {
+        'use strict';
+
+        // Cache DOM elements (ES2020 const, destructuring)
+        const elements = {
+          toggle: document.querySelector('.nav-toggle'),
+          close: document.querySelector('.nav-close'),
+          nav: document.getElementById('primary-navigation'),
+          status: document.getElementById('menu-status'),
+          body: document.body
+        };
+
+        // Early return if required elements missing (optional chaining ES2020)
+        if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+          return;
+        }
+
+        // Initialize navigation as overlay
+        elements.nav.classList.add('nav-overlay');
+
+        // Toggle navigation with modern API (arrow function ES2020)
+        const toggleNavigation = () => {
+          const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+          const action = isExpanded ? 'remove' : 'add';
+          
+          // Batch DOM updates for performance
+          elements.nav.classList[action]('nav-visible');
+          elements.body.classList[action]('nav-open');
+          elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+          elements.nav.setAttribute('aria-hidden', String(isExpanded));
+          elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+        };
+
+        // Event delegation with passive listeners for scroll performance
+        const handleClick = (e) => {
+          // Check if toggle button or close button clicked
+          if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
+            e.preventDefault();
+            toggleNavigation();
+            return;
+          }
+
+          // Close on click outside (only when open)
+          if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+            if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+              toggleNavigation();
+            }
+          }
+        };
+
+        // Keyboard navigation (ES2020 nullish coalescing ??)
+        const handleKeydown = (e) => {
+          if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            elements.toggle.focus();
+          }
+        };
+
+        // Single event listener with delegation (better performance)
+        document.addEventListener('click', handleClick, { passive: false });
+        document.addEventListener('keydown', handleKeydown, { passive: true });
+      })();
+    </script>
+
+    <!-- Lazy-load dynamic navigation items (optimization #7) -->
+    <script nonce="abc123">
+      (() => {
+        'use strict';
+
+        // Load remaining navigation items on first interaction (optimization #7)
+        const loadDynamicNav = () => {
+          const staticList = document.getElementById('nav-items-static');
+          const dynamicList = document.getElementById('nav-items-dynamic');
+          
+          if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+          // All navigation items embedded as data (generated at build time)
+          const allItems = [
+            {
+              title: "FrontMatter CMS Usage",
+              permalink: "/docs/frontmatter-cms/",
+              ariaLabel: "Navigate to FrontMatter CMS Usage",
+              current: false
+            },{
+              title: "Accessibility Testing Configuration",
+              permalink: "/docs/accessibility-testing/",
+              ariaLabel: "Navigate to Accessibility Testing Configuration",
+              current: false
+            },{
+              title: "Browser Management for Testing",
+              permalink: "/docs/browser-management/",
+              ariaLabel: "Navigate to Browser Management for Testing",
+              current: false
+            },{
+              title: "Browser Compatibility Testing",
+              permalink: "/docs/browser-compatibility-testing/",
+              ariaLabel: "Navigate to Browser Compatibility Testing",
+              current: false
+            },{
+              title: "Liquid Tags Examples",
+              permalink: "/docs/liquid-tags-examples/",
+              ariaLabel: "Navigate to Liquid Tags Examples",
+              current: false
+            },{
+              title: "Tags and Categories System Guide",
+              permalink: "/docs/tags-and-categories-guide/",
+              ariaLabel: "Navigate to Tags and Categories System Guide",
+              current: false
+            },{
+              title: "Performance Optimization Guide",
+              permalink: "/docs/performance-optimization/",
+              ariaLabel: "Navigate to Performance Optimization Guide",
+              current: false
+            },{
+              title: "Testing Performance and Development Evolution",
+              permalink: "/docs/testing-performance-evolution/",
+              ariaLabel: "Navigate to Testing Performance and Development Evolution",
+              current: false
+            },{
+              title: "Cache Management Strategies",
+              permalink: "/docs/cache-management/",
+              ariaLabel: "Navigate to Cache Management Strategies",
+              current: false
+            },{
+              title: "Mermaid Diagram Configuration Guide",
+              permalink: "/docs/mermaid-configuration-guide/",
+              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
+              current: false
+            },{
+              title: "Mermaid Quick Start",
+              permalink: "/docs/mermaid-quick-start/",
+              ariaLabel: "Navigate to Mermaid Quick Start",
+              current: false
+            },{
+              title: "Mermaid Diagram Examples",
+              permalink: "/docs/mermaid-examples/",
+              ariaLabel: "Navigate to Mermaid Diagram Examples",
+              current: false
+            },{
+              title: "Mermaid Diagrams Sample",
+              permalink: "/docs/mermaid-diagrams-sample/",
+              ariaLabel: "Navigate to Mermaid Diagrams Sample",
+              current: false
+            },{
+              title: "Mermaid Diagrams Test Runner",
+              permalink: "/docs/mermaid-test-runner/",
+              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
+              current: false
+            },{
+              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
+              permalink: "/docs/rel-attribute-guide/",
+              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+              current: false
+            },{
+              title: "Exploring the Limitations of Gitea and Ruby",
+              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
+              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
+              current: false
+            },
+          ];
+
+          // Render dynamic items (optimization #7: deferred rendering)
+          allItems.forEach((item) => {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'listitem');
+            const a = document.createElement('a');
+            a.href = item.permalink;
+            a.setAttribute('aria-label', item.ariaLabel);
+            if (item.current) {
+              a.className = 'active';
+              a.setAttribute('aria-current', 'page');
+            }
+            a.textContent = item.title;
+            li.appendChild(a);
+            dynamicList.appendChild(li);
+          });
+
+          // Show dynamic list
+          dynamicList.style.display = '';
+        };
+
+        // Load on first interaction with navigation toggle (optimization #7)
+        const toggleBtn = document.querySelector('.nav-toggle');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+        }
+
+        // Also load on requestIdleCallback if available (optimization #7)
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+        } else {
+          setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+        }
+      })();
+    </script>
+
+  </body>
+</html>

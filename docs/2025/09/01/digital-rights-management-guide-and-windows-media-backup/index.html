@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+    
+    
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+    <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+    
+    
+
+    <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+    <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+    <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0066cc;
+  --nav-bg: #f8f8f8;
+  --border-color: #e8e8e8;
+  --header-color: #424242;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cookie consent banner styles */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
+  overflow: hidden;
+}
+
+#cookie-consent-banner.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+    <title>
+      Digital Rights Management Guide and Windows Media Backup | My Info Just Under Glass
+    </title>
+    <meta
+      name="description"
+      content="This article explains what DRM is, how it affects your music and videos, and what you can do to keep access to your purchases—now and in the future."
+    />
+    
+    <meta name="version" content="Sep 09, 2025" />
+    
+
+    
+
+    <meta name="google-site-verification" content="googlece83719b3f856e56" />
+    <meta name="cache-version" content="20251217213321" />
+
+    <link rel="stylesheet" href="/assets/main.css?v=20251218073616" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2020)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript11 = false;
+      const html = document.documentElement;
+      try {
+        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
+        if (mod && typeof mod.testES11Features === 'function') {
+          try {
+            mod.testES11Features();
+            supportsEcmascript11 = true;
+          } catch (e) { console.error('ES11 test failed:', e); }
+        } else if (typeof window.testES11Features === 'function') {
+          try { window.testES11Features();
+            supportsEcmascript11 = true;
+           } catch (e) { console.error('ES11 test failed:', e); }
+        } else {
+          console.debug('ES11 test module loaded but `testES11Features` not found.');
+        }
+      } catch (err) {
+        console.debug('ES11 test module not present or failed to import:', err);
+      }
+      if (!supportsEcmascript11) {
+        html.classList.add('no-ES2020');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+    <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251218073616" defer crossorigin="anonymous"></script>
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="My Info Just Under Glass"
+      href="/feed.xml"
+    />
+    
+    
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
+    
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/favicon.ico"
+    />
+    
+
+    <meta name="description" content="DRM is a way for companies to control how you use digital files, like music and movies, to prevent unauthorized copying or sharing." />
+<meta property="og:title" content="Digital Rights Management Guide and Windows Media Backup" />
+<meta property="og:description" content="DRM is a way for companies to control how you use digital files, like music and movies, to prevent unauthorized copying or sharing." />
+<meta property="og:url" content="https://www.mijug.net/2025/09/01/digital-rights-management-guide-and-windows-media-backup/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/2025/09/01/digital-rights-management-guide-and-windows-media-backup/" />
+
+
+    
+
+    
+
+    <script nonce="abc123">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20251217213321";
+</script>
+
+  
+  <script nonce="abc123">
+    window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
+  </script>
+  
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <noscript>
+        <div class="legacy-browser-notice" role="alert">
+          <strong>No Commerce Available</strong>
+          <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+        </div>
+      </noscript>
+
+      <div class="wrapper">
+        <a
+          class="site-title"
+          rel="home"
+          href="/"
+        >
+          
+          <img
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321"
+            alt="My Info Just Under Glass"
+            width="50"
+            height="50"
+          />
+           My Info Just Under Glass
+        </a>
+
+        <!-- Mobile navigation toggle button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
+          &nbsp;Menu
+        </button>
+
+        <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+        <nav
+          id="primary-navigation"
+          class="primary-nav js-enhanced-nav"
+          role="dialog"
+          aria-modal="true"
+          aria-hidden="true">
+
+          <!-- Full navigation for modern browsers -->
+          <div class="modern-nav-content">
+            <button class="nav-close" type="button" aria-label="Close navigation menu">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <ul role="list" id="nav-items-static">
+              <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
+              
+                
+                <li role="listitem">
+                  <a href="/blog/"
+                     
+                     aria-label="Navigate to Blog">
+                     Blog
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/about/"
+                     
+                     aria-label="Navigate to About">
+                     About
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/docs/getting-started/"
+                     
+                     aria-label="Navigate to Getting Started">
+                     Getting Started
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/docs/welcome-mijug-workspace/"
+                     
+                     aria-label="Navigate to Workspace Overview">
+                     Workspace Overview
+                  </a>
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </ul>
+            <!-- Dynamic navigation items load here via JavaScript -->
+            <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+          </div>
+        </nav>
+
+        <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper"><article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Digital Rights Management Guide and Windows Media Backup</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-09-01T19:19:45-04:00" itemprop="datePublished">
+        Published Sep 1, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <time class="dt-modified" datetime="2025-12-18T07:33:50-05:00" itemprop="dateModified">
+        Updated Dec 18, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-author h-card" itemprop="name">MIJUG Team</span>
+      </span></p><p class="post-description">DRM is a way for companies to control how you use digital files, like music and movies, to prevent unauthorized copying or sharing.</p><div class="post-tags"><a href="/tag/drm" class="tag-link">#drm</a><a href="/tag/music" class="tag-link">#music</a><a href="/tag/video" class="tag-link">#video</a><a href="/tag/backup" class="tag-link">#backup</a><a href="/tag/security" class="tag-link">#security</a><a href="/tag/windows" class="tag-link">#windows</a><a href="/tag/linux" class="tag-link">#linux</a><a href="/tag/legal" class="tag-link">#legal</a><a href="/tag/copyright" class="tag-link">#copyright</a></div></header>
+
+  <div class="post-content e-content" itemprop="articleBody"><h2 id="welcome-to-the-wild-world-of-digital-music-and-video-ownership">Welcome to the Wild World of Digital Music and Video Ownership!</h2>
+
+<p><strong>Quick Summary:</strong>
+If you listen to music or watch movies online, you’ve probably used services like Spotify, Apple Music, Netflix, or Amazon Prime. These services use something called DRM (Digital Rights Management) to control how you use their songs and videos. This guide explains DRM in simple terms, how it affects you, and what you can do to keep your music and videos safe.</p>
+
+<p><strong>Think of DRM like a magical library card:</strong>
+Imagine a library where every book is enchanted. When you borrow a book, it opens just for you—no one else can read it, and you can’t copy the pages to give to your friends. The magic keeps the author’s work safe, so they get credit and reward for their creation. But it also means you, the reader, can enjoy the story as long as you follow the library’s rules. DRM works a bit like this: it protects the creator’s rights while letting you enjoy the music or movie—just not in any way you want.</p>
+
+<p>This article is written for everyone—including older adults and those who aren’t tech experts. We use plain language and explain any technical words.</p>
+
+<h2 id="how-drm-protects-music-and-video-files">How DRM Protects Music and Video Files</h2>
+
+<p>When you buy or stream music and videos online, you don’t always get a simple file you can use anywhere. Instead, DRM technology is used to lock these files. This means you need special permission—called a license or key—to play them. Usually, this permission is linked to your account (like your Apple ID or Microsoft account) or your specific device (your computer or phone).</p>
+
+<p><strong>What does this mean for you?</strong>
+You can listen or watch on approved devices and apps, but you can’t copy or share the files freely. This is different from old CDs or DVDs, which you could play anywhere.</p>
+
+<p><strong>Common DRM systems:</strong></p>
+
+<ul>
+  <li><strong>Windows Media DRM (WMDRM):</strong> Used by Windows Media Player and many online music stores in the 2000s.</li>
+  <li><strong>Apple FairPlay:</strong> Used by iTunes for music and video.</li>
+  <li><strong>Widevine/PlayReady:</strong> Used by streaming services like Netflix, Amazon Prime, and Spotify.</li>
+</ul>
+
+<h2 id="how-popular-streaming-services-use-drm">How Popular Streaming Services Use DRM</h2>
+
+<p>Most major streaming services use DRM to protect their content and control how you can access it. Here’s how some of the most popular services handle DRM. If you ever have trouble, you can visit their official help pages (see the end of this article for links).</p>
+
+<h3 id="spotify">Spotify</h3>
+
+<p>Spotify uses a DRM system called Widevine to protect its music streams. This means you can only play Spotify music through the official app or web player. Downloaded songs (for Premium users) are encrypted and can’t be copied or played outside the Spotify ecosystem.</p>
+
+<h3 id="apple-music">Apple Music</h3>
+
+<p>Apple Music uses FairPlay DRM, which ties your music to your Apple ID. You can download songs for offline listening, but they are encrypted and only playable in Apple’s apps on authorized devices. If you cancel your subscription, you lose access to downloaded tracks.</p>
+
+<h3 id="netflix">Netflix</h3>
+
+<p>Netflix uses both Widevine and Microsoft PlayReady DRM. This ensures that movies and TV shows can only be streamed or downloaded through the official Netflix app or website. Downloaded videos are encrypted and can’t be copied or played on other devices.</p>
+
+<h3 id="amazon-prime-video">Amazon Prime Video</h3>
+
+<p>Amazon Prime Video uses a combination of Widevine and PlayReady DRM. Like Netflix, you can only watch content through the official app or website, and downloads are encrypted for use only within the app.</p>
+
+<h3 id="youtube-paid-content">YouTube (Paid Content)</h3>
+
+<p>YouTube uses Widevine DRM for paid movies and TV shows. Free videos are not protected by DRM, but any content you purchase or rent is encrypted and can only be played in the YouTube app or web player.</p>
+
+<blockquote>
+  <p><strong>In summary:</strong> DRM on streaming services means you can’t copy, share, or play downloaded content outside the official apps. This protects copyright holders but can limit your ability to use content across different devices or platforms. If you’re ever stuck, check the help links at the end of this article.</p>
+</blockquote>
+
+<p>For more background, see:
+<a href="https://www.riaa.com/resources-learning/" rel="external noopener noreferrer" target="_blank">Recording Industry Association of America (RIAA): Resources and Learning</a><br />
+<a href="https://www.ifpi.org/resources/" rel="external noopener noreferrer" target="_blank">International Federation of the Phonographic Industry (IFPI): Resources</a></p>
+
+<h3 id="where-are-my-keys-stored">Where Are My Keys Stored?</h3>
+
+<p>The special keys or licenses that unlock your music and videos are stored in hidden parts of your computer or device. If you reinstall your operating system or move to a new computer, you might lose these keys—and your music or videos may stop working. That’s why it’s important to know how to back them up if possible.</p>
+
+<h2 id="how-to-back-up-and-restore-your-drm-keys">How to Back Up and Restore Your DRM Keys</h2>
+
+<p>If you want to keep your music and videos safe when you get a new computer or if your old one breaks, you need to back up your DRM keys (if your service allows it).</p>
+
+<h3 id="backing-up-windows-media-drm-keys">Backing Up Windows Media DRM Keys</h3>
+
+<p>Older versions of Windows Media Player let you back up your licenses using a tool called the “License Management Tool.” Here’s how it worked:</p>
+
+<p><strong>To back up:</strong></p>
+
+<ol>
+  <li>Open Windows Media Player.</li>
+  <li>Go to <strong>Tools &gt; License Management</strong> (or search for “DRM” in the help menu).</li>
+  <li>Click <strong>Back Up Now</strong> and save the backup file somewhere safe (it will be a <code class="language-plaintext highlighter-rouge">.bak</code> or <code class="language-plaintext highlighter-rouge">.drm</code> file).</li>
+</ol>
+
+<p><strong>To restore:</strong></p>
+
+<ol>
+  <li>On your new computer, open Windows Media Player.</li>
+  <li>Go to <strong>Tools &gt; License Management</strong>.</li>
+  <li>Click <strong>Restore</strong> and select your backup file.</li>
+  <li>You may need to sign in with your original account.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Important:</strong> Many online stores have shut down their DRM servers, so if you didn’t back up your keys in time, you may not be able to restore them.</p>
+</blockquote>
+
+<h3 id="apple-fairplay-and-other-drm-systems">Apple FairPlay and Other DRM Systems</h3>
+
+<p>Apple’s system doesn’t let you back up keys directly. Instead, you just sign in with your Apple ID on your new device, and your music or videos should work. Most modern services work this way—your account is the key.</p>
+
+<h2 id="can-i-have-more-than-one-drm-key">Can I Have More Than One DRM Key?</h2>
+
+<p>Yes, some systems store a separate key for each song or video. For example, Windows Media DRM keeps a different license for every protected file. If you use a backup tool, it usually saves all your licenses at once. But you can’t combine keys from different people or accounts.</p>
+
+<p>For most streaming services today, you don’t have to worry about keys at all. Just log in on your new device, and the service takes care of the rest.</p>
+
+<h2 id="what-does-the-law-say-about-music-video-and-backups">What Does the Law Say About Music, Video, and Backups?</h2>
+
+<p>It’s important to know your rights and limits when it comes to digital music and video. Copyright law protects the people who create music and movies, but it also affects what you can do with your purchases.</p>
+
+<h3 id="copyright-law-in-simple-terms">Copyright Law in Simple Terms</h3>
+
+<p>When you buy or stream music or video, you’re usually buying a license to use it—not the actual song or movie itself. This means:</p>
+
+<ul>
+  <li>You can listen or watch for your own enjoyment.</li>
+  <li>You can’t share, sell, or give away copies to others.</li>
+  <li>You can’t remove DRM or copy files unless the law says it’s okay.</li>
+</ul>
+
+<p>Some countries let you make a backup or change the format (like from WMA to MP3) for your own use, but only if you don’t break DRM or share the files.</p>
+
+<h3 id="us-copyright-law">US Copyright Law</h3>
+
+<p>In the United States, the law is strict about DRM. The Digital Millennium Copyright Act (DMCA) says you can’t break DRM, even for personal use, except in special cases (like for accessibility or if you qualify for an exemption).</p>
+
+<p><a href="https://www.copyright.gov/title17/" rel="external noopener noreferrer" target="_blank">U.S. Copyright Office: Copyright Law</a><br />
+<a href="https://www.copyright.gov/1201/" rel="external noopener noreferrer" target="_blank">U.S. Copyright Office: DMCA Exemptions</a></p>
+
+<h3 id="eu-copyright-law">EU Copyright Law</h3>
+
+<p>In the European Union, the rules are a bit more flexible. Some countries let you make a personal backup, but the details vary. You may have to pay a small fee (built into the price) to support artists.</p>
+
+<p><a href="https://commission.europa.eu/law/law-topic/data-protection_en" rel="external noopener noreferrer" target="_blank">EU Data Protection</a><br />
+<a href="https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=celex:32001L0029" rel="external noopener noreferrer" target="_blank">EUR-Lex: Directive 2001/29/EC</a></p>
+
+<h3 id="do-i-own-my-music-or-just-a-license">Do I Own My Music or Just a License?</h3>
+
+<p>You own the right to use your music or video as described in the license agreement. Usually, this means you can play it for yourself, but you can’t share, resell, or remove DRM. If you want to make a backup, check your country’s laws and the service’s terms of use.</p>
+
+<h2 id="can-i-play-my-music-and-videos-on-linux-or-other-devices">Can I Play My Music and Videos on Linux or Other Devices?</h2>
+
+<p>If you want to use your music or videos on a different system (like Linux), it can be tricky because DRM is designed to work only on approved devices. Here are your main options:</p>
+
+<h3 id="1-play-and-record-analog-loopback">1. Play and Record (Analog Loopback)</h3>
+
+<p>You can play the file on your authorized Windows computer and record the sound as it plays. This is called the “analog hole.” It’s legal, but the quality may not be perfect.</p>
+
+<h3 id="2-use-decryption-tools-legal-gray-area">2. Use Decryption Tools (Legal Gray Area)</h3>
+
+<p>Some programs (like <strong>FairUse4WM</strong> or <strong>drmdbg</strong>) can unlock DRM-protected files, but using them may be illegal in your country. These tools work by grabbing the key while the file is playing. Once unlocked, you can use the file anywhere, but check your local laws first.</p>
+
+<h3 id="3-convert-to-open-formats">3. Convert to Open Formats</h3>
+
+<p>If you can play the file, you can use software to convert it to a format like MP3 or OGG, then move it to your Linux player. This is only legal if you don’t break DRM or share the file.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>DRM is meant to protect artists and companies, but it can sometimes make life harder for honest customers. If you want to keep your music and videos safe, always back up your keys if you can, and know the rules for your country. If you’re ever unsure, check with your music provider or look up the official links in this article.</p>
+
+<h2 id="where-to-get-help-from-streaming-services">Where to Get Help from Streaming Services</h2>
+
+<p>If you have trouble playing your music or videos, or if you want to learn more about DRM for your favorite service, visit these official help pages:</p>
+
+<ul>
+  <li><a href="https://support.spotify.com/" rel="external noopener noreferrer" target="_blank">Spotify Help</a></li>
+  <li><a href="https://support.apple.com/music" rel="external noopener noreferrer" target="_blank">Apple Music Support</a></li>
+  <li><a href="https://help.netflix.com/" rel="external noopener noreferrer" target="_blank">Netflix Help Center</a></li>
+  <li><a href="https://music.amazon.com/" rel="external noopener noreferrer" target="_blank">Amazon Prime Video Help</a></li>
+  <li><a href="https://support.google.com/youtube/" rel="external noopener noreferrer" target="_blank">YouTube Help</a></li>
+</ul>
+
+<h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</h2>
+
+<p><strong>Q: Why can’t I play my old music files on my new computer?</strong>
+A: You may be missing the DRM keys or licenses. Try restoring from a backup or signing in with your original account.</p>
+
+<p><strong>Q: Is it legal to make a backup of my music?</strong>
+A: It depends on your country and whether you have to break DRM to do it. Check the law and your service’s terms.</p>
+
+<p><strong>Q: Can I give my music files to a friend or family member?</strong>
+A: Usually not. Most licenses are for personal use only.</p>
+
+<p><strong>Q: Where can I learn more about copyright and music?</strong>
+A: See the links to the RIAA, IFPI, and government copyright offices above.</p>
+
+<hr />
+
+<p><em>This post was created using FrontMatter CMS—because one day, even your ability to read this might mysteriously vanish, just like your favorite digital album.</em></p>
+</div><div class="post-categories">
+    <strong>Categories:</strong>&nbsp;<a href="/category/security" class="category-link">security</a>,<a href="/category/legacy" class="category-link">legacy</a>,<a href="/category/guides" class="category-link">guides</a></div><footer class="post-footer">
+    <div class="post-nav"><div class="prev-post">
+        <a rel="prev" href="/2025/08/30/safeguarding-your-bitlocker-key-essential-tips/" class="prev-link"> ← Safeguarding Your BitLocker Key: Essential Tips </a>
+      </div><div class="next-post">
+        <a rel="next" href="/2025/09/01/pencil-to-markdown/" class="next-link"> Pencil to Markdown: The Evolution of Human Thought Capture → </a>
+      </div></div>
+  </footer>
+
+  <a class="u-url" rel="canonical" href="/2025/09/01/digital-rights-management-guide-and-windows-media-backup/" hidden></a>
+</article>
+
+<style>
+  .post-meta-separator {
+    color: #666;
+  }
+
+  .post-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    color: #555;
+  }
+
+  .post-categories {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .category-link {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  .category-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .prev-link,
+  .next-link {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: 500;
+  }
+
+  .prev-link:hover,
+  .next-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-post {
+    text-align: right;
+  }
+</style>
+</div>
+      <div class="customad-container" id="adslot-1" data-ad-slot="12345678"></div>
+    </main>
+
+    <footer class="site-footer h-card">
+      <data class="u-url" href="/"></data>
+      <div class="wrapper">
+        <div class="footer-col-wrapper">
+          <div class="footer-col footer-col-1">
+            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/privacy-policy.html">Privacy Policy</a>
+          </div>
+          <div class="footer-col footer-col-2">
+            <a href="/contact/">Contact Us</a>
+          </div>
+          <div class="footer-col footer-col-3">
+            <p>
+              &copy; 2025
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
+                >Kranson Enterprises</a
+              ><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
+              <a href="/feed.xml"
+                >via RSS<svg class="svg-icon">
+                  <use
+                    xlink:href="/assets/minima-social-icons.svg#rss"
+                  ></use></svg>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+
+    
+    <script nonce="abc123">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'G-W1M1N0DCD4');
+    </script>
+
+    <script
+      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
+      crossorigin="anonymous"
+      async
+    ></script>
+    
+
+    <!-- Cookie consent system -->
+    <!-- %  include google-adsense.html % -->
+    <!-- % include cookie-consent.html % -->}
+    <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
+    <script nonce="abc123">
+      // Code block accessibility - ES2020 optimized
+      (() => {
+        'use strict';
+
+        const enhanceCodeBlocks = () => {
+          try {
+            // Use :not() to skip already enhanced blocks (performance)
+            const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([role])');
+            if (blocks.length === 0) return;
+
+            blocks.forEach((el) => {
+              const code = el.querySelector('pre code');
+              const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+              
+              // Extract language using optional chaining and nullish coalescing (ES2020)
+              const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+              const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+              // Batch attribute updates
+              el.setAttribute('role', 'img');
+              el.setAttribute('tabindex', '0');
+              el.setAttribute('aria-label', label);
+            });
+          } catch (e) {
+            console.warn('EnhanceCodeBlocks error', e);
+          }
+        };
+
+        // Modern API check (ES2020)
+        document.readyState === 'loading'
+          ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+          : enhanceCodeBlocks();
+      })();
+    </script>
+
+    <script nonce="abc123">
+      // Navigation toggle functionality - ES2020 optimized
+      (() => {
+        'use strict';
+
+        // Cache DOM elements (ES2020 const, destructuring)
+        const elements = {
+          toggle: document.querySelector('.nav-toggle'),
+          close: document.querySelector('.nav-close'),
+          nav: document.getElementById('primary-navigation'),
+          status: document.getElementById('menu-status'),
+          body: document.body
+        };
+
+        // Early return if required elements missing (optional chaining ES2020)
+        if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+          return;
+        }
+
+        // Initialize navigation as overlay
+        elements.nav.classList.add('nav-overlay');
+
+        // Toggle navigation with modern API (arrow function ES2020)
+        const toggleNavigation = () => {
+          const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+          const action = isExpanded ? 'remove' : 'add';
+          
+          // Batch DOM updates for performance
+          elements.nav.classList[action]('nav-visible');
+          elements.body.classList[action]('nav-open');
+          elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+          elements.nav.setAttribute('aria-hidden', String(isExpanded));
+          elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+        };
+
+        // Event delegation with passive listeners for scroll performance
+        const handleClick = (e) => {
+          // Check if toggle button or close button clicked
+          if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
+            e.preventDefault();
+            toggleNavigation();
+            return;
+          }
+
+          // Close on click outside (only when open)
+          if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+            if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+              toggleNavigation();
+            }
+          }
+        };
+
+        // Keyboard navigation (ES2020 nullish coalescing ??)
+        const handleKeydown = (e) => {
+          if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            elements.toggle.focus();
+          }
+        };
+
+        // Single event listener with delegation (better performance)
+        document.addEventListener('click', handleClick, { passive: false });
+        document.addEventListener('keydown', handleKeydown, { passive: true });
+      })();
+    </script>
+
+    <!-- Lazy-load dynamic navigation items (optimization #7) -->
+    <script nonce="abc123">
+      (() => {
+        'use strict';
+
+        // Load remaining navigation items on first interaction (optimization #7)
+        const loadDynamicNav = () => {
+          const staticList = document.getElementById('nav-items-static');
+          const dynamicList = document.getElementById('nav-items-dynamic');
+          
+          if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+          // All navigation items embedded as data (generated at build time)
+          const allItems = [
+            {
+              title: "FrontMatter CMS Usage",
+              permalink: "/docs/frontmatter-cms/",
+              ariaLabel: "Navigate to FrontMatter CMS Usage",
+              current: false
+            },{
+              title: "Accessibility Testing Configuration",
+              permalink: "/docs/accessibility-testing/",
+              ariaLabel: "Navigate to Accessibility Testing Configuration",
+              current: false
+            },{
+              title: "Browser Management for Testing",
+              permalink: "/docs/browser-management/",
+              ariaLabel: "Navigate to Browser Management for Testing",
+              current: false
+            },{
+              title: "Browser Compatibility Testing",
+              permalink: "/docs/browser-compatibility-testing/",
+              ariaLabel: "Navigate to Browser Compatibility Testing",
+              current: false
+            },{
+              title: "Liquid Tags Examples",
+              permalink: "/docs/liquid-tags-examples/",
+              ariaLabel: "Navigate to Liquid Tags Examples",
+              current: false
+            },{
+              title: "Tags and Categories System Guide",
+              permalink: "/docs/tags-and-categories-guide/",
+              ariaLabel: "Navigate to Tags and Categories System Guide",
+              current: false
+            },{
+              title: "Performance Optimization Guide",
+              permalink: "/docs/performance-optimization/",
+              ariaLabel: "Navigate to Performance Optimization Guide",
+              current: false
+            },{
+              title: "Testing Performance and Development Evolution",
+              permalink: "/docs/testing-performance-evolution/",
+              ariaLabel: "Navigate to Testing Performance and Development Evolution",
+              current: false
+            },{
+              title: "Cache Management Strategies",
+              permalink: "/docs/cache-management/",
+              ariaLabel: "Navigate to Cache Management Strategies",
+              current: false
+            },{
+              title: "Mermaid Diagram Configuration Guide",
+              permalink: "/docs/mermaid-configuration-guide/",
+              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
+              current: false
+            },{
+              title: "Mermaid Quick Start",
+              permalink: "/docs/mermaid-quick-start/",
+              ariaLabel: "Navigate to Mermaid Quick Start",
+              current: false
+            },{
+              title: "Mermaid Diagram Examples",
+              permalink: "/docs/mermaid-examples/",
+              ariaLabel: "Navigate to Mermaid Diagram Examples",
+              current: false
+            },{
+              title: "Mermaid Diagrams Sample",
+              permalink: "/docs/mermaid-diagrams-sample/",
+              ariaLabel: "Navigate to Mermaid Diagrams Sample",
+              current: false
+            },{
+              title: "Mermaid Diagrams Test Runner",
+              permalink: "/docs/mermaid-test-runner/",
+              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
+              current: false
+            },{
+              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
+              permalink: "/docs/rel-attribute-guide/",
+              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+              current: false
+            },{
+              title: "Exploring the Limitations of Gitea and Ruby",
+              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
+              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
+              current: false
+            },
+          ];
+
+          // Render dynamic items (optimization #7: deferred rendering)
+          allItems.forEach((item) => {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'listitem');
+            const a = document.createElement('a');
+            a.href = item.permalink;
+            a.setAttribute('aria-label', item.ariaLabel);
+            if (item.current) {
+              a.className = 'active';
+              a.setAttribute('aria-current', 'page');
+            }
+            a.textContent = item.title;
+            li.appendChild(a);
+            dynamicList.appendChild(li);
+          });
+
+          // Show dynamic list
+          dynamicList.style.display = '';
+        };
+
+        // Load on first interaction with navigation toggle (optimization #7)
+        const toggleBtn = document.querySelector('.nav-toggle');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+        }
+
+        // Also load on requestIdleCallback if available (optimization #7)
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+        } else {
+          setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+        }
+      })();
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+    
+    
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+    <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+    
+    
+
+    <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+    <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+    <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0066cc;
+  --nav-bg: #f8f8f8;
+  --border-color: #e8e8e8;
+  --header-color: #424242;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cookie consent banner styles */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
+  overflow: hidden;
+}
+
+#cookie-consent-banner.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+    <title>
+      Reusing Older Computers in 2025 | My Info Just Under Glass
+    </title>
+    <meta
+      name="description"
+      content="Sometimes technology requires complimentary Technology"
+    />
+    
+    <meta name="version" content="Dec 18, 2025" />
+    
+
+    
+
+    <meta name="google-site-verification" content="googlece83719b3f856e56" />
+    <meta name="cache-version" content="20251217213321" />
+
+    <link rel="stylesheet" href="/assets/main.css?v=20251218073616" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2020)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript11 = false;
+      const html = document.documentElement;
+      try {
+        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
+        if (mod && typeof mod.testES11Features === 'function') {
+          try {
+            mod.testES11Features();
+            supportsEcmascript11 = true;
+          } catch (e) { console.error('ES11 test failed:', e); }
+        } else if (typeof window.testES11Features === 'function') {
+          try { window.testES11Features();
+            supportsEcmascript11 = true;
+           } catch (e) { console.error('ES11 test failed:', e); }
+        } else {
+          console.debug('ES11 test module loaded but `testES11Features` not found.');
+        }
+      } catch (err) {
+        console.debug('ES11 test module not present or failed to import:', err);
+      }
+      if (!supportsEcmascript11) {
+        html.classList.add('no-ES2020');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+    <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251218073616" defer crossorigin="anonymous"></script>
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="My Info Just Under Glass"
+      href="/feed.xml"
+    />
+    
+    
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
+    
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/favicon.ico"
+    />
+    
+
+    <meta name="description" content="Keeping your chips out of the wood chipper" />
+<meta property="og:title" content="Reusing Older Computers in 2025" />
+<meta property="og:description" content="Keeping your chips out of the wood chipper" />
+<meta property="og:url" content="https://www.mijug.net/2025/07/17/reusing-older-computers-in-2025/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/2025/07/17/reusing-older-computers-in-2025/" />
+
+
+    
+
+    
+
+    <script nonce="abc123">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20251217213321";
+</script>
+
+  
+  <script nonce="abc123">
+    window.MIJUG_DISABLE_PRINT = true;
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
+  </script>
+  
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <noscript>
+        <div class="legacy-browser-notice" role="alert">
+          <strong>No Commerce Available</strong>
+          <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+        </div>
+      </noscript>
+
+      <div class="wrapper">
+        <a
+          class="site-title"
+          rel="home"
+          href="/"
+        >
+          
+          <img
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321"
+            alt="My Info Just Under Glass"
+            width="50"
+            height="50"
+          />
+           My Info Just Under Glass
+        </a>
+
+        <!-- Mobile navigation toggle button -->
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
+          &nbsp;Menu
+        </button>
+
+        <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+        <nav
+          id="primary-navigation"
+          class="primary-nav js-enhanced-nav"
+          role="dialog"
+          aria-modal="true"
+          aria-hidden="true">
+
+          <!-- Full navigation for modern browsers -->
+          <div class="modern-nav-content">
+            <button class="nav-close" type="button" aria-label="Close navigation menu">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <ul role="list" id="nav-items-static">
+              <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
+              
+                
+                <li role="listitem">
+                  <a href="/blog/"
+                     
+                     aria-label="Navigate to Blog">
+                     Blog
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/about/"
+                     
+                     aria-label="Navigate to About">
+                     About
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/docs/getting-started/"
+                     
+                     aria-label="Navigate to Getting Started">
+                     Getting Started
+                  </a>
+                </li>
+                
+              
+                
+                <li role="listitem">
+                  <a href="/docs/welcome-mijug-workspace/"
+                     
+                     aria-label="Navigate to Workspace Overview">
+                     Workspace Overview
+                  </a>
+                </li>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </ul>
+            <!-- Dynamic navigation items load here via JavaScript -->
+            <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+          </div>
+        </nav>
+
+        <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper"><article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Reusing Older Computers in 2025</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-07-17T20:00:00-04:00" itemprop="datePublished">
+        Published Jul 17, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <time class="dt-modified" datetime="2025-12-18T07:33:50-05:00" itemprop="dateModified">
+        Updated Dec 18, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-author h-card" itemprop="name">Bob Kranson</span>
+      </span></p><p class="post-description">Keeping your chips out of the wood chipper</p><div class="post-tags"><a href="/tag/cpus" class="tag-link">#cpus</a><a href="/tag/gpus" class="tag-link">#gpus</a></div></header>
+
+  <div class="post-content e-content" itemprop="articleBody"><p>In the past, the type of computer you owned was largely determined by the silicon chips inside it. Mainframes, workstations, PCs, Macs, microcomputers, and minicomputers were all defined by their chipsets. Companies like IBM, Sun Microsystems, Intel, Hewlett-Packard, Texas Instruments, and Apple created hardware that was compatible with specific operating systems.</p>
+
+<h3 id="chips">Chips</h3>
+
+<p>Fast forward to 2025, and chip technology has advanced dramatically. Central processing units (CPUs) have become faster, with names like i5, i7, CoreDuo, and M1. Meanwhile, graphical processing units (GPUs), originally designed for gaming and rendering, are now essential for artificial intelligence (AI) applications. This rapid evolution has driven a relentless pace of change, particularly in security.</p>
+
+<h3 id="the-security-race">The Security Race</h3>
+
+<p>As computing power increases, so does the ability to crack passwords. Tasks that once required a single home computer can now be accomplished faster with rented cloud computers—or even multiple rented computers across cloud providers. This has necessitated the development of new security measures, such as the Trusted Platform Module (TPM) chip, which is a minimum requirement for Windows 11.</p>
+
+<h4 id="trusted-platform-module---tpm">Trusted Platform Module - TPM</h4>
+
+<p>Do you have a TPM chip in your current PC? Maybe. You’ll need to check via an internet connection and a Windows 10 update to find out. But why is a TPM chip so important? The answer lies in quantum computing. Quantum technology is on the horizon, promising to process data at speeds that could render traditional security measures obsolete. A task that might take thousands of computers days or years to complete could be done in seconds with quantum computing.</p>
+
+<h3 id="why-keep-your-old-computer">Why Keep Your Old Computer?</h3>
+
+<p>While new security requirements may render older computers unsuitable for sensitive tasks like banking or business, they can still serve a purpose. Many everyday activities—like playing music, viewing photos, or casual gaming—don’t require the latest security features. Repurposing your old computer for these non-sensitive tasks can provide significant value:</p>
+
+<ul>
+  <li><strong>Reduce Electronic Waste</strong>: Reusing your old computer delays the need to dispose of it, helping to reduce e-waste.</li>
+  <li><strong>Transition Gracefully</strong>: Use your old computer as a staging ground to offload, back up, and format data before moving to a new device.</li>
+  <li><strong>Extend Its Life</strong>: Repurpose your old investment for new uses:
+    <ul>
+      <li>Let grandkids play games on it.</li>
+      <li>Turn it into a garage PC for music and video.</li>
+      <li>Use it for anonymous internet browsing to reduce tracking and targeted ads on your primary devices.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Reusing older computers is not just about nostalgia—it’s a practical way to maximize your investment, reduce waste, and adapt to changing technology. While they may no longer meet the demands of modern security, these devices still have plenty of life left for everyday, non-sensitive tasks. So before you toss that old PC, consider how it might still serve you in 2025 and beyond.</p>
+</div><div class="post-categories">
+    <strong>Categories:</strong>&nbsp;<a href="/category/linux" class="category-link">linux</a></div><footer class="post-footer">
+    <div class="post-nav"><div class="prev-post">
+        <a rel="prev" href="/2025/07/02/welcome-to-mijug-dot-net/" class="prev-link"> ← Welcome to MIJUG.NET! </a>
+      </div><div class="next-post">
+        <a rel="next" href="/2025/07/29/documentation-guide/" class="next-link"> Documentation Guide - Navigate Our Knowledge Base → </a>
+      </div></div>
+  </footer>
+
+  <a class="u-url" rel="canonical" href="/2025/07/17/reusing-older-computers-in-2025/" hidden></a>
+</article>
+
+<style>
+  .post-meta-separator {
+    color: #666;
+  }
+
+  .post-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    color: #555;
+  }
+
+  .post-categories {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .category-link {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  .category-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .prev-link,
+  .next-link {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: 500;
+  }
+
+  .prev-link:hover,
+  .next-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-post {
+    text-align: right;
+  }
+</style>
+</div>
+      <div class="customad-container" id="adslot-1" data-ad-slot="12345678"></div>
+    </main>
+
+    <footer class="site-footer h-card">
+      <data class="u-url" href="/"></data>
+      <div class="wrapper">
+        <div class="footer-col-wrapper">
+          <div class="footer-col footer-col-1">
+            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/privacy-policy.html">Privacy Policy</a>
+          </div>
+          <div class="footer-col footer-col-2">
+            <a href="/contact/">Contact Us</a>
+          </div>
+          <div class="footer-col footer-col-3">
+            <p>
+              &copy; 2025
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
+                >Kranson Enterprises</a
+              ><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
+              <a href="/feed.xml"
+                >via RSS<svg class="svg-icon">
+                  <use
+                    xlink:href="/assets/minima-social-icons.svg#rss"
+                  ></use></svg>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+
+    
+    <script nonce="abc123">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'G-W1M1N0DCD4');
+    </script>
+
+    <script
+      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
+      crossorigin="anonymous"
+      async
+    ></script>
+    
+
+    <!-- Cookie consent system -->
+    <!-- %  include google-adsense.html % -->
+    <!-- % include cookie-consent.html % -->}
+    <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
+    <script nonce="abc123">
+      // Code block accessibility - ES2020 optimized
+      (() => {
+        'use strict';
+
+        const enhanceCodeBlocks = () => {
+          try {
+            // Use :not() to skip already enhanced blocks (performance)
+            const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([role])');
+            if (blocks.length === 0) return;
+
+            blocks.forEach((el) => {
+              const code = el.querySelector('pre code');
+              const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+              
+              // Extract language using optional chaining and nullish coalescing (ES2020)
+              const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+              const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+              // Batch attribute updates
+              el.setAttribute('role', 'img');
+              el.setAttribute('tabindex', '0');
+              el.setAttribute('aria-label', label);
+            });
+          } catch (e) {
+            console.warn('EnhanceCodeBlocks error', e);
+          }
+        };
+
+        // Modern API check (ES2020)
+        document.readyState === 'loading'
+          ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+          : enhanceCodeBlocks();
+      })();
+    </script>
+
+    <script nonce="abc123">
+      // Navigation toggle functionality - ES2020 optimized
+      (() => {
+        'use strict';
+
+        // Cache DOM elements (ES2020 const, destructuring)
+        const elements = {
+          toggle: document.querySelector('.nav-toggle'),
+          close: document.querySelector('.nav-close'),
+          nav: document.getElementById('primary-navigation'),
+          status: document.getElementById('menu-status'),
+          body: document.body
+        };
+
+        // Early return if required elements missing (optional chaining ES2020)
+        if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+          return;
+        }
+
+        // Initialize navigation as overlay
+        elements.nav.classList.add('nav-overlay');
+
+        // Toggle navigation with modern API (arrow function ES2020)
+        const toggleNavigation = () => {
+          const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+          const action = isExpanded ? 'remove' : 'add';
+          
+          // Batch DOM updates for performance
+          elements.nav.classList[action]('nav-visible');
+          elements.body.classList[action]('nav-open');
+          elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+          elements.nav.setAttribute('aria-hidden', String(isExpanded));
+          elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+        };
+
+        // Event delegation with passive listeners for scroll performance
+        const handleClick = (e) => {
+          // Check if toggle button or close button clicked
+          if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
+            e.preventDefault();
+            toggleNavigation();
+            return;
+          }
+
+          // Close on click outside (only when open)
+          if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+            if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+              toggleNavigation();
+            }
+          }
+        };
+
+        // Keyboard navigation (ES2020 nullish coalescing ??)
+        const handleKeydown = (e) => {
+          if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            elements.toggle.focus();
+          }
+        };
+
+        // Single event listener with delegation (better performance)
+        document.addEventListener('click', handleClick, { passive: false });
+        document.addEventListener('keydown', handleKeydown, { passive: true });
+      })();
+    </script>
+
+    <!-- Lazy-load dynamic navigation items (optimization #7) -->
+    <script nonce="abc123">
+      (() => {
+        'use strict';
+
+        // Load remaining navigation items on first interaction (optimization #7)
+        const loadDynamicNav = () => {
+          const staticList = document.getElementById('nav-items-static');
+          const dynamicList = document.getElementById('nav-items-dynamic');
+          
+          if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+          // All navigation items embedded as data (generated at build time)
+          const allItems = [
+            {
+              title: "FrontMatter CMS Usage",
+              permalink: "/docs/frontmatter-cms/",
+              ariaLabel: "Navigate to FrontMatter CMS Usage",
+              current: false
+            },{
+              title: "Accessibility Testing Configuration",
+              permalink: "/docs/accessibility-testing/",
+              ariaLabel: "Navigate to Accessibility Testing Configuration",
+              current: false
+            },{
+              title: "Browser Management for Testing",
+              permalink: "/docs/browser-management/",
+              ariaLabel: "Navigate to Browser Management for Testing",
+              current: false
+            },{
+              title: "Browser Compatibility Testing",
+              permalink: "/docs/browser-compatibility-testing/",
+              ariaLabel: "Navigate to Browser Compatibility Testing",
+              current: false
+            },{
+              title: "Liquid Tags Examples",
+              permalink: "/docs/liquid-tags-examples/",
+              ariaLabel: "Navigate to Liquid Tags Examples",
+              current: false
+            },{
+              title: "Tags and Categories System Guide",
+              permalink: "/docs/tags-and-categories-guide/",
+              ariaLabel: "Navigate to Tags and Categories System Guide",
+              current: false
+            },{
+              title: "Performance Optimization Guide",
+              permalink: "/docs/performance-optimization/",
+              ariaLabel: "Navigate to Performance Optimization Guide",
+              current: false
+            },{
+              title: "Testing Performance and Development Evolution",
+              permalink: "/docs/testing-performance-evolution/",
+              ariaLabel: "Navigate to Testing Performance and Development Evolution",
+              current: false
+            },{
+              title: "Cache Management Strategies",
+              permalink: "/docs/cache-management/",
+              ariaLabel: "Navigate to Cache Management Strategies",
+              current: false
+            },{
+              title: "Mermaid Diagram Configuration Guide",
+              permalink: "/docs/mermaid-configuration-guide/",
+              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
+              current: false
+            },{
+              title: "Mermaid Quick Start",
+              permalink: "/docs/mermaid-quick-start/",
+              ariaLabel: "Navigate to Mermaid Quick Start",
+              current: false
+            },{
+              title: "Mermaid Diagram Examples",
+              permalink: "/docs/mermaid-examples/",
+              ariaLabel: "Navigate to Mermaid Diagram Examples",
+              current: false
+            },{
+              title: "Mermaid Diagrams Sample",
+              permalink: "/docs/mermaid-diagrams-sample/",
+              ariaLabel: "Navigate to Mermaid Diagrams Sample",
+              current: false
+            },{
+              title: "Mermaid Diagrams Test Runner",
+              permalink: "/docs/mermaid-test-runner/",
+              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
+              current: false
+            },{
+              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
+              permalink: "/docs/rel-attribute-guide/",
+              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+              current: false
+            },{
+              title: "Exploring the Limitations of Gitea and Ruby",
+              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
+              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
+              current: false
+            },
+          ];
+
+          // Render dynamic items (optimization #7: deferred rendering)
+          allItems.forEach((item) => {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'listitem');
+            const a = document.createElement('a');
+            a.href = item.permalink;
+            a.setAttribute('aria-label', item.ariaLabel);
+            if (item.current) {
+              a.className = 'active';
+              a.setAttribute('aria-current', 'page');
+            }
+            a.textContent = item.title;
+            li.appendChild(a);
+            dynamicList.appendChild(li);
+          });
+
+          // Show dynamic list
+          dynamicList.style.display = '';
+        };
+
+        // Load on first interaction with navigation toggle (optimization #7)
+        const toggleBtn = document.querySelector('.nav-toggle');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+        }
+
+        // Also load on requestIdleCallback if available (optimization #7)
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+        } else {
+          setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+        }
+      })();
+    </script>
+
+  </body>
+</html>

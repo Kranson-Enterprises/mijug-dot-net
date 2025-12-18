@@ -92,7 +92,7 @@ DisallowAITraining: /
 # by all AI crawlers.
 User-Agent: *
 DisallowAITraining: /
-Content-Usage: ai=n
+# Content-Usage: ai=n
 Allow: /
 
 # Uncomment the following lines to allow specific services
