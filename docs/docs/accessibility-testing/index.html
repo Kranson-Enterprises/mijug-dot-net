@@ -554,10 +554,10 @@ img {
     </title>
     <meta
       name="description"
-      content="This project includes comprehensive accessibility testing using @axe-core/playwright to ensure WCAG 2.1 AA compliance."
+      content="This project includes comprehensive accessibility testing using @axe-core/playwright to ensure WCAG 2.2 and WCAG 2.1 AA compliance across multiple test suites."
     />
     
-    <meta name="version" content="Oct 09, 2025" />
+    <meta name="version" content="Dec 18, 2025" />
     
 
     
@@ -569,9 +569,9 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251217213321" />
+    <meta name="cache-version" content="20251218140225" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20251218073616" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20251218141828" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -638,7 +638,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251218073616" defer crossorigin="anonymous"></script>
+    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251218141828" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -648,8 +648,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
     
     <link
       rel="shortcut icon"
@@ -658,9 +658,9 @@ img {
     />
     
 
-    <meta name="description" content="Comprehensive accessibility testing setup with WCAG 2.1 AA compliance using axe-core and Playwright" />
+    <meta name="description" content="Comprehensive accessibility testing setup with WCAG 2.2 and WCAG 2.1 AA compliance using axe-core and Playwright" />
 <meta property="og:title" content="Accessibility Testing Configuration" />
-<meta property="og:description" content="Comprehensive accessibility testing setup with WCAG 2.1 AA compliance using axe-core and Playwright" />
+<meta property="og:description" content="Comprehensive accessibility testing setup with WCAG 2.2 and WCAG 2.1 AA compliance using axe-core and Playwright" />
 <meta property="og:url" content="https://www.mijug.net/docs/accessibility-testing/" />
 <meta property="og:site_name" content="My Info Just Under Glass" />
 <meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/accessibility-testing/" />
@@ -674,7 +674,7 @@ img {
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Accessibility Testing Configuration",
-        "description": "Comprehensive accessibility testing setup with WCAG 2.1 AA compliance using axe-core and Playwright",
+        "description": "Comprehensive accessibility testing setup with WCAG 2.2 and WCAG 2.1 AA compliance using axe-core and Playwright",
         "url": "https://www.mijug.net/docs/accessibility-testing/",
         "position": 4,
         "isPartOf": {
@@ -688,7 +688,7 @@ img {
 
     <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251217213321";
+  window.MIJUG.cacheVersion = "20251218140225";
 </script>
 
   
@@ -716,7 +716,7 @@ img {
       <div class="wrapper">
         <a class="site-title" rel="home" href="/">
           
-          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20251217213321" alt="My Info Just Under Glass" width="50" height="50">
+          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" alt="My Info Just Under Glass" width="50" height="50">
            My Info Just Under Glass
         </a>
 
@@ -819,7 +819,7 @@ img {
   </header>
 
   <div class="post-content">
-<p>This project includes comprehensive accessibility testing using <code class="language-plaintext highlighter-rouge">@axe-core/playwright</code> to ensure WCAG 2.1 AA compliance.</p>
+<p>This project includes comprehensive accessibility testing using <code class="language-plaintext highlighter-rouge">@axe-core/playwright</code> to ensure WCAG 2.2 and WCAG 2.1 AA compliance across multiple test suites.</p>
 
 <h2 id="overview">Overview</h2>
 
@@ -845,25 +845,33 @@ img {
   <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
   <li>
 <a href="#test-categories" id="markdown-toc-test-categories">Test Categories</a>    <ul>
-      <li><a href="#1-automated-accessibility-audits-a11y-tag" id="markdown-toc-1-automated-accessibility-audits-a11y-tag">1. Automated Accessibility Audits (<code class="language-plaintext highlighter-rouge">@a11y</code> tag)</a></li>
-      <li><a href="#2-manual-accessibility-tests" id="markdown-toc-2-manual-accessibility-tests">2. Manual Accessibility Tests</a></li>
-      <li><a href="#3-mobile-accessibility" id="markdown-toc-3-mobile-accessibility">3. Mobile Accessibility</a></li>
+      <li><a href="#1-wcag-22-responsive-accessibility-tests-a11y-wcag22-tag" id="markdown-toc-1-wcag-22-responsive-accessibility-tests-a11y-wcag22-tag">1. WCAG 2.2 Responsive Accessibility Tests (<code class="language-plaintext highlighter-rouge">@a11y-wcag2.2</code> tag)</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#wcag-22-compliance-framework" id="markdown-toc-wcag-22-compliance-framework">WCAG 2.2 Compliance Framework</a>    <ul>
+      <li>
+<a href="#wcag-22-key-success-criteria-tested" id="markdown-toc-wcag-22-key-success-criteria-tested">WCAG 2.2 Key Success Criteria Tested</a>        <ul>
+          <li><a href="#principle-1-perceivable" id="markdown-toc-principle-1-perceivable">Principle 1: Perceivable</a></li>
+          <li><a href="#principle-2-operable" id="markdown-toc-principle-2-operable">Principle 2: Operable</a></li>
+          <li><a href="#principle-3-understandable" id="markdown-toc-principle-3-understandable">Principle 3: Understandable</a></li>
+          <li><a href="#principle-4-robust" id="markdown-toc-principle-4-robust">Principle 4: Robust</a></li>
+        </ul>
+      </li>
+      <li><a href="#tested-wcag-21-level-aa-features" id="markdown-toc-tested-wcag-21-level-aa-features">Tested WCAG 2.1 Level AA Features</a></li>
+      <li><a href="#2-responsive-viewport-testing" id="markdown-toc-2-responsive-viewport-testing">2. Responsive Viewport Testing</a></li>
     </ul>
   </li>
   <li>
 <a href="#wcag-21-compliance" id="markdown-toc-wcag-21-compliance">WCAG 2.1 Compliance</a>    <ul>
       <li><a href="#level-a-requirements" id="markdown-toc-level-a-requirements">Level A Requirements</a></li>
       <li><a href="#level-aa-requirements" id="markdown-toc-level-aa-requirements">Level AA Requirements</a></li>
-    </ul>
-  </li>
-  <li>
-<a href="#test-structure" id="markdown-toc-test-structure">Test Structure</a>    <ul>
-      <li><a href="#accessibility-test-files" id="markdown-toc-accessibility-test-files">Accessibility Test Files</a></li>
       <li>
 <a href="#test-patterns" id="markdown-toc-test-patterns">Test Patterns</a>        <ul>
-          <li><a href="#basic-accessibility-audit" id="markdown-toc-basic-accessibility-audit">Basic Accessibility Audit</a></li>
-          <li><a href="#keyboard-navigation-test" id="markdown-toc-keyboard-navigation-test">Keyboard Navigation Test</a></li>
-          <li><a href="#specific-rule-testing" id="markdown-toc-specific-rule-testing">Specific Rule Testing</a></li>
+          <li><a href="#wcag-22-comprehensive-audit" id="markdown-toc-wcag-22-comprehensive-audit">WCAG 2.2 Comprehensive Audit</a></li>
+          <li><a href="#code-block-accessibility-testing" id="markdown-toc-code-block-accessibility-testing">Code Block Accessibility Testing</a></li>
+          <li><a href="#axe-core-accessibility-audit" id="markdown-toc-axe-core-accessibility-audit">Axe-core Accessibility Audit</a></li>
+          <li><a href="#mobile-accessibility-testing" id="markdown-toc-mobile-accessibility-testing">Mobile Accessibility Testing</a></li>
         </ul>
       </li>
     </ul>
@@ -886,17 +894,29 @@ img {
   <li>
 <a href="#common-issues-and-solutions" id="markdown-toc-common-issues-and-solutions">Common Issues and Solutions</a>    <ul>
       <li><a href="#1-color-contrast" id="markdown-toc-1-color-contrast">1. Color Contrast</a></li>
-      <li><a href="#2-missing-alt-text" id="markdown-toc-2-missing-alt-text">2. Missing Alt Text</a></li>
-      <li><a href="#3-keyboard-navigation-1" id="markdown-toc-3-keyboard-navigation-1">3. Keyboard Navigation</a></li>
-      <li><a href="#4-heading-hierarchy" id="markdown-toc-4-heading-hierarchy">4. Heading Hierarchy</a></li>
+      <li><a href="#quick-start-commands" id="markdown-toc-quick-start-commands">Quick Start Commands</a></li>
+      <li><a href="#test-execution-and-performance" id="markdown-toc-test-execution-and-performance">Test Execution and Performance</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#tools-and-resources" id="markdown-toc-tools-and-resources">Tools and Resources</a>    <ul>
+      <li><a href="#testing-tools" id="markdown-toc-testing-tools">Testing Tools</a></li>
+      <li><a href="#browser-extensions" id="markdown-toc-browser-extensions">Browser Extensions</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#test-coverage-summary" id="markdown-toc-test-coverage-summary">Test Coverage Summary</a>    <ul>
+      <li><a href="#automated-testing-coverage" id="markdown-toc-automated-testing-coverage">Automated Testing Coverage</a></li>
+      <li><a href="#known-limitations" id="markdown-toc-known-limitations">Known Limitations</a></li>
+      <li><a href="#accessibility-learning-resources" id="markdown-toc-accessibility-learning-resources">Accessibility Learning Resources</a></li>
       <li><a href="#5-form-labels" id="markdown-toc-5-form-labels">5. Form Labels</a></li>
     </ul>
   </li>
   <li><a href="#integration-with-cicd" id="markdown-toc-integration-with-cicd">Integration with CI/CD</a></li>
   <li>
-<a href="#tools-and-resources" id="markdown-toc-tools-and-resources">Tools and Resources</a>    <ul>
-      <li><a href="#testing-tools" id="markdown-toc-testing-tools">Testing Tools</a></li>
-      <li><a href="#browser-extensions" id="markdown-toc-browser-extensions">Browser Extensions</a></li>
+<a href="#tools-and-resources-1" id="markdown-toc-tools-and-resources-1">Tools and Resources</a>    <ul>
+      <li><a href="#testing-tools-1" id="markdown-toc-testing-tools-1">Testing Tools</a></li>
+      <li><a href="#browser-extensions-1" id="markdown-toc-browser-extensions-1">Browser Extensions</a></li>
       <li><a href="#guidelines-and-standards" id="markdown-toc-guidelines-and-standards">Guidelines and Standards</a></li>
     </ul>
   </li>
@@ -912,34 +932,132 @@ img {
 
 <h2 id="test-categories">Test Categories</h2>
 
-<h3 id="1-automated-accessibility-audits-a11y-tag">1. Automated Accessibility Audits (<code class="language-plaintext highlighter-rouge">@a11y</code> tag)</h3>
+<h3 id="1-wcag-22-responsive-accessibility-tests-a11y-wcag22-tag">1. WCAG 2.2 Responsive Accessibility Tests (<code class="language-plaintext highlighter-rouge">@a11y-wcag2.2</code> tag)</h3>
 
-<p>Run automated accessibility tests:</p>
+<p><strong>File</strong>: <code class="language-plaintext highlighter-rouge">tests/e2e/accessibility.spec.ts</code></p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run <span class="nb">test</span>:a11y         <span class="c"># Run all accessibility tests</span>
-npm run <span class="nb">test</span>:a11y:headed  <span class="c"># Run with browser UI</span>
-</code></pre></div></div>
-
-<h3 id="2-manual-accessibility-tests">2. Manual Accessibility Tests</h3>
-
-<p>The following manual accessibility checks are included:</p>
+<p>Complete WCAG 2.2 compliance testing across all viewports (Desktop, Tablet, Mobile) organized by the four accessibility principles:</p>
 
 <ul>
-  <li>Keyboard navigation flow</li>
-  <li>Focus management</li>
-  <li>Screen reader compatibility</li>
-  <li>Color contrast verification</li>
-  <li>Semantic markup validation</li>
+  <li>
+<strong>Principle 1: Perceivable</strong> - Information and interface components must be presentable to users
+    <ul>
+      <li>1.1.1 Non-text Content</li>
+      <li>1.3.1 Info and Relationships (heading hierarchy, landmarks)</li>
+      <li>1.4.3 Color Contrast (AA level)</li>
+    </ul>
+  </li>
+  <li>
+<strong>Principle 2: Operable</strong> - Interface components and navigation must be operable
+    <ul>
+      <li>2.1.1 Keyboard Navigation (all functionality available via keyboard)</li>
+      <li>2.4.4 Link Purpose (descriptive link text)</li>
+    </ul>
+  </li>
+  <li>
+<strong>Principle 3: Understandable</strong> - Information and interface operation must be understandable
+    <ul>
+      <li>Text clarity and language identification</li>
+    </ul>
+  </li>
+  <li>
+<strong>Principle 4: Robust</strong> - Content must work with assistive technologies
+    <ul>
+      <li>Proper semantic HTML and ARIA implementation</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="3-mobile-accessibility">3. Mobile Accessibility</h3>
+<p>Run comprehensive WCAG 2.2 tests:</p>
 
-<p>Mobile-specific accessibility tests include:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run <span class="nb">test</span>:a11y                       <span class="c"># Run all accessibility tests</span>
+npm run <span class="nb">test</span>:a11y:headed                <span class="c"># Run with browser UI</span>
+npx playwright <span class="nb">test</span> <span class="nt">--grep</span> @a11y-wcag2.2  <span class="c"># Run only WCAG 2.2 specific tests</span>
+</code></pre></div></div>
+
+<h2 id="wcag-22-compliance-framework">WCAG 2.2 Compliance Framework</h2>
+
+<p>This project implements testing for <strong>WCAG 2.2 Level AA</strong> compliance with strong emphasis on accessibility principles.</p>
+
+<h3 id="wcag-22-key-success-criteria-tested">WCAG 2.2 Key Success Criteria Tested</h3>
+
+<h4 id="principle-1-perceivable">Principle 1: Perceivable</h4>
 
 <ul>
-  <li>Touch target sizing (minimum 44px)</li>
-  <li>Mobile navigation accessibility</li>
-  <li>Responsive design compliance</li>
+  <li>
+<strong>1.1.1 Non-text Content</strong> - All images and graphics have meaningful alt text</li>
+  <li>
+<strong>1.3.1 Info and Relationships</strong> - Proper heading hierarchy (h1→h2→h3), semantic landmarks, form label associations</li>
+  <li>
+<strong>1.4.3 Color Contrast</strong> - 4.5:1 contrast for normal text, 3:1 for large text (AA level)</li>
+</ul>
+
+<h4 id="principle-2-operable">Principle 2: Operable</h4>
+
+<ul>
+  <li>
+<strong>2.1.1 Keyboard</strong> - All functionality available via keyboard navigation</li>
+  <li>
+<strong>2.1.2 No Keyboard Trap</strong> - Users can navigate away from any component using only keyboard</li>
+  <li>
+<strong>2.4.4 Link Purpose</strong> - Link purpose visible from link text alone or context</li>
+  <li>
+<strong>2.5.5 Target Size</strong> - Touch targets minimum 44×44 CSS pixels (mobile)</li>
+</ul>
+
+<h4 id="principle-3-understandable">Principle 3: Understandable</h4>
+
+<ul>
+  <li>
+<strong>3.1.1 Language of Page</strong> - Page language identified with <code class="language-plaintext highlighter-rouge">lang</code> attribute</li>
+  <li>
+<strong>3.2.4 Consistent Identification</strong> - UI components with same function consistently labeled</li>
+  <li>
+<strong>3.3.2 Labels or Instructions</strong> - Form inputs properly associated with labels or aria-labels</li>
+</ul>
+
+<h4 id="principle-4-robust">Principle 4: Robust</h4>
+
+<ul>
+  <li>
+<strong>4.1.2 Name, Role, Value</strong> - All UI components expose accessible name, role, value via DOM or ARIA</li>
+  <li>
+<strong>4.1.3 Status Messages</strong> - Status messages announced to assistive technology</li>
+</ul>
+
+<h3 id="tested-wcag-21-level-aa-features">Tested WCAG 2.1 Level AA Features</h3>
+
+<p>The project also validates WCAG 2.1 AA requirements which are largely compatible with WCAG 2.2:</p>
+
+<ul>
+  <li>✅ Color contrast ratios (4.5:1 normal, 3:1 large text)</li>
+  <li>✅ Keyboard accessibility and focus management</li>
+  <li>✅ Semantic structure and heading hierarchy</li>
+  <li>✅ Form label associations</li>
+  <li>✅ Link purpose from context</li>
+  <li>✅ Focus visibility indicator</li>
+</ul>
+
+<h3 id="2-responsive-viewport-testing">2. Responsive Viewport Testing</h3>
+
+<p><strong>File</strong>: <code class="language-plaintext highlighter-rouge">tests/e2e/accessibility.spec.ts</code> (parameterized suite)</p>
+
+<p>Accessibility validation across multiple viewports:</p>
+
+<ul>
+  <li>
+<strong>Desktop</strong>: 1280×720px - Standard desktop layout</li>
+  <li>
+<strong>Tablet</strong>: 768×1024px - Responsive tablet breakpoint</li>
+  <li>
+<strong>Mobile</strong>: 375×667px - Mobile viewport with additional tests:
+    <ul>
+      <li>Touch target sizing (minimum 44×44px - WCAG 2.5.5)</li>
+      <li>Mobile form accessibility</li>
+      <li>Responsive viewport and meta tag validation</li>
+      <li>Browser-optimized accessibility checks (Chromium, Firefox, WebKit)</li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="wcag-21-compliance">WCAG 2.1 Compliance</h2>
@@ -975,49 +1093,76 @@ npm run <span class="nb">test</span>:a11y:headed  <span class="c"># Run with bro
   <li>✅ Navigation mechanisms</li>
   <li>✅ Headings and labels</li>
   <li>✅ Focus visible</li>
-  <li>✅ Language of parts</li>
+  <li>✅ Primary Accessibility Test Files</li>
 </ul>
 
-<h2 id="test-structure">Test Structure</h2>
-
-<h3 id="accessibility-test-files">Accessibility Test Files</h3>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>e2e/
-├── accessibility.spec.ts               # Main accessibility tests
-├── documentation-accessibility.spec.ts # Documentation-specific tests
-├── homepage.spec.ts                    # Includes accessibility checks
-├── documentation.spec.ts               # Includes accessibility checks
-└── navigation.spec.ts                  # Includes accessibility checks
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tests/e2e/
+├── accessibility.spec.ts                   # WCAG 2.2 responsive suite (563 lines)
+│   ├── Parameterized across Desktop (1280×720), Tablet (768×1024), Mobile (375×667)
+│   ├── WCAG Principle 1: Perceivable (alt text, heading hierarchy, color contrast)
+│   ├── WCAG Principle 2: Operable (keyboard nav, link purpose, touch targets)
+│   ├── WCAG Principle 3: Understandable (language, labels)
+│   ├── WCAG Principle 4: Robust (HTML parsing, ARIA)
+│   └── Mobile-specific: Touch targets, forms, responsive viewport
+├── code-block-accessibility.spec.ts        # Code block specific tests (453 lines)
+│   ├── WCAG 1.3.1 - ARIA Attributes &amp; Tabindex
+│   ├── WCAG 2.1.1 - Keyboard Navigation
+│   ├── axe-core Validation
+│   └── Multi-page testing (20 documentation pages)
 </code></pre></div></div>
 
 <h3 id="test-patterns">Test Patterns</h3>
 
-<h4 id="basic-accessibility-audit">Basic Accessibility Audit</h4>
+<h4 id="wcag-22-comprehensive-audit">WCAG 2.2 Comprehensive Audit</h4>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">should pass accessibility audit @a11y</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">);</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">1.3.1 Info and Relationships - Heading hierarchy and landmarks</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Check heading hierarchy (WCAG 1.3.1)</span>
+  <span class="k">await</span> <span class="nf">checkHeadingHierarchy</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">accessibilityScanResults</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nc">AxeBuilder</span><span class="p">({</span> <span class="nx">page</span> <span class="p">}).</span><span class="nf">withTags</span><span class="p">([</span><span class="dl">"</span><span class="s2">wcag2a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">wcag2aa</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">wcag21aa</span><span class="dl">"</span><span class="p">]).</span><span class="nf">analyze</span><span class="p">();</span>
+  <span class="c1">// Check for proper landmarks (WCAG 1.3.1)</span>
+  <span class="k">await</span> <span class="nf">checkLandmarks</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
 
-  <span class="nf">expect</span><span class="p">(</span><span class="nx">accessibilityScanResults</span><span class="p">.</span><span class="nx">violations</span><span class="p">).</span><span class="nf">toEqual</span><span class="p">([]);</span>
+  <span class="c1">// Check document structure and language (WCAG 3.1.1)</span>
+  <span class="k">await</span> <span class="nf">checkDocumentStructure</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
-<h4 id="keyboard-navigation-test">Keyboard Navigation Test</h4>
+<h4 id="code-block-accessibility-testing">Code Block Accessibility Testing</h4>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">should be keyboard accessible @a11y</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">);</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">WCAG 1.3.1 - code blocks have proper ARIA attributes and role</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">browserName</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">codeBlocks</span> <span class="o">=</span> <span class="nx">globalPage</span><span class="p">.</span><span class="nf">locator</span><span class="p">(</span><span class="dl">'</span><span class="s1">.highlight[role="img"]</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">ariaLabel</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">codeBlocks</span><span class="p">.</span><span class="nf">first</span><span class="p">().</span><span class="nf">getAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-label</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nf">expect</span><span class="p">(</span><span class="nx">ariaLabel</span><span class="p">).</span><span class="nf">toMatch</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">Cc</span><span class="se">]</span><span class="sr">ode/i</span><span class="p">);</span>
+<span class="p">});</span>
 
-  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">keyboard</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="dl">"</span><span class="s2">Tab</span><span class="dl">"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">focusedElement</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nf">evaluate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">activeElement</span><span class="p">?.</span><span class="nx">tagName</span><span class="p">);</span>
-  <span class="nf">expect</span><span class="p">([</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">BUTTON</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">INPUT</span><span class="dl">"</span><span class="p">]).</span><span class="nf">toContain</span><span class="p">(</span><span class="nx">focusedElement</span><span class="p">);</span>
+<span class="nf">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">WCAG 2.1.1 - code blocks are keyboard accessible and focusable</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">browserName</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Tab to code block</span>
+  <span class="k">await</span> <span class="nx">globalPage</span><span class="p">.</span><span class="nx">keyboard</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="dl">"</span><span class="s2">Tab</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">focused</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">globalPage</span><span class="p">.</span><span class="nf">evaluate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">activeElement</span><span class="p">?.</span><span class="nf">getAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">role</span><span class="dl">"</span><span class="p">));</span>
+  <span class="nf">expect</span><span class="p">(</span><span class="nx">focused</span><span class="p">).</span><span class="nf">toBe</span><span class="p">(</span><span class="dl">"</span><span class="s2">img</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
-<h4 id="specific-rule-testing">Specific Rule Testing</h4>
+<h4 id="axe-core-accessibility-audit">Axe-core Accessibility Audit</h4>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">should have proper color contrast @a11y</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">);</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">code blocks pass axe accessibility validation</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">browserName</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nc">AxeBuilder</span><span class="p">({</span> <span class="nx">page</span> <span class="p">}).</span><span class="nf">withTags</span><span class="p">([</span><span class="dl">"</span><span class="s2">wcag2a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">wcag2aa</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">wcag21aa</span><span class="dl">"</span><span class="p">]).</span><span class="nf">analyze</span><span class="p">();</span>
+
+  <span class="nf">expect</span><span class="p">(</span><span class="nx">results</span><span class="p">.</span><span class="nx">violations</span><span class="p">).</span><span class="nf">toEqual</span><span class="p">([]);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h4 id="mobile-accessibility-testing">Mobile Accessibility Testing</h4>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mobile elements have adequate touch targets (WCAG 2.5.5)</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nf">setViewportSize</span><span class="p">({</span> <span class="na">width</span><span class="p">:</span> <span class="mi">375</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">667</span> <span class="p">});</span> <span class="c1">// iPhone SE</span>
+
+  <span class="kd">const</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nf">locator</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="k">await</span> <span class="nx">buttons</span><span class="p">.</span><span class="nf">count</span><span class="p">());</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">buttons</span><span class="p">.</span><span class="nf">nth</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nf">boundingBox</span><span class="p">();</span>
+    <span class="nf">expect</span><span class="p">(</span><span class="nx">box</span><span class="p">?.</span><span class="nx">width</span><span class="p">).</span><span class="nf">toBeGreaterThanOrEqual</span><span class="p">(</span><span class="mi">44</span><span class="p">);</span>
+    <span class="nf">expect</span><span class="p">(</span><span class="nx">box</span><span class="p">?.</span><span class="nx">height</span><span class="p">).</span><span class="nf">toBeGreaterThanOrEqual</span><span class="p">(</span><span class="mi">44</span><span class="p">);</span>
+  <span class="p">}</span>
 
   <span class="kd">const</span> <span class="nx">accessibilityScanResults</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nc">AxeBuilder</span><span class="p">({</span> <span class="nx">page</span> <span class="p">}).</span><span class="nf">withRules</span><span class="p">([</span><span class="dl">"</span><span class="s2">color-contrast</span><span class="dl">"</span><span class="p">]).</span><span class="nf">analyze</span><span class="p">();</span>
 
@@ -1090,23 +1235,130 @@ npm run <span class="nb">test</span>:a11y:headed  <span class="c"># Run with bro
 
 <h3 id="1-color-contrast">1. Color Contrast</h3>
 
-<p><strong>Issue</strong>: Text doesn’t meet 4.5:1 contrast ratio
-<strong>Solution</strong>: Use darker text colors or lighter backgrounds</p>
+<p>Running Accessibility Tests</p>
 
-<h3 id="2-missing-alt-text">2. Missing Alt Text</h3>
+<h3 id="quick-start-commands">Quick Start Commands</h3>
 
-<p><strong>Issue</strong>: Images without alt attributes
-<strong>Solution</strong>: Add descriptive alt text or use <code class="language-plaintext highlighter-rouge">alt=""</code> for decorative images</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run all accessibility tests (WCAG 2.2 + code blocks + mobile)</span>
+npm run <span class="nb">test</span>:a11y                   <span class="c"># All @a11y tagged tests</span>
 
-<h3 id="3-keyboard-navigation-1">3. Keyboard Navigation</h3>
+<span class="c"># Run specific test suites</span>
+npx playwright <span class="nb">test</span> <span class="nt">--grep</span> @WCAG22-a11y                          <span class="c"># WCAG 2.2 comprehensive</span>
+npx playwright <span class="nb">test</span> <span class="nt">--grep</span> @a11y-code-blocks                      <span class="c"># Code block specific</span>
+npx playwright <span class="nb">test</span> <span class="nt">--grep</span> @WCAG22-a11y-mobile                    <span class="c"># Mobile accessibility</span>
 
-<p><strong>Issue</strong>: Elements not accessible via keyboard
-<strong>Solution</strong>: Ensure <code class="language-plaintext highlighter-rouge">tabindex</code> is properly set and add keyboard event handlers</p>
+<span class="c"># Code block testing</span>
+npx playwright <span class="nb">test </span>code-block-accessibility.spec.ts <span class="nt">--project</span><span class="o">=</span>chromium
+<span class="nv">TEST_ALL_CODE_PAGES</span><span class="o">=</span><span class="nb">true </span>npx playwright <span class="nb">test </span>code-block-accessibility.spec.ts  <span class="c"># All 20 pages</span>
 
-<h3 id="4-heading-hierarchy">4. Heading Hierarchy</h3>
+<span class="c"># With visual browser</span>
+npm run <span class="nb">test</span>:a11y:headed            <span class="c"># Open browser UI for debugging</span>
+</code></pre></div></div>
 
-<p><strong>Issue</strong>: Skipped heading levels (h1 → h3)
-<strong>Solution</strong>: Use proper heading sequence (h1 → h2 → h3)</p>
+<h3 id="test-execution-and-performance">Test Execution and Performance</h3>
+
+<ul>
+  <li>
+<strong>WCAG 2.2 Comprehensive</strong> (~5-10 seconds): 4 browser contexts, 15+ specific criteria</li>
+  <li>
+<strong>Code Block Tests</strong> (~2-3 seconds default): Default page only</li>
+  <li>
+<strong>Code Block All Pages</strong> (~16-32 seconds): 20 documentation pages (sequential per browser)</li>
+  <li>
+<strong>Mobile Accessibility</strong> (~8-15 seconds): Multiple viewport sizes and touch target validation</li>
+</ul>
+
+<h2 id="tools-and-resources">Tools and Resources</h2>
+
+<h3 id="testing-tools">Testing Tools</h3>
+
+<ul>
+  <li>
+<a href="https://www.w3.org/WAI/WCAG22/quickref/" rel="external noopener noreferrer" target="_blank">WCAG 2.2 Quick Reference</a>: WCAG 2.2 official guidelines and success criteria</li>
+  <li>
+<a href="https://github.com/dequelabs/axe-core" rel="external noopener noreferrer" target="_blank">axe-core</a>: Accessibility testing engine (WCAG 2.2 AA compliant)</li>
+  <li>
+<a href="https://playwright.dev/" rel="external noopener noreferrer" target="_blank">Playwright</a>: Browser automation framework (v1.47+)</li>
+  <li>
+<a href="https://github.com/dequelabs/axe-core-npm/tree/develop/packages/playwright" rel="external noopener noreferrer" target="_blank">@axe-core/playwright</a>: Playwright integration for axe-core</li>
+</ul>
+
+<h3 id="browser-extensions">Browser Extensions</h3>
+
+<ul>
+  <li>
+<a href="https://www.deque.com/axe/devtools/" rel="external noopener noreferrer" target="_blank">axe DevTools</a>: Browser extension for accessibility testing</li>
+  <li>
+<a href="https://wave.webaim.org/" rel="external noopener noreferrer" target="_blank">WAVE</a>: Web accessibility evaluation tool</li>
+  <li>
+<a href="https://developers.google.com/web/tools/lighthouse" rel="external noopener noreferrer" target="_blank">Lighthouse</a>: Includes WCAG 2.1 AA accessibility audits</li>
+</ul>
+
+<h2 id="test-coverage-summary">Test Coverage Summary</h2>
+
+<h3 id="automated-testing-coverage">Automated Testing Coverage</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Suite</th>
+      <th>File</th>
+      <th>WCAG Criteria</th>
+      <th>Browser Support</th>
+      <th>Viewports Tested</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>WCAG 2.2 Responsive</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">accessibility.spec.ts</code></td>
+      <td>1.1.1, 1.3.1, 1.4.3, 2.1.1, 2.4.4, 2.5.5, 3.1.1, 4.1.1</td>
+      <td>All (Chromium, Firefox, WebKit)</td>
+      <td>Desktop, Tablet, Mobile (3 sizes)</td>
+    </tr>
+    <tr>
+      <td><strong>Code Block Accessibility</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">code-block-accessibility.spec.ts</code></td>
+      <td>1.3.1, 2.1.1, axe-core audit</td>
+      <td>All (Chromium, Firefox)</td>
+      <td>Desktop (multi-page optional)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="known-limitations">Known Limitations</h3>
+
+<ul>
+  <li>
+<strong>WebKit on Linux WSL2</strong>: Known platform limitation with page content rendering - WebKit tests are skipped on Linux; fully functional on macOS</li>
+  <li>
+<strong>WCAG 2.1 vs 2.2</strong>: Project implements both WCAG 2.2 (latest) and WCAG 2.1 AA (compatible) criteria for broader compatibility</li>
+</ul>
+
+<hr>
+
+<p><strong>Last Updated</strong>: December 18, 2025
+<strong>WCAG Versions Supported</strong>: 2.2 Level AA (primary), 2.1 Level AA (compatible)
+<strong>Testing Framework</strong>: Playwright 1.47+ with @axe-core/playwright
+<strong>Node.js</strong>: 22.8+ LTS
+<strong>Test Files</strong>: 4 main suites, 1000+ lines of accessibility testing code
+<strong>Performance</strong>: Full suite runs in ~30-60 seconds across all supported browsers”external noopener noreferrer” target=”_blank”&gt;Section 508&lt;/a&gt;: US federal accessibility standards</p>
+
+<ul>
+  <li>
+<a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/" rel="external noopener noreferrer" target="_blank">EN 301 549</a>: European accessibility standard</li>
+</ul>
+
+<h3 id="accessibility-learning-resources">Accessibility Learning Resources</h3>
+
+<ul>
+  <li>
+<a href="https://www.a11ycasts.com/" rel="external noopener noreferrer" target="_blank">A11ycasts</a>: Video series on web accessibility</li>
+  <li>
+<a href="https://dequeuniversity.com/" rel="external noopener noreferrer" target="_blank">Deque University</a>: Comprehensive accessibility training</li>
+  <li>
+<a href="https://webaim.org/" rel="external noopener noreferrer" target="_blank">WebAIM</a>: Web accessibility information and resources</li>
+</ul>
 
 <h3 id="5-form-labels">5. Form Labels</h3>
 
@@ -1124,9 +1376,9 @@ npm run <span class="nb">test</span>:a11y:headed  <span class="c"># Run with bro
     <span class="s">npm run test:a11y</span>
 </code></pre></div></div>
 
-<h2 id="tools-and-resources">Tools and Resources</h2>
+<h2 id="tools-and-resources-1">Tools and Resources</h2>
 
-<h3 id="testing-tools">Testing Tools</h3>
+<h3 id="testing-tools-1">Testing Tools</h3>
 
 <ul>
   <li>
@@ -1137,7 +1389,7 @@ npm run <span class="nb">test</span>:a11y:headed  <span class="c"># Run with bro
 <a href="https://github.com/dequelabs/axe-core-npm/tree/develop/packages/playwright" rel="external noopener noreferrer" target="_blank">axe-core/playwright</a>: Playwright integration</li>
 </ul>
 
-<h3 id="browser-extensions">Browser Extensions</h3>
+<h3 id="browser-extensions-1">Browser Extensions</h3>
 
 <ul>
   <li>
