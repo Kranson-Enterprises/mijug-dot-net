@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
 
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
@@ -563,9 +565,9 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251218140225" />
+    <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20251218141828" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260426171115" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -601,27 +603,34 @@ img {
   
   
   
+  
   <script nonce="abc123" type="module">
     (async () => {
 
       var supportsEcmascript11 = false;
       const html = document.documentElement;
-      try {
-        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
-        if (mod && typeof mod.testES11Features === 'function') {
-          try {
-            mod.testES11Features();
-            supportsEcmascript11 = true;
-          } catch (e) { console.error('ES11 test failed:', e); }
-        } else if (typeof window.testES11Features === 'function') {
-          try { window.testES11Features();
-            supportsEcmascript11 = true;
-           } catch (e) { console.error('ES11 test failed:', e); }
-        } else {
-          console.debug('ES11 test module loaded but `testES11Features` not found.');
+      const candidatePaths = ['/assets/js/mijug-es11.min.js', '/assets/js/mijug-es11-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES11Features === 'function') {
+            try {
+              mod.testES11Features();
+              supportsEcmascript11 = true;
+              break;
+            } catch (e) { console.error('ES11 test failed:', e); }
+          } else if (typeof window.testES11Features === 'function') {
+            try {
+              window.testES11Features();
+              supportsEcmascript11 = true;
+              break;
+            } catch (e) { console.error('ES11 test failed:', e); }
+          } else {
+            console.debug('ES11 test module loaded but `testES11Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES11 test module not present or failed to import:', path, err);
         }
-      } catch (err) {
-        console.debug('ES11 test module not present or failed to import:', err);
       }
       if (!supportsEcmascript11) {
         html.classList.add('no-ES2020');
@@ -632,7 +641,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251218141828" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es11.min.js?v=20260426171115" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -642,8 +651,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
     
     <link
       rel="shortcut icon"
@@ -666,7 +675,7 @@ img {
 
     <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251218140225";
+  window.MIJUG.cacheVersion = "20260425211421";
 </script>
 
   
@@ -699,7 +708,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -829,6 +838,96 @@ img {
 
 <ul class="post-list">
 
+<li>
+
+<span class="post-meta">Sep 1, 2025</span>
+
+          
+            <span class="post-meta-separator"> • </span>
+            
+              <a href="/category/writing" class="category-link">Writing</a>
+              , 
+            
+              <a href="/category/tools" class="category-link">Tools</a>
+              , 
+            
+              <a href="/category/history" class="category-link">History</a>
+              , 
+            
+              <a href="/category/evolution" class="category-link">Evolution</a>
+              , 
+            
+              <a href="/category/productivity" class="category-link">Productivity</a>
+              
+            
+          
+
+          <h3>
+            <a class="post-link" href="/2025/09/01/pencil-to-markdown/">
+              Pencil to Markdown: The Evolution of Human Thought Capture
+            </a>
+          </h3>
+
+          
+            <p class="post-excerpt">Witness the extraordinary metamorphosis from cave paintings to collaborative code—how humanity's quest to capture thought has undergone its most dramatic transformation in the digital age.</p>
+          
+
+          
+        </li>
+      
+<li>
+
+<span class="post-meta">Sep 1, 2025</span>
+
+          
+            <span class="post-meta-separator"> • </span>
+            
+              <a href="/category/security" class="category-link">Security</a>
+              , 
+            
+              <a href="/category/legacy" class="category-link">Legacy</a>
+              , 
+            
+              <a href="/category/guides" class="category-link">Guides</a>
+              
+            
+          
+
+          <h3>
+            <a class="post-link" href="/2025/09/01/digital-rights-management-guide-and-windows-media-backup/">
+              Digital Rights Management Guide and Windows Media Backup
+            </a>
+          </h3>
+
+          
+            <p class="post-excerpt">DRM is a way for companies to control how you use digital files, like music and movies, to prevent unauthorized copying or sharing.</p>
+          
+
+          
+            <div class="post-tags">
+              
+                <a href="/tag/drm" class="tag-link">#drm</a>
+              
+                <a href="/tag/music" class="tag-link">#music</a>
+              
+                <a href="/tag/video" class="tag-link">#video</a>
+              
+                <a href="/tag/backup" class="tag-link">#backup</a>
+              
+                <a href="/tag/security" class="tag-link">#security</a>
+              
+                <a href="/tag/windows" class="tag-link">#windows</a>
+              
+                <a href="/tag/linux" class="tag-link">#linux</a>
+              
+                <a href="/tag/legal" class="tag-link">#legal</a>
+              
+                <a href="/tag/copyright" class="tag-link">#copyright</a>
+              
+            </div>
+          
+        </li>
+      
 <li>
 
 <span class="post-meta">Aug 30, 2025</span>
@@ -966,75 +1065,6 @@ img {
           
         </li>
       
-<li>
-
-<span class="post-meta">Aug 22, 2025</span>
-
-          
-            <span class="post-meta-separator"> • </span>
-            
-              <a href="/category/announcements" class="category-link">Announcements</a>
-              
-            
-          
-
-          <h3>
-            <a class="post-link" href="/2025/08/22/agent-13-old-gpus-tribute-david-ketchum/">
-              Agent 13 and Old GPUs: A Tribute to David Ketchum
-            </a>
-          </h3>
-
-          
-            <p class="post-excerpt">A tribute to David Ketchum, connecting his Get Smart legacy to our &#39;under glass&#39; philosophy and the constraints we face in modern computing.</p>
-          
-
-          
-            <div class="post-tags">
-              
-                <a href="/tag/tribute" class="tag-link">#tribute</a>
-              
-                <a href="/tag/memory" class="tag-link">#memory</a>
-              
-            </div>
-          
-        </li>
-      
-<li>
-
-<span class="post-meta">Aug 21, 2025</span>
-
-          
-            <span class="post-meta-separator"> • </span>
-            
-              <a href="/category/announcements" class="category-link">Announcements</a>
-              , 
-            
-              <a href="/category/linux" class="category-link">Linux</a>
-              
-            
-          
-
-          <h3>
-            <a class="post-link" href="/2025/08/21/tale-of-two-chips-windows-11-compatibility/">
-              Tale of Two Chips: When TPM 2.0 Isn&#39;t Enough
-            </a>
-          </h3>
-
-          
-            <p class="post-excerpt">A humorous look at why perfectly good laptops with Intel N-series chips and TPM 2.0 still can&#39;t run Windows 11 - and what to do about it!</p>
-          
-
-          
-            <div class="post-tags">
-              
-                <a href="/tag/windows-11" class="tag-link">#windows-11</a>
-              
-                <a href="/tag/e-waste" class="tag-link">#e-waste</a>
-              
-            </div>
-          
-        </li>
-      
     </ul>
 
     
@@ -1084,7 +1114,7 @@ img {
         </div>
 
         <div class="pagination-info">
-          Showing 5 of 21 posts
+          Showing 5 of 23 posts
           (Page 3 of 5)
         </div>
       </nav>
@@ -1158,12 +1188,12 @@ img {
           
             <a href="/category/security" class="topic-card">
               <strong>Security</strong>
-              <span class="archive-count">(3)</span>
+              <span class="archive-count">(5)</span>
             </a>
           
             <a href="/category/windows" class="topic-card">
               <strong>Windows</strong>
-              <span class="archive-count">(1)</span>
+              <span class="archive-count">(2)</span>
             </a>
           
             <a href="/category/encryption" class="topic-card">
@@ -1198,7 +1228,7 @@ img {
           
             <a href="/category/hardware" class="topic-card">
               <strong>Hardware</strong>
-              <span class="archive-count">(1)</span>
+              <span class="archive-count">(2)</span>
             </a>
           
             <a href="/category/workshops" class="topic-card">
@@ -1208,7 +1238,7 @@ img {
           
             <a href="/category/web-development" class="topic-card">
               <strong>Web-development</strong>
-              <span class="archive-count">(2)</span>
+              <span class="archive-count">(3)</span>
             </a>
           
             <a href="/category/tutorial" class="topic-card">
@@ -1218,7 +1248,7 @@ img {
           
             <a href="/category/development" class="topic-card">
               <strong>Development</strong>
-              <span class="archive-count">(2)</span>
+              <span class="archive-count">(3)</span>
             </a>
           
             <a href="/category/workspace" class="topic-card">
@@ -1264,6 +1294,10 @@ img {
               #bitlocker <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/browser-compatibility" class="tag-link">
+              #browser-compatibility <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/browser-support" class="tag-link">
               #browser-support <span class="tag-count">(1)</span>
             </a>
@@ -1276,12 +1310,20 @@ img {
               #ci-cd <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/compatibility" class="tag-link">
+              #compatibility <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/computers" class="tag-link">
               #computers <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/copyright" class="tag-link">
               #copyright <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/cpu" class="tag-link">
+              #cpu <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/cpus" class="tag-link">
@@ -1324,12 +1366,24 @@ img {
               #education <span class="tag-count">(3)</span>
             </a>
           
+            <a href="/tag/es11" class="tag-link">
+              #es11 <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/es2020" class="tag-link">
               #es2020 <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/es2022" class="tag-link">
+              #es2022 <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/evening-schedules" class="tag-link">
               #evening-schedules <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/gpu" class="tag-link">
+              #gpu <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/gpus" class="tag-link">
@@ -1352,6 +1406,10 @@ img {
               #hardware <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/hardware-evolution" class="tag-link">
+              #hardware-evolution <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/history" class="tag-link">
               #history <span class="tag-count">(2)</span>
             </a>
@@ -1360,8 +1418,12 @@ img {
               #home <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/identity" class="tag-link">
+              #identity <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/javascript" class="tag-link">
-              #javascript <span class="tag-count">(1)</span>
+              #javascript <span class="tag-count">(2)</span>
             </a>
           
             <a href="/tag/jekyll" class="tag-link">
@@ -1377,7 +1439,7 @@ img {
             </a>
           
             <a href="/tag/linux" class="tag-link">
-              #linux <span class="tag-count">(8)</span>
+              #linux <span class="tag-count">(9)</span>
             </a>
           
             <a href="/tag/memory" class="tag-link">
@@ -1386,6 +1448,10 @@ img {
           
             <a href="/tag/migration" class="tag-link">
               #migration <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/modernization" class="tag-link">
+              #modernization <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/music" class="tag-link">
@@ -1420,6 +1486,10 @@ img {
               #ruby <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/secure-coding" class="tag-link">
+              #secure-coding <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/security" class="tag-link">
               #security <span class="tag-count">(3)</span>
             </a>
@@ -1442,6 +1512,10 @@ img {
           
             <a href="/tag/time-management" class="tag-link">
               #time-management <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/tpm" class="tag-link">
+              #tpm <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/tribute" class="tag-link">
@@ -1473,7 +1547,7 @@ img {
             </a>
           
             <a href="/tag/windows-11" class="tag-link">
-              #windows-11 <span class="tag-count">(4)</span>
+              #windows-11 <span class="tag-count">(5)</span>
             </a>
           
             <a href="/tag/wordpress" class="tag-link">
@@ -1515,7 +1589,7 @@ img {
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2025
+              &copy; 2026
               <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
                 >Kranson Enterprises</a
               ><br />
@@ -1577,7 +1651,7 @@ img {
             blocks.forEach((el) => {
               const code = el.querySelector('pre code');
               const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
-              
+
               // Extract language using optional chaining and nullish coalescing (ES2020)
               const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
               const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
@@ -1625,7 +1699,7 @@ img {
         const toggleNavigation = () => {
           const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
           const action = isExpanded ? 'remove' : 'add';
-          
+
           // Batch DOM updates for performance
           elements.nav.classList[action]('nav-visible');
           elements.body.classList[action]('nav-open');
@@ -1674,7 +1748,7 @@ img {
         const loadDynamicNav = () => {
           const staticList = document.getElementById('nav-items-static');
           const dynamicList = document.getElementById('nav-items-dynamic');
-          
+
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)

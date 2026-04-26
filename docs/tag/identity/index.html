@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- CSP tailored to MIJUG .NET requirements -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://cdn.jsdelivr.net ;
+      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://cdn.jsdelivr.net ;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https: https://www.google-analytics.com;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://www.google-analytics.com ;
+      frame-src 'self' ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    
+
+    <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+    <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+    <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0066cc;
+  --nav-bg: #f8f8f8;
+  --border-color: #e8e8e8;
+  --header-color: #424242;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cookie consent banner styles */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
+  overflow: hidden;
+}
+
+#cookie-consent-banner.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+    <title>
+      identity | My Info Just Under Glass
+    </title>
+    <meta
+      name="description"
+      content="MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by ..."
+    />
+    
+    <meta name="version" content="Apr 26, 2026" />
+    
+
+    
+
+    <meta name="google-site-verification" content="googlece83719b3f856e56" />
+    <meta name="cache-version" content="20260425211421" />
+
+    <link rel="preload" as="style" href="/assets/main.css?v=20260426171115" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20260426171115" media="print">
+
+    <noscript>
+      <link rel="stylesheet" href="/assets/main.css?v=20260426171115">
+    </noscript>
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="My Info Just Under Glass"
+      href="/feed.xml"
+    />
+    
+    
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+    
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/favicon.ico"
+    />
+    
+    <link
+      rel="canonical"
+      href="https://www.mijug.net/tag/identity/"
+    />
+
+    
+
+    
+
+    <script nonce="abc123">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20260425211421";
+</script>
+
+  
+  <script nonce="abc123">
+    // Context menu prevention - ES2020 optimized
+    window.MIJUG_DISABLE_PRINT = true;
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body?.addEventListener?.('contextmenu', (e) => {
+        e.preventDefault();
+      }, { once: false });
+    }, { once: true });
+  </script>
+  
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <noscript>
+        <div class="legacy-browser-notice" role="alert">
+          <strong>No Commerce Available</strong>
+          <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+        </div>
+      </noscript>
+      <div class="wrapper">
+        <a class="site-title" rel="home" href="/">
+          
+          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" alt="My Info Just Under Glass" width="50" height="50">
+           My Info Just Under Glass
+        </a>
+
+        <!-- Mobile navigation toggle button -->
+        <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu" type="button">
+          Menu
+        </button>
+
+        <!-- Modern navigation -->
+
+        <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+        <nav id="primary-navigation" class="primary-nav" role="dialog" aria-modal="true" aria-hidden="true">
+            <button class="nav-close" type="button" aria-label="Close navigation menu">
+              <span aria-hidden="true">×</span>
+            </button>
+            <ul role="list">
+              
+                <li role="listitem">
+                  <a href="/blog/" aria-label="Navigate to Blog">
+                     Blog
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/about/" aria-label="Navigate to About">
+                     About
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/getting-started/" aria-label="Navigate to Getting Started">
+                     Getting Started
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/welcome-mijug-workspace/" aria-label="Navigate to Workspace Overview">
+                     Workspace Overview
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/frontmatter-cms/" aria-label="Navigate to FrontMatter CMS Usage">
+                     FrontMatter CMS Usage
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/accessibility-testing/" aria-label="Navigate to Accessibility Testing Configuration">
+                     Accessibility Testing Configuration
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/browser-management/" aria-label="Navigate to Browser Management for Testing">
+                     Browser Management for Testing
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/browser-compatibility-testing/" aria-label="Navigate to Browser Compatibility Testing">
+                     Browser Compatibility Testing
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/liquid-tags-examples/" aria-label="Navigate to Liquid Tags Examples">
+                     Liquid Tags Examples
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/tags-and-categories-guide/" aria-label="Navigate to Tags and Categories System Guide">
+                     Tags and Categories System Guide
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/performance-optimization/" aria-label="Navigate to Performance Optimization Guide">
+                     Performance Optimization Guide
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/testing-performance-evolution/" aria-label="Navigate to Testing Performance and Development Evolution">
+                     Testing Performance and Development Evolution
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/cache-management/" aria-label="Navigate to Cache Management Strategies">
+                     Cache Management Strategies
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-configuration-guide/" aria-label="Navigate to Mermaid Diagram Configuration Guide">
+                     Mermaid Diagram Configuration Guide
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-quick-start/" aria-label="Navigate to Mermaid Quick Start">
+                     Mermaid Quick Start
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-examples/" aria-label="Navigate to Mermaid Diagram Examples">
+                     Mermaid Diagram Examples
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-diagrams-sample/" aria-label="Navigate to Mermaid Diagrams Sample">
+                     Mermaid Diagrams Sample
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/mermaid-test-runner/" aria-label="Navigate to Mermaid Diagrams Test Runner">
+                     Mermaid Diagrams Test Runner
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/rel-attribute-guide/" aria-label="Navigate to The rel Attribute in HTML Links: A Comprehensive Guide">
+                     The rel Attribute in HTML Links: A Comprehensive Guide
+                  </a>
+                </li>
+              
+                <li role="listitem">
+                  <a href="/docs/exploring-limitations-of-gitea-and-ruby/" aria-label="Navigate to Exploring the Limitations of Gitea and Ruby">
+                     Exploring the Limitations of Gitea and Ruby
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+</div>
+        
+
+        <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+      
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+<div class="archive">
+  <header class="archive-header">
+    <h1 class="archive-title">Tag: identity</h1></header>
+
+  <div class="archive-content">
+<p class="archive-count">
+      1 post with this tag</p>
+
+    <ul class="post-list"><li class="post-item">
+        <span class="post-meta">Apr 26, 2026</span>
+        <h3 class="post-title">
+          <a class="post-link" href="/2026/04/26/upgrade-your-code-es2022-features-explained/"> Upgrade Your Code: ES2022 Features Explained </a>
+        </h3>
+<p class="post-excerpt">A practical guide to upgrading from ES11 to ES2022 with modern JavaScript patterns, security-minded defaults, and browser-compatible implementation strategies.</p>
+<div class="post-meta-tags">
+<span class="post-categories">
+            Categories: <a href="/category/development" class="category-link">development</a>, <a href="/category/security" class="category-link">security</a>, <a href="/category/web-development" class="category-link">web-development</a></span><span class="post-meta-separator"><br></span>
+            <span class="post-tags">
+            Tags: <a href="/tag/javascript" class="tag-link">javascript</a>, <a href="/tag/es2022" class="tag-link">es2022</a>, <a href="/tag/es11" class="tag-link">es11</a>, <a href="/tag/secure-coding" class="tag-link">secure-coding</a>, <a href="/tag/browser-compatibility" class="tag-link">browser-compatibility</a>, <a href="/tag/identity" class="tag-link">identity</a>, <a href="/tag/modernization" class="tag-link">modernization</a></span>
+</div>
+</li></ul>
+</div>
+
+  <div class="archive-navigation">
+    <p>
+      <a href="/">← Back to Home</a><span class="nav-separator"> • </span>
+      <a href="/tags/">All Tags</a></p>
+  </div>
+</div>
+
+<style>
+  .archive {
+    margin-bottom: 2rem;
+  }
+
+  .archive-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 1rem;
+  }
+
+  .archive-title {
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+
+  .archive-description {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+
+  .archive-count {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .archive-empty {
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }
+
+  .archive-navigation {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e8e8e8;
+    text-align: center;
+  }
+
+  .archive-navigation a {
+    color: #2a7ae4;
+    text-decoration: none;
+  }
+
+  .archive-navigation a:hover {
+    text-decoration: underline;
+  }
+
+  .nav-separator {
+    margin: 0 0.5rem;
+    color: #ccc;
+  }
+
+  @media (max-width: 600px) {
+    .post-title {
+      font-size: 1.1rem;
+    }
+
+    .post-meta-tags {
+      font-size: 0.8rem;
+    }
+  }
+</style>
+</div>
+    </main>
+
+    <footer class="site-footer h-card">
+      <data class="u-url" href="/"></data>
+      <div class="wrapper">
+        <div class="footer-col-wrapper">
+          <div class="footer-col footer-col-1">
+            <a href="/terms-of-service.html">Terms of Service</a><br>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+          </div>
+          <div class="footer-col footer-col-2">
+            <a href="/contact/">Contact Us</a>
+          </div>
+          <div class="footer-col footer-col-3">
+            <p>
+              © 2026
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                  subscribe
+              <a href="/feed.xml">via RSS<svg class="svg-icon">
+                  <use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bot detection for no-ads layout -->
+    <script type="module" nonce="abc123">
+      try {
+        const { isbot } = await import('https://cdn.jsdelivr.net/npm/isbot@5/index.mjs');
+        if (navigator.userAgent && isbot(navigator.userAgent)) {
+          document.addEventListener('DOMContentLoaded', function() {
+            document.body.innerHTML = '<div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;"><h1>Hello World</h1><p>Bot detected - showing simple content</p><p>There is no greatness where there is not simplicity, goodness, and truth. -Leo Tolstoy, novelist and philosopher (9 Sep 1828-1910)</p></div>';
+          });
+        }
+      } catch (_) {
+        // isbot unavailable — allow normal rendering
+      }
+    </script>
+
+    
+
+    <script nonce="abc123">
+      // Navigation toggle functionality - ES2020 optimized
+      (() => {
+        'use strict';
+
+        // Set language attribute (ES2020)
+        document.documentElement.lang = "en";
+
+        // Cache DOM elements (ES2020 const, destructuring)
+        const elements = {
+          toggle: document.querySelector('.nav-toggle'),
+          nav: document.getElementById('primary-navigation'),
+          status: document.getElementById('menu-status'),
+          body: document.body
+        };
+
+        // Early return if required elements missing (optional chaining ES2020)
+        if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+          console.warn('Navigation elements not found - falling back to basic behavior');
+          return;
+        }
+
+        elements.nav.classList.add('nav-overlay');
+        elements.nav.setAttribute('aria-hidden', 'true');
+
+        // Toggle navigation with modern API (arrow function ES2020)
+        const toggleNavigation = () => {
+          const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+          const action = isExpanded ? 'remove' : 'add';
+
+          // Batch DOM updates for performance
+          elements.nav.classList[action]('nav-visible');
+          elements.body.classList[action]('nav-open');
+          elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+          elements.toggle.textContent = isExpanded ? 'Menu' : 'Close';
+          elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+
+          if (isExpanded) {
+            elements.nav.setAttribute('aria-hidden', 'true');
+          } else {
+            elements.nav.removeAttribute('aria-hidden');
+          }
+        };
+
+        // Event delegation with passive listeners for scroll performance
+        const handleClick = (e) => {
+          const isToggle = e.target.closest('.nav-toggle');
+          const isLink = e.target.tagName === 'A' && elements.nav.contains(e.target);
+          const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+
+          // Toggle on button click
+          if (isToggle) {
+            e.preventDefault();
+            toggleNavigation();
+            return;
+          }
+
+          // Close on link click or click outside (only when open)
+          if (isExpanded && (isLink || (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)))) {
+            toggleNavigation();
+          }
+        };
+
+        // Keyboard navigation (ES2020 nullish coalescing ??)
+        const handleKeydown = (e) => {
+          if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+            toggleNavigation();
+            elements.toggle.focus();
+          }
+        };
+
+        // Single event listener with delegation (better performance)
+        document.addEventListener('click', handleClick, { passive: false });
+        document.addEventListener('keydown', handleKeydown, { passive: true });
+      })();
+    </script>
+
+    <!-- Lazy-load dynamic navigation items (optimization #7) -->
+    <script nonce="abc123">
+      (() => {
+        'use strict';
+
+        // Load remaining navigation items on first interaction (optimization #7)
+        const loadDynamicNav = () => {
+          const staticList = document.getElementById('nav-items-static');
+          const dynamicList = document.getElementById('nav-items-dynamic');
+
+          if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+          // All navigation items embedded as data (generated at build time)
+          const allItems = [
+            {
+              title: "FrontMatter CMS Usage",
+              permalink: "/docs/frontmatter-cms/",
+              ariaLabel: "Navigate to FrontMatter CMS Usage",
+              current: false
+            },{
+              title: "Accessibility Testing Configuration",
+              permalink: "/docs/accessibility-testing/",
+              ariaLabel: "Navigate to Accessibility Testing Configuration",
+              current: false
+            },{
+              title: "Browser Management for Testing",
+              permalink: "/docs/browser-management/",
+              ariaLabel: "Navigate to Browser Management for Testing",
+              current: false
+            },{
+              title: "Browser Compatibility Testing",
+              permalink: "/docs/browser-compatibility-testing/",
+              ariaLabel: "Navigate to Browser Compatibility Testing",
+              current: false
+            },{
+              title: "Liquid Tags Examples",
+              permalink: "/docs/liquid-tags-examples/",
+              ariaLabel: "Navigate to Liquid Tags Examples",
+              current: false
+            },{
+              title: "Tags and Categories System Guide",
+              permalink: "/docs/tags-and-categories-guide/",
+              ariaLabel: "Navigate to Tags and Categories System Guide",
+              current: false
+            },{
+              title: "Performance Optimization Guide",
+              permalink: "/docs/performance-optimization/",
+              ariaLabel: "Navigate to Performance Optimization Guide",
+              current: false
+            },{
+              title: "Testing Performance and Development Evolution",
+              permalink: "/docs/testing-performance-evolution/",
+              ariaLabel: "Navigate to Testing Performance and Development Evolution",
+              current: false
+            },{
+              title: "Cache Management Strategies",
+              permalink: "/docs/cache-management/",
+              ariaLabel: "Navigate to Cache Management Strategies",
+              current: false
+            },{
+              title: "Mermaid Diagram Configuration Guide",
+              permalink: "/docs/mermaid-configuration-guide/",
+              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
+              current: false
+            },{
+              title: "Mermaid Quick Start",
+              permalink: "/docs/mermaid-quick-start/",
+              ariaLabel: "Navigate to Mermaid Quick Start",
+              current: false
+            },{
+              title: "Mermaid Diagram Examples",
+              permalink: "/docs/mermaid-examples/",
+              ariaLabel: "Navigate to Mermaid Diagram Examples",
+              current: false
+            },{
+              title: "Mermaid Diagrams Sample",
+              permalink: "/docs/mermaid-diagrams-sample/",
+              ariaLabel: "Navigate to Mermaid Diagrams Sample",
+              current: false
+            },{
+              title: "Mermaid Diagrams Test Runner",
+              permalink: "/docs/mermaid-test-runner/",
+              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
+              current: false
+            },{
+              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
+              permalink: "/docs/rel-attribute-guide/",
+              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+              current: false
+            },{
+              title: "Exploring the Limitations of Gitea and Ruby",
+              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
+              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
+              current: false
+            },
+          ];
+
+          // Render dynamic items (optimization #7: deferred rendering)
+          allItems.forEach((item) => {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'listitem');
+            const a = document.createElement('a');
+            a.href = item.permalink;
+            a.setAttribute('aria-label', item.ariaLabel);
+            if (item.current) {
+              a.className = 'active';
+              a.setAttribute('aria-current', 'page');
+            }
+            a.textContent = item.title;
+            li.appendChild(a);
+            dynamicList.appendChild(li);
+          });
+
+          // Show dynamic list
+          dynamicList.style.display = '';
+        };
+
+        // Load on first interaction with navigation toggle (optimization #7)
+        const toggleBtn = document.querySelector('.nav-toggle');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+        }
+
+        // Also load on requestIdleCallback if available (optimization #7)
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+        } else {
+          setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+        }
+      })();
+    </script>
+  </body>
+</html>

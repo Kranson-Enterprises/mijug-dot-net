@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
 
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
@@ -569,9 +571,9 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251218140225" />
+    <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20251218141828" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260426171115" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -607,27 +609,34 @@ img {
   
   
   
+  
   <script nonce="abc123" type="module">
     (async () => {
 
       var supportsEcmascript11 = false;
       const html = document.documentElement;
-      try {
-        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
-        if (mod && typeof mod.testES11Features === 'function') {
-          try {
-            mod.testES11Features();
-            supportsEcmascript11 = true;
-          } catch (e) { console.error('ES11 test failed:', e); }
-        } else if (typeof window.testES11Features === 'function') {
-          try { window.testES11Features();
-            supportsEcmascript11 = true;
-           } catch (e) { console.error('ES11 test failed:', e); }
-        } else {
-          console.debug('ES11 test module loaded but `testES11Features` not found.');
+      const candidatePaths = ['/assets/js/mijug-es11.min.js', '/assets/js/mijug-es11-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES11Features === 'function') {
+            try {
+              mod.testES11Features();
+              supportsEcmascript11 = true;
+              break;
+            } catch (e) { console.error('ES11 test failed:', e); }
+          } else if (typeof window.testES11Features === 'function') {
+            try {
+              window.testES11Features();
+              supportsEcmascript11 = true;
+              break;
+            } catch (e) { console.error('ES11 test failed:', e); }
+          } else {
+            console.debug('ES11 test module loaded but `testES11Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES11 test module not present or failed to import:', path, err);
         }
-      } catch (err) {
-        console.debug('ES11 test module not present or failed to import:', err);
       }
       if (!supportsEcmascript11) {
         html.classList.add('no-ES2020');
@@ -638,7 +647,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251218141828" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es11.min.js?v=20260426171115" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -648,8 +657,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
     
     <link
       rel="shortcut icon"
@@ -688,7 +697,7 @@ img {
 
     <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251218140225";
+  window.MIJUG.cacheVersion = "20260425211421";
 </script>
 
   
@@ -721,7 +730,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -951,7 +960,7 @@ img {
   <li><strong>Site Title</strong>: My Info Just Under Glass</li>
   <li><strong>Site Description</strong>: MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by Kranson Enterprises for sharing knowledge and connecting communities.</li>
   <li><strong>Site URL</strong>: https://www.mijug.net</li>
-  <li><strong>Build Time</strong>: December 18, 2025 at 02:18 PM</li>
+  <li><strong>Build Time</strong>: April 26, 2026 at 05:11 PM</li>
 </ul>
 
 <p><strong>Liquid Syntax:</strong></p>
@@ -968,7 +977,7 @@ img {
 
 <ul>
   <li><strong>Page Title</strong>: Liquid Tags Examples</li>
-  <li><strong>Page Date</strong>: December 18, 2025</li>
+  <li><strong>Page Date</strong>: April 26, 2026</li>
   <li><strong>Page URL</strong>: /docs/liquid-tags-examples/</li>
   <li><strong>Page Layout</strong>: page</li>
 </ul>
@@ -1041,13 +1050,13 @@ img {
 
 <ul>
   <li>
+    <p><a href="/2026/04/26/upgrade-your-code-es2022-features-explained/">Upgrade Your Code: ES2022 Features Explained</a> - April 26, 2026</p>
+  </li>
+  <li>
+    <p><a href="/2026/04/24/chips-and-windows/">Chips and Windows - 18 Years of Evolution</a> - April 24, 2026</p>
+  </li>
+  <li>
     <p><a href="/2025/12/15/computer-backup-checklist/">Computer Backup Checklist</a> - December 15, 2025</p>
-  </li>
-  <li>
-    <p><a href="/2025/11/24/ditching-es5-after-a-wordpress-build/">Moving to ES2020 (ES11) for Better Security</a> - November 24, 2025</p>
-  </li>
-  <li>
-    <p><a href="/2025/10/06/building-a-modern-typescript-jekyll-workspace-in-2025/">Building a Modern TypeScript + Jekyll Workspace in 2025</a> - October 06, 2025</p>
   </li>
 </ul>
 
@@ -1203,8 +1212,8 @@ No posts found.
 <h3 id="calculated-values">Calculated Values:</h3>
 
 <ul>
-  <li><strong>Current Year</strong>: 2025</li>
-  <li><strong>Site Age</strong>: 0 years</li>
+  <li><strong>Current Year</strong>: 2026</li>
+  <li><strong>Site Age</strong>: 1 years</li>
   <li><strong>Estimated Reading Time</strong>: 14 minute(s)</li>
   <li><strong>Word Count</strong>: 2676 words</li>
 </ul>
@@ -1288,11 +1297,11 @@ No posts found.
 <h3 id="date-formatting">Date Formatting:</h3>
 
 <ul>
-  <li><strong>Full Date</strong>: Thursday, December 18, 2025</li>
-  <li><strong>Short Date</strong>: 12/18/2025</li>
-  <li><strong>Time</strong>: 02:18 PM</li>
-  <li><strong>ISO 8601</strong>: 2025-12-18T14:18:28-05:00</li>
-  <li><strong>RFC 822</strong>: Thu, 18 Dec 2025 14:18:28 -0500</li>
+  <li><strong>Full Date</strong>: Sunday, April 26, 2026</li>
+  <li><strong>Short Date</strong>: 04/26/2026</li>
+  <li><strong>Time</strong>: 05:11 PM</li>
+  <li><strong>ISO 8601</strong>: 2026-04-26T17:11:15-04:00</li>
+  <li><strong>RFC 822</strong>: Sun, 26 Apr 2026 17:11:15 -0400</li>
 </ul>
 
 <p><strong>Liquid Syntax:</strong></p>
@@ -1411,12 +1420,12 @@ No posts found.
 <h4 id="content-statistics">Content Statistics:</h4>
 
 <ul>
-  <li><strong>Blog Posts</strong>: 21</li>
+  <li><strong>Blog Posts</strong>: 23</li>
   <li><strong>Documentation Pages</strong>: 21</li>
   <li>
-    <p><strong>Total Content Pages</strong>: 42</p>
+    <p><strong>Total Content Pages</strong>: 44</p>
   </li>
-  <li><strong>Average Content per Type</strong>: 21 pages</li>
+  <li><strong>Average Content per Type</strong>: 22 pages</li>
 </ul>
 
 <p><strong>Liquid Syntax:</strong></p>
@@ -1469,7 +1478,7 @@ No posts found.
   <li>Multiple lines</li>
   <li><strong>Markdown formatting</strong></li>
   <li>Variables: My Info Just Under Glass</li>
-  <li>Current date: 2025-12-18</li>
+  <li>Current date: 2026-04-26</li>
 </ul>
 
 <p><strong>Liquid Syntax:</strong></p>
@@ -1527,8 +1536,8 @@ This won't display because the variable is null.
 <p><strong>Rendered Output:</strong></p>
 
 <ul>
-  <li><strong>Posts with ‘post’ layout</strong>: 21</li>
-  <li><strong>Reusing the same calculation</strong>: 21</li>
+  <li><strong>Posts with ‘post’ layout</strong>: 23</li>
+  <li><strong>Reusing the same calculation</strong>: 23</li>
 </ul>
 
 <p><strong>Liquid Syntax:</strong></p>
@@ -1579,7 +1588,7 @@ Use assign for repeated calculations to avoid recomputation
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2025
+              &copy; 2026
               <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
                 >Kranson Enterprises</a
               ><br />
@@ -1641,7 +1650,7 @@ Use assign for repeated calculations to avoid recomputation
             blocks.forEach((el) => {
               const code = el.querySelector('pre code');
               const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
-              
+
               // Extract language using optional chaining and nullish coalescing (ES2020)
               const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
               const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
@@ -1689,7 +1698,7 @@ Use assign for repeated calculations to avoid recomputation
         const toggleNavigation = () => {
           const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
           const action = isExpanded ? 'remove' : 'add';
-          
+
           // Batch DOM updates for performance
           elements.nav.classList[action]('nav-visible');
           elements.body.classList[action]('nav-open');
@@ -1738,7 +1747,7 @@ Use assign for repeated calculations to avoid recomputation
         const loadDynamicNav = () => {
           const staticList = document.getElementById('nav-items-static');
           const dynamicList = document.getElementById('nav-items-dynamic');
-          
+
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)

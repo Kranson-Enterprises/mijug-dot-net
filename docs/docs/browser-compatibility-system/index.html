@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
 
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
@@ -569,9 +571,9 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251218140225" />
+    <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20251218141828" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260426171115" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -607,27 +609,34 @@ img {
   
   
   
+  
   <script nonce="abc123" type="module">
     (async () => {
 
       var supportsEcmascript11 = false;
       const html = document.documentElement;
-      try {
-        const mod = await import('https://www.mijug.net/assets/js/mijug-es11.min.js');
-        if (mod && typeof mod.testES11Features === 'function') {
-          try {
-            mod.testES11Features();
-            supportsEcmascript11 = true;
-          } catch (e) { console.error('ES11 test failed:', e); }
-        } else if (typeof window.testES11Features === 'function') {
-          try { window.testES11Features();
-            supportsEcmascript11 = true;
-           } catch (e) { console.error('ES11 test failed:', e); }
-        } else {
-          console.debug('ES11 test module loaded but `testES11Features` not found.');
+      const candidatePaths = ['/assets/js/mijug-es11.min.js', '/assets/js/mijug-es11-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES11Features === 'function') {
+            try {
+              mod.testES11Features();
+              supportsEcmascript11 = true;
+              break;
+            } catch (e) { console.error('ES11 test failed:', e); }
+          } else if (typeof window.testES11Features === 'function') {
+            try {
+              window.testES11Features();
+              supportsEcmascript11 = true;
+              break;
+            } catch (e) { console.error('ES11 test failed:', e); }
+          } else {
+            console.debug('ES11 test module loaded but `testES11Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES11 test module not present or failed to import:', path, err);
         }
-      } catch (err) {
-        console.debug('ES11 test module not present or failed to import:', err);
       }
       if (!supportsEcmascript11) {
         html.classList.add('no-ES2020');
@@ -638,7 +647,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="https://www.mijug.net/assets/js/mijug-es11.min.js?v=20251218141828" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es11.min.js?v=20260426171115" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -648,8 +657,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
     
     <link
       rel="shortcut icon"
@@ -688,7 +697,7 @@ img {
 
     <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251218140225";
+  window.MIJUG.cacheVersion = "20260425211421";
 </script>
 
   
@@ -721,7 +730,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -1384,7 +1393,7 @@ img {
 <p>The system integrates with the project’s cache busting functionality:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Cache version tracking</span>
-<span class="kd">const</span> <span class="nx">CACHE_VERSION</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">20251218141828</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">CACHE_VERSION</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">20260426171115</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="c1">// Cache busting utilities</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">MIJUG</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">MIJUG</span> <span class="o">||</span> <span class="p">{};</span>
@@ -1705,7 +1714,7 @@ console.log<span class="o">(</span><span class="s1">'🔄 MIJUG Browser Detectio
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2025
+              &copy; 2026
               <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
                 >Kranson Enterprises</a
               ><br />
@@ -1767,7 +1776,7 @@ console.log<span class="o">(</span><span class="s1">'🔄 MIJUG Browser Detectio
             blocks.forEach((el) => {
               const code = el.querySelector('pre code');
               const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
-              
+
               // Extract language using optional chaining and nullish coalescing (ES2020)
               const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
               const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
@@ -1815,7 +1824,7 @@ console.log<span class="o">(</span><span class="s1">'🔄 MIJUG Browser Detectio
         const toggleNavigation = () => {
           const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
           const action = isExpanded ? 'remove' : 'add';
-          
+
           // Batch DOM updates for performance
           elements.nav.classList[action]('nav-visible');
           elements.body.classList[action]('nav-open');
@@ -1864,7 +1873,7 @@ console.log<span class="o">(</span><span class="s1">'🔄 MIJUG Browser Detectio
         const loadDynamicNav = () => {
           const staticList = document.getElementById('nav-items-static');
           const dynamicList = document.getElementById('nav-items-dynamic');
-          
+
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)

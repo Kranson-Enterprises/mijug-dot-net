@@ -555,12 +555,12 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20251218140225" />
+    <meta name="cache-version" content="20260425211421" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=20251218141828" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20251218141828" media="print">
+    <link rel="preload" as="style" href="/assets/main.css?v=20260426171115" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20260426171115" media="print">
 
     <noscript>
-      <link rel="stylesheet" href="/assets/main.css?v=20251218141828">
+      <link rel="stylesheet" href="/assets/main.css?v=20260426171115">
     </noscript>
 
     <link
@@ -571,8 +571,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
     
     <link
       rel="shortcut icon"
@@ -591,7 +591,7 @@ img {
 
     <script nonce="abc123">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20251218140225";
+  window.MIJUG.cacheVersion = "20260425211421";
 </script>
 
   
@@ -622,7 +622,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20251218140225"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -939,7 +939,7 @@ img {
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2025
+              &copy; 2026
               <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
                 >Kranson Enterprises</a
               ><br />
@@ -957,16 +957,18 @@ img {
     </footer>
 
     <!-- Bot detection for no-ads layout -->
-    <script nonce="abc123">
-      (function() {
-        if (navigator.userAgent && typeof isbot === 'function' && isbot(navigator.userAgent)) {
-          window.addEventListener('DOMContentLoaded', function() {
+    <script type="module" nonce="abc123">
+      try {
+        const { isbot } = await import('https://cdn.jsdelivr.net/npm/isbot@5/index.mjs');
+        if (navigator.userAgent && isbot(navigator.userAgent)) {
+          document.addEventListener('DOMContentLoaded', function() {
             document.body.innerHTML = '<div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;"><h1>Hello World</h1><p>Bot detected - showing simple content</p><p>There is no greatness where there is not simplicity, goodness, and truth. -Leo Tolstoy, novelist and philosopher (9 Sep 1828-1910)</p></div>';
           });
         }
-      })();
+      } catch (_) {
+        // isbot unavailable — allow normal rendering
+      }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/isbot@5" defer></script>
 
     
 
@@ -999,14 +1001,14 @@ img {
         const toggleNavigation = () => {
           const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
           const action = isExpanded ? 'remove' : 'add';
-          
+
           // Batch DOM updates for performance
           elements.nav.classList[action]('nav-visible');
           elements.body.classList[action]('nav-open');
           elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
           elements.toggle.textContent = isExpanded ? 'Menu' : 'Close';
           elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
-          
+
           if (isExpanded) {
             elements.nav.setAttribute('aria-hidden', 'true');
           } else {
@@ -1056,7 +1058,7 @@ img {
         const loadDynamicNav = () => {
           const staticList = document.getElementById('nav-items-static');
           const dynamicList = document.getElementById('nav-items-dynamic');
-          
+
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)
