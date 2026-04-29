@@ -3,19 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
-    <meta name="robots" content="noindex, nofollow" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
 
-    <!-- CSP tailored to MIJUG .NET requirements -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://cdn.jsdelivr.net ;
-      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://cdn.jsdelivr.net ;
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
-      img-src 'self' data: https: https://www.google-analytics.com;
+      img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
       font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
-      connect-src 'self'  https://www.google-analytics.com ;
-      frame-src 'self' ;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
       object-src 'none';
       base-uri 'self';
       form-action 'self';
@@ -23,6 +24,15 @@
 
     
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+    
+    
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+    <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+    
     
 
     <!-- Critical navigation styles - always inlined for immediate user interaction -->
@@ -549,7 +559,7 @@ img {
       content="MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by ..."
     />
     
-    <meta name="version" content="Apr 26, 2026" />
+    <meta name="version" content="Apr 29, 2026" />
     
 
     
@@ -557,11 +567,81 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260425211421" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=20260426171115" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20260426171115" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260429134353" media="print">
 
-    <noscript>
-      <link rel="stylesheet" href="/assets/main.css?v=20260426171115">
-    </noscript>
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2020)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript11 = false;
+      const html = document.documentElement;
+      const candidatePaths = ['/assets/js/mijug-es11.min.js', '/assets/js/mijug-es11-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES11Features === 'function') {
+            try {
+              mod.testES11Features();
+              supportsEcmascript11 = true;
+              break;
+            } catch (e) { console.error('ES11 test failed:', e); }
+          } else if (typeof window.testES11Features === 'function') {
+            try {
+              window.testES11Features();
+              supportsEcmascript11 = true;
+              break;
+            } catch (e) { console.error('ES11 test failed:', e); }
+          } else {
+            console.debug('ES11 test module loaded but `testES11Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES11 test module not present or failed to import:', path, err);
+        }
+      }
+      if (!supportsEcmascript11) {
+        html.classList.add('no-ES2020');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+    <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+    <script type="module" src="/assets/js/mijug-es11.min.js?v=20260429134353" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -580,10 +660,14 @@ img {
       href="/favicon.ico"
     />
     
-    <link
-      rel="canonical"
-      href="https://www.mijug.net/tag/usb/"
-    />
+
+    <meta name="description" content="MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by ..." />
+<meta property="og:title" content="usb" />
+<meta property="og:description" content="MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by ..." />
+<meta property="og:url" content="https://www.mijug.net/tag/usb/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/tag/usb/" />
+
 
     
 
@@ -596,13 +680,14 @@ img {
 
   
   <script nonce="abc123">
-    // Context menu prevention - ES2020 optimized
     window.MIJUG_DISABLE_PRINT = true;
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body?.addEventListener?.('contextmenu', (e) => {
+    // Disable context menu without inline event handler (CSP compliant)
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.addEventListener('contextmenu', function(e) {
         e.preventDefault();
-      }, { once: false });
-    }, { once: true });
+        return false;
+      });
+    });
   </script>
   
   </head>
@@ -614,6 +699,7 @@ img {
           <span class="notice-detail">JavaScript is required for commerce functionality.</span>
         </div>
       </noscript>
+
       <div class="wrapper">
         <a class="site-title" rel="home" href="/">
           
@@ -622,146 +708,94 @@ img {
         </a>
 
         <!-- Mobile navigation toggle button -->
-        <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu" type="button">
-          Menu
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true">
+           Menu
         </button>
 
-        <!-- Modern navigation -->
-
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
-        <nav id="primary-navigation" class="primary-nav" role="dialog" aria-modal="true" aria-hidden="true">
+        <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
+
+          <!-- Full navigation for modern browsers -->
+          <div class="modern-nav-content">
             <button class="nav-close" type="button" aria-label="Close navigation menu">
               <span aria-hidden="true">×</span>
             </button>
-            <ul role="list">
+            <ul role="list" id="nav-items-static">
+              <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
               
+                
                 <li role="listitem">
                   <a href="/blog/" aria-label="Navigate to Blog">
                      Blog
                   </a>
                 </li>
+                
               
+                
                 <li role="listitem">
                   <a href="/about/" aria-label="Navigate to About">
                      About
                   </a>
                 </li>
+                
               
+                
                 <li role="listitem">
                   <a href="/docs/getting-started/" aria-label="Navigate to Getting Started">
                      Getting Started
                   </a>
                 </li>
+                
               
+                
                 <li role="listitem">
                   <a href="/docs/welcome-mijug-workspace/" aria-label="Navigate to Workspace Overview">
                      Workspace Overview
                   </a>
                 </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/frontmatter-cms/" aria-label="Navigate to FrontMatter CMS Usage">
-                     FrontMatter CMS Usage
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/accessibility-testing/" aria-label="Navigate to Accessibility Testing Configuration">
-                     Accessibility Testing Configuration
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/browser-management/" aria-label="Navigate to Browser Management for Testing">
-                     Browser Management for Testing
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/browser-compatibility-testing/" aria-label="Navigate to Browser Compatibility Testing">
-                     Browser Compatibility Testing
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/liquid-tags-examples/" aria-label="Navigate to Liquid Tags Examples">
-                     Liquid Tags Examples
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/tags-and-categories-guide/" aria-label="Navigate to Tags and Categories System Guide">
-                     Tags and Categories System Guide
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/performance-optimization/" aria-label="Navigate to Performance Optimization Guide">
-                     Performance Optimization Guide
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/testing-performance-evolution/" aria-label="Navigate to Testing Performance and Development Evolution">
-                     Testing Performance and Development Evolution
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/cache-management/" aria-label="Navigate to Cache Management Strategies">
-                     Cache Management Strategies
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-configuration-guide/" aria-label="Navigate to Mermaid Diagram Configuration Guide">
-                     Mermaid Diagram Configuration Guide
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-quick-start/" aria-label="Navigate to Mermaid Quick Start">
-                     Mermaid Quick Start
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-examples/" aria-label="Navigate to Mermaid Diagram Examples">
-                     Mermaid Diagram Examples
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-diagrams-sample/" aria-label="Navigate to Mermaid Diagrams Sample">
-                     Mermaid Diagrams Sample
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/mermaid-test-runner/" aria-label="Navigate to Mermaid Diagrams Test Runner">
-                     Mermaid Diagrams Test Runner
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/rel-attribute-guide/" aria-label="Navigate to The rel Attribute in HTML Links: A Comprehensive Guide">
-                     The rel Attribute in HTML Links: A Comprehensive Guide
-                  </a>
-                </li>
+                
               
-                <li role="listitem">
-                  <a href="/docs/exploring-limitations-of-gitea-and-ruby/" aria-label="Navigate to Exploring the Limitations of Gitea and Ruby">
-                     Exploring the Limitations of Gitea and Ruby
-                  </a>
-                </li>
+                
               
             </ul>
-          </nav>
-</div>
-        
+            <!-- Dynamic navigation items load here via JavaScript -->
+            <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+          </div>
+        </nav>
 
         <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
-      
+      </div>
     </header>
 
     <main class="page-content" aria-label="Content">
@@ -865,6 +899,7 @@ img {
   }
 </style>
 </div>
+      <div class="customad-container" id="adslot-1" data-ad-slot="12345678"></div>
     </main>
 
     <footer class="site-footer h-card">
@@ -884,40 +919,86 @@ img {
               <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
                   subscribe
               <a href="/feed.xml">via RSS<svg class="svg-icon">
-                  <use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg></a>
+                  <use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg>
+              </a>
             </p>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Bot detection for no-ads layout -->
-    <script type="module" nonce="abc123">
-      try {
-        const { isbot } = await import('https://cdn.jsdelivr.net/npm/isbot@5/index.mjs');
-        if (navigator.userAgent && isbot(navigator.userAgent)) {
-          document.addEventListener('DOMContentLoaded', function() {
-            document.body.innerHTML = '<div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;"><h1>Hello World</h1><p>Bot detected - showing simple content</p><p>There is no greatness where there is not simplicity, goodness, and truth. -Leo Tolstoy, novelist and philosopher (9 Sep 1828-1910)</p></div>';
-          });
-        }
-      } catch (_) {
-        // isbot unavailable — allow normal rendering
-      }
-    </script>
+    
 
     
+    <script nonce="abc123">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'G-W1M1N0DCD4');
+    </script>
+
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
+    
+
+    <!-- Cookie consent system -->
+    <!-- %  include google-adsense.html % -->
+    <!-- % include cookie-consent.html % -->}
+    <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
+    <script nonce="abc123">
+      // Code block accessibility - ES2020 optimized
+      (() => {
+        'use strict';
+
+        const enhanceCodeBlocks = () => {
+          try {
+            // Use :not() to skip already enhanced blocks (performance)
+            const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([role])');
+            if (blocks.length === 0) return;
+
+            blocks.forEach((el) => {
+              const code = el.querySelector('pre code');
+              const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+
+              // Extract language using optional chaining and nullish coalescing (ES2020)
+              const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+              const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+              // Batch attribute updates
+              el.setAttribute('role', 'img');
+              el.setAttribute('tabindex', '0');
+              el.setAttribute('aria-label', label);
+            });
+          } catch (e) {
+            console.warn('EnhanceCodeBlocks error', e);
+          }
+        };
+
+        // Modern API check (ES2020)
+        document.readyState === 'loading'
+          ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+          : enhanceCodeBlocks();
+      })();
+    </script>
 
     <script nonce="abc123">
       // Navigation toggle functionality - ES2020 optimized
       (() => {
         'use strict';
 
-        // Set language attribute (ES2020)
-        document.documentElement.lang = "en";
-
         // Cache DOM elements (ES2020 const, destructuring)
         const elements = {
           toggle: document.querySelector('.nav-toggle'),
+          close: document.querySelector('.nav-close'),
           nav: document.getElementById('primary-navigation'),
           status: document.getElementById('menu-status'),
           body: document.body
@@ -925,12 +1006,11 @@ img {
 
         // Early return if required elements missing (optional chaining ES2020)
         if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
-          console.warn('Navigation elements not found - falling back to basic behavior');
           return;
         }
 
+        // Initialize navigation as overlay
         elements.nav.classList.add('nav-overlay');
-        elements.nav.setAttribute('aria-hidden', 'true');
 
         // Toggle navigation with modern API (arrow function ES2020)
         const toggleNavigation = () => {
@@ -941,32 +1021,24 @@ img {
           elements.nav.classList[action]('nav-visible');
           elements.body.classList[action]('nav-open');
           elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
-          elements.toggle.textContent = isExpanded ? 'Menu' : 'Close';
+          elements.nav.setAttribute('aria-hidden', String(isExpanded));
           elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
-
-          if (isExpanded) {
-            elements.nav.setAttribute('aria-hidden', 'true');
-          } else {
-            elements.nav.removeAttribute('aria-hidden');
-          }
         };
 
         // Event delegation with passive listeners for scroll performance
         const handleClick = (e) => {
-          const isToggle = e.target.closest('.nav-toggle');
-          const isLink = e.target.tagName === 'A' && elements.nav.contains(e.target);
-          const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
-
-          // Toggle on button click
-          if (isToggle) {
+          // Check if toggle button or close button clicked
+          if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
             e.preventDefault();
             toggleNavigation();
             return;
           }
 
-          // Close on link click or click outside (only when open)
-          if (isExpanded && (isLink || (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)))) {
-            toggleNavigation();
+          // Close on click outside (only when open)
+          if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+            if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+              toggleNavigation();
+            }
           }
         };
 
@@ -1115,5 +1187,6 @@ img {
         }
       })();
     </script>
+
   </body>
 </html>
