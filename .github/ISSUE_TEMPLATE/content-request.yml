@@ -1,0 +1,92 @@
+name: Content Request
+description: Request new or updated website content using a structured issue form.
+title: "[Content]: "
+labels:
+  - content
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request new pages, posts, docs, or revisions.
+        Include enough detail so maintainers can plan and draft effectively.
+
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: Content Type
+      description: What kind of content are you requesting?
+      options:
+        - blog post
+        - documentation page
+        - workshop/session content
+        - landing/about page update
+        - policy/legal page update
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: requested-location
+    attributes:
+      label: Requested Location
+      description: Proposed path, section, or navigation area.
+      placeholder: docs/_posts/, docs/_docs/, docs/_pages/, blog, workshops, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Briefly describe the content request and intended outcome.
+    validations:
+      required: true
+
+  - type: textarea
+    id: audience
+    attributes:
+      label: Target Audience
+      description: Who is this for and what problem does it solve?
+      placeholder: New contributors, workshop attendees, site visitors, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: key-points
+    attributes:
+      label: Key Points to Include
+      description: List the main topics, sections, or must-have details.
+      placeholder: |
+        - Point 1
+        - Point 2
+        - Point 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Optional links, source material, or related issues/PRs.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How urgent is this request?
+      options:
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I provided enough context for someone else to draft or update this content.
+          required: true
+        - label: I understand maintainers may adjust scope, title, or placement.
+          required: true

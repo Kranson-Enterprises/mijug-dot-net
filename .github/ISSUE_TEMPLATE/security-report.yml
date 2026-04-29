@@ -1,0 +1,69 @@
+name: Security Report
+description: Report a security concern using a structured issue form.
+title: "[Security]: "
+labels:
+  - security
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for potential security issues.
+        Do not include credentials, private keys, or sensitive personal data.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: Select the estimated impact level.
+      options:
+        - critical
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+
+  - type: input
+    id: affected-area
+    attributes:
+      label: Affected Area
+      description: File path, feature, workflow, or component impacted.
+      placeholder: docs/_config_prod_enhanced.yml, .github/workflows/main.yml, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the issue and why it matters.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: Provide concise steps or proof-of-concept details.
+      placeholder: |
+        1. Go to ...
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-fix
+    attributes:
+      label: Suggested Fix
+      description: Optional mitigation or remediation idea.
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I have removed sensitive secrets and credentials from this report.
+          required: true
+        - label: I understand maintainers may request follow-up details.
+          required: true
