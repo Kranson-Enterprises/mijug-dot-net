@@ -573,7 +573,7 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20260429143822" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260429171646" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -589,7 +589,7 @@ img {
       const html = document.documentElement;
       html.lang = "en";
 
-      // Modern module support check (ES2020)
+      // Modern module support check (ES2022 baseline)
       const supportsModules = 'noModule' in HTMLScriptElement.prototype;
 
       // Early return for legacy browsers (optional chaining available in modern browsers)
@@ -605,7 +605,7 @@ img {
       }
     })();
   </script>
-  <!-- Attempt to load and run ES11 feature detection (syntax-only check) -->
+  <!-- Attempt to load and run ES13 feature detection (syntax-only check) -->
   
   
   
@@ -613,41 +613,41 @@ img {
   <script nonce="abc123" type="module">
     (async () => {
 
-      var supportsEcmascript11 = false;
+      var supportsEcmascript13 = false;
       const html = document.documentElement;
-      const candidatePaths = ['/assets/js/mijug-es11.min.js', '/assets/js/mijug-es11-bundle.js'];
+      const candidatePaths = ['/assets/js/mijug-es13.min.js', '/assets/js/mijug-es13-bundle.js'];
       for (const path of candidatePaths) {
         try {
           const mod = await import(path);
-          if (mod && typeof mod.testES11Features === 'function') {
+          if (mod && typeof mod.testES13Features === 'function') {
             try {
-              mod.testES11Features();
-              supportsEcmascript11 = true;
+              mod.testES13Features();
+              supportsEcmascript13 = true;
               break;
-            } catch (e) { console.error('ES11 test failed:', e); }
-          } else if (typeof window.testES11Features === 'function') {
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else if (typeof window.testES13Features === 'function') {
             try {
-              window.testES11Features();
-              supportsEcmascript11 = true;
+              window.testES13Features();
+              supportsEcmascript13 = true;
               break;
-            } catch (e) { console.error('ES11 test failed:', e); }
+            } catch (e) { console.error('ES13 test failed:', e); }
           } else {
-            console.debug('ES11 test module loaded but `testES11Features` not found.');
+            console.debug('ES13 test module loaded but `testES13Features` not found.');
           }
         } catch (err) {
-          console.debug('ES11 test module not present or failed to import:', path, err);
+          console.debug('ES13 test module not present or failed to import:', path, err);
         }
       }
-      if (!supportsEcmascript11) {
-        html.classList.add('no-ES2020');
+      if (!supportsEcmascript13) {
+        html.classList.add('no-ES2022');
         // Show legacy browser notice for commerce functionality
-        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2020 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2022 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
         return; // Exit early for legacy browsers
       }
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es11.min.js?v=20260429143822" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260429171646" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -960,7 +960,7 @@ img {
   <li><strong>Site Title</strong>: My Info Just Under Glass</li>
   <li><strong>Site Description</strong>: MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by Kranson Enterprises for sharing knowledge and connecting communities.</li>
   <li><strong>Site URL</strong>: https://www.mijug.net</li>
-  <li><strong>Build Time</strong>: April 29, 2026 at 02:38 PM</li>
+  <li><strong>Build Time</strong>: April 29, 2026 at 05:16 PM</li>
 </ul>
 
 <p><strong>Liquid Syntax:</strong></p>
@@ -1299,9 +1299,9 @@ No posts found.
 <ul>
   <li><strong>Full Date</strong>: Wednesday, April 29, 2026</li>
   <li><strong>Short Date</strong>: 04/29/2026</li>
-  <li><strong>Time</strong>: 02:38 PM</li>
-  <li><strong>ISO 8601</strong>: 2026-04-29T14:38:22-04:00</li>
-  <li><strong>RFC 822</strong>: Wed, 29 Apr 2026 14:38:22 -0400</li>
+  <li><strong>Time</strong>: 05:16 PM</li>
+  <li><strong>ISO 8601</strong>: 2026-04-29T17:16:46-04:00</li>
+  <li><strong>RFC 822</strong>: Wed, 29 Apr 2026 17:16:46 -0400</li>
 </ul>
 
 <p><strong>Liquid Syntax:</strong></p>
