@@ -573,7 +573,7 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20260429182949" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260506151453" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -647,7 +647,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260429182949" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260506151453" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -723,53 +723,32 @@ img {
       </noscript>
 
       <div class="wrapper">
-        <a
-          class="site-title"
-          rel="home"
-          href="/"
-        >
+        <a class="site-title" rel="home" href="/">
           
-          <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
-            alt="My Info Just Under Glass"
-            width="50"
-            height="50"
-          />
+          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" alt="My Info Just Under Glass" width="50" height="50">
            My Info Just Under Glass
         </a>
 
         <!-- Mobile navigation toggle button -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu">
-          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
-          &nbsp;Menu
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true">
+           Menu
         </button>
 
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
-        <nav
-          id="primary-navigation"
-          class="primary-nav js-enhanced-nav"
-          role="dialog"
-          aria-modal="true"
-          aria-hidden="true">
+        <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
 
           <!-- Full navigation for modern browsers -->
           <div class="modern-nav-content">
             <button class="nav-close" type="button" aria-label="Close navigation menu">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">×</span>
             </button>
             <ul role="list" id="nav-items-static">
               <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
               
                 
                 <li role="listitem">
-                  <a href="/blog/"
-                     
-                     aria-label="Navigate to Blog">
+                  <a href="/blog/" aria-label="Navigate to Blog">
                      Blog
                   </a>
                 </li>
@@ -777,9 +756,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/about/"
-                     
-                     aria-label="Navigate to About">
+                  <a href="/about/" aria-label="Navigate to About">
                      About
                   </a>
                 </li>
@@ -787,9 +764,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/getting-started/"
-                     
-                     aria-label="Navigate to Getting Started">
+                  <a href="/docs/getting-started/" aria-label="Navigate to Getting Started">
                      Getting Started
                   </a>
                 </li>
@@ -797,9 +772,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/welcome-mijug-workspace/"
-                     
-                     aria-label="Navigate to Workspace Overview">
+                  <a href="/docs/welcome-mijug-workspace/" aria-label="Navigate to Workspace Overview">
                      Workspace Overview
                   </a>
                 </li>
@@ -848,20 +821,24 @@ img {
     </header>
 
     <main class="page-content" aria-label="Content">
-      <div class="wrapper"><article class="post">
+      <div class="wrapper">
+<article class="post">
   <header class="post-header">
     <h1 class="post-title">Tags and Categories System Guide</h1>
   </header>
 
-  <div class="post-content"><p>This comprehensive guide explains how tags and categories work in our Jekyll workspace, their relationship to archive browsing, and best practices for creating and using taxonomy effectively.</p>
+  <div class="post-content">
+<p>This comprehensive guide explains how tags and categories work in our Jekyll workspace, their relationship to archive browsing, and best practices for creating and using taxonomy effectively.</p>
 
 <h2 id="-overview">📋 Overview</h2>
 
 <p>Our content management system uses a dual taxonomy approach:</p>
 
 <ul>
-  <li><strong>Categories</strong>: Broad, hierarchical content organization (typically 1 per post)</li>
-  <li><strong>Tags</strong>: Specific, descriptive keywords (multiple per post)</li>
+  <li>
+<strong>Categories</strong>: Broad, hierarchical content organization (typically 1 per post)</li>
+  <li>
+<strong>Tags</strong>: Specific, descriptive keywords (multiple per post)</li>
 </ul>
 
 <p>Both systems work together to create powerful content discovery through automated archive pages and enhanced navigation.</p>
@@ -873,8 +850,10 @@ img {
 <p>The taxonomy system integrates with Jekyll’s archive plugin to automatically generate:</p>
 
 <ul>
-  <li>Category archive pages at <code class="language-plaintext highlighter-rouge">/category/{category-name}/</code></li>
-  <li>Tag archive pages at <code class="language-plaintext highlighter-rouge">/tag/{tag-name}/</code></li>
+  <li>Category archive pages at <code class="language-plaintext highlighter-rouge">/category/{category-name}/</code>
+</li>
+  <li>Tag archive pages at <code class="language-plaintext highlighter-rouge">/tag/{tag-name}/</code>
+</li>
   <li>Paginated listings for each taxonomy term</li>
 </ul>
 
@@ -901,10 +880,14 @@ img {
 <p>Each taxonomy entry includes:</p>
 
 <ul>
-  <li><strong>name</strong>: Display name</li>
-  <li><strong>description</strong>: Purpose explanation</li>
-  <li><strong>color</strong>: Visual identification (hex code)</li>
-  <li><strong>icon</strong>: Optional emoji or symbol</li>
+  <li>
+<strong>name</strong>: Display name</li>
+  <li>
+<strong>description</strong>: Purpose explanation</li>
+  <li>
+<strong>color</strong>: Visual identification (hex code)</li>
+  <li>
+<strong>icon</strong>: Optional emoji or symbol</li>
 </ul>
 
 <h2 id="-categories-system">📚 Categories System</h2>
@@ -914,10 +897,14 @@ img {
 <p>Categories represent <strong>broad content areas</strong> and follow these principles:</p>
 
 <ol>
-  <li><strong>Hierarchical</strong>: Organized from general to specific</li>
-  <li><strong>Exclusive</strong>: Each post typically belongs to one primary category</li>
-  <li><strong>Stable</strong>: Categories change infrequently</li>
-  <li><strong>Descriptive</strong>: Clear content area indication</li>
+  <li>
+<strong>Hierarchical</strong>: Organized from general to specific</li>
+  <li>
+<strong>Exclusive</strong>: Each post typically belongs to one primary category</li>
+  <li>
+<strong>Stable</strong>: Categories change infrequently</li>
+  <li>
+<strong>Descriptive</strong>: Clear content area indication</li>
 </ol>
 
 <h3 id="available-categories">Available Categories</h3>
@@ -1018,10 +1005,14 @@ img {
 <h4 id="choosing-categories">Choosing Categories</h4>
 
 <ol>
-  <li><strong>Single Category Rule</strong>: Most posts should have one primary category</li>
-  <li><strong>Content Alignment</strong>: Category should match the main topic</li>
-  <li><strong>User Perspective</strong>: Consider how readers will browse content</li>
-  <li><strong>Future Consistency</strong>: Use existing categories when possible</li>
+  <li>
+<strong>Single Category Rule</strong>: Most posts should have one primary category</li>
+  <li>
+<strong>Content Alignment</strong>: Category should match the main topic</li>
+  <li>
+<strong>User Perspective</strong>: Consider how readers will browse content</li>
+  <li>
+<strong>Future Consistency</strong>: Use existing categories when possible</li>
 </ol>
 
 <h4 id="adding-new-categories">Adding New Categories</h4>
@@ -1029,10 +1020,15 @@ img {
 <p>When creating new categories:</p>
 
 <ol>
-  <li><strong>Check Existing</strong>: Review current categories first</li>
-  <li><strong>Validate Need</strong>: Ensure 3+ posts will use this category</li>
-  <li><strong>Clear Purpose</strong>: Define specific content area</li>
-  <li><strong>Update Data File</strong>: Add to <code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code></li>
+  <li>
+<strong>Check Existing</strong>: Review current categories first</li>
+  <li>
+<strong>Validate Need</strong>: Ensure 3+ posts will use this category</li>
+  <li>
+<strong>Clear Purpose</strong>: Define specific content area</li>
+  <li>
+<strong>Update Data File</strong>: Add to <code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code>
+</li>
 </ol>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example new category</span>
@@ -1050,10 +1046,14 @@ img {
 <p>Tags represent <strong>specific topics</strong> and follow these principles:</p>
 
 <ol>
-  <li><strong>Descriptive</strong>: Specific technologies, concepts, or tools</li>
-  <li><strong>Multiple</strong>: Posts can have many relevant tags</li>
-  <li><strong>Flexible</strong>: Easy to add new tags as needed</li>
-  <li><strong>Searchable</strong>: Enable precise content discovery</li>
+  <li>
+<strong>Descriptive</strong>: Specific technologies, concepts, or tools</li>
+  <li>
+<strong>Multiple</strong>: Posts can have many relevant tags</li>
+  <li>
+<strong>Flexible</strong>: Easy to add new tags as needed</li>
+  <li>
+<strong>Searchable</strong>: Enable precise content discovery</li>
 </ol>
 
 <h3 id="available-tags">Available Tags</h3>
@@ -1155,19 +1155,27 @@ img {
 <h4 id="choosing-tags">Choosing Tags</h4>
 
 <ol>
-  <li><strong>Specific Technologies</strong>: Include framework/tool names</li>
-  <li><strong>Core Concepts</strong>: Tag main topics discussed</li>
-  <li><strong>Target Audience</strong>: Consider search terms users might use</li>
-  <li><strong>Reasonable Quantity</strong>: 3-8 tags per post optimal</li>
+  <li>
+<strong>Specific Technologies</strong>: Include framework/tool names</li>
+  <li>
+<strong>Core Concepts</strong>: Tag main topics discussed</li>
+  <li>
+<strong>Target Audience</strong>: Consider search terms users might use</li>
+  <li>
+<strong>Reasonable Quantity</strong>: 3-8 tags per post optimal</li>
 </ol>
 
 <h4 id="tag-naming-conventions">Tag Naming Conventions</h4>
 
 <ul>
-  <li><strong>Lowercase</strong>: Use lowercase for consistency</li>
-  <li><strong>Hyphens</strong>: Separate words with hyphens (<code class="language-plaintext highlighter-rouge">machine-learning</code>)</li>
-  <li><strong>No Spaces</strong>: Avoid spaces in tag names</li>
-  <li><strong>Descriptive</strong>: Choose clear, searchable terms</li>
+  <li>
+<strong>Lowercase</strong>: Use lowercase for consistency</li>
+  <li>
+<strong>Hyphens</strong>: Separate words with hyphens (<code class="language-plaintext highlighter-rouge">machine-learning</code>)</li>
+  <li>
+<strong>No Spaces</strong>: Avoid spaces in tag names</li>
+  <li>
+<strong>Descriptive</strong>: Choose clear, searchable terms</li>
 </ul>
 
 <h4 id="adding-new-tags">Adding New Tags</h4>
@@ -1175,10 +1183,15 @@ img {
 <p>Process for new tags:</p>
 
 <ol>
-  <li><strong>Search Existing</strong>: Check current tags first</li>
-  <li><strong>Validate Uniqueness</strong>: Ensure no duplicates or near-duplicates</li>
-  <li><strong>Update Data File</strong>: Add to <code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code></li>
-  <li><strong>Consider Aliases</strong>: Think about alternative names</li>
+  <li>
+<strong>Search Existing</strong>: Check current tags first</li>
+  <li>
+<strong>Validate Uniqueness</strong>: Ensure no duplicates or near-duplicates</li>
+  <li>
+<strong>Update Data File</strong>: Add to <code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code>
+</li>
+  <li>
+<strong>Consider Aliases</strong>: Think about alternative names</li>
 </ol>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example new tag</span>
@@ -1193,11 +1206,16 @@ img {
 <h3 id="using-frontmatter-cms">Using FrontMatter CMS</h3>
 
 <ol>
-  <li><strong>Open VS Code</strong>: Launch VS Code with FrontMatter extension</li>
-  <li><strong>Access CMS</strong>: Use Command Palette (<code class="language-plaintext highlighter-rouge">Ctrl+Shift+P</code>) → “FrontMatter: Open Dashboard”</li>
-  <li><strong>Create Content</strong>: Choose content type (post, documentation, page)</li>
-  <li><strong>Select Taxonomy</strong>: Use dropdown menus for categories and tags</li>
-  <li><strong>Validate</strong>: FrontMatter validates against data files</li>
+  <li>
+<strong>Open VS Code</strong>: Launch VS Code with FrontMatter extension</li>
+  <li>
+<strong>Access CMS</strong>: Use Command Palette (<code class="language-plaintext highlighter-rouge">Ctrl+Shift+P</code>) → “FrontMatter: Open Dashboard”</li>
+  <li>
+<strong>Create Content</strong>: Choose content type (post, documentation, page)</li>
+  <li>
+<strong>Select Taxonomy</strong>: Use dropdown menus for categories and tags</li>
+  <li>
+<strong>Validate</strong>: FrontMatter validates against data files</li>
 </ol>
 
 <h3 id="manual-front-matter">Manual Front Matter</h3>
@@ -1236,7 +1254,8 @@ E. Spelling and formatting are correct</p>
 <p><strong>Category Archives</strong>:</p>
 
 <ul>
-  <li>URL pattern: <code class="language-plaintext highlighter-rouge">/category/{category-name}/</code></li>
+  <li>URL pattern: <code class="language-plaintext highlighter-rouge">/category/{category-name}/</code>
+</li>
   <li>Lists all posts in that category</li>
   <li>Paginated if many posts</li>
   <li>Includes category metadata</li>
@@ -1245,7 +1264,8 @@ E. Spelling and formatting are correct</p>
 <p><strong>Tag Archives</strong>:</p>
 
 <ul>
-  <li>URL pattern: <code class="language-plaintext highlighter-rouge">/tag/{tag-name}/</code></li>
+  <li>URL pattern: <code class="language-plaintext highlighter-rouge">/tag/{tag-name}/</code>
+</li>
   <li>Lists all posts with that tag</li>
   <li>Cross-references related tags</li>
   <li>Shows tag description</li>
@@ -1256,10 +1276,14 @@ E. Spelling and formatting are correct</p>
 <p>Archives integrate with site navigation:</p>
 
 <ol>
-  <li><strong>Category Menu</strong>: Main navigation by content area</li>
-  <li><strong>Tag Cloud</strong>: Popular tags visualization</li>
-  <li><strong>Related Content</strong>: Posts with similar tags</li>
-  <li><strong>Breadcrumbs</strong>: Category-based navigation paths</li>
+  <li>
+<strong>Category Menu</strong>: Main navigation by content area</li>
+  <li>
+<strong>Tag Cloud</strong>: Popular tags visualization</li>
+  <li>
+<strong>Related Content</strong>: Posts with similar tags</li>
+  <li>
+<strong>Breadcrumbs</strong>: Category-based navigation paths</li>
 </ol>
 
 <h3 id="user-experience">User Experience</h3>
@@ -1267,10 +1291,14 @@ E. Spelling and formatting are correct</p>
 <p>The taxonomy system enhances UX through:</p>
 
 <ul>
-  <li><strong>Discovery</strong>: Browse content by interest area</li>
-  <li><strong>Filtering</strong>: Narrow results by specific topics</li>
-  <li><strong>Related Content</strong>: Find similar articles</li>
-  <li><strong>Progressive Disclosure</strong>: From general (category) to specific (tags)</li>
+  <li>
+<strong>Discovery</strong>: Browse content by interest area</li>
+  <li>
+<strong>Filtering</strong>: Narrow results by specific topics</li>
+  <li>
+<strong>Related Content</strong>: Find similar articles</li>
+  <li>
+<strong>Progressive Disclosure</strong>: From general (category) to specific (tags)</li>
 </ul>
 
 <h2 id="️-maintenance-and-management">🛠️ Maintenance and Management</h2>
@@ -1280,19 +1308,27 @@ E. Spelling and formatting are correct</p>
 <h4 id="monthly-review">Monthly Review</h4>
 
 <ol>
-  <li><strong>Usage Analysis</strong>: Check which tags/categories are unused</li>
-  <li><strong>Consistency Check</strong>: Verify naming conventions</li>
-  <li><strong>Data Validation</strong>: Ensure all used terms have data file entries</li>
-  <li><strong>Archive Testing</strong>: Verify archive page generation</li>
+  <li>
+<strong>Usage Analysis</strong>: Check which tags/categories are unused</li>
+  <li>
+<strong>Consistency Check</strong>: Verify naming conventions</li>
+  <li>
+<strong>Data Validation</strong>: Ensure all used terms have data file entries</li>
+  <li>
+<strong>Archive Testing</strong>: Verify archive page generation</li>
 </ol>
 
 <h4 id="quarterly-cleanup">Quarterly Cleanup</h4>
 
 <ol>
-  <li><strong>Taxonomy Audit</strong>: Review all categories and tags</li>
-  <li><strong>Consolidation</strong>: Merge similar or redundant terms</li>
-  <li><strong>Performance Check</strong>: Ensure fast archive page loading</li>
-  <li><strong>SEO Review</strong>: Optimize for search engines</li>
+  <li>
+<strong>Taxonomy Audit</strong>: Review all categories and tags</li>
+  <li>
+<strong>Consolidation</strong>: Merge similar or redundant terms</li>
+  <li>
+<strong>Performance Check</strong>: Ensure fast archive page loading</li>
+  <li>
+<strong>SEO Review</strong>: Optimize for search engines</li>
 </ol>
 
 <h3 id="data-file-management">Data File Management</h3>
@@ -1323,12 +1359,18 @@ E. Spelling and formatting are correct</p>
 <h4 id="step-by-step-process">Step-by-Step Process</h4>
 
 <ol>
-  <li><strong>Research</strong>: Check existing terms for alternatives</li>
-  <li><strong>Plan</strong>: Define purpose and scope clearly</li>
-  <li><strong>Add Data</strong>: Update appropriate YAML file</li>
-  <li><strong>Test</strong>: Create test content using new term</li>
-  <li><strong>Validate</strong>: Check archive page generation</li>
-  <li><strong>Document</strong>: Update this guide if needed</li>
+  <li>
+<strong>Research</strong>: Check existing terms for alternatives</li>
+  <li>
+<strong>Plan</strong>: Define purpose and scope clearly</li>
+  <li>
+<strong>Add Data</strong>: Update appropriate YAML file</li>
+  <li>
+<strong>Test</strong>: Create test content using new term</li>
+  <li>
+<strong>Validate</strong>: Check archive page generation</li>
+  <li>
+<strong>Document</strong>: Update this guide if needed</li>
 </ol>
 
 <h4 id="validation-commands">Validation Commands</h4>
@@ -1435,28 +1477,40 @@ npm run taxonomy:validate  <span class="c"># If available</span>
 <h3 id="content-creators">Content Creators</h3>
 
 <ol>
-  <li><strong>Plan Taxonomy</strong>: Choose categories and tags before writing</li>
-  <li><strong>Be Consistent</strong>: Use established terms when possible</li>
-  <li><strong>Think User-First</strong>: Consider how readers will discover content</li>
-  <li><strong>Validate Early</strong>: Check taxonomy exists in data files</li>
+  <li>
+<strong>Plan Taxonomy</strong>: Choose categories and tags before writing</li>
+  <li>
+<strong>Be Consistent</strong>: Use established terms when possible</li>
+  <li>
+<strong>Think User-First</strong>: Consider how readers will discover content</li>
+  <li>
+<strong>Validate Early</strong>: Check taxonomy exists in data files</li>
 </ol>
 
 <h3 id="site-maintainers">Site Maintainers</h3>
 
 <ol>
-  <li><strong>Regular Audits</strong>: Review taxonomy usage monthly</li>
-  <li><strong>Performance Monitoring</strong>: Track archive page load times</li>
-  <li><strong>User Analytics</strong>: Monitor which archives are popular</li>
-  <li><strong>Documentation</strong>: Keep this guide updated</li>
+  <li>
+<strong>Regular Audits</strong>: Review taxonomy usage monthly</li>
+  <li>
+<strong>Performance Monitoring</strong>: Track archive page load times</li>
+  <li>
+<strong>User Analytics</strong>: Monitor which archives are popular</li>
+  <li>
+<strong>Documentation</strong>: Keep this guide updated</li>
 </ol>
 
 <h3 id="development-team">Development Team</h3>
 
 <ol>
-  <li><strong>Automation</strong>: Create scripts for taxonomy validation</li>
-  <li><strong>Testing</strong>: Include taxonomy in CI/CD pipeline</li>
-  <li><strong>Monitoring</strong>: Track archive page generation errors</li>
-  <li><strong>Performance</strong>: Optimize archive page queries</li>
+  <li>
+<strong>Automation</strong>: Create scripts for taxonomy validation</li>
+  <li>
+<strong>Testing</strong>: Include taxonomy in CI/CD pipeline</li>
+  <li>
+<strong>Monitoring</strong>: Track archive page generation errors</li>
+  <li>
+<strong>Performance</strong>: Optimize archive page queries</li>
 </ol>
 
 <h2 id="-resources">📚 Resources</h2>
@@ -1464,10 +1518,14 @@ npm run taxonomy:validate  <span class="c"># If available</span>
 <h3 id="configuration-files">Configuration Files</h3>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">frontmatter.json</code>: FrontMatter CMS configuration</li>
-  <li><code class="language-plaintext highlighter-rouge">docs/_config.yml</code>: Jekyll site configuration</li>
-  <li><code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code>: Category definitions</li>
-  <li><code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code>: Tag definitions</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">frontmatter.json</code>: FrontMatter CMS configuration</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">docs/_config.yml</code>: Jekyll site configuration</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code>: Category definitions</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code>: Tag definitions</li>
 </ul>
 
 <h3 id="archive-examples">Archive Examples</h3>
@@ -1486,7 +1544,7 @@ npm run taxonomy:validate  <span class="c"># If available</span>
   <li><a href="https://jekyllrb.com/docs/datafiles/" rel="external noopener noreferrer" target="_blank">Jekyll Data Files</a></li>
 </ul>
 
-<hr />
+<hr>
 
 <p><strong>Last Updated</strong>: August 5, 2025
 <strong>Maintainer</strong>: MIJUG Development Team
@@ -1502,7 +1560,7 @@ npm run taxonomy:validate  <span class="c"># If available</span>
       <div class="wrapper">
         <div class="footer-col-wrapper">
           <div class="footer-col footer-col-1">
-            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/terms-of-service.html">Terms of Service</a><br>
             <a href="/privacy-policy.html">Privacy Policy</a>
           </div>
           <div class="footer-col footer-col-2">
@@ -1510,16 +1568,11 @@ npm run taxonomy:validate  <span class="c"># If available</span>
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2026
-              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
-                >Kranson Enterprises</a
-              ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
-              <a href="/feed.xml"
-                >via RSS<svg class="svg-icon">
-                  <use
-                    xlink:href="/assets/minima-social-icons.svg#rss"
-                  ></use></svg>
+              © 2026
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                  subscribe
+              <a href="/feed.xml">via RSS<svg class="svg-icon">
+                  <use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg>
               </a>
             </p>
           </div>
@@ -1547,11 +1600,7 @@ npm run taxonomy:validate  <span class="c"># If available</span>
       gtag('config', 'G-W1M1N0DCD4');
     </script>
 
-    <script
-      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
-      crossorigin="anonymous"
-      async
-    ></script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
     
 
     <!-- Cookie consent system -->
@@ -1660,8 +1709,12 @@ npm run taxonomy:validate  <span class="c"># If available</span>
       })();
     </script>
 
+    <!-- Navigation data for lazy-loading (optimization #7) -->
+    <script id="nav-data-dynamic" type="application/json">[{"title":"FrontMatter CMS Usage","permalink":"/docs/frontmatter-cms/","ariaLabel":"Navigate to FrontMatter CMS Usage","current":false},{"title":"Accessibility Testing Configuration","permalink":"/docs/accessibility-testing/","ariaLabel":"Navigate to Accessibility Testing Configuration","current":false},{"title":"Browser Management for Testing","permalink":"/docs/browser-management/","ariaLabel":"Navigate to Browser Management for Testing","current":false},{"title":"Browser Compatibility Testing","permalink":"/docs/browser-compatibility-testing/","ariaLabel":"Navigate to Browser Compatibility Testing","current":false},{"title":"Liquid Tags Examples","permalink":"/docs/liquid-tags-examples/","ariaLabel":"Navigate to Liquid Tags Examples","current":false},{"title":"Tags and Categories System Guide","permalink":"/docs/tags-and-categories-guide/","ariaLabel":"Navigate to Tags and Categories System Guide","current":false},{"title":"Performance Optimization Guide","permalink":"/docs/performance-optimization/","ariaLabel":"Navigate to Performance Optimization Guide","current":false},{"title":"Testing Performance and Development Evolution","permalink":"/docs/testing-performance-evolution/","ariaLabel":"Navigate to Testing Performance and Development Evolution","current":false},{"title":"Cache Management Strategies","permalink":"/docs/cache-management/","ariaLabel":"Navigate to Cache Management Strategies","current":false},{"title":"Mermaid Diagram Configuration Guide","permalink":"/docs/mermaid-configuration-guide/","ariaLabel":"Navigate to Mermaid Diagram Configuration Guide","current":false},{"title":"Mermaid Quick Start","permalink":"/docs/mermaid-quick-start/","ariaLabel":"Navigate to Mermaid Quick Start","current":false},{"title":"Mermaid Diagram Examples","permalink":"/docs/mermaid-examples/","ariaLabel":"Navigate to Mermaid Diagram Examples","current":false},{"title":"Mermaid Diagrams Sample","permalink":"/docs/mermaid-diagrams-sample/","ariaLabel":"Navigate to Mermaid Diagrams Sample","current":false},{"title":"Mermaid Diagrams Test Runner","permalink":"/docs/mermaid-test-runner/","ariaLabel":"Navigate to Mermaid Diagrams Test Runner","current":false},{"title":"The rel Attribute in HTML Links: A Comprehensive Guide","permalink":"/docs/rel-attribute-guide/","ariaLabel":"Navigate to The rel Attribute in HTML Links: A Comprehensive Guide","current":false},{"title":"Exploring the Limitations of Gitea and Ruby","permalink":"/docs/exploring-limitations-of-gitea-and-ruby/","ariaLabel":"Navigate to Exploring the Limitations of Gitea and Ruby","current":false},]</script>
+
     <!-- Lazy-load dynamic navigation items (optimization #7) -->
     <script nonce="abc123">
+      // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
       (() => {
         'use strict';
 
@@ -1673,91 +1726,8 @@ npm run taxonomy:validate  <span class="c"># If available</span>
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)
-          const allItems = [
-            {
-              title: "FrontMatter CMS Usage",
-              permalink: "/docs/frontmatter-cms/",
-              ariaLabel: "Navigate to FrontMatter CMS Usage",
-              current: false
-            },{
-              title: "Accessibility Testing Configuration",
-              permalink: "/docs/accessibility-testing/",
-              ariaLabel: "Navigate to Accessibility Testing Configuration",
-              current: false
-            },{
-              title: "Browser Management for Testing",
-              permalink: "/docs/browser-management/",
-              ariaLabel: "Navigate to Browser Management for Testing",
-              current: false
-            },{
-              title: "Browser Compatibility Testing",
-              permalink: "/docs/browser-compatibility-testing/",
-              ariaLabel: "Navigate to Browser Compatibility Testing",
-              current: false
-            },{
-              title: "Liquid Tags Examples",
-              permalink: "/docs/liquid-tags-examples/",
-              ariaLabel: "Navigate to Liquid Tags Examples",
-              current: false
-            },{
-              title: "Tags and Categories System Guide",
-              permalink: "/docs/tags-and-categories-guide/",
-              ariaLabel: "Navigate to Tags and Categories System Guide",
-              current: false
-            },{
-              title: "Performance Optimization Guide",
-              permalink: "/docs/performance-optimization/",
-              ariaLabel: "Navigate to Performance Optimization Guide",
-              current: false
-            },{
-              title: "Testing Performance and Development Evolution",
-              permalink: "/docs/testing-performance-evolution/",
-              ariaLabel: "Navigate to Testing Performance and Development Evolution",
-              current: false
-            },{
-              title: "Cache Management Strategies",
-              permalink: "/docs/cache-management/",
-              ariaLabel: "Navigate to Cache Management Strategies",
-              current: false
-            },{
-              title: "Mermaid Diagram Configuration Guide",
-              permalink: "/docs/mermaid-configuration-guide/",
-              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
-              current: false
-            },{
-              title: "Mermaid Quick Start",
-              permalink: "/docs/mermaid-quick-start/",
-              ariaLabel: "Navigate to Mermaid Quick Start",
-              current: false
-            },{
-              title: "Mermaid Diagram Examples",
-              permalink: "/docs/mermaid-examples/",
-              ariaLabel: "Navigate to Mermaid Diagram Examples",
-              current: false
-            },{
-              title: "Mermaid Diagrams Sample",
-              permalink: "/docs/mermaid-diagrams-sample/",
-              ariaLabel: "Navigate to Mermaid Diagrams Sample",
-              current: false
-            },{
-              title: "Mermaid Diagrams Test Runner",
-              permalink: "/docs/mermaid-test-runner/",
-              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
-              current: false
-            },{
-              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
-              permalink: "/docs/rel-attribute-guide/",
-              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
-              current: false
-            },{
-              title: "Exploring the Limitations of Gitea and Ruby",
-              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
-              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
-              current: false
-            },
-          ];
-
-          // Render dynamic items (optimization #7: deferred rendering)
+          const navDataEl = document.getElementById('nav-data-dynamic');
+          const allItems = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
           allItems.forEach((item) => {
             const li = document.createElement('li');
             li.setAttribute('role', 'listitem');

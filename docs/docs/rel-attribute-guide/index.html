@@ -573,7 +573,7 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20260429182949" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260506151453" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -647,7 +647,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260429182949" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260506151453" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -1969,8 +1969,12 @@ img {
       })();
     </script>
 
+    <!-- Navigation data for lazy-loading (optimization #7) -->
+    <script id="nav-data-dynamic" type="application/json">[{"title":"FrontMatter CMS Usage","permalink":"/docs/frontmatter-cms/","ariaLabel":"Navigate to FrontMatter CMS Usage","current":false},{"title":"Accessibility Testing Configuration","permalink":"/docs/accessibility-testing/","ariaLabel":"Navigate to Accessibility Testing Configuration","current":false},{"title":"Browser Management for Testing","permalink":"/docs/browser-management/","ariaLabel":"Navigate to Browser Management for Testing","current":false},{"title":"Browser Compatibility Testing","permalink":"/docs/browser-compatibility-testing/","ariaLabel":"Navigate to Browser Compatibility Testing","current":false},{"title":"Liquid Tags Examples","permalink":"/docs/liquid-tags-examples/","ariaLabel":"Navigate to Liquid Tags Examples","current":false},{"title":"Tags and Categories System Guide","permalink":"/docs/tags-and-categories-guide/","ariaLabel":"Navigate to Tags and Categories System Guide","current":false},{"title":"Performance Optimization Guide","permalink":"/docs/performance-optimization/","ariaLabel":"Navigate to Performance Optimization Guide","current":false},{"title":"Testing Performance and Development Evolution","permalink":"/docs/testing-performance-evolution/","ariaLabel":"Navigate to Testing Performance and Development Evolution","current":false},{"title":"Cache Management Strategies","permalink":"/docs/cache-management/","ariaLabel":"Navigate to Cache Management Strategies","current":false},{"title":"Mermaid Diagram Configuration Guide","permalink":"/docs/mermaid-configuration-guide/","ariaLabel":"Navigate to Mermaid Diagram Configuration Guide","current":false},{"title":"Mermaid Quick Start","permalink":"/docs/mermaid-quick-start/","ariaLabel":"Navigate to Mermaid Quick Start","current":false},{"title":"Mermaid Diagram Examples","permalink":"/docs/mermaid-examples/","ariaLabel":"Navigate to Mermaid Diagram Examples","current":false},{"title":"Mermaid Diagrams Sample","permalink":"/docs/mermaid-diagrams-sample/","ariaLabel":"Navigate to Mermaid Diagrams Sample","current":false},{"title":"Mermaid Diagrams Test Runner","permalink":"/docs/mermaid-test-runner/","ariaLabel":"Navigate to Mermaid Diagrams Test Runner","current":false},{"title":"The rel Attribute in HTML Links: A Comprehensive Guide","permalink":"/docs/rel-attribute-guide/","ariaLabel":"Navigate to The rel Attribute in HTML Links: A Comprehensive Guide","current":true},{"title":"Exploring the Limitations of Gitea and Ruby","permalink":"/docs/exploring-limitations-of-gitea-and-ruby/","ariaLabel":"Navigate to Exploring the Limitations of Gitea and Ruby","current":false},]</script>
+
     <!-- Lazy-load dynamic navigation items (optimization #7) -->
     <script nonce="abc123">
+      // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
       (() => {
         'use strict';
 
@@ -1982,91 +1986,8 @@ img {
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)
-          const allItems = [
-            {
-              title: "FrontMatter CMS Usage",
-              permalink: "/docs/frontmatter-cms/",
-              ariaLabel: "Navigate to FrontMatter CMS Usage",
-              current: false
-            },{
-              title: "Accessibility Testing Configuration",
-              permalink: "/docs/accessibility-testing/",
-              ariaLabel: "Navigate to Accessibility Testing Configuration",
-              current: false
-            },{
-              title: "Browser Management for Testing",
-              permalink: "/docs/browser-management/",
-              ariaLabel: "Navigate to Browser Management for Testing",
-              current: false
-            },{
-              title: "Browser Compatibility Testing",
-              permalink: "/docs/browser-compatibility-testing/",
-              ariaLabel: "Navigate to Browser Compatibility Testing",
-              current: false
-            },{
-              title: "Liquid Tags Examples",
-              permalink: "/docs/liquid-tags-examples/",
-              ariaLabel: "Navigate to Liquid Tags Examples",
-              current: false
-            },{
-              title: "Tags and Categories System Guide",
-              permalink: "/docs/tags-and-categories-guide/",
-              ariaLabel: "Navigate to Tags and Categories System Guide",
-              current: false
-            },{
-              title: "Performance Optimization Guide",
-              permalink: "/docs/performance-optimization/",
-              ariaLabel: "Navigate to Performance Optimization Guide",
-              current: false
-            },{
-              title: "Testing Performance and Development Evolution",
-              permalink: "/docs/testing-performance-evolution/",
-              ariaLabel: "Navigate to Testing Performance and Development Evolution",
-              current: false
-            },{
-              title: "Cache Management Strategies",
-              permalink: "/docs/cache-management/",
-              ariaLabel: "Navigate to Cache Management Strategies",
-              current: false
-            },{
-              title: "Mermaid Diagram Configuration Guide",
-              permalink: "/docs/mermaid-configuration-guide/",
-              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
-              current: false
-            },{
-              title: "Mermaid Quick Start",
-              permalink: "/docs/mermaid-quick-start/",
-              ariaLabel: "Navigate to Mermaid Quick Start",
-              current: false
-            },{
-              title: "Mermaid Diagram Examples",
-              permalink: "/docs/mermaid-examples/",
-              ariaLabel: "Navigate to Mermaid Diagram Examples",
-              current: false
-            },{
-              title: "Mermaid Diagrams Sample",
-              permalink: "/docs/mermaid-diagrams-sample/",
-              ariaLabel: "Navigate to Mermaid Diagrams Sample",
-              current: false
-            },{
-              title: "Mermaid Diagrams Test Runner",
-              permalink: "/docs/mermaid-test-runner/",
-              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
-              current: false
-            },{
-              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
-              permalink: "/docs/rel-attribute-guide/",
-              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
-              current: true
-            },{
-              title: "Exploring the Limitations of Gitea and Ruby",
-              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
-              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
-              current: false
-            },
-          ];
-
-          // Render dynamic items (optimization #7: deferred rendering)
+          const navDataEl = document.getElementById('nav-data-dynamic');
+          const allItems = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
           allItems.forEach((item) => {
             const li = document.createElement('li');
             li.setAttribute('role', 'listitem');

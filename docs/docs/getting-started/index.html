@@ -573,7 +573,7 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20260429182949" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260506151453" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -647,7 +647,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260429182949" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260506151453" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -723,53 +723,32 @@ img {
       </noscript>
 
       <div class="wrapper">
-        <a
-          class="site-title"
-          rel="home"
-          href="/"
-        >
+        <a class="site-title" rel="home" href="/">
           
-          <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
-            alt="My Info Just Under Glass"
-            width="50"
-            height="50"
-          />
+          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" alt="My Info Just Under Glass" width="50" height="50">
            My Info Just Under Glass
         </a>
 
         <!-- Mobile navigation toggle button -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu">
-          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
-          &nbsp;Menu
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true">
+           Menu
         </button>
 
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
-        <nav
-          id="primary-navigation"
-          class="primary-nav js-enhanced-nav"
-          role="dialog"
-          aria-modal="true"
-          aria-hidden="true">
+        <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
 
           <!-- Full navigation for modern browsers -->
           <div class="modern-nav-content">
             <button class="nav-close" type="button" aria-label="Close navigation menu">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">×</span>
             </button>
             <ul role="list" id="nav-items-static">
               <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
               
                 
                 <li role="listitem">
-                  <a href="/blog/"
-                     
-                     aria-label="Navigate to Blog">
+                  <a href="/blog/" aria-label="Navigate to Blog">
                      Blog
                   </a>
                 </li>
@@ -777,9 +756,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/about/"
-                     
-                     aria-label="Navigate to About">
+                  <a href="/about/" aria-label="Navigate to About">
                      About
                   </a>
                 </li>
@@ -787,9 +764,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/getting-started/"
-                     class="active" aria-current="page"
-                     aria-label="Navigate to Getting Started">
+                  <a href="/docs/getting-started/" class="active" aria-current="page" aria-label="Navigate to Getting Started">
                      Getting Started
                   </a>
                 </li>
@@ -797,9 +772,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/welcome-mijug-workspace/"
-                     
-                     aria-label="Navigate to Workspace Overview">
+                  <a href="/docs/welcome-mijug-workspace/" aria-label="Navigate to Workspace Overview">
                      Workspace Overview
                   </a>
                 </li>
@@ -848,12 +821,14 @@ img {
     </header>
 
     <main class="page-content" aria-label="Content">
-      <div class="wrapper"><article class="post">
+      <div class="wrapper">
+<article class="post">
   <header class="post-header">
     <h1 class="post-title">Getting Started</h1>
   </header>
 
-  <div class="post-content"><h1 id="getting-started-with-mijug-net-workspace">Getting Started with MIJUG .NET Workspace</h1>
+  <div class="post-content">
+<h1 id="getting-started-with-mijug-net-workspace">Getting Started with MIJUG .NET Workspace</h1>
 
 <p>Welcome to the comprehensive setup guide for the MIJUG .NET workspace - a powerful development environment that combines TypeScript application development with Jekyll documentation, all optimized for WSL integration.</p>
 
@@ -866,35 +841,42 @@ img {
 <!-- prettier-ignore-start -->
 
 <ul id="markdown-toc">
-  <li><a href="#getting-started-with-mijug-net-workspace" id="markdown-toc-getting-started-with-mijug-net-workspace">Getting Started with MIJUG .NET Workspace</a>    <ul>
+  <li>
+<a href="#getting-started-with-mijug-net-workspace" id="markdown-toc-getting-started-with-mijug-net-workspace">Getting Started with MIJUG .NET Workspace</a>    <ul>
       <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
-      <li><a href="#quick-setup-overview" id="markdown-toc-quick-setup-overview">Quick Setup Overview</a>        <ul>
+      <li>
+<a href="#quick-setup-overview" id="markdown-toc-quick-setup-overview">Quick Setup Overview</a>        <ul>
           <li><a href="#essential-commands" id="markdown-toc-essential-commands">Essential Commands</a></li>
           <li><a href="#technology-stack" id="markdown-toc-technology-stack">Technology Stack</a></li>
         </ul>
       </li>
-      <li><a href="#core-architecture" id="markdown-toc-core-architecture">Core Architecture</a>        <ul>
+      <li>
+<a href="#core-architecture" id="markdown-toc-core-architecture">Core Architecture</a>        <ul>
           <li><a href="#workspace-structure" id="markdown-toc-workspace-structure">Workspace Structure</a></li>
           <li><a href="#development-philosophy" id="markdown-toc-development-philosophy">Development Philosophy</a></li>
         </ul>
       </li>
-      <li><a href="#development-workflows" id="markdown-toc-development-workflows">Development Workflows</a>        <ul>
+      <li>
+<a href="#development-workflows" id="markdown-toc-development-workflows">Development Workflows</a>        <ul>
           <li><a href="#-quick-start-development" id="markdown-toc--quick-start-development">🚀 Quick Start Development</a></li>
           <li><a href="#-testing-workflows" id="markdown-toc--testing-workflows">🧪 Testing Workflows</a></li>
-          <li><a href="#️-build--deployment" id="markdown-toc-️-build--deployment">🏗️ Build &amp; Deployment</a></li>
+          <li><a href="#%EF%B8%8F-build--deployment" id="markdown-toc-️-build--deployment">🏗️ Build &amp; Deployment</a></li>
         </ul>
       </li>
-      <li><a href="#key-features--capabilities" id="markdown-toc-key-features--capabilities">Key Features &amp; Capabilities</a>        <ul>
+      <li>
+<a href="#key-features--capabilities" id="markdown-toc-key-features--capabilities">Key Features &amp; Capabilities</a>        <ul>
           <li><a href="#typescript-development" id="markdown-toc-typescript-development">TypeScript Development</a></li>
           <li><a href="#jekyll-documentation" id="markdown-toc-jekyll-documentation">Jekyll Documentation</a></li>
           <li><a href="#testing-excellence" id="markdown-toc-testing-excellence">Testing Excellence</a></li>
           <li><a href="#quality-assurance" id="markdown-toc-quality-assurance">Quality Assurance</a></li>
         </ul>
       </li>
-      <li><a href="#development-environment-setup" id="markdown-toc-development-environment-setup">Development Environment Setup</a>        <ul>
+      <li>
+<a href="#development-environment-setup" id="markdown-toc-development-environment-setup">Development Environment Setup</a>        <ul>
           <li><a href="#nodejs--typescript" id="markdown-toc-nodejs--typescript">Node.js &amp; TypeScript</a></li>
           <li><a href="#ruby--jekyll" id="markdown-toc-ruby--jekyll">Ruby &amp; Jekyll</a></li>
-          <li><a href="#code-examples" id="markdown-toc-code-examples">Code Examples</a>            <ul>
+          <li>
+<a href="#code-examples" id="markdown-toc-code-examples">Code Examples</a>            <ul>
               <li><a href="#typescript-function-with-types" id="markdown-toc-typescript-function-with-types">TypeScript Function with Types</a></li>
               <li><a href="#jekyll-front-matter-configuration" id="markdown-toc-jekyll-front-matter-configuration">Jekyll Front Matter Configuration</a></li>
               <li><a href="#packagejson-script-examples" id="markdown-toc-packagejson-script-examples">Package.json Script Examples</a></li>
@@ -902,8 +884,10 @@ img {
           </li>
         </ul>
       </li>
-      <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a>        <ul>
-          <li><a href="#common-setup-issues" id="markdown-toc-common-setup-issues">Common Setup Issues</a>            <ul>
+      <li>
+<a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a>        <ul>
+          <li>
+<a href="#common-setup-issues" id="markdown-toc-common-setup-issues">Common Setup Issues</a>            <ul>
               <li><a href="#nodejs-version-problems" id="markdown-toc-nodejs-version-problems">Node.js Version Problems</a></li>
               <li><a href="#rubyjekyll-issues" id="markdown-toc-rubyjekyll-issues">Ruby/Jekyll Issues</a></li>
               <li><a href="#permission-errors" id="markdown-toc-permission-errors">Permission Errors</a></li>
@@ -912,7 +896,8 @@ img {
               <li><a href="#wsl-file-system-issues" id="markdown-toc-wsl-file-system-issues">WSL File System Issues</a></li>
             </ul>
           </li>
-          <li><a href="#performance-optimization" id="markdown-toc-performance-optimization">Performance Optimization</a>            <ul>
+          <li>
+<a href="#performance-optimization" id="markdown-toc-performance-optimization">Performance Optimization</a>            <ul>
               <li><a href="#memory-issues" id="markdown-toc-memory-issues">Memory Issues</a></li>
               <li><a href="#build-speed" id="markdown-toc-build-speed">Build Speed</a></li>
             </ul>
@@ -954,10 +939,14 @@ npm run health-check          <span class="c"># Comprehensive environment valida
 <h3 id="technology-stack">Technology Stack</h3>
 
 <ul>
-  <li><strong>TypeScript 5.5+</strong> with ES2022 target and strict compilation</li>
-  <li><strong>Jekyll 4.4.1</strong> with Ruby 3.3.8+YJIT for enhanced performance</li>
-  <li><strong>Node.js 22.8+ LTS</strong> with nvm management</li>
-  <li><strong>WSL2 + Ubuntu 24.04 LTS</strong> for cross-platform development</li>
+  <li>
+<strong>TypeScript 5.5+</strong> with ES2022 target and strict compilation</li>
+  <li>
+<strong>Jekyll 4.4.1</strong> with Ruby 3.3.8+YJIT for enhanced performance</li>
+  <li>
+<strong>Node.js 22.8+ LTS</strong> with nvm management</li>
+  <li>
+<strong>WSL2 + Ubuntu 24.04 LTS</strong> for cross-platform development</li>
 </ul>
 
 <h2 id="core-architecture">Core Architecture</h2>
@@ -979,10 +968,14 @@ mijug-dot-net/                  # Auto-generated public repository
 <h3 id="development-philosophy">Development Philosophy</h3>
 
 <ul>
-  <li><strong>Dual Repository Workflow</strong>: Private development → Public deployment</li>
-  <li><strong>Performance First</strong>: &lt; 12s builds, &lt; 90s test suite, memory-optimized</li>
-  <li><strong>Quality Gates</strong>: ESLint, Prettier, accessibility, cross-browser testing</li>
-  <li><strong>Developer Experience</strong>: Hot reload, parallel builds, intelligent caching</li>
+  <li>
+<strong>Dual Repository Workflow</strong>: Private development → Public deployment</li>
+  <li>
+<strong>Performance First</strong>: &lt; 12s builds, &lt; 90s test suite, memory-optimized</li>
+  <li>
+<strong>Quality Gates</strong>: ESLint, Prettier, accessibility, cross-browser testing</li>
+  <li>
+<strong>Developer Experience</strong>: Hot reload, parallel builds, intelligent caching</li>
 </ul>
 
 <h2 id="development-workflows">Development Workflows</h2>
@@ -1029,37 +1022,53 @@ npm run precheckin             <span class="c"># Format → lint → clean → b
 <h3 id="typescript-development">TypeScript Development</h3>
 
 <ul>
-  <li><strong>Full IntelliSense Support</strong>: Autocomplete, type checking, and refactoring</li>
-  <li><strong>Modern ES Features</strong>: ES2022 target with latest JavaScript features</li>
-  <li><strong>Debugging Integration</strong>: VS Code debugging with source maps</li>
-  <li><strong>Build Optimization</strong>: Parallel compilation with memory limits</li>
+  <li>
+<strong>Full IntelliSense Support</strong>: Autocomplete, type checking, and refactoring</li>
+  <li>
+<strong>Modern ES Features</strong>: ES2022 target with latest JavaScript features</li>
+  <li>
+<strong>Debugging Integration</strong>: VS Code debugging with source maps</li>
+  <li>
+<strong>Build Optimization</strong>: Parallel compilation with memory limits</li>
 </ul>
 
 <h3 id="jekyll-documentation">Jekyll Documentation</h3>
 
 <ul>
-  <li><strong>Live Reload</strong>: Instant feedback with automatic rebuilds and browser refresh</li>
-  <li><strong>Advanced Markdown</strong>: Enhanced syntax with code highlighting and tables</li>
-  <li><strong>SEO Optimized</strong>: Built-in SEO tags, sitemap generation, and meta optimization</li>
-  <li><strong>Content Management</strong>: FrontMatter CMS integration for visual editing</li>
+  <li>
+<strong>Live Reload</strong>: Instant feedback with automatic rebuilds and browser refresh</li>
+  <li>
+<strong>Advanced Markdown</strong>: Enhanced syntax with code highlighting and tables</li>
+  <li>
+<strong>SEO Optimized</strong>: Built-in SEO tags, sitemap generation, and meta optimization</li>
+  <li>
+<strong>Content Management</strong>: FrontMatter CMS integration for visual editing</li>
 </ul>
 
 <h3 id="testing-excellence">Testing Excellence</h3>
 
 <ul>
-  <li><strong>Multi-Level Testing</strong>: Jest unit tests, Playwright E2E, accessibility compliance</li>
-  <li><strong>Cross-Browser Matrix</strong>: Automated testing across Chromium, Firefox, WebKit</li>
-  <li><strong>Performance Monitoring</strong>: Built-in performance analysis and optimization</li>
-  <li><strong>CI/CD Integration</strong>: GitHub Actions with parallel job execution</li>
+  <li>
+<strong>Multi-Level Testing</strong>: Jest unit tests, Playwright E2E, accessibility compliance</li>
+  <li>
+<strong>Cross-Browser Matrix</strong>: Automated testing across Chromium, Firefox, WebKit</li>
+  <li>
+<strong>Performance Monitoring</strong>: Built-in performance analysis and optimization</li>
+  <li>
+<strong>CI/CD Integration</strong>: GitHub Actions with parallel job execution</li>
 </ul>
 
 <h3 id="quality-assurance">Quality Assurance</h3>
 
 <ul>
-  <li><strong>Code Standards</strong>: ESLint 9.15.0 with flat config, Prettier formatting</li>
-  <li><strong>Accessibility</strong>: WCAG 2.1 AA compliance with axe-core integration</li>
-  <li><strong>Security</strong>: SBOM generation, vulnerability scanning, dependency auditing</li>
-  <li><strong>Performance</strong>: Memory optimization, cache management, build monitoring</li>
+  <li>
+<strong>Code Standards</strong>: ESLint 9.15.0 with flat config, Prettier formatting</li>
+  <li>
+<strong>Accessibility</strong>: WCAG 2.1 AA compliance with axe-core integration</li>
+  <li>
+<strong>Security</strong>: SBOM generation, vulnerability scanning, dependency auditing</li>
+  <li>
+<strong>Performance</strong>: Memory optimization, cache management, build monitoring</li>
 </ul>
 
 <h2 id="development-environment-setup">Development Environment Setup</h2>
@@ -1258,11 +1267,16 @@ npm run cache:optimize
 <p>Once your environment is set up, explore these guides in order:</p>
 
 <ol>
-  <li><strong><a href="/docs/welcome-mijug-workspace/">Workspace Overview</a></strong> - Understand the complete architecture</li>
-  <li><strong><a href="/docs/frontmatter-cms/">FrontMatter CMS</a></strong> - Visual content management setup</li>
-  <li><strong><a href="/docs/accessibility-testing/">Accessibility Testing</a></strong> - WCAG compliance configuration</li>
-  <li><strong><a href="/docs/browser-compatibility-testing/">Browser Compatibility Testing</a></strong> - Cross-browser testing setup</li>
-  <li><strong><a href="/docs/performance-optimization/">Performance Optimization</a></strong> - Advanced optimization techniques</li>
+  <li>
+<strong><a href="/docs/welcome-mijug-workspace/">Workspace Overview</a></strong> - Understand the complete architecture</li>
+  <li>
+<strong><a href="/docs/frontmatter-cms/">FrontMatter CMS</a></strong> - Visual content management setup</li>
+  <li>
+<strong><a href="/docs/accessibility-testing/">Accessibility Testing</a></strong> - WCAG compliance configuration</li>
+  <li>
+<strong><a href="/docs/browser-compatibility-testing/">Browser Compatibility Testing</a></strong> - Cross-browser testing setup</li>
+  <li>
+<strong><a href="/docs/performance-optimization/">Performance Optimization</a></strong> - Advanced optimization techniques</li>
 </ol>
 
 <h2 id="performance-targets">Performance Targets</h2>
@@ -1307,13 +1321,18 @@ npm run cache:optimize
 <h2 id="getting-help">Getting Help</h2>
 
 <ul>
-  <li><strong>Environment Issues</strong>: Run <code class="language-plaintext highlighter-rouge">npm run health-check</code> for diagnostics</li>
-  <li><strong>Specific Topics</strong>: Explore the <a href="/docs/">complete documentation</a></li>
-  <li><strong>Community Support</strong>: <a href="/contact/">Contact our team</a> for assistance</li>
-  <li><strong>GitHub Issues</strong>: Check the repository for known issues and solutions</li>
+  <li>
+<strong>Environment Issues</strong>: Run <code class="language-plaintext highlighter-rouge">npm run health-check</code> for diagnostics</li>
+  <li>
+<strong>Specific Topics</strong>: Explore the <a href="/docs/">complete documentation</a>
+</li>
+  <li>
+<strong>Community Support</strong>: <a href="/contact/">Contact our team</a> for assistance</li>
+  <li>
+<strong>GitHub Issues</strong>: Check the repository for known issues and solutions</li>
 </ul>
 
-<hr />
+<hr>
 
 <p><strong>Environment</strong>: WSL2 + Ubuntu 24.04 LTS | Node.js v24.x | npm v11.x | Ruby v3.4.5 + Bundler 4
 <strong>Last Updated</strong>: September 28, 2025</p>
@@ -1328,7 +1347,7 @@ npm run cache:optimize
       <div class="wrapper">
         <div class="footer-col-wrapper">
           <div class="footer-col footer-col-1">
-            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/terms-of-service.html">Terms of Service</a><br>
             <a href="/privacy-policy.html">Privacy Policy</a>
           </div>
           <div class="footer-col footer-col-2">
@@ -1336,16 +1355,11 @@ npm run cache:optimize
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2026
-              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
-                >Kranson Enterprises</a
-              ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
-              <a href="/feed.xml"
-                >via RSS<svg class="svg-icon">
-                  <use
-                    xlink:href="/assets/minima-social-icons.svg#rss"
-                  ></use></svg>
+              © 2026
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                  subscribe
+              <a href="/feed.xml">via RSS<svg class="svg-icon">
+                  <use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg>
               </a>
             </p>
           </div>
@@ -1373,11 +1387,7 @@ npm run cache:optimize
       gtag('config', 'G-W1M1N0DCD4');
     </script>
 
-    <script
-      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
-      crossorigin="anonymous"
-      async
-    ></script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
     
 
     <!-- Cookie consent system -->
@@ -1486,8 +1496,12 @@ npm run cache:optimize
       })();
     </script>
 
+    <!-- Navigation data for lazy-loading (optimization #7) -->
+    <script id="nav-data-dynamic" type="application/json">[{"title":"FrontMatter CMS Usage","permalink":"/docs/frontmatter-cms/","ariaLabel":"Navigate to FrontMatter CMS Usage","current":false},{"title":"Accessibility Testing Configuration","permalink":"/docs/accessibility-testing/","ariaLabel":"Navigate to Accessibility Testing Configuration","current":false},{"title":"Browser Management for Testing","permalink":"/docs/browser-management/","ariaLabel":"Navigate to Browser Management for Testing","current":false},{"title":"Browser Compatibility Testing","permalink":"/docs/browser-compatibility-testing/","ariaLabel":"Navigate to Browser Compatibility Testing","current":false},{"title":"Liquid Tags Examples","permalink":"/docs/liquid-tags-examples/","ariaLabel":"Navigate to Liquid Tags Examples","current":false},{"title":"Tags and Categories System Guide","permalink":"/docs/tags-and-categories-guide/","ariaLabel":"Navigate to Tags and Categories System Guide","current":false},{"title":"Performance Optimization Guide","permalink":"/docs/performance-optimization/","ariaLabel":"Navigate to Performance Optimization Guide","current":false},{"title":"Testing Performance and Development Evolution","permalink":"/docs/testing-performance-evolution/","ariaLabel":"Navigate to Testing Performance and Development Evolution","current":false},{"title":"Cache Management Strategies","permalink":"/docs/cache-management/","ariaLabel":"Navigate to Cache Management Strategies","current":false},{"title":"Mermaid Diagram Configuration Guide","permalink":"/docs/mermaid-configuration-guide/","ariaLabel":"Navigate to Mermaid Diagram Configuration Guide","current":false},{"title":"Mermaid Quick Start","permalink":"/docs/mermaid-quick-start/","ariaLabel":"Navigate to Mermaid Quick Start","current":false},{"title":"Mermaid Diagram Examples","permalink":"/docs/mermaid-examples/","ariaLabel":"Navigate to Mermaid Diagram Examples","current":false},{"title":"Mermaid Diagrams Sample","permalink":"/docs/mermaid-diagrams-sample/","ariaLabel":"Navigate to Mermaid Diagrams Sample","current":false},{"title":"Mermaid Diagrams Test Runner","permalink":"/docs/mermaid-test-runner/","ariaLabel":"Navigate to Mermaid Diagrams Test Runner","current":false},{"title":"The rel Attribute in HTML Links: A Comprehensive Guide","permalink":"/docs/rel-attribute-guide/","ariaLabel":"Navigate to The rel Attribute in HTML Links: A Comprehensive Guide","current":false},{"title":"Exploring the Limitations of Gitea and Ruby","permalink":"/docs/exploring-limitations-of-gitea-and-ruby/","ariaLabel":"Navigate to Exploring the Limitations of Gitea and Ruby","current":false},]</script>
+
     <!-- Lazy-load dynamic navigation items (optimization #7) -->
     <script nonce="abc123">
+      // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
       (() => {
         'use strict';
 
@@ -1499,91 +1513,8 @@ npm run cache:optimize
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)
-          const allItems = [
-            {
-              title: "FrontMatter CMS Usage",
-              permalink: "/docs/frontmatter-cms/",
-              ariaLabel: "Navigate to FrontMatter CMS Usage",
-              current: false
-            },{
-              title: "Accessibility Testing Configuration",
-              permalink: "/docs/accessibility-testing/",
-              ariaLabel: "Navigate to Accessibility Testing Configuration",
-              current: false
-            },{
-              title: "Browser Management for Testing",
-              permalink: "/docs/browser-management/",
-              ariaLabel: "Navigate to Browser Management for Testing",
-              current: false
-            },{
-              title: "Browser Compatibility Testing",
-              permalink: "/docs/browser-compatibility-testing/",
-              ariaLabel: "Navigate to Browser Compatibility Testing",
-              current: false
-            },{
-              title: "Liquid Tags Examples",
-              permalink: "/docs/liquid-tags-examples/",
-              ariaLabel: "Navigate to Liquid Tags Examples",
-              current: false
-            },{
-              title: "Tags and Categories System Guide",
-              permalink: "/docs/tags-and-categories-guide/",
-              ariaLabel: "Navigate to Tags and Categories System Guide",
-              current: false
-            },{
-              title: "Performance Optimization Guide",
-              permalink: "/docs/performance-optimization/",
-              ariaLabel: "Navigate to Performance Optimization Guide",
-              current: false
-            },{
-              title: "Testing Performance and Development Evolution",
-              permalink: "/docs/testing-performance-evolution/",
-              ariaLabel: "Navigate to Testing Performance and Development Evolution",
-              current: false
-            },{
-              title: "Cache Management Strategies",
-              permalink: "/docs/cache-management/",
-              ariaLabel: "Navigate to Cache Management Strategies",
-              current: false
-            },{
-              title: "Mermaid Diagram Configuration Guide",
-              permalink: "/docs/mermaid-configuration-guide/",
-              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
-              current: false
-            },{
-              title: "Mermaid Quick Start",
-              permalink: "/docs/mermaid-quick-start/",
-              ariaLabel: "Navigate to Mermaid Quick Start",
-              current: false
-            },{
-              title: "Mermaid Diagram Examples",
-              permalink: "/docs/mermaid-examples/",
-              ariaLabel: "Navigate to Mermaid Diagram Examples",
-              current: false
-            },{
-              title: "Mermaid Diagrams Sample",
-              permalink: "/docs/mermaid-diagrams-sample/",
-              ariaLabel: "Navigate to Mermaid Diagrams Sample",
-              current: false
-            },{
-              title: "Mermaid Diagrams Test Runner",
-              permalink: "/docs/mermaid-test-runner/",
-              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
-              current: false
-            },{
-              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
-              permalink: "/docs/rel-attribute-guide/",
-              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
-              current: false
-            },{
-              title: "Exploring the Limitations of Gitea and Ruby",
-              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
-              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
-              current: false
-            },
-          ];
-
-          // Render dynamic items (optimization #7: deferred rendering)
+          const navDataEl = document.getElementById('nav-data-dynamic');
+          const allItems = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
           allItems.forEach((item) => {
             const li = document.createElement('li');
             li.setAttribute('role', 'listitem');

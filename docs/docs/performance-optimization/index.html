@@ -573,7 +573,7 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20260429182949" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260506151453" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -647,7 +647,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260429182949" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260506151453" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -707,53 +707,32 @@ img {
       </noscript>
 
       <div class="wrapper">
-        <a
-          class="site-title"
-          rel="home"
-          href="/"
-        >
+        <a class="site-title" rel="home" href="/">
           
-          <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
-            alt="My Info Just Under Glass"
-            width="50"
-            height="50"
-          />
+          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" alt="My Info Just Under Glass" width="50" height="50">
            My Info Just Under Glass
         </a>
 
         <!-- Mobile navigation toggle button -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu">
-          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
-          &nbsp;Menu
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true">
+           Menu
         </button>
 
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
-        <nav
-          id="primary-navigation"
-          class="primary-nav js-enhanced-nav"
-          role="dialog"
-          aria-modal="true"
-          aria-hidden="true">
+        <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
 
           <!-- Full navigation for modern browsers -->
           <div class="modern-nav-content">
             <button class="nav-close" type="button" aria-label="Close navigation menu">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">×</span>
             </button>
             <ul role="list" id="nav-items-static">
               <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
               
                 
                 <li role="listitem">
-                  <a href="/blog/"
-                     
-                     aria-label="Navigate to Blog">
+                  <a href="/blog/" aria-label="Navigate to Blog">
                      Blog
                   </a>
                 </li>
@@ -761,9 +740,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/about/"
-                     
-                     aria-label="Navigate to About">
+                  <a href="/about/" aria-label="Navigate to About">
                      About
                   </a>
                 </li>
@@ -771,9 +748,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/getting-started/"
-                     
-                     aria-label="Navigate to Getting Started">
+                  <a href="/docs/getting-started/" aria-label="Navigate to Getting Started">
                      Getting Started
                   </a>
                 </li>
@@ -781,9 +756,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/welcome-mijug-workspace/"
-                     
-                     aria-label="Navigate to Workspace Overview">
+                  <a href="/docs/welcome-mijug-workspace/" aria-label="Navigate to Workspace Overview">
                      Workspace Overview
                   </a>
                 </li>
@@ -832,12 +805,14 @@ img {
     </header>
 
     <main class="page-content" aria-label="Content">
-      <div class="wrapper"><article class="post">
+      <div class="wrapper">
+<article class="post">
   <header class="post-header">
     <h1 class="post-title">Performance Optimization Guide</h1>
   </header>
 
-  <div class="post-content"><p>This workspace includes comprehensive performance optimizations for build times, test execution, and development workflows.</p>
+  <div class="post-content">
+<p>This workspace includes comprehensive performance optimizations for build times, test execution, and development workflows.</p>
 
 <h2 id="-quick-performance-commands">⚡ Quick Performance Commands</h2>
 
@@ -885,19 +860,28 @@ npm run <span class="nb">test</span>:memory-efficient
 <h3 id="parallel-build-system">Parallel Build System</h3>
 
 <ul>
-  <li><strong>TypeScript + Jekyll Parallel</strong>: Build both systems simultaneously</li>
-  <li><strong>Color-coded Output</strong>: Easy identification of build stages</li>
-  <li><strong>Memory Optimization</strong>: 4GB heap allocation for large projects</li>
-  <li><strong>CI/CD Ready</strong>: Optimized workers and timeouts</li>
+  <li>
+<strong>TypeScript + Jekyll Parallel</strong>: Build both systems simultaneously</li>
+  <li>
+<strong>Color-coded Output</strong>: Easy identification of build stages</li>
+  <li>
+<strong>Memory Optimization</strong>: 4GB heap allocation for large projects</li>
+  <li>
+<strong>CI/CD Ready</strong>: Optimized workers and timeouts</li>
 </ul>
 
 <h3 id="cache-optimization">Cache Optimization</h3>
 
 <ul>
-  <li><strong>TypeScript Incremental</strong>: Faster rebuilds with <code class="language-plaintext highlighter-rouge">tsbuildinfo</code></li>
-  <li><strong>Jekyll Cache</strong>: Persistent <code class="language-plaintext highlighter-rouge">.jekyll-cache</code> directory</li>
-  <li><strong>Playwright Browser Cache</strong>: Shared browser installations</li>
-  <li><strong>Smart Cleanup</strong>: Performance-aware cache management</li>
+  <li>
+<strong>TypeScript Incremental</strong>: Faster rebuilds with <code class="language-plaintext highlighter-rouge">tsbuildinfo</code>
+</li>
+  <li>
+<strong>Jekyll Cache</strong>: Persistent <code class="language-plaintext highlighter-rouge">.jekyll-cache</code> directory</li>
+  <li>
+<strong>Playwright Browser Cache</strong>: Shared browser installations</li>
+  <li>
+<strong>Smart Cleanup</strong>: Performance-aware cache management</li>
 </ul>
 
 <h2 id="-test-performance-enhancements">🧪 Test Performance Enhancements</h2>
@@ -905,10 +889,14 @@ npm run <span class="nb">test</span>:memory-efficient
 <h3 id="playwright-optimization">Playwright Optimization</h3>
 
 <ul>
-  <li><strong>Dynamic Workers</strong>: 6 workers locally, 3 in CI</li>
-  <li><strong>Intelligent Timeouts</strong>: 15s timeout for faster feedback</li>
-  <li><strong>Memory Efficient</strong>: Optimized trace and video recording</li>
-  <li><strong>Project Separation</strong>: Fast smoke tests vs comprehensive suites</li>
+  <li>
+<strong>Dynamic Workers</strong>: 6 workers locally, 3 in CI</li>
+  <li>
+<strong>Intelligent Timeouts</strong>: 15s timeout for faster feedback</li>
+  <li>
+<strong>Memory Efficient</strong>: Optimized trace and video recording</li>
+  <li>
+<strong>Project Separation</strong>: Fast smoke tests vs comprehensive suites</li>
 </ul>
 
 <h3 id="test-execution-strategy">Test Execution Strategy</h3>
@@ -928,25 +916,35 @@ npm run <span class="nb">test</span>:ci
 <h3 id="typescript-performance">TypeScript Performance</h3>
 
 <ul>
-  <li><strong>Main Config</strong>: ES2022 target with <code class="language-plaintext highlighter-rouge">isolatedModules</code></li>
-  <li><strong>Performance Config</strong>: <code class="language-plaintext highlighter-rouge">tsconfig.performance.json</code> for development</li>
-  <li><strong>Skip Library Checks</strong>: Faster compilation times</li>
+  <li>
+<strong>Main Config</strong>: ES2022 target with <code class="language-plaintext highlighter-rouge">isolatedModules</code>
+</li>
+  <li>
+<strong>Performance Config</strong>: <code class="language-plaintext highlighter-rouge">tsconfig.performance.json</code> for development</li>
+  <li>
+<strong>Skip Library Checks</strong>: Faster compilation times</li>
 </ul>
 
 <h3 id="jekyll-optimization">Jekyll Optimization</h3>
 
 <ul>
-  <li><strong>Development Config</strong>: <code class="language-plaintext highlighter-rouge">_config_dev.yml</code> - Fast iteration</li>
-  <li><strong>Production Config</strong>: <code class="language-plaintext highlighter-rouge">_config_prod.yml</code> - Full optimization</li>
-  <li><strong>Incremental Builds</strong>: Enabled with proper cache management</li>
+  <li>
+<strong>Development Config</strong>: <code class="language-plaintext highlighter-rouge">_config_dev.yml</code> - Fast iteration</li>
+  <li>
+<strong>Production Config</strong>: <code class="language-plaintext highlighter-rouge">_config_prod.yml</code> - Full optimization</li>
+  <li>
+<strong>Incremental Builds</strong>: Enabled with proper cache management</li>
 </ul>
 
 <h3 id="playwright-enhancement">Playwright Enhancement</h3>
 
 <ul>
-  <li><strong>Multi-Project Setup</strong>: Separate configs for different test types</li>
-  <li><strong>Resource Optimization</strong>: Smart video/trace collection</li>
-  <li><strong>Browser Management</strong>: Efficient browser installation and updates</li>
+  <li>
+<strong>Multi-Project Setup</strong>: Separate configs for different test types</li>
+  <li>
+<strong>Resource Optimization</strong>: Smart video/trace collection</li>
+  <li>
+<strong>Browser Management</strong>: Efficient browser installation and updates</li>
 </ul>
 
 <h2 id="-performance-monitoring">📊 Performance Monitoring</h2>
@@ -966,9 +964,12 @@ npm run cache:performance
 <h3 id="performance-metrics">Performance Metrics</h3>
 
 <ul>
-  <li><strong>Build Time Tracking</strong>: Automatic timing with recommendations</li>
-  <li><strong>Memory Usage</strong>: Monitor and optimize resource consumption</li>
-  <li><strong>Cache Effectiveness</strong>: Validation and optimization tools</li>
+  <li>
+<strong>Build Time Tracking</strong>: Automatic timing with recommendations</li>
+  <li>
+<strong>Memory Usage</strong>: Monitor and optimize resource consumption</li>
+  <li>
+<strong>Cache Effectiveness</strong>: Validation and optimization tools</li>
 </ul>
 
 <h2 id="-cicd-performance">🚀 CI/CD Performance</h2>
@@ -976,9 +977,12 @@ npm run cache:performance
 <h3 id="github-actions-optimization">GitHub Actions Optimization</h3>
 
 <ul>
-  <li><strong>Multi-level Caching</strong>: npm, Playwright, Jekyll, TypeScript</li>
-  <li><strong>Parallel Execution</strong>: Optimized job dependencies</li>
-  <li><strong>Performance Reporting</strong>: Automated performance summaries</li>
+  <li>
+<strong>Multi-level Caching</strong>: npm, Playwright, Jekyll, TypeScript</li>
+  <li>
+<strong>Parallel Execution</strong>: Optimized job dependencies</li>
+  <li>
+<strong>Performance Reporting</strong>: Automated performance summaries</li>
 </ul>
 
 <h3 id="cache-strategy">Cache Strategy</h3>
@@ -998,28 +1002,41 @@ npm run cache:performance
 <h3 id="development-workflow">Development Workflow</h3>
 
 <ol>
-  <li><strong>Use Optimized Commands</strong>: <code class="language-plaintext highlighter-rouge">dev:optimized</code> for daily development</li>
-  <li><strong>Cache Management</strong>: Regular <code class="language-plaintext highlighter-rouge">cache:validate</code> checks</li>
-  <li><strong>Memory Awareness</strong>: Use memory-efficient commands for large operations</li>
-  <li><strong>Test Strategy</strong>: Use <code class="language-plaintext highlighter-rouge">quick:test</code> for rapid validation</li>
+  <li>
+<strong>Use Optimized Commands</strong>: <code class="language-plaintext highlighter-rouge">dev:optimized</code> for daily development</li>
+  <li>
+<strong>Cache Management</strong>: Regular <code class="language-plaintext highlighter-rouge">cache:validate</code> checks</li>
+  <li>
+<strong>Memory Awareness</strong>: Use memory-efficient commands for large operations</li>
+  <li>
+<strong>Test Strategy</strong>: Use <code class="language-plaintext highlighter-rouge">quick:test</code> for rapid validation</li>
 </ol>
 
 <h3 id="build-optimization">Build Optimization</h3>
 
 <ol>
-  <li><strong>Parallel Builds</strong>: Always use <code class="language-plaintext highlighter-rouge">build:parallel</code> or <code class="language-plaintext highlighter-rouge">build:fast</code></li>
-  <li><strong>Environment Specific</strong>: Use appropriate dev/prod configurations</li>
-  <li><strong>Cache Utilization</strong>: Preserve cache directories between builds</li>
-  <li><strong>Resource Monitoring</strong>: Regular performance check-ups</li>
+  <li>
+<strong>Parallel Builds</strong>: Always use <code class="language-plaintext highlighter-rouge">build:parallel</code> or <code class="language-plaintext highlighter-rouge">build:fast</code>
+</li>
+  <li>
+<strong>Environment Specific</strong>: Use appropriate dev/prod configurations</li>
+  <li>
+<strong>Cache Utilization</strong>: Preserve cache directories between builds</li>
+  <li>
+<strong>Resource Monitoring</strong>: Regular performance check-ups</li>
 </ol>
 
 <h3 id="testing-performance">Testing Performance</h3>
 
 <ol>
-  <li><strong>Selective Testing</strong>: Use project-specific test runs</li>
-  <li><strong>Memory Management</strong>: Monitor test suite memory usage</li>
-  <li><strong>Browser Optimization</strong>: Efficient browser management scripts</li>
-  <li><strong>CI Efficiency</strong>: Optimized worker and timeout configurations</li>
+  <li>
+<strong>Selective Testing</strong>: Use project-specific test runs</li>
+  <li>
+<strong>Memory Management</strong>: Monitor test suite memory usage</li>
+  <li>
+<strong>Browser Optimization</strong>: Efficient browser management scripts</li>
+  <li>
+<strong>CI Efficiency</strong>: Optimized worker and timeout configurations</li>
 </ol>
 
 <h2 id="-expected-performance-gains">🎯 Expected Performance Gains</h2>
@@ -1081,10 +1098,14 @@ npm run cache:force-rebuild
 <h3 id="performance-debugging">Performance Debugging</h3>
 
 <ol>
-  <li><strong>Build Analysis</strong>: Use <code class="language-plaintext highlighter-rouge">build:measure</code> for timing details</li>
-  <li><strong>Memory Profiling</strong>: Monitor heap usage during operations</li>
-  <li><strong>Cache Issues</strong>: Validate cache effectiveness with tools</li>
-  <li><strong>Test Performance</strong>: Analyze test execution patterns</li>
+  <li>
+<strong>Build Analysis</strong>: Use <code class="language-plaintext highlighter-rouge">build:measure</code> for timing details</li>
+  <li>
+<strong>Memory Profiling</strong>: Monitor heap usage during operations</li>
+  <li>
+<strong>Cache Issues</strong>: Validate cache effectiveness with tools</li>
+  <li>
+<strong>Test Performance</strong>: Analyze test execution patterns</li>
 </ol>
 
 <p>This performance framework ensures optimal development velocity while maintaining production-ready quality standards.</p>
@@ -1099,7 +1120,7 @@ npm run cache:force-rebuild
       <div class="wrapper">
         <div class="footer-col-wrapper">
           <div class="footer-col footer-col-1">
-            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/terms-of-service.html">Terms of Service</a><br>
             <a href="/privacy-policy.html">Privacy Policy</a>
           </div>
           <div class="footer-col footer-col-2">
@@ -1107,16 +1128,11 @@ npm run cache:force-rebuild
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2026
-              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
-                >Kranson Enterprises</a
-              ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
-              <a href="/feed.xml"
-                >via RSS<svg class="svg-icon">
-                  <use
-                    xlink:href="/assets/minima-social-icons.svg#rss"
-                  ></use></svg>
+              © 2026
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                  subscribe
+              <a href="/feed.xml">via RSS<svg class="svg-icon">
+                  <use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg>
               </a>
             </p>
           </div>
@@ -1144,11 +1160,7 @@ npm run cache:force-rebuild
       gtag('config', 'G-W1M1N0DCD4');
     </script>
 
-    <script
-      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
-      crossorigin="anonymous"
-      async
-    ></script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
     
 
     <!-- Cookie consent system -->
@@ -1257,8 +1269,12 @@ npm run cache:force-rebuild
       })();
     </script>
 
+    <!-- Navigation data for lazy-loading (optimization #7) -->
+    <script id="nav-data-dynamic" type="application/json">[{"title":"FrontMatter CMS Usage","permalink":"/docs/frontmatter-cms/","ariaLabel":"Navigate to FrontMatter CMS Usage","current":false},{"title":"Accessibility Testing Configuration","permalink":"/docs/accessibility-testing/","ariaLabel":"Navigate to Accessibility Testing Configuration","current":false},{"title":"Browser Management for Testing","permalink":"/docs/browser-management/","ariaLabel":"Navigate to Browser Management for Testing","current":false},{"title":"Browser Compatibility Testing","permalink":"/docs/browser-compatibility-testing/","ariaLabel":"Navigate to Browser Compatibility Testing","current":false},{"title":"Liquid Tags Examples","permalink":"/docs/liquid-tags-examples/","ariaLabel":"Navigate to Liquid Tags Examples","current":false},{"title":"Tags and Categories System Guide","permalink":"/docs/tags-and-categories-guide/","ariaLabel":"Navigate to Tags and Categories System Guide","current":false},{"title":"Performance Optimization Guide","permalink":"/docs/performance-optimization/","ariaLabel":"Navigate to Performance Optimization Guide","current":true},{"title":"Testing Performance and Development Evolution","permalink":"/docs/testing-performance-evolution/","ariaLabel":"Navigate to Testing Performance and Development Evolution","current":false},{"title":"Cache Management Strategies","permalink":"/docs/cache-management/","ariaLabel":"Navigate to Cache Management Strategies","current":false},{"title":"Mermaid Diagram Configuration Guide","permalink":"/docs/mermaid-configuration-guide/","ariaLabel":"Navigate to Mermaid Diagram Configuration Guide","current":false},{"title":"Mermaid Quick Start","permalink":"/docs/mermaid-quick-start/","ariaLabel":"Navigate to Mermaid Quick Start","current":false},{"title":"Mermaid Diagram Examples","permalink":"/docs/mermaid-examples/","ariaLabel":"Navigate to Mermaid Diagram Examples","current":false},{"title":"Mermaid Diagrams Sample","permalink":"/docs/mermaid-diagrams-sample/","ariaLabel":"Navigate to Mermaid Diagrams Sample","current":false},{"title":"Mermaid Diagrams Test Runner","permalink":"/docs/mermaid-test-runner/","ariaLabel":"Navigate to Mermaid Diagrams Test Runner","current":false},{"title":"The rel Attribute in HTML Links: A Comprehensive Guide","permalink":"/docs/rel-attribute-guide/","ariaLabel":"Navigate to The rel Attribute in HTML Links: A Comprehensive Guide","current":false},{"title":"Exploring the Limitations of Gitea and Ruby","permalink":"/docs/exploring-limitations-of-gitea-and-ruby/","ariaLabel":"Navigate to Exploring the Limitations of Gitea and Ruby","current":false},]</script>
+
     <!-- Lazy-load dynamic navigation items (optimization #7) -->
     <script nonce="abc123">
+      // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
       (() => {
         'use strict';
 
@@ -1270,91 +1286,8 @@ npm run cache:force-rebuild
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)
-          const allItems = [
-            {
-              title: "FrontMatter CMS Usage",
-              permalink: "/docs/frontmatter-cms/",
-              ariaLabel: "Navigate to FrontMatter CMS Usage",
-              current: false
-            },{
-              title: "Accessibility Testing Configuration",
-              permalink: "/docs/accessibility-testing/",
-              ariaLabel: "Navigate to Accessibility Testing Configuration",
-              current: false
-            },{
-              title: "Browser Management for Testing",
-              permalink: "/docs/browser-management/",
-              ariaLabel: "Navigate to Browser Management for Testing",
-              current: false
-            },{
-              title: "Browser Compatibility Testing",
-              permalink: "/docs/browser-compatibility-testing/",
-              ariaLabel: "Navigate to Browser Compatibility Testing",
-              current: false
-            },{
-              title: "Liquid Tags Examples",
-              permalink: "/docs/liquid-tags-examples/",
-              ariaLabel: "Navigate to Liquid Tags Examples",
-              current: false
-            },{
-              title: "Tags and Categories System Guide",
-              permalink: "/docs/tags-and-categories-guide/",
-              ariaLabel: "Navigate to Tags and Categories System Guide",
-              current: false
-            },{
-              title: "Performance Optimization Guide",
-              permalink: "/docs/performance-optimization/",
-              ariaLabel: "Navigate to Performance Optimization Guide",
-              current: true
-            },{
-              title: "Testing Performance and Development Evolution",
-              permalink: "/docs/testing-performance-evolution/",
-              ariaLabel: "Navigate to Testing Performance and Development Evolution",
-              current: false
-            },{
-              title: "Cache Management Strategies",
-              permalink: "/docs/cache-management/",
-              ariaLabel: "Navigate to Cache Management Strategies",
-              current: false
-            },{
-              title: "Mermaid Diagram Configuration Guide",
-              permalink: "/docs/mermaid-configuration-guide/",
-              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
-              current: false
-            },{
-              title: "Mermaid Quick Start",
-              permalink: "/docs/mermaid-quick-start/",
-              ariaLabel: "Navigate to Mermaid Quick Start",
-              current: false
-            },{
-              title: "Mermaid Diagram Examples",
-              permalink: "/docs/mermaid-examples/",
-              ariaLabel: "Navigate to Mermaid Diagram Examples",
-              current: false
-            },{
-              title: "Mermaid Diagrams Sample",
-              permalink: "/docs/mermaid-diagrams-sample/",
-              ariaLabel: "Navigate to Mermaid Diagrams Sample",
-              current: false
-            },{
-              title: "Mermaid Diagrams Test Runner",
-              permalink: "/docs/mermaid-test-runner/",
-              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
-              current: false
-            },{
-              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
-              permalink: "/docs/rel-attribute-guide/",
-              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
-              current: false
-            },{
-              title: "Exploring the Limitations of Gitea and Ruby",
-              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
-              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
-              current: false
-            },
-          ];
-
-          // Render dynamic items (optimization #7: deferred rendering)
+          const navDataEl = document.getElementById('nav-data-dynamic');
+          const allItems = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
           allItems.forEach((item) => {
             const li = document.createElement('li');
             li.setAttribute('role', 'listitem');

@@ -573,7 +573,7 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20260429182949" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260506151453" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -647,7 +647,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260429182949" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260506151453" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -709,53 +709,32 @@ img {
       </noscript>
 
       <div class="wrapper">
-        <a
-          class="site-title"
-          rel="home"
-          href="/"
-        >
+        <a class="site-title" rel="home" href="/">
           
-          <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
-            alt="My Info Just Under Glass"
-            width="50"
-            height="50"
-          />
+          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" alt="My Info Just Under Glass" width="50" height="50">
            My Info Just Under Glass
         </a>
 
         <!-- Mobile navigation toggle button -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu">
-          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
-          &nbsp;Menu
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true">
+           Menu
         </button>
 
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
-        <nav
-          id="primary-navigation"
-          class="primary-nav js-enhanced-nav"
-          role="dialog"
-          aria-modal="true"
-          aria-hidden="true">
+        <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
 
           <!-- Full navigation for modern browsers -->
           <div class="modern-nav-content">
             <button class="nav-close" type="button" aria-label="Close navigation menu">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">×</span>
             </button>
             <ul role="list" id="nav-items-static">
               <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
               
                 
                 <li role="listitem">
-                  <a href="/blog/"
-                     
-                     aria-label="Navigate to Blog">
+                  <a href="/blog/" aria-label="Navigate to Blog">
                      Blog
                   </a>
                 </li>
@@ -763,9 +742,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/about/"
-                     
-                     aria-label="Navigate to About">
+                  <a href="/about/" aria-label="Navigate to About">
                      About
                   </a>
                 </li>
@@ -773,9 +750,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/getting-started/"
-                     
-                     aria-label="Navigate to Getting Started">
+                  <a href="/docs/getting-started/" aria-label="Navigate to Getting Started">
                      Getting Started
                   </a>
                 </li>
@@ -783,9 +758,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/welcome-mijug-workspace/"
-                     
-                     aria-label="Navigate to Workspace Overview">
+                  <a href="/docs/welcome-mijug-workspace/" aria-label="Navigate to Workspace Overview">
                      Workspace Overview
                   </a>
                 </li>
@@ -834,12 +807,14 @@ img {
     </header>
 
     <main class="page-content" aria-label="Content">
-      <div class="wrapper"><article class="post">
+      <div class="wrapper">
+<article class="post">
   <header class="post-header">
     <h1 class="post-title">Mermaid Quick Start</h1>
   </header>
 
-  <div class="post-content"><p>Add beautiful diagrams to your Jekyll content using simple text syntax.</p>
+  <div class="post-content">
+<p>Add beautiful diagrams to your Jekyll content using simple text syntax.</p>
 
 <h2 id="-basic-usage">✨ Basic Usage</h2>
 
@@ -899,10 +874,14 @@ img {
 <h2 id="-best-practices">📝 Best Practices</h2>
 
 <ol>
-  <li><strong>Use fenced code blocks</strong> (````mermaid`) instead of Liquid tags</li>
-  <li><strong>Test diagrams</strong> at <a href="https://mermaid.live/" rel="external noopener noreferrer" target="_blank">Mermaid Live Editor</a> first</li>
-  <li><strong>Keep diagrams simple</strong> for better readability</li>
-  <li><strong>Use descriptive labels</strong> for accessibility</li>
+  <li>
+<strong>Use fenced code blocks</strong> (````mermaid`) instead of Liquid tags</li>
+  <li>
+<strong>Test diagrams</strong> at <a href="https://mermaid.live/" rel="external noopener noreferrer" target="_blank">Mermaid Live Editor</a> first</li>
+  <li>
+<strong>Keep diagrams simple</strong> for better readability</li>
+  <li>
+<strong>Use descriptive labels</strong> for accessibility</li>
 </ol>
 
 <h2 id="-quick-troubleshooting">🐛 Quick Troubleshooting</h2>
@@ -917,19 +896,26 @@ img {
 <p><strong>Syntax error message?</strong></p>
 
 <ul>
-  <li>Validate syntax at <a href="https://mermaid.live/" rel="external noopener noreferrer" target="_blank">mermaid.live</a></li>
+  <li>Validate syntax at <a href="https://mermaid.live/" rel="external noopener noreferrer" target="_blank">mermaid.live</a>
+</li>
   <li>Avoid special characters that might be HTML-encoded</li>
 </ul>
 
 <h2 id="-more-information">📚 More Information</h2>
 
 <ul>
-  <li><strong>Full Setup Guide</strong>: <a href="/docs/mermaid-configuration-guide/">Mermaid Configuration Guide</a></li>
-  <li><strong>Official Docs</strong>: <a href="https://mermaid.js.org/" rel="external noopener noreferrer" target="_blank">mermaid.js.org</a></li>
-  <li><strong>Live Editor</strong>: <a href="https://mermaid.live/" rel="external noopener noreferrer" target="_blank">mermaid.live</a></li>
+  <li>
+<strong>Full Setup Guide</strong>: <a href="/docs/mermaid-configuration-guide/">Mermaid Configuration Guide</a>
+</li>
+  <li>
+<strong>Official Docs</strong>: <a href="https://mermaid.js.org/" rel="external noopener noreferrer" target="_blank">mermaid.js.org</a>
+</li>
+  <li>
+<strong>Live Editor</strong>: <a href="https://mermaid.live/" rel="external noopener noreferrer" target="_blank">mermaid.live</a>
+</li>
 </ul>
 
-<hr />
+<hr>
 
 <p><em>For detailed configuration, troubleshooting, and advanced usage, see the <a href="/docs/mermaid-configuration-guide/">complete configuration guide</a>.</em></p>
 </div>
@@ -943,7 +929,7 @@ img {
       <div class="wrapper">
         <div class="footer-col-wrapper">
           <div class="footer-col footer-col-1">
-            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/terms-of-service.html">Terms of Service</a><br>
             <a href="/privacy-policy.html">Privacy Policy</a>
           </div>
           <div class="footer-col footer-col-2">
@@ -951,16 +937,11 @@ img {
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2026
-              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
-                >Kranson Enterprises</a
-              ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
-              <a href="/feed.xml"
-                >via RSS<svg class="svg-icon">
-                  <use
-                    xlink:href="/assets/minima-social-icons.svg#rss"
-                  ></use></svg>
+              © 2026
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                  subscribe
+              <a href="/feed.xml">via RSS<svg class="svg-icon">
+                  <use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg>
               </a>
             </p>
           </div>
@@ -1052,11 +1033,7 @@ img {
       gtag('config', 'G-W1M1N0DCD4');
     </script>
 
-    <script
-      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
-      crossorigin="anonymous"
-      async
-    ></script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
     
 
     <!-- Cookie consent system -->
@@ -1165,8 +1142,12 @@ img {
       })();
     </script>
 
+    <!-- Navigation data for lazy-loading (optimization #7) -->
+    <script id="nav-data-dynamic" type="application/json">[{"title":"FrontMatter CMS Usage","permalink":"/docs/frontmatter-cms/","ariaLabel":"Navigate to FrontMatter CMS Usage","current":false},{"title":"Accessibility Testing Configuration","permalink":"/docs/accessibility-testing/","ariaLabel":"Navigate to Accessibility Testing Configuration","current":false},{"title":"Browser Management for Testing","permalink":"/docs/browser-management/","ariaLabel":"Navigate to Browser Management for Testing","current":false},{"title":"Browser Compatibility Testing","permalink":"/docs/browser-compatibility-testing/","ariaLabel":"Navigate to Browser Compatibility Testing","current":false},{"title":"Liquid Tags Examples","permalink":"/docs/liquid-tags-examples/","ariaLabel":"Navigate to Liquid Tags Examples","current":false},{"title":"Tags and Categories System Guide","permalink":"/docs/tags-and-categories-guide/","ariaLabel":"Navigate to Tags and Categories System Guide","current":false},{"title":"Performance Optimization Guide","permalink":"/docs/performance-optimization/","ariaLabel":"Navigate to Performance Optimization Guide","current":false},{"title":"Testing Performance and Development Evolution","permalink":"/docs/testing-performance-evolution/","ariaLabel":"Navigate to Testing Performance and Development Evolution","current":false},{"title":"Cache Management Strategies","permalink":"/docs/cache-management/","ariaLabel":"Navigate to Cache Management Strategies","current":false},{"title":"Mermaid Diagram Configuration Guide","permalink":"/docs/mermaid-configuration-guide/","ariaLabel":"Navigate to Mermaid Diagram Configuration Guide","current":false},{"title":"Mermaid Quick Start","permalink":"/docs/mermaid-quick-start/","ariaLabel":"Navigate to Mermaid Quick Start","current":false},{"title":"Mermaid Diagram Examples","permalink":"/docs/mermaid-examples/","ariaLabel":"Navigate to Mermaid Diagram Examples","current":false},{"title":"Mermaid Diagrams Sample","permalink":"/docs/mermaid-diagrams-sample/","ariaLabel":"Navigate to Mermaid Diagrams Sample","current":false},{"title":"Mermaid Diagrams Test Runner","permalink":"/docs/mermaid-test-runner/","ariaLabel":"Navigate to Mermaid Diagrams Test Runner","current":false},{"title":"The rel Attribute in HTML Links: A Comprehensive Guide","permalink":"/docs/rel-attribute-guide/","ariaLabel":"Navigate to The rel Attribute in HTML Links: A Comprehensive Guide","current":false},{"title":"Exploring the Limitations of Gitea and Ruby","permalink":"/docs/exploring-limitations-of-gitea-and-ruby/","ariaLabel":"Navigate to Exploring the Limitations of Gitea and Ruby","current":false},]</script>
+
     <!-- Lazy-load dynamic navigation items (optimization #7) -->
     <script nonce="abc123">
+      // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
       (() => {
         'use strict';
 
@@ -1178,91 +1159,8 @@ img {
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)
-          const allItems = [
-            {
-              title: "FrontMatter CMS Usage",
-              permalink: "/docs/frontmatter-cms/",
-              ariaLabel: "Navigate to FrontMatter CMS Usage",
-              current: false
-            },{
-              title: "Accessibility Testing Configuration",
-              permalink: "/docs/accessibility-testing/",
-              ariaLabel: "Navigate to Accessibility Testing Configuration",
-              current: false
-            },{
-              title: "Browser Management for Testing",
-              permalink: "/docs/browser-management/",
-              ariaLabel: "Navigate to Browser Management for Testing",
-              current: false
-            },{
-              title: "Browser Compatibility Testing",
-              permalink: "/docs/browser-compatibility-testing/",
-              ariaLabel: "Navigate to Browser Compatibility Testing",
-              current: false
-            },{
-              title: "Liquid Tags Examples",
-              permalink: "/docs/liquid-tags-examples/",
-              ariaLabel: "Navigate to Liquid Tags Examples",
-              current: false
-            },{
-              title: "Tags and Categories System Guide",
-              permalink: "/docs/tags-and-categories-guide/",
-              ariaLabel: "Navigate to Tags and Categories System Guide",
-              current: false
-            },{
-              title: "Performance Optimization Guide",
-              permalink: "/docs/performance-optimization/",
-              ariaLabel: "Navigate to Performance Optimization Guide",
-              current: false
-            },{
-              title: "Testing Performance and Development Evolution",
-              permalink: "/docs/testing-performance-evolution/",
-              ariaLabel: "Navigate to Testing Performance and Development Evolution",
-              current: false
-            },{
-              title: "Cache Management Strategies",
-              permalink: "/docs/cache-management/",
-              ariaLabel: "Navigate to Cache Management Strategies",
-              current: false
-            },{
-              title: "Mermaid Diagram Configuration Guide",
-              permalink: "/docs/mermaid-configuration-guide/",
-              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
-              current: false
-            },{
-              title: "Mermaid Quick Start",
-              permalink: "/docs/mermaid-quick-start/",
-              ariaLabel: "Navigate to Mermaid Quick Start",
-              current: false
-            },{
-              title: "Mermaid Diagram Examples",
-              permalink: "/docs/mermaid-examples/",
-              ariaLabel: "Navigate to Mermaid Diagram Examples",
-              current: false
-            },{
-              title: "Mermaid Diagrams Sample",
-              permalink: "/docs/mermaid-diagrams-sample/",
-              ariaLabel: "Navigate to Mermaid Diagrams Sample",
-              current: false
-            },{
-              title: "Mermaid Diagrams Test Runner",
-              permalink: "/docs/mermaid-test-runner/",
-              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
-              current: false
-            },{
-              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
-              permalink: "/docs/rel-attribute-guide/",
-              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
-              current: false
-            },{
-              title: "Exploring the Limitations of Gitea and Ruby",
-              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
-              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
-              current: false
-            },
-          ];
-
-          // Render dynamic items (optimization #7: deferred rendering)
+          const navDataEl = document.getElementById('nav-data-dynamic');
+          const allItems = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
           allItems.forEach((item) => {
             const li = document.createElement('li');
             li.setAttribute('role', 'listitem');

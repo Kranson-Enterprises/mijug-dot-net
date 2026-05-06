@@ -573,7 +573,7 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260425211421" />
 
-    <link rel="stylesheet" href="/assets/main.css?v=20260429182949" media="print">
+    <link rel="stylesheet" href="/assets/main.css?v=20260506151453" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -647,7 +647,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260429182949" defer crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/mijug-es13.min.js?v=20260506151453" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -707,53 +707,32 @@ img {
       </noscript>
 
       <div class="wrapper">
-        <a
-          class="site-title"
-          rel="home"
-          href="/"
-        >
+        <a class="site-title" rel="home" href="/">
           
-          <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421"
-            alt="My Info Just Under Glass"
-            width="50"
-            height="50"
-          />
+          <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" alt="My Info Just Under Glass" width="50" height="50">
            My Info Just Under Glass
         </a>
 
         <!-- Mobile navigation toggle button -->
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu">
-          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true" />
-          &nbsp;Menu
+        <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+          <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true">
+           Menu
         </button>
 
         <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
-        <nav
-          id="primary-navigation"
-          class="primary-nav js-enhanced-nav"
-          role="dialog"
-          aria-modal="true"
-          aria-hidden="true">
+        <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
 
           <!-- Full navigation for modern browsers -->
           <div class="modern-nav-content">
             <button class="nav-close" type="button" aria-label="Close navigation menu">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">×</span>
             </button>
             <ul role="list" id="nav-items-static">
               <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
               
                 
                 <li role="listitem">
-                  <a href="/blog/"
-                     
-                     aria-label="Navigate to Blog">
+                  <a href="/blog/" aria-label="Navigate to Blog">
                      Blog
                   </a>
                 </li>
@@ -761,9 +740,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/about/"
-                     
-                     aria-label="Navigate to About">
+                  <a href="/about/" aria-label="Navigate to About">
                      About
                   </a>
                 </li>
@@ -771,9 +748,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/getting-started/"
-                     
-                     aria-label="Navigate to Getting Started">
+                  <a href="/docs/getting-started/" aria-label="Navigate to Getting Started">
                      Getting Started
                   </a>
                 </li>
@@ -781,9 +756,7 @@ img {
               
                 
                 <li role="listitem">
-                  <a href="/docs/welcome-mijug-workspace/"
-                     
-                     aria-label="Navigate to Workspace Overview">
+                  <a href="/docs/welcome-mijug-workspace/" aria-label="Navigate to Workspace Overview">
                      Workspace Overview
                   </a>
                 </li>
@@ -832,12 +805,14 @@ img {
     </header>
 
     <main class="page-content" aria-label="Content">
-      <div class="wrapper"><article class="post">
+      <div class="wrapper">
+<article class="post">
   <header class="post-header">
     <h1 class="post-title">Exploring the Limitations of Gitea and Ruby</h1>
   </header>
 
-  <div class="post-content"><h2 id="gitea-a-friendly-alternative-to-github-actions">Gitea: A Friendly Alternative to GitHub Actions</h2>
+  <div class="post-content">
+<h2 id="gitea-a-friendly-alternative-to-github-actions">Gitea: A Friendly Alternative to GitHub Actions</h2>
 
 <p>Gitea is a simple, self-hosted service for managing your code, much like GitHub or GitLab, but you can run it on your own computer or server. One of its best features is the ability to automate tasks—like building your website or running tests—using something called Gitea Actions. These actions work a lot like GitHub Actions, so if you’ve used those before, you’ll feel right at home. You write instructions in easy-to-read files, and Gitea follows them to help you keep your project running smoothly, even if you’re not a programmer.</p>
 
@@ -846,8 +821,10 @@ img {
 <p>If you want to use Ruby (a popular programming language) with Gitea, you have two main choices:</p>
 
 <ol>
-  <li><strong>Use Docker:</strong> This is like putting your Ruby setup in a special box, so it always works the same way, no matter where you run it. Gitea Actions can use these boxes to make sure everything is just right.</li>
-  <li><strong>Install Ruby Directly:</strong> You can also put Ruby right on your computer or server. This is sometimes easier for beginners, but it can cause problems if your setup is different from what your project expects.</li>
+  <li>
+<strong>Use Docker:</strong> This is like putting your Ruby setup in a special box, so it always works the same way, no matter where you run it. Gitea Actions can use these boxes to make sure everything is just right.</li>
+  <li>
+<strong>Install Ruby Directly:</strong> You can also put Ruby right on your computer or server. This is sometimes easier for beginners, but it can cause problems if your setup is different from what your project expects.</li>
 </ol>
 
 <p>For most people, using Docker is safer and more reliable, but if you’re just experimenting or have a simple project, installing Ruby directly can work too.</p>
@@ -864,7 +841,7 @@ img {
 
 <p>At first, I tried the newest Ruby version (3.4.5), but it didn’t work with Jekyll (the tool I use for my website), which needed an older version. So, I built Ruby 3.3.9, and that finally worked! The only catch: the Raspberry Pi is not very powerful, so some of my tests took too long and failed. This is normal for small computers, but it’s something to keep in mind if you want to do everything locally.</p>
 
-<hr />
+<hr>
 
 <h2 id="final-thoughts-saving-power-and-working-offline">Final Thoughts: Saving Power and Working Offline</h2>
 
@@ -879,14 +856,14 @@ img {
   <li>Being patient with slower hardware, and adjusting test settings if needed</li>
 </ul>
 
-<hr />
+<hr>
 
 <h2 id="bibliography">Bibliography</h2>
 
-<p><a href="https://gitea.com/" rel="external noopener noreferrer" target="_blank">Gitea Official Website</a><br />
-<a href="https://www.ruby-lang.org/en/" rel="external noopener noreferrer" target="_blank">Ruby Programming Language</a><br />
-<a href="https://docs.github.com/en/actions" rel="external noopener noreferrer" target="_blank">GitHub Actions Documentation</a><br />
-<a href="https://en.wikipedia.org/wiki/CI/CD" rel="external noopener noreferrer" target="_blank">Continuous Integration (CI/CD) Concepts</a><br />
+<p><a href="https://gitea.com/" rel="external noopener noreferrer" target="_blank">Gitea Official Website</a><br>
+<a href="https://www.ruby-lang.org/en/" rel="external noopener noreferrer" target="_blank">Ruby Programming Language</a><br>
+<a href="https://docs.github.com/en/actions" rel="external noopener noreferrer" target="_blank">GitHub Actions Documentation</a><br>
+<a href="https://en.wikipedia.org/wiki/CI/CD" rel="external noopener noreferrer" target="_blank">Continuous Integration (CI/CD) Concepts</a><br>
 <a href="https://jekyllrb.com/" rel="external noopener noreferrer" target="_blank">Jekyll Static Site Generator</a></p>
 </div>
 </article>
@@ -899,7 +876,7 @@ img {
       <div class="wrapper">
         <div class="footer-col-wrapper">
           <div class="footer-col footer-col-1">
-            <a href="/terms-of-service.html">Terms of Service</a><br />
+            <a href="/terms-of-service.html">Terms of Service</a><br>
             <a href="/privacy-policy.html">Privacy Policy</a>
           </div>
           <div class="footer-col footer-col-2">
@@ -907,16 +884,11 @@ img {
           </div>
           <div class="footer-col footer-col-3">
             <p>
-              &copy; 2026
-              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2"
-                >Kranson Enterprises</a
-              ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;subscribe
-              <a href="/feed.xml"
-                >via RSS<svg class="svg-icon">
-                  <use
-                    xlink:href="/assets/minima-social-icons.svg#rss"
-                  ></use></svg>
+              © 2026
+              <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                  subscribe
+              <a href="/feed.xml">via RSS<svg class="svg-icon">
+                  <use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg>
               </a>
             </p>
           </div>
@@ -944,11 +916,7 @@ img {
       gtag('config', 'G-W1M1N0DCD4');
     </script>
 
-    <script
-      src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4"
-      crossorigin="anonymous"
-      async
-    ></script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
     
 
     <!-- Cookie consent system -->
@@ -1057,8 +1025,12 @@ img {
       })();
     </script>
 
+    <!-- Navigation data for lazy-loading (optimization #7) -->
+    <script id="nav-data-dynamic" type="application/json">[{"title":"FrontMatter CMS Usage","permalink":"/docs/frontmatter-cms/","ariaLabel":"Navigate to FrontMatter CMS Usage","current":false},{"title":"Accessibility Testing Configuration","permalink":"/docs/accessibility-testing/","ariaLabel":"Navigate to Accessibility Testing Configuration","current":false},{"title":"Browser Management for Testing","permalink":"/docs/browser-management/","ariaLabel":"Navigate to Browser Management for Testing","current":false},{"title":"Browser Compatibility Testing","permalink":"/docs/browser-compatibility-testing/","ariaLabel":"Navigate to Browser Compatibility Testing","current":false},{"title":"Liquid Tags Examples","permalink":"/docs/liquid-tags-examples/","ariaLabel":"Navigate to Liquid Tags Examples","current":false},{"title":"Tags and Categories System Guide","permalink":"/docs/tags-and-categories-guide/","ariaLabel":"Navigate to Tags and Categories System Guide","current":false},{"title":"Performance Optimization Guide","permalink":"/docs/performance-optimization/","ariaLabel":"Navigate to Performance Optimization Guide","current":false},{"title":"Testing Performance and Development Evolution","permalink":"/docs/testing-performance-evolution/","ariaLabel":"Navigate to Testing Performance and Development Evolution","current":false},{"title":"Cache Management Strategies","permalink":"/docs/cache-management/","ariaLabel":"Navigate to Cache Management Strategies","current":false},{"title":"Mermaid Diagram Configuration Guide","permalink":"/docs/mermaid-configuration-guide/","ariaLabel":"Navigate to Mermaid Diagram Configuration Guide","current":false},{"title":"Mermaid Quick Start","permalink":"/docs/mermaid-quick-start/","ariaLabel":"Navigate to Mermaid Quick Start","current":false},{"title":"Mermaid Diagram Examples","permalink":"/docs/mermaid-examples/","ariaLabel":"Navigate to Mermaid Diagram Examples","current":false},{"title":"Mermaid Diagrams Sample","permalink":"/docs/mermaid-diagrams-sample/","ariaLabel":"Navigate to Mermaid Diagrams Sample","current":false},{"title":"Mermaid Diagrams Test Runner","permalink":"/docs/mermaid-test-runner/","ariaLabel":"Navigate to Mermaid Diagrams Test Runner","current":false},{"title":"The rel Attribute in HTML Links: A Comprehensive Guide","permalink":"/docs/rel-attribute-guide/","ariaLabel":"Navigate to The rel Attribute in HTML Links: A Comprehensive Guide","current":false},{"title":"Exploring the Limitations of Gitea and Ruby","permalink":"/docs/exploring-limitations-of-gitea-and-ruby/","ariaLabel":"Navigate to Exploring the Limitations of Gitea and Ruby","current":true},]</script>
+
     <!-- Lazy-load dynamic navigation items (optimization #7) -->
     <script nonce="abc123">
+      // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
       (() => {
         'use strict';
 
@@ -1070,91 +1042,8 @@ img {
           if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
 
           // All navigation items embedded as data (generated at build time)
-          const allItems = [
-            {
-              title: "FrontMatter CMS Usage",
-              permalink: "/docs/frontmatter-cms/",
-              ariaLabel: "Navigate to FrontMatter CMS Usage",
-              current: false
-            },{
-              title: "Accessibility Testing Configuration",
-              permalink: "/docs/accessibility-testing/",
-              ariaLabel: "Navigate to Accessibility Testing Configuration",
-              current: false
-            },{
-              title: "Browser Management for Testing",
-              permalink: "/docs/browser-management/",
-              ariaLabel: "Navigate to Browser Management for Testing",
-              current: false
-            },{
-              title: "Browser Compatibility Testing",
-              permalink: "/docs/browser-compatibility-testing/",
-              ariaLabel: "Navigate to Browser Compatibility Testing",
-              current: false
-            },{
-              title: "Liquid Tags Examples",
-              permalink: "/docs/liquid-tags-examples/",
-              ariaLabel: "Navigate to Liquid Tags Examples",
-              current: false
-            },{
-              title: "Tags and Categories System Guide",
-              permalink: "/docs/tags-and-categories-guide/",
-              ariaLabel: "Navigate to Tags and Categories System Guide",
-              current: false
-            },{
-              title: "Performance Optimization Guide",
-              permalink: "/docs/performance-optimization/",
-              ariaLabel: "Navigate to Performance Optimization Guide",
-              current: false
-            },{
-              title: "Testing Performance and Development Evolution",
-              permalink: "/docs/testing-performance-evolution/",
-              ariaLabel: "Navigate to Testing Performance and Development Evolution",
-              current: false
-            },{
-              title: "Cache Management Strategies",
-              permalink: "/docs/cache-management/",
-              ariaLabel: "Navigate to Cache Management Strategies",
-              current: false
-            },{
-              title: "Mermaid Diagram Configuration Guide",
-              permalink: "/docs/mermaid-configuration-guide/",
-              ariaLabel: "Navigate to Mermaid Diagram Configuration Guide",
-              current: false
-            },{
-              title: "Mermaid Quick Start",
-              permalink: "/docs/mermaid-quick-start/",
-              ariaLabel: "Navigate to Mermaid Quick Start",
-              current: false
-            },{
-              title: "Mermaid Diagram Examples",
-              permalink: "/docs/mermaid-examples/",
-              ariaLabel: "Navigate to Mermaid Diagram Examples",
-              current: false
-            },{
-              title: "Mermaid Diagrams Sample",
-              permalink: "/docs/mermaid-diagrams-sample/",
-              ariaLabel: "Navigate to Mermaid Diagrams Sample",
-              current: false
-            },{
-              title: "Mermaid Diagrams Test Runner",
-              permalink: "/docs/mermaid-test-runner/",
-              ariaLabel: "Navigate to Mermaid Diagrams Test Runner",
-              current: false
-            },{
-              title: "The rel Attribute in HTML Links: A Comprehensive Guide",
-              permalink: "/docs/rel-attribute-guide/",
-              ariaLabel: "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
-              current: false
-            },{
-              title: "Exploring the Limitations of Gitea and Ruby",
-              permalink: "/docs/exploring-limitations-of-gitea-and-ruby/",
-              ariaLabel: "Navigate to Exploring the Limitations of Gitea and Ruby",
-              current: true
-            },
-          ];
-
-          // Render dynamic items (optimization #7: deferred rendering)
+          const navDataEl = document.getElementById('nav-data-dynamic');
+          const allItems = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
           allItems.forEach((item) => {
             const li = document.createElement('li');
             li.setAttribute('role', 'listitem');
