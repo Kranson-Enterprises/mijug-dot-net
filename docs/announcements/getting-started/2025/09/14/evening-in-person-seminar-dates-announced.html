@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
+
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+  
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+  
+  
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+  <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+  
+  
+
+  <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+  <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+  <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0066cc;
+  --nav-bg: #f8f8f8;
+  --border-color: #e8e8e8;
+  --header-color: #424242;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cookie consent banner styles */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
+  overflow: hidden;
+}
+
+#cookie-consent-banner.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+  <title>
+    Evening In-Person Seminar Dates Announced! | My Info Just Under Glass
+  </title>
+  <meta name="description"
+    content="Join our Fall 2025 in-person seminar series designed for non-technical users who want to give new life to older computers that no longer support Windows 11." />
+  
+  <meta name="version" content="Nov 20, 2025" />
+  
+
+  
+
+  <meta name="google-site-verification" content="googlece83719b3f856e56" />
+  <meta name="cache-version" content="20260425211421" />
+
+  <link rel="stylesheet" href="/assets/main.css?v=20260507165747" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2022 baseline)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES13 feature detection (syntax-only check) -->
+  
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript13 = false;
+      const html = document.documentElement;
+      const candidatePaths = ['/assets/js/mijug-es13.min.js', '/assets/js/mijug-es13-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES13Features === 'function') {
+            try {
+              mod.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else if (typeof window.testES13Features === 'function') {
+            try {
+              window.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else {
+            console.debug('ES13 test module loaded but `testES13Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES13 test module not present or failed to import:', path, err);
+        }
+      }
+      if (!supportsEcmascript13) {
+        html.classList.add('no-ES2022');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2022 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+  <script type="module" src="/assets/js/mijug-es13.min.js?v=20260507165747" defer crossorigin="anonymous"></script>
+
+  <link rel="alternate" type="application/rss+xml" title="My Info Just Under Glass"
+    href="/feed.xml" />
+  
+  
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  
+
+  <meta name="description" content="Fall 2025 in-person seminar dates for non-technical users to give new life to older computers that no longer support Windows 11." />
+<meta property="og:title" content="Evening In-Person Seminar Dates Announced!" />
+<meta property="og:description" content="Fall 2025 in-person seminar dates for non-technical users to give new life to older computers that no longer support Windows 11." />
+<meta property="og:url" content="https://www.mijug.net/announcements/getting-started/2025/09/14/evening-in-person-seminar-dates-announced" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/announcements/getting-started/2025/09/14/evening-in-person-seminar-dates-announced" />
+
+
+  
+
+  
+
+    <script nonce="abc123">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20260425211421";
+</script>
+
+    
+    <script nonce="abc123">
+      window.MIJUG_DISABLE_PRINT = true;
+      // Disable context menu without inline event handler (CSP compliant)
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+    </script>
+    
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+    <noscript>
+      <div class="legacy-browser-notice" role="alert">
+        <strong>No Commerce Available</strong>
+        <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+      </div>
+    </noscript>
+
+    <div class="wrapper">
+      <a class="site-title" rel="home" href="/">
+        
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" alt="My Info Just Under Glass" width="50" height="50">
+         My Info Just Under Glass
+      </a>
+
+      <!-- Mobile navigation toggle button -->
+      <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+        <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true">
+         Menu
+      </button>
+
+      <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+      <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
+
+        <!-- Full navigation for modern browsers -->
+        <div class="modern-nav-content">
+          <button class="nav-close" type="button" aria-label="Close navigation menu">
+            <span aria-hidden="true">×</span>
+          </button>
+          <ul role="list" id="nav-items-static">
+            <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </ul>
+          <!-- Dynamic navigation items load here via JavaScript -->
+          <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+        </div>
+      </nav>
+
+      <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Evening In-Person Seminar Dates Announced!</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-09-14T20:00:00-04:00" itemprop="datePublished">
+        Published Sep 14, 2025
+      </time><span class="post-meta-separator"> • </span>
+      <time class="dt-modified" datetime="2026-05-07T16:57:11-04:00" itemprop="dateModified">
+        Updated May 7, 2026
+      </time><span class="post-meta-separator"> • </span>
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-author h-card" itemprop="name">MIJUG Team</span>
+      </span></p>
+<p class="post-description">Fall 2025 in-person seminar dates for non-technical users to give new life to older computers that no longer support Windows 11.</p>
+<div class="post-tags">
+<a href="/tag/seminar" class="tag-link">#seminar</a><a href="/tag/linux" class="tag-link">#linux</a><a href="/tag/e-waste" class="tag-link">#e-waste</a><a href="/tag/windows-11" class="tag-link">#windows-11</a><a href="/tag/education" class="tag-link">#education</a><a href="/tag/diy" class="tag-link">#diy</a><a href="/tag/sustainability" class="tag-link">#sustainability</a>
+</div></header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+<h2 id="-introduction">🚀 Introduction</h2>
+
+<p>Whether you’re a retiree, a hobbyist, or someone looking to save money and reduce electronic waste, this exciting series will guide you step-by-step in converting your outdated computer into a fully usable Linux-based system!</p>
+
+<h2 id="-why-attend">🎯 Why Attend?</h2>
+
+<p>These hands-on workshops are designed to help you:</p>
+
+<ul>
+  <li>
+<strong>Understand</strong> what Linux is and how it can replace older Windows operating systems</li>
+  <li>
+<strong>Follow</strong> a simple, guided process to convert your own computer to Linux</li>
+  <li>
+<strong>Learn</strong> how to keep your computer running smoothly with free, modern tools</li>
+  <li>
+<strong>Discover</strong> how repurposing an older machine is both cost-effective and environmentally friendly</li>
+</ul>
+
+<h2 id="-workshop-details">📋 Workshop Details</h2>
+
+<ul>
+  <li>
+<strong>Format:</strong> Interactive demonstration with time for questions and answers</li>
+  <li>
+<strong>Experience Level:</strong> No prior technical experience required (Beginner to intermediate)</li>
+  <li>
+<strong>Cost:</strong> $20 USD (covers materials and venue; stipends accepted if needed, onsite ATM, no credit cards)</li>
+  <li>
+<strong>Attendance:</strong> Open to session-paid attendees only</li>
+  <li>
+<strong>Seats:</strong> Very limited — secure your preferred session today!</li>
+</ul>
+
+<h2 id="-seminar-dates--times">📅 Seminar Dates &amp; Times</h2>
+
+<p>Each seminar will be offered in <strong>two identical sessions</strong> on the following dates:</p>
+
+<h3 id="september-22-and-25"><strong>September 22 and 25</strong></h3>
+
+<ul>
+  <li>
+<strong>Session 1 - September 22:</strong> 5:30 PM – 7:30 PM</li>
+  <li>
+<strong>Session 2 - September 25:</strong> 5:30 PM – 7:30 PM</li>
+</ul>
+
+<h2 id="-location">📍 Location</h2>
+
+<p>All seminars will be held in person at:</p>
+
+<p><strong>🎳 Bowl One Lanes – QBar Meeting Room</strong>
+🏢 <em>(Located at the back/north end of the building)</em>
+🛣️ 1639 E 14 Mile Rd
+🧤 Troy, 48083
+🌐 <a href="https://bowlone.net" rel="external noopener noreferrer" target="_blank">bowlone.net</a></p>
+
+<p><strong>📧 To express interest or reserve a seat:</strong> <a href="mailto:devopsbob@outlook.com">devopsbob@outlook.com</a>
+<strong>🗓️ Online Calendar:</strong> <a href="mailto:devopsbob2@gmail.com">devopsbob2@gmail.com</a> or use <a href="/contact/">Contact</a> below.</p>
+
+<h2 id="️-why-this-workshop-matters">⚠️ Why This Workshop Matters</h2>
+
+<p><strong>Windows 10 support ends October 14, 2025!</strong></p>
+
+<p>Many perfectly good computers won’t qualify for Windows 11 upgrades due to hardware requirements. Instead of discarding these machines, learn how to give them new life with Linux — a free, secure, and modern operating system!</p>
+
+<h2 id="-is-this-workshop-for-you">✅ Is This Workshop for You?</h2>
+
+<p>This workshop is perfect if you:</p>
+
+<ul>
+  <li>✅ Have old PCs gathering dust and aren’t sure what sensitive data they contain</li>
+  <li>✅ Want to repurpose machines for media streaming, basic gaming, or personal projects</li>
+  <li>✅ Prefer backing up to USB instead of holding onto outdated systems</li>
+  <li>✅ Are curious about Linux but don’t know where to start</li>
+  <li>✅ Would rather save money than buy new hardware</li>
+</ul>
+
+<h2 id="-mac-users-welcome">🍎 Mac Users Welcome!</h2>
+
+<p>While macOS isn’t Linux, it shares UNIX roots. We’ll explore directory structures and Terminal commands, with optional tips for modern Intel and Apple Silicon Macs.</p>
+
+<h2 id="-about-the-presenter">👨‍🏫 About the Presenter</h2>
+
+<p>With a long career in technology and education, I’ve worked with people of all ages and backgrounds. My experience includes:</p>
+
+<ul>
+  <li>🎓 <strong>Teaching</strong> at Wayne State University in Detroit</li>
+  <li>👥 <strong>Leading</strong> technology user groups focused on community learning</li>
+  <li>💡 <strong>Helping</strong> adults—especially career changers—gain confidence using modern technology</li>
+</ul>
+
+<h2 id="-what-to-expect">🔮 What to Expect</h2>
+
+<p><strong>Please note:</strong> These workshops are in-person only and will not be recorded or streamed online. However, this website will remain available to support your learning, offering:</p>
+
+<ul>
+  <li>💡 Helpful tips and resources for using Linux</li>
+  <li>📖 Easy-to-follow guides and reference tools</li>
+  <li>🤝 Continued assistance on your Linux journey</li>
+</ul>
+
+<h2 id="-our-mission">🌱 Our Mission</h2>
+
+<p>MIJUG is committed to reducing electronic waste and helping people get more out of what they already own. By converting an unused computer into a functional device, you can:</p>
+
+<ul>
+  <li>🌐 <strong>Browse</strong> the web, send emails, and stream content</li>
+  <li>👴👵 <strong>Set up</strong> a safe, easy-to-use system for grandkids or guests</li>
+  <li>
+    <p>💰 <strong>Avoid</strong> unnecessary expenses while staying connected</p>
+
+    <p><strong>Join us and take the first step toward revitalizing your old computer — and learning something new in the process!</strong> 🎉</p>
+  </li>
+</ul>
+</div>
+<div class="post-categories">
+    <strong>Categories:</strong> <a href="/category/announcements" class="category-link">announcements</a>,<a href="/category/getting-started" class="category-link">getting-started</a>
+</div>
+<footer class="post-footer">
+    <div class="post-nav">
+<div class="prev-post">
+        <a rel="prev" href="/2025/09/12/inperson-seminars-agenda-and-highlights/" class="prev-link"> ← Workshop Preview: 90-Minute Linux Transformation Journey </a>
+      </div>
+<div class="next-post">
+        <a rel="next" href="/announcements/linux/2025/10/01/september-2025-a-look-back-at-the-sessions.html" class="next-link"> September 2025: A Look Back at the Sessions → </a>
+      </div>
+</div>
+  </footer>
+
+  <a class="u-url" rel="canonical" href="/announcements/getting-started/2025/09/14/evening-in-person-seminar-dates-announced" hidden></a>
+</article>
+
+<style>
+  .post-meta-separator {
+    color: #666;
+  }
+
+  .post-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    color: #555;
+  }
+
+  .post-categories {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .category-link {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  .category-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .prev-link,
+  .next-link {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: 500;
+  }
+
+  .prev-link:hover,
+  .next-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-post {
+    text-align: right;
+  }
+</style>
+</div>
+    <div class="customad-container" id="adslot-1" data-ad-slot="12345678"></div>
+  </main>
+
+  <footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <a href="/terms-of-service.html">Terms of Service</a><br>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-col footer-col-2">
+          <a href="/contact/">Contact Us</a>
+        </div>
+        <div class="footer-col footer-col-3">
+          <p>
+            © 2026
+            <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                subscribe
+            <a href="/feed.xml">via RSS<svg class="svg-icon">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+
+  
+  <script nonce="abc123">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-W1M1N0DCD4');
+  </script>
+
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
+  
+
+  <!-- Cookie consent system -->
+  <!-- %  include google-adsense.html % -->
+  <!-- % include cookie-consent.html % -->}
+  <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
+  <script nonce="abc123">
+    // Code block accessibility - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const enhanceCodeBlocks = () => {
+        try {
+          // Use :not() to skip already enhanced blocks (performance)
+          const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([role])');
+          if (blocks.length === 0) return;
+
+          blocks.forEach((el) => {
+            const code = el.querySelector('pre code');
+            const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+
+            // Extract language using optional chaining and nullish coalescing (ES2020)
+            const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+            const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+            // Batch attribute updates
+            el.setAttribute('role', 'img');
+            el.setAttribute('tabindex', '0');
+            el.setAttribute('aria-label', label);
+          });
+        } catch (e) {
+          console.warn('EnhanceCodeBlocks error', e);
+        }
+      };
+
+      // Modern API check (ES2020)
+      document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+        : enhanceCodeBlocks();
+    })();
+  </script>
+
+  <script nonce="abc123">
+    // Navigation toggle functionality - ES2020 optimized
+    (() => {
+      'use strict';
+
+      // Cache DOM elements (ES2020 const, destructuring)
+      const elements = {
+        toggle: document.querySelector('.nav-toggle'),
+        close: document.querySelector('.nav-close'),
+        nav: document.getElementById('primary-navigation'),
+        status: document.getElementById('menu-status'),
+        body: document.body
+      };
+
+      // Early return if required elements missing (optional chaining ES2020)
+      if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+        return;
+      }
+
+      // Initialize navigation as overlay
+      elements.nav.classList.add('nav-overlay');
+
+      // Toggle navigation with modern API (arrow function ES2020)
+      const toggleNavigation = () => {
+        const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+        const action = isExpanded ? 'remove' : 'add';
+
+        // Batch DOM updates for performance
+        elements.nav.classList[action]('nav-visible');
+        elements.body.classList[action]('nav-open');
+        elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+        elements.nav.setAttribute('aria-hidden', String(isExpanded));
+        elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+      };
+
+      // Event delegation with passive listeners for scroll performance
+      const handleClick = (e) => {
+        // Check if toggle button or close button clicked
+        if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
+          e.preventDefault();
+          toggleNavigation();
+          return;
+        }
+
+        // Close on click outside (only when open)
+        if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+          if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+            toggleNavigation();
+          }
+        }
+      };
+
+      // Keyboard navigation (ES2020 nullish coalescing ??)
+      const handleKeydown = (e) => {
+        if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+          toggleNavigation();
+          elements.toggle.focus();
+        }
+      };
+
+      // Single event listener with delegation (better performance)
+      document.addEventListener('click', handleClick, { passive: false });
+      document.addEventListener('keydown', handleKeydown, { passive: true });
+    })();
+  </script>
+
+  <!-- Navigation data for lazy-loading (optimization #7) -->
+  <script id="nav-data-dynamic" type="application/json">
+    {
+      "sections": [
+        
+        {
+          "key": "main",
+          "title": "Main",
+          "icon": "🏠",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "docs",
+          "title": "Documentation",
+          "icon": "📚",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "posts",
+          "title": "Posts",
+          "icon": "📝",
+          "sortBy": "date"
+        },
+        
+        {
+          "key": "categories",
+          "title": "Categories",
+          "icon": "📂",
+          "sortBy": "name"
+        },
+        
+        {
+          "key": "tags",
+          "title": "Tags",
+          "icon": "🏷️",
+          "sortBy": "name"
+        }
+        
+      ],
+      "items": [
+        
+        
+        
+        {
+          "sectionKey": "main",
+          "title": "Blog",
+          "permalink": "/blog/",
+          "ariaLabel": "Navigate to Blog",
+          "current": false,
+          "navOrder": 1
+        },
+        
+        {
+          "sectionKey": "main",
+          "title": "About",
+          "permalink": "/about/",
+          "ariaLabel": "Navigate to About",
+          "current": false,
+          "navOrder": 2
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Tags and Categories System Guide",
+          "permalink": "/docs/tags-and-categories-guide/",
+          "ariaLabel": "Navigate to Tags and Categories System Guide",
+          "current": false,
+          "navOrder": 17
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Cache Management Strategies",
+          "permalink": "/docs/cache-management/",
+          "ariaLabel": "Navigate to Cache Management Strategies",
+          "current": false,
+          "navOrder": 28
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "The rel Attribute in HTML Links: A Comprehensive Guide",
+          "permalink": "/docs/rel-attribute-guide/",
+          "ariaLabel": "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+          "current": false,
+          "navOrder": 46
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Chips and Windows - 18 Years of Evolution",
+          "permalink": "/hardware/windows/security/2026/04/24/chips-and-windows/",
+          "ariaLabel": "Navigate to Chips and Windows - 18 Years of Evolution",
+          "current": false,
+          "navOrder": 61
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Computer Backup Checklist",
+          "permalink": "/tutorial/tools/2025/12/15/computer-backup-checklist/",
+          "ariaLabel": "Navigate to Computer Backup Checklist",
+          "current": false,
+          "navOrder": 62
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Welcome to MIJUG.NET!",
+          "permalink": "/announcements/2025/07/02/welcome-to-mijug-dot-net/",
+          "ariaLabel": "Navigate to Welcome to MIJUG.NET!",
+          "current": false,
+          "navOrder": 81
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Reviving the Role of Computer Operators",
+          "permalink": "/technology/business/documentation/2026/05/07/reviving-the-role-of-computer-operators/",
+          "ariaLabel": "Navigate to Reviving the Role of Computer Operators",
+          "current": false,
+          "navOrder": 83
+        }
+        
+      ]
+    }
+  </script>
+
+  <!-- Lazy-load dynamic navigation items (optimization #7) -->
+  <script nonce="abc123">
+    // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
+    (() => {
+      'use strict';
+
+      // Load remaining navigation items on first interaction (optimization #7)
+      const loadDynamicNav = () => {
+        const staticList = document.getElementById('nav-items-static');
+        const dynamicList = document.getElementById('nav-items-dynamic');
+
+        if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+        // All navigation items embedded as data (generated at build time)
+        const navDataEl = document.getElementById('nav-data-dynamic');
+        const navPayload = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
+
+        // Backward-compatible: support both legacy array and section-aware object payloads
+        const sections = Array.isArray(navPayload?.sections) ? navPayload.sections : [];
+        const allItems = Array.isArray(navPayload)
+          ? navPayload
+          : (Array.isArray(navPayload?.items) ? navPayload.items : []);
+
+        const sectionOrder = new Map(sections.map((section, index) => [section.key, index]));
+        const sectionTitles = new Map(sections.map((section) => [section.key, section.title]));
+        const sectionIcons = new Map(sections.map((section) => [section.key, section.icon]));
+        const sortedItems = [...allItems].sort((a, b) => {
+          const sectionA = sectionOrder.get(a.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          const sectionB = sectionOrder.get(b.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          if (sectionA !== sectionB) return sectionA - sectionB;
+
+          const navOrderA = Number(a.navOrder ?? Number.MAX_SAFE_INTEGER);
+          const navOrderB = Number(b.navOrder ?? Number.MAX_SAFE_INTEGER);
+          if (navOrderA !== navOrderB) return navOrderA - navOrderB;
+
+          return String(a.title ?? '').localeCompare(String(b.title ?? ''));
+        });
+
+        let lastSectionKey = null;
+        sortedItems.forEach((item) => {
+          if (item.sectionKey !== lastSectionKey) {
+            if (lastSectionKey !== null) {
+              const separator = document.createElement('li');
+              separator.className = 'nav-section-separator';
+              separator.setAttribute('role', 'separator');
+              separator.setAttribute('aria-hidden', 'true');
+              separator.style.borderTop = '1px solid rgba(255, 255, 255, 0.28)';
+              separator.style.margin = '0.5rem 0';
+              separator.style.listStyle = 'none';
+              separator.style.height = '0';
+              dynamicList.appendChild(separator);
+            }
+
+            const heading = document.createElement('li');
+            heading.className = 'nav-section-heading';
+            heading.setAttribute('role', 'presentation');
+            heading.style.fontSize = '0.78rem';
+            heading.style.opacity = '0.85';
+            heading.style.padding = '0.25rem 0';
+            heading.style.textTransform = 'uppercase';
+            heading.style.letterSpacing = '0.05em';
+            const sectionTitle = sectionTitles.get(item.sectionKey) ?? String(item.sectionKey ?? '').toUpperCase();
+            const sectionIcon = sectionIcons.get(item.sectionKey);
+            heading.textContent = sectionIcon ? `${sectionIcon} ${sectionTitle}` : sectionTitle;
+            dynamicList.appendChild(heading);
+          }
+
+          const li = document.createElement('li');
+          li.setAttribute('role', 'listitem');
+          const a = document.createElement('a');
+          a.href = item.permalink;
+          a.setAttribute('aria-label', item.ariaLabel);
+          if (item.current) {
+            a.className = 'active';
+            a.setAttribute('aria-current', 'page');
+          }
+          a.textContent = item.title;
+          li.appendChild(a);
+          dynamicList.appendChild(li);
+          lastSectionKey = item.sectionKey;
+        });
+
+        // Show dynamic list
+        dynamicList.style.display = '';
+      };
+
+      // Load on first interaction with navigation toggle (optimization #7)
+      const toggleBtn = document.querySelector('.nav-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+      }
+
+      // Also load on requestIdleCallback if available (optimization #7)
+      if (window.requestIdleCallback) {
+        requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+      } else {
+        setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
