@@ -29,4 +29,3 @@ If you found a security concern, use the Security Report issue template:
 - [Open a Security Report](https://github.com/devopsbob/mijug-dot-net/issues/new?template=security-report.yml)
 
 Please do not include credentials, secrets, or other sensitive data in public issues.
-
