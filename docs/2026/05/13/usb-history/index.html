@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
+
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' 'nonce-abc123' data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+  
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+  
+  
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+  <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+  
+  
+
+  <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+  <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+  <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0066cc;
+  --nav-bg: #f8f8f8;
+  --border-color: #e8e8e8;
+  --header-color: #424242;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cookie consent banner styles */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
+  overflow: hidden;
+}
+
+#cookie-consent-banner.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="abc123">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+  <title>
+    USB Port Guide | My Info Just Under Glass
+  </title>
+  <meta name="description"
+    content="How to identify different USB ports on your computer and choose the fastest one for backing up your files." />
+  
+  <meta name="version" content="May 13, 2026" />
+  
+
+  
+
+  <meta name="google-site-verification" content="googlece83719b3f856e56" />
+  <meta name="cache-version" content="20260425211421" />
+
+  <link rel="stylesheet" href="/assets/main.css?v=20260513145408" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="abc123">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2022 baseline)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES13 feature detection (syntax-only check) -->
+  
+  
+  
+  
+  <script nonce="abc123" type="module">
+    (async () => {
+
+      var supportsEcmascript13 = false;
+      const html = document.documentElement;
+      const candidatePaths = ['/assets/js/mijug-es13.min.js', '/assets/js/mijug-es13-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES13Features === 'function') {
+            try {
+              mod.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else if (typeof window.testES13Features === 'function') {
+            try {
+              window.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else {
+            console.debug('ES13 test module loaded but `testES13Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES13 test module not present or failed to import:', path, err);
+        }
+      }
+      if (!supportsEcmascript13) {
+        html.classList.add('no-ES2022');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2022 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+  <script type="module" src="/assets/js/mijug-es13.min.js?v=20260513145408" defer crossorigin="anonymous"></script>
+
+  <link rel="alternate" type="application/rss+xml" title="My Info Just Under Glass"
+    href="/feed.xml" />
+  
+  
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" />
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  
+
+  <meta name="description" content="How to identify different USB ports on your computer and choose the fastest one for backing up your files." />
+<meta property="og:title" content="USB Port Guide" />
+<meta property="og:description" content="How to identify different USB ports on your computer and choose the fastest one for backing up your files." />
+<meta property="og:url" content="https://www.mijug.net/2026/05/13/usb-history/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/2026/05/13/usb-history/" />
+
+
+  
+
+  
+
+    <script nonce="abc123">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20260425211421";
+</script>
+
+    
+    <script nonce="abc123">
+      window.MIJUG_DISABLE_PRINT = true;
+      // Disable context menu without inline event handler (CSP compliant)
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+    </script>
+    
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+    <noscript>
+      <div class="legacy-browser-notice" role="alert">
+        <strong>No Commerce Available</strong>
+        <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+      </div>
+    </noscript>
+
+    <div class="wrapper">
+      <a class="site-title" rel="home" href="/">
+        
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260425211421" alt="My Info Just Under Glass" width="50" height="50">
+         My Info Just Under Glass
+      </a>
+
+      <!-- Mobile navigation toggle button -->
+      <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+        <img src="/assets/logo-mijug-48x48.png" alt="" width="24" height="24" aria-hidden="true">
+         Menu
+      </button>
+
+      <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+      <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
+
+        <!-- Full navigation for modern browsers -->
+        <div class="modern-nav-content">
+          <button class="nav-close" type="button" aria-label="Close navigation menu">
+            <span aria-hidden="true">×</span>
+          </button>
+          <ul role="list" id="nav-items-static">
+            <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </ul>
+          <!-- Dynamic navigation items load here via JavaScript -->
+          <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+        </div>
+      </nav>
+
+      <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">USB Port Guide</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2026-05-13T05:38:20-04:00" itemprop="datePublished">
+        Published May 13, 2026
+      </time><span class="post-meta-separator"> • </span>
+      <time class="dt-modified" datetime="2026-05-13T14:53:23-04:00" itemprop="dateModified">
+        Updated May 13, 2026
+      </time><span class="post-meta-separator"> • </span>
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-author h-card" itemprop="name">Bob Kranson</span>
+      </span></p>
+<p class="post-description">How to identify different USB ports on your computer and choose the fastest one for backing up your files.</p>
+<div class="post-tags">
+<a href="/tag/usb" class="tag-link">#usb</a><a href="/tag/backup" class="tag-link">#backup</a><a href="/tag/usb-ports" class="tag-link">#usb-ports</a><a href="/tag/usb-2-0" class="tag-link">#usb-2-0</a><a href="/tag/usb-3-0" class="tag-link">#usb-3-0</a>
+</div></header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+<h2 id="usb-port-guide-choosing-the-right-port-for-your-backup">USB Port Guide: Choosing the Right Port for Your Backup</h2>
+
+<blockquote>
+  <p><strong>What You’ll Learn:</strong> How to identify different USB ports on your computer and choose the fastest one for backing up your files.</p>
+</blockquote>
+
+<h2 id="-usb-port-colors-what-they-mean-for-your-backup-speed">🔌 USB Port Colors: What They Mean for Your Backup Speed</h2>
+
+<p><strong>The color of your USB port can give you a clue about speed, but it is not a guarantee.</strong> This matters when you’re backing up hundreds of photos or large video files.</p>
+
+<p>Some manufacturers use color to suggest a port’s purpose or speed, but not every computer follows the same pattern. If you see labels like <strong>SS</strong>, <strong>10</strong>, or <strong>20</strong> near the port, those markings are usually more reliable than color alone.</p>
+
+<h3 id="-quick-speed-comparison">🚀 <strong>Quick Speed Comparison</strong>
+</h3>
+
+<p><strong>Important:</strong> These are typical examples, not exact promises. Your actual backup speed also depends on the USB drive, the computer’s internal storage, and whether you are copying many small files or a few large ones.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Port Color</th>
+      <th>USB Version</th>
+      <th>Speed</th>
+      <th>Backup Time Example</th>
+      <th>Best For</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>⚪ White</strong></td>
+      <td>USB 1.x (1996)</td>
+      <td>Very Slow</td>
+      <td>1GB = 30+ minutes</td>
+      <td>❌ Avoid for backups</td>
+    </tr>
+    <tr>
+      <td><strong>⚫ Black</strong></td>
+      <td>USB 2.0 (2000)</td>
+      <td>Slow</td>
+      <td>1GB = 2-3 minutes</td>
+      <td>📄 Small files only</td>
+    </tr>
+    <tr>
+      <td><strong>🔵 Blue</strong></td>
+      <td>USB 3.0+ (2008+)</td>
+      <td>Fast</td>
+      <td>1GB = 30 seconds</td>
+      <td>✅ Perfect for backups</td>
+    </tr>
+    <tr>
+      <td><strong>🔴 Red</strong></td>
+      <td>Often USB 3.0+</td>
+      <td>Fast</td>
+      <td>1GB = about 30 seconds</td>
+      <td>✅ Often a good choice</td>
+    </tr>
+    <tr>
+      <td><strong>🟢 Teal/Green</strong></td>
+      <td>Often USB 3.0+</td>
+      <td>Fast</td>
+      <td>1GB = about 30 seconds</td>
+      <td>✅ Often a good choice</td>
+    </tr>
+    <tr>
+      <td><strong>🟡 Yellow</strong></td>
+      <td>Often charging or USB 3.0+</td>
+      <td>Varies</td>
+      <td>1GB = varies</td>
+      <td>✅ Check markings first</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="-how-to-find-the-best-usb-port-on-your-computer">🔍 <strong>How to Find the Best USB Port on Your Computer</strong>
+</h2>
+
+<h3 id="step-1-look-at-your-computer"><strong>Step 1: Look at Your Computer</strong></h3>
+
+<ul>
+  <li>
+<strong>Desktop:</strong> Check both front and back of your computer</li>
+  <li>
+<strong>Laptop:</strong> Check both sides and sometimes the back</li>
+</ul>
+
+<h3 id="step-2-identify-the-colors"><strong>Step 2: Identify the Colors</strong></h3>
+
+<p>Look inside each USB port:</p>
+
+<ul>
+  <li>
+<strong>⚪ White plastic inside</strong> = Old, very slow (avoid for backups)</li>
+  <li>
+<strong>⚫ Black plastic inside</strong> = Often older and slower, but not always</li>
+  <li>
+<strong>🔵 Blue plastic inside</strong> = Often USB 3.x and usually a good backup choice</li>
+  <li>
+<strong>🔴 Red plastic inside</strong> = May mean faster speed or charging support, depending on the manufacturer</li>
+  <li>
+<strong>🟢 Teal/Green plastic inside</strong> = Sometimes used for faster ports, but check markings if possible</li>
+</ul>
+
+<p>If your computer has <strong>USB-C</strong> ports, color usually will not help. Instead, look for printed markings or check your computer manual or support page.</p>
+
+<h3 id="step-3-use-the-fastest-port"><strong>Step 3: Use the Fastest Port</strong></h3>
+
+<p><strong>For backing up your files, always use:</strong></p>
+
+<ul>
+  <li>✅ <strong>Ports marked blue or labeled SS / 10 / 20 first</strong>
+</li>
+  <li>🔄 <strong>Red, teal, green, or yellow ports only after checking the markings or manual</strong>
+</li>
+  <li>🔄 <strong>Black ports if no clearly faster port is available</strong>
+</li>
+  <li>❌ <strong>Never use white ports for backups</strong> (too slow)</li>
+</ul>
+
+<h2 id="-real-world-backup-time-examples">📊 <strong>Real-World Backup Time Examples</strong>
+</h2>
+
+<h3 id="backing-up-10gb-of-family-photos"><strong>Backing Up 10GB of Family Photos</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>USB Port Type</th>
+      <th>Time Needed</th>
+      <th>Should You Use It?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⚪ <strong>White (USB 1.x)</strong>
+</td>
+      <td>5+ hours</td>
+      <td>❌ <strong>No</strong> - Too slow</td>
+    </tr>
+    <tr>
+      <td>⚫ <strong>Black (USB 2.0)</strong>
+</td>
+      <td>30-45 minutes</td>
+      <td>🟡 <strong>Only if necessary</strong>
+</td>
+    </tr>
+    <tr>
+      <td>🔵 <strong>Blue/Red/Teal (USB 3.0+)</strong>
+</td>
+      <td>5-10 minutes</td>
+      <td>✅ <strong>Yes</strong> - Perfect choice</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="backing-up-50gb-of-documents-and-videos"><strong>Backing Up 50GB of Documents and Videos</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>USB Port Type</th>
+      <th>Time Needed</th>
+      <th>Should You Use It?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⚪ <strong>White (USB 1.x)</strong>
+</td>
+      <td>25+ hours</td>
+      <td>❌ <strong>No</strong> - Impractical</td>
+    </tr>
+    <tr>
+      <td>⚫ <strong>Black (USB 2.0)</strong>
+</td>
+      <td>2-4 hours</td>
+      <td>🟡 <strong>If you have patience</strong>
+</td>
+    </tr>
+    <tr>
+      <td>🔵 <strong>Blue/Red/Teal (USB 3.0+)</strong>
+</td>
+      <td>20-30 minutes</td>
+      <td>✅ <strong>Yes</strong> - Best choice</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="-where-to-find-usb-ports-on-different-computers">🏠 <strong>Where to Find USB Ports on Different Computers</strong>
+</h2>
+
+<h3 id="desktop-computers"><strong>Desktop Computers</strong></h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Front of Computer:
+├── 🔌 Usually 2-4 USB ports
+├── 🎧 Often includes headphone jack
+└── 💾 Sometimes CD/DVD drive
+
+Back of Computer:
+├── 🔌 Usually 4-8 USB ports
+├── 📺 Monitor connections
+├── 🔊 Audio jacks
+└── 🌐 Ethernet port
+</code></pre></div></div>
+
+<p><strong>💡 Tip:</strong> On many desktop computers, back ports are often more reliable because they connect more directly to the motherboard. On newer systems, front ports may work just as well.</p>
+
+<h3 id="laptop-computers"><strong>Laptop Computers</strong></h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Left Side:
+├── 🔌 1-3 USB ports
+├── 🎧 Headphone jack
+└── 💾 Sometimes SD card slot
+
+Right Side:
+├── 🔌 1-2 USB ports
+├── 🔌 Power jack
+└── 📺 Sometimes HDMI port
+
+Back:
+├── 🔌 Sometimes additional USB ports
+└── 🌐 Sometimes Ethernet port
+</code></pre></div></div>
+
+<h2 id="-how-to-test-your-usb-port-speed">🧪 <strong>How to Test Your USB Port Speed</strong>
+</h2>
+
+<h3 id="simple-speed-test"><strong>Simple Speed Test</strong></h3>
+
+<ol>
+  <li>
+<strong>Use a larger test file or folder</strong> (at least 500MB, and 1GB is even better)</li>
+  <li>
+<strong>Copy it to your USB drive</strong> and time how long it takes</li>
+  <li><strong>Compare results:</strong></li>
+</ol>
+
+<ul>
+  <li>
+<strong>Very long waits for a 1GB file</strong> = Likely a slower port, drive, or both</li>
+  <li>
+<strong>Moderate time</strong> = Acceptable for occasional backups</li>
+  <li>
+<strong>Short time</strong> = Better for regular large backups</li>
+</ul>
+
+<p>Small files like single photos are not a good speed test because startup delay and file overhead can make fast and slow ports look more similar than they really are.</p>
+
+<h3 id="real-backup-test"><strong>Real Backup Test</strong></h3>
+
+<ol>
+  <li>
+<strong>Copy a folder with 100 photos</strong> (about 500MB)</li>
+  <li><strong>Time the complete transfer</strong></li>
+  <li>
+<strong>Results guide:</strong>
+    <ul>
+      <li>
+<strong>Over 10 minutes</strong> = Use a different port if available</li>
+      <li>
+<strong>3-10 minutes</strong> = Acceptable for occasional backups</li>
+      <li>
+<strong>Under 3 minutes</strong> = Perfect for regular backups</li>
+    </ul>
+  </li>
+</ol>
+
+<p>If you are copying thousands of tiny files, the transfer will usually take longer than copying one large video file of the same total size.</p>
+
+<h2 id="️-important-things-to-know">⚠️ <strong>Important Things to Know</strong>
+</h2>
+
+<h3 id="usb-drive-speed-also-matters"><strong>USB Drive Speed Also Matters</strong></h3>
+
+<ul>
+  <li><strong>Your USB drive itself affects speed</strong></li>
+  <li><strong>A slow USB drive in a fast port = still slow</strong></li>
+  <li><strong>A fast USB drive in a slow port = limited by the port</strong></li>
+</ul>
+
+<h3 id="both-need-to-be-fast"><strong>Both Need to Be Fast</strong></h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fast Port + Fast USB Drive = ✅ Fast Backup
+Fast Port + Slow USB Drive = 🐌 Slow Backup
+Slow Port + Fast USB Drive = 🐌 Slow Backup
+Slow Port + Slow USB Drive = 🐌 Very Slow Backup
+</code></pre></div></div>
+
+<h3 id="usb-drive-shopping-tips"><strong>USB Drive Shopping Tips</strong></h3>
+
+<p>When buying a USB drive for backups:</p>
+
+<ul>
+  <li>✅ <strong>Look for “USB 3.0,” “USB 3.1,” “USB 3.2,” or clear speed labels on the package</strong>
+</li>
+  <li>✅ <strong>Check the transfer speed (MB/s) - higher is better</strong>
+</li>
+  <li>✅ <strong>Buy from reputable brands</strong> (SanDisk, Kingston, Samsung)</li>
+  <li>✅ <strong>Prefer drives from trusted stores or known suppliers</strong>
+</li>
+  <li>❌ <strong>Avoid drives that only say “USB” without a version number</strong>
+</li>
+  <li>❌ <strong>Be careful with free, giveaway, or found USB drives</strong> - unknown drives can contain malware or hidden security risks</li>
+</ul>
+
+<p>If you are buying a <strong>USB-C</strong> drive, remember that the connector shape does not tell you the speed by itself. A USB-C drive can still be slow or fast depending on its specifications.</p>
+
+<p>If you must inspect an unknown USB drive, avoid opening it on a computer that contains important personal or business data.</p>
+
+<h2 id="-troubleshooting-common-usb-issues">🔧 <strong>Troubleshooting Common USB Issues</strong>
+</h2>
+
+<h3 id="problem-usb-drive-not-recognized"><strong>Problem: USB Drive Not Recognized</strong></h3>
+
+<p><strong>Try these steps:</strong></p>
+
+<ol>
+  <li>
+<strong>Try a different USB port</strong> (especially try a blue/fast port)</li>
+  <li>
+<strong>Try the USB drive in another computer</strong> to see if it works</li>
+  <li>
+<strong>Check Disk Management</strong> (Right-click “This PC” → “Manage” → “Disk Management”)</li>
+  <li>
+<strong>Look for the drive in the list</strong> - it might need a drive letter</li>
+</ol>
+
+<h3 id="problem-very-slow-transfer-speeds"><strong>Problem: Very Slow Transfer Speeds</strong></h3>
+
+<p><strong>Possible causes:</strong></p>
+
+<ol>
+  <li>
+<strong>Using an older or slower USB port</strong> - try a port marked blue, SS, 10, or 20 if available</li>
+  <li>
+<strong>USB drive is old or cheap</strong> - consider upgrading</li>
+  <li>
+<strong>Computer is busy</strong> - close other programs during backup</li>
+  <li>
+<strong>USB extension cables</strong> - plug directly into computer</li>
+</ol>
+
+<h3 id="problem-transfer-keeps-stopping"><strong>Problem: Transfer Keeps Stopping</strong></h3>
+
+<p><strong>Common solutions:</strong></p>
+
+<ol>
+  <li>
+<strong>Use USB port on back of computer</strong> (more stable power)</li>
+  <li>
+<strong>Close other programs</strong> to free up computer resources</li>
+  <li>
+<strong>Try smaller batches</strong> - copy 1GB at a time instead of everything at once</li>
+  <li>
+<strong>Check USB drive health</strong> - it might be failing</li>
+</ol>
+
+<h2 id="-verify-your-backup-before-you-rely-on-it">✅ <strong>Verify Your Backup Before You Rely on It</strong>
+</h2>
+
+<p>After your files finish copying:</p>
+
+<ol>
+  <li><strong>Open the USB drive and spot-check a few files</strong></li>
+  <li>
+<strong>Open a photo, document, or video</strong> to make sure it really works</li>
+  <li>
+<strong>Compare folder sizes or file counts</strong> if you want extra confidence</li>
+  <li>
+<strong>Safely eject the drive</strong> only after you confirm the files are there</li>
+</ol>
+
+<p>A backup is only useful if you can read the files later.</p>
+
+<h2 id="-pro-tips-for-faster-backups">💡 <strong>Pro Tips for Faster Backups</strong>
+</h2>
+
+<h3 id="best-practices"><strong>Best Practices</strong></h3>
+
+<ol>
+  <li>
+<strong>Use the fastest USB port you can confirm</strong> (blue ports and SS-labeled ports are usually a good starting point)</li>
+  <li>
+<strong>Plug directly into computer</strong> (avoid USB hubs or extension cables)</li>
+  <li>
+<strong>Use back ports on desktop computers when possible</strong> (often more stable, especially on older systems)</li>
+  <li>
+<strong>Close unnecessary programs</strong> during large backups</li>
+  <li>
+<strong>Keep computer plugged in</strong> during laptop backups</li>
+</ol>
+
+<h3 id="planning-your-backup"><strong>Planning Your Backup</strong></h3>
+
+<ol>
+  <li>
+<strong>Test your setup first</strong> with a small folder</li>
+  <li>
+<strong>Estimate time needed</strong> based on your test</li>
+  <li>
+<strong>Plan backups during downtime</strong> (overnight for very large backups)</li>
+  <li>
+<strong>Have power adapter connected</strong> for laptop backups</li>
+</ol>
+
+<h3 id="multiple-usb-drives-strategy"><strong>Multiple USB Drives Strategy</strong></h3>
+
+<p>If you have lots of data:</p>
+
+<ul>
+  <li>
+<strong>Use multiple smaller USB drives</strong> instead of one huge one</li>
+  <li>
+<strong>Organize by type:</strong> Documents on one drive, photos on another</li>
+  <li>
+<strong>Label your drives clearly</strong> so you know what’s on each one</li>
+</ul>
+
+<hr>
+
+<p><strong>✅ Quick Summary:</strong> Port color can help, but it is only a clue. Blue ports and ports labeled <strong>SS</strong>, <strong>10</strong>, or <strong>20</strong> are usually the best place to start for backups. Black ports may be slower, and white ports are usually the slowest. Also remember that your USB drive and the type of files you copy affect speed just as much as the port.</p>
+</div>
+<div class="post-categories">
+    <strong>Categories:</strong> <a href="/category/hardware" class="category-link">hardware</a>,<a href="/category/guides" class="category-link">guides</a>
+</div>
+<footer class="post-footer">
+    <div class="post-nav"><div class="prev-post">
+        <a rel="prev" href="/2026/05/07/reviving-the-role-of-computer-operators/" class="prev-link"> ← Reviving the Role of Computer Operators </a>
+      </div></div>
+  </footer>
+
+  <a class="u-url" rel="canonical" href="/2026/05/13/usb-history/" hidden></a>
+</article>
+
+<style>
+  .post-meta-separator {
+    color: #666;
+  }
+
+  .post-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    color: #555;
+  }
+
+  .post-categories {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .category-link {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  .category-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .prev-link,
+  .next-link {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: 500;
+  }
+
+  .prev-link:hover,
+  .next-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-post {
+    text-align: right;
+  }
+</style>
+</div>
+    <div class="customad-container" id="adslot-1" data-ad-slot="12345678"></div>
+  </main>
+
+  <footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <a href="/terms-of-service.html">Terms of Service</a><br>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-col footer-col-2">
+          <a href="/contact/">Contact Us</a>
+        </div>
+        <div class="footer-col footer-col-3">
+          <p>
+            © 2026
+            <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                subscribe
+            <a href="/feed.xml">via RSS<svg class="svg-icon">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+
+  
+  <script nonce="abc123">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-W1M1N0DCD4');
+  </script>
+
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
+  
+
+  <!-- Cookie consent system -->
+  <!-- %  include google-adsense.html % -->
+  <!-- % include cookie-consent.html % -->}
+  <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
+  <script nonce="abc123">
+    // Code block accessibility - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const enhanceCodeBlocks = () => {
+        try {
+          // Use :not() to skip already enhanced blocks (performance)
+          const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([role])');
+          if (blocks.length === 0) return;
+
+          blocks.forEach((el) => {
+            const code = el.querySelector('pre code');
+            const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+
+            // Extract language using optional chaining and nullish coalescing (ES2020)
+            const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+            const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+            // Batch attribute updates
+            el.setAttribute('role', 'img');
+            el.setAttribute('tabindex', '0');
+            el.setAttribute('aria-label', label);
+          });
+        } catch (e) {
+          console.warn('EnhanceCodeBlocks error', e);
+        }
+      };
+
+      // Modern API check (ES2020)
+      document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+        : enhanceCodeBlocks();
+    })();
+  </script>
+
+  <script nonce="abc123">
+    // Navigation toggle functionality - ES2020 optimized
+    (() => {
+      'use strict';
+
+      // Cache DOM elements (ES2020 const, destructuring)
+      const elements = {
+        toggle: document.querySelector('.nav-toggle'),
+        close: document.querySelector('.nav-close'),
+        nav: document.getElementById('primary-navigation'),
+        status: document.getElementById('menu-status'),
+        body: document.body
+      };
+
+      // Early return if required elements missing (optional chaining ES2020)
+      if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+        return;
+      }
+
+      // Initialize navigation as overlay
+      elements.nav.classList.add('nav-overlay');
+
+      // Toggle navigation with modern API (arrow function ES2020)
+      const toggleNavigation = () => {
+        const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+        const action = isExpanded ? 'remove' : 'add';
+
+        // Batch DOM updates for performance
+        elements.nav.classList[action]('nav-visible');
+        elements.body.classList[action]('nav-open');
+        elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+        elements.nav.setAttribute('aria-hidden', String(isExpanded));
+        elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+      };
+
+      // Event delegation with passive listeners for scroll performance
+      const handleClick = (e) => {
+        // Check if toggle button or close button clicked
+        if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
+          e.preventDefault();
+          toggleNavigation();
+          return;
+        }
+
+        // Close on click outside (only when open)
+        if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+          if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+            toggleNavigation();
+          }
+        }
+      };
+
+      // Keyboard navigation (ES2020 nullish coalescing ??)
+      const handleKeydown = (e) => {
+        if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+          toggleNavigation();
+          elements.toggle.focus();
+        }
+      };
+
+      // Single event listener with delegation (better performance)
+      document.addEventListener('click', handleClick, { passive: false });
+      document.addEventListener('keydown', handleKeydown, { passive: true });
+    })();
+  </script>
+
+  <!-- Navigation data for lazy-loading (optimization #7) -->
+  <script id="nav-data-dynamic" type="application/json">
+    {
+      "sections": [
+        
+        {
+          "key": "main",
+          "title": "Main",
+          "icon": "🏠",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "docs",
+          "title": "Documentation",
+          "icon": "📚",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "posts",
+          "title": "Posts",
+          "icon": "📝",
+          "sortBy": "date"
+        },
+        
+        {
+          "key": "categories",
+          "title": "Categories",
+          "icon": "📂",
+          "sortBy": "name"
+        },
+        
+        {
+          "key": "tags",
+          "title": "Tags",
+          "icon": "🏷️",
+          "sortBy": "name"
+        }
+        
+      ],
+      "items": [
+        
+        
+        
+        {
+          "sectionKey": "main",
+          "title": "Blog",
+          "permalink": "/blog/",
+          "ariaLabel": "Navigate to Blog",
+          "current": false,
+          "navOrder": 1
+        },
+        
+        {
+          "sectionKey": "main",
+          "title": "About",
+          "permalink": "/about/",
+          "ariaLabel": "Navigate to About",
+          "current": false,
+          "navOrder": 2
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Tags and Categories System Guide",
+          "permalink": "/docs/tags-and-categories-guide/",
+          "ariaLabel": "Navigate to Tags and Categories System Guide",
+          "current": false,
+          "navOrder": 17
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Cache Management Strategies",
+          "permalink": "/docs/cache-management/",
+          "ariaLabel": "Navigate to Cache Management Strategies",
+          "current": false,
+          "navOrder": 28
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "The rel Attribute in HTML Links: A Comprehensive Guide",
+          "permalink": "/docs/rel-attribute-guide/",
+          "ariaLabel": "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+          "current": false,
+          "navOrder": 46
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Chips and Windows - 18 Years of Evolution",
+          "permalink": "/2026/04/24/chips-and-windows/",
+          "ariaLabel": "Navigate to Chips and Windows - 18 Years of Evolution",
+          "current": false,
+          "navOrder": 61
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Computer Backup Checklist",
+          "permalink": "/2025/12/15/computer-backup-checklist/",
+          "ariaLabel": "Navigate to Computer Backup Checklist",
+          "current": false,
+          "navOrder": 62
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Welcome to MIJUG.NET!",
+          "permalink": "/2025/07/02/welcome-to-mijug-dot-net/",
+          "ariaLabel": "Navigate to Welcome to MIJUG.NET!",
+          "current": false,
+          "navOrder": 81
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Reviving the Role of Computer Operators",
+          "permalink": "/2026/05/07/reviving-the-role-of-computer-operators/",
+          "ariaLabel": "Navigate to Reviving the Role of Computer Operators",
+          "current": false,
+          "navOrder": 83
+        }
+        
+      ]
+    }
+  </script>
+
+  <!-- Lazy-load dynamic navigation items (optimization #7) -->
+  <script nonce="abc123">
+    // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
+    (() => {
+      'use strict';
+
+      // Load remaining navigation items on first interaction (optimization #7)
+      const loadDynamicNav = () => {
+        const staticList = document.getElementById('nav-items-static');
+        const dynamicList = document.getElementById('nav-items-dynamic');
+
+        if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+        // All navigation items embedded as data (generated at build time)
+        const navDataEl = document.getElementById('nav-data-dynamic');
+        const navPayload = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
+
+        // Backward-compatible: support both legacy array and section-aware object payloads
+        const sections = Array.isArray(navPayload?.sections) ? navPayload.sections : [];
+        const allItems = Array.isArray(navPayload)
+          ? navPayload
+          : (Array.isArray(navPayload?.items) ? navPayload.items : []);
+
+        const sectionOrder = new Map(sections.map((section, index) => [section.key, index]));
+        const sectionTitles = new Map(sections.map((section) => [section.key, section.title]));
+        const sectionIcons = new Map(sections.map((section) => [section.key, section.icon]));
+        const sortedItems = [...allItems].sort((a, b) => {
+          const sectionA = sectionOrder.get(a.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          const sectionB = sectionOrder.get(b.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          if (sectionA !== sectionB) return sectionA - sectionB;
+
+          const navOrderA = Number(a.navOrder ?? Number.MAX_SAFE_INTEGER);
+          const navOrderB = Number(b.navOrder ?? Number.MAX_SAFE_INTEGER);
+          if (navOrderA !== navOrderB) return navOrderA - navOrderB;
+
+          return String(a.title ?? '').localeCompare(String(b.title ?? ''));
+        });
+
+        let lastSectionKey = null;
+        sortedItems.forEach((item) => {
+          if (item.sectionKey !== lastSectionKey) {
+            if (lastSectionKey !== null) {
+              const separator = document.createElement('li');
+              separator.className = 'nav-section-separator';
+              separator.setAttribute('role', 'separator');
+              separator.setAttribute('aria-hidden', 'true');
+              separator.style.borderTop = '1px solid rgba(255, 255, 255, 0.28)';
+              separator.style.margin = '0.5rem 0';
+              separator.style.listStyle = 'none';
+              separator.style.height = '0';
+              dynamicList.appendChild(separator);
+            }
+
+            const heading = document.createElement('li');
+            heading.className = 'nav-section-heading';
+            heading.setAttribute('role', 'presentation');
+            heading.style.fontSize = '0.78rem';
+            heading.style.opacity = '0.85';
+            heading.style.padding = '0.25rem 0';
+            heading.style.textTransform = 'uppercase';
+            heading.style.letterSpacing = '0.05em';
+            const sectionTitle = sectionTitles.get(item.sectionKey) ?? String(item.sectionKey ?? '').toUpperCase();
+            const sectionIcon = sectionIcons.get(item.sectionKey);
+            heading.textContent = sectionIcon ? `${sectionIcon} ${sectionTitle}` : sectionTitle;
+            dynamicList.appendChild(heading);
+          }
+
+          const li = document.createElement('li');
+          li.setAttribute('role', 'listitem');
+          const a = document.createElement('a');
+          a.href = item.permalink;
+          a.setAttribute('aria-label', item.ariaLabel);
+          if (item.current) {
+            a.className = 'active';
+            a.setAttribute('aria-current', 'page');
+          }
+          a.textContent = item.title;
+          li.appendChild(a);
+          dynamicList.appendChild(li);
+          lastSectionKey = item.sectionKey;
+        });
+
+        // Show dynamic list
+        dynamicList.style.display = '';
+      };
+
+      // Load on first interaction with navigation toggle (optimization #7)
+      const toggleBtn = document.querySelector('.nav-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+      }
+
+      // Also load on requestIdleCallback if available (optimization #7)
+      if (window.requestIdleCallback) {
+        requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+      } else {
+        setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
