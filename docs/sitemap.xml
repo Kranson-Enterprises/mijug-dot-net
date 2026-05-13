@@ -6,7 +6,7 @@
     <!-- Homepage - Highest priority -->
     <url>
         <loc>https://www.mijug.net/</loc>
-        <lastmod>2026-05-07T16:57:47-04:00</lastmod>
+        <lastmod>2026-05-13T13:51:24-04:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -75,7 +75,7 @@
     
     <url>
         <loc>https://www.mijug.net/2025/10/03/browser-support-for-es5-and-es6-what-you-need-to-know/</loc>
-        <lastmod>2026-05-07T16:57:11-04:00</lastmod>
+        <lastmod>2026-05-13T13:50:00-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -88,8 +88,8 @@
     
     
     <url>
-        <loc>https://www.mijug.net/announcements/linux/2025/10/01/september-2025-a-look-back-at-the-sessions.html</loc>
-        <lastmod>2026-05-07T16:57:11-04:00</lastmod>
+        <loc>https://www.mijug.net/2025/10/01/september-2025-a-look-back-at-the-sessions/</loc>
+        <lastmod>2026-05-13T13:50:00-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -97,8 +97,8 @@
     
     
     <url>
-        <loc>https://www.mijug.net/announcements/getting-started/2025/09/14/evening-in-person-seminar-dates-announced</loc>
-        <lastmod>2026-05-07T16:57:11-04:00</lastmod>
+        <loc>https://www.mijug.net/2025/09/14/evening-in-person-seminar-dates-announced/</loc>
+        <lastmod>2026-05-13T13:50:00-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -1011,13 +1011,13 @@
     <!-- Essential utility pages -->
     <url>
         <loc>https://www.mijug.net/tags/</loc>
-        <lastmod>2026-05-07T16:57:47-04:00</lastmod>
+        <lastmod>2026-05-13T13:51:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://www.mijug.net/categories/</loc>
-        <lastmod>2026-05-07T16:57:47-04:00</lastmod>
+        <lastmod>2026-05-13T13:51:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
