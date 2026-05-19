@@ -201,12 +201,12 @@
 /* Base variables for theming */
 :root {
   --bg-color: #ffffff;
-  --text-color: #222222;
+  --text-color: #1f2937;
   --accent-color: #1e8449; /* WCAG AA compliant green */
-  --link-color: #0066cc;
-  --nav-bg: #f8f8f8;
-  --border-color: #e8e8e8;
-  --header-color: #424242;
+  --link-color: #0052a3;
+  --nav-bg: #ffffff;
+  --border-color: #d1d5db;
+  --header-color: #1f2937;
   --focus-outline: 2px solid #1e8449;
   --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-size-base: 16px;
@@ -564,7 +564,7 @@ img {
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
   <meta name="cache-version" content="20260425211421" />
 
-  <link rel="stylesheet" href="/assets/main.css?v=20260518143457" media="print">
+  <link rel="stylesheet" href="/assets/main.css?v=20260519134822" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -638,7 +638,7 @@ img {
     })();
   </script>
   <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-  <script type="module" src="/assets/js/mijug-es13.min.js?v=20260518143457" defer crossorigin="anonymous"></script>
+  <script type="module" src="/assets/js/mijug-es13.min.js?v=20260519134822" defer crossorigin="anonymous"></script>
 
   <link rel="alternate" type="application/rss+xml" title="My Info Just Under Glass"
     href="/feed.xml" />
@@ -823,9 +823,22 @@ img {
 
   <div class="archive-content">
 <p class="archive-count">
-      25 posts</p>
+      26 posts</p>
 
     <ul class="post-list">
+<li class="post-item">
+        <span class="post-meta">May 19, 2026</span>
+        <h3 class="post-title">
+          <a class="post-link" href="/2026/05/19/memorial-day-honoring-service-in-the-it-revolution/"> Memorial Day and the IT Revolution </a>
+        </h3>
+<p class="post-excerpt">Honoring U.S. service members whose work also shaped modern computing.</p>
+<div class="post-meta-tags">
+<span class="post-categories">
+            Categories: <a href="/category/history/" class="category-link">history</a>, <a href="/category/technology/" class="category-link">technology</a>, <a href="/category/memorial-day/" class="category-link">memorial-day</a></span><span class="post-meta-separator"><br></span>
+            <span class="post-tags">
+            Tags: <a href="/tag/memorial-day/" class="tag-link">memorial-day</a>, <a href="/tag/veterans/" class="tag-link">veterans</a>, <a href="/tag/computing-history/" class="tag-link">computing-history</a>, <a href="/tag/cryptography/" class="tag-link">cryptography</a>, <a href="/tag/quantum-computing/" class="tag-link">quantum-computing</a>, <a href="/tag/internet/" class="tag-link">internet</a>, <a href="/tag/mainframes/" class="tag-link">mainframes</a>, <a href="/tag/silicon-valley/" class="tag-link">silicon-valley</a></span>
+</div>
+</li>
 <li class="post-item">
         <span class="post-meta">May 13, 2026</span>
         <h3 class="post-title">
@@ -1225,7 +1238,7 @@ img {
   }
 </style>
 </div>
-    <div class="customad-container" id="adslot-1" data-ad-slot="12345678"></div>
+    <div class="customad-container" id="adslot-1" data-ad-slot="12345678" role="region" aria-label="Advertisement"></div>
   </main>
 
   <footer class="site-footer h-card">
@@ -1280,7 +1293,7 @@ img {
   <!-- Cookie consent system -->
   <!-- %  include google-adsense.html % -->
   <!-- % include cookie-consent.html % -->}
-  <!-- Accessibility enhancement for Rouge code blocks: add role/tabindex/aria-label in browser -->
+  <!-- Accessibility enhancement for Rouge code blocks: preserve code semantics with accessible labels -->
   <script nonce="abc123">
     // Code block accessibility - ES2020 optimized
     (() => {
@@ -1289,7 +1302,7 @@ img {
       const enhanceCodeBlocks = () => {
         try {
           // Use :not() to skip already enhanced blocks (performance)
-          const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([role])');
+          const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([data-a11y-enhanced])');
           if (blocks.length === 0) return;
 
           blocks.forEach((el) => {
@@ -1300,10 +1313,9 @@ img {
             const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
             const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
 
-            // Batch attribute updates
-            el.setAttribute('role', 'img');
-            el.setAttribute('tabindex', '0');
+            // Preserve semantic code/pre structure and add a descriptive label only
             el.setAttribute('aria-label', label);
+            el.setAttribute('data-a11y-enhanced', 'true');
           });
         } catch (e) {
           console.warn('EnhanceCodeBlocks error', e);
@@ -1577,15 +1589,20 @@ img {
 
             const heading = document.createElement('li');
             heading.className = 'nav-section-heading';
-            heading.setAttribute('role', 'presentation');
-            heading.style.fontSize = '0.78rem';
-            heading.style.opacity = '0.85';
-            heading.style.padding = '0.25rem 0';
-            heading.style.textTransform = 'uppercase';
-            heading.style.letterSpacing = '0.05em';
+
+            const headingText = document.createElement('h3');
+            headingText.style.fontSize = '0.78rem';
+            headingText.style.opacity = '0.85';
+            headingText.style.padding = '0.25rem 0';
+            headingText.style.textTransform = 'uppercase';
+            headingText.style.letterSpacing = '0.05em';
+            headingText.style.margin = '0';
+            headingText.style.fontWeight = '600';
+
             const sectionTitle = sectionTitles.get(item.sectionKey) ?? String(item.sectionKey ?? '').toUpperCase();
             const sectionIcon = sectionIcons.get(item.sectionKey);
-            heading.textContent = sectionIcon ? `${sectionIcon} ${sectionTitle}` : sectionTitle;
+            headingText.textContent = sectionIcon ? `${sectionIcon} ${sectionTitle}` : sectionTitle;
+            heading.appendChild(headingText);
             dynamicList.appendChild(heading);
           }
 
