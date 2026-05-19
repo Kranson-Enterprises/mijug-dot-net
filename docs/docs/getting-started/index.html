@@ -570,7 +570,7 @@ img {
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
   <meta name="cache-version" content="20260425211421" />
 
-  <link rel="stylesheet" href="/assets/main.css?v=20260519134822" media="print">
+  <link rel="stylesheet" href="/assets/main.css?v=20260519142306" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -644,7 +644,7 @@ img {
     })();
   </script>
   <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-  <script type="module" src="/assets/js/mijug-es13.min.js?v=20260519134822" defer crossorigin="anonymous"></script>
+  <script type="module" src="/assets/js/mijug-es13.min.js?v=20260519142306" defer crossorigin="anonymous"></script>
 
   <link rel="alternate" type="application/rss+xml" title="My Info Just Under Glass"
     href="/feed.xml" />
@@ -843,8 +843,6 @@ img {
   </header>
 
   <div class="post-content">
-<h1 id="getting-started-with-mijug-net-workspace">Getting Started with MIJUG .NET Workspace</h1>
-
 <p>Welcome to the comprehensive setup guide for the MIJUG .NET workspace - a powerful development environment that combines TypeScript application development with Jekyll documentation, all optimized for WSL integration.</p>
 
 <blockquote>
@@ -856,74 +854,70 @@ img {
 <!-- prettier-ignore-start -->
 
 <ul id="markdown-toc">
+  <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
   <li>
-<a href="#getting-started-with-mijug-net-workspace" id="markdown-toc-getting-started-with-mijug-net-workspace">Getting Started with MIJUG .NET Workspace</a>    <ul>
-      <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
-      <li>
-<a href="#quick-setup-overview" id="markdown-toc-quick-setup-overview">Quick Setup Overview</a>        <ul>
-          <li><a href="#essential-commands" id="markdown-toc-essential-commands">Essential Commands</a></li>
-          <li><a href="#technology-stack" id="markdown-toc-technology-stack">Technology Stack</a></li>
-        </ul>
-      </li>
-      <li>
-<a href="#core-architecture" id="markdown-toc-core-architecture">Core Architecture</a>        <ul>
-          <li><a href="#workspace-structure" id="markdown-toc-workspace-structure">Workspace Structure</a></li>
-          <li><a href="#development-philosophy" id="markdown-toc-development-philosophy">Development Philosophy</a></li>
-        </ul>
-      </li>
-      <li>
-<a href="#development-workflows" id="markdown-toc-development-workflows">Development Workflows</a>        <ul>
-          <li><a href="#-quick-start-development" id="markdown-toc--quick-start-development">🚀 Quick Start Development</a></li>
-          <li><a href="#-testing-workflows" id="markdown-toc--testing-workflows">🧪 Testing Workflows</a></li>
-          <li><a href="#%EF%B8%8F-build--deployment" id="markdown-toc-️-build--deployment">🏗️ Build &amp; Deployment</a></li>
-        </ul>
-      </li>
-      <li>
-<a href="#key-features--capabilities" id="markdown-toc-key-features--capabilities">Key Features &amp; Capabilities</a>        <ul>
-          <li><a href="#typescript-development" id="markdown-toc-typescript-development">TypeScript Development</a></li>
-          <li><a href="#jekyll-documentation" id="markdown-toc-jekyll-documentation">Jekyll Documentation</a></li>
-          <li><a href="#testing-excellence" id="markdown-toc-testing-excellence">Testing Excellence</a></li>
-          <li><a href="#quality-assurance" id="markdown-toc-quality-assurance">Quality Assurance</a></li>
-        </ul>
-      </li>
-      <li>
-<a href="#development-environment-setup" id="markdown-toc-development-environment-setup">Development Environment Setup</a>        <ul>
-          <li><a href="#nodejs--typescript" id="markdown-toc-nodejs--typescript">Node.js &amp; TypeScript</a></li>
-          <li><a href="#ruby--jekyll" id="markdown-toc-ruby--jekyll">Ruby &amp; Jekyll</a></li>
-          <li>
-<a href="#code-examples" id="markdown-toc-code-examples">Code Examples</a>            <ul>
-              <li><a href="#typescript-function-with-types" id="markdown-toc-typescript-function-with-types">TypeScript Function with Types</a></li>
-              <li><a href="#jekyll-front-matter-configuration" id="markdown-toc-jekyll-front-matter-configuration">Jekyll Front Matter Configuration</a></li>
-              <li><a href="#packagejson-script-examples" id="markdown-toc-packagejson-script-examples">Package.json Script Examples</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>
-<a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a>        <ul>
-          <li>
-<a href="#common-setup-issues" id="markdown-toc-common-setup-issues">Common Setup Issues</a>            <ul>
-              <li><a href="#nodejs-version-problems" id="markdown-toc-nodejs-version-problems">Node.js Version Problems</a></li>
-              <li><a href="#rubyjekyll-issues" id="markdown-toc-rubyjekyll-issues">Ruby/Jekyll Issues</a></li>
-              <li><a href="#permission-errors" id="markdown-toc-permission-errors">Permission Errors</a></li>
-              <li><a href="#port-conflicts" id="markdown-toc-port-conflicts">Port Conflicts</a></li>
-              <li><a href="#build-cache-corruption" id="markdown-toc-build-cache-corruption">Build Cache Corruption</a></li>
-              <li><a href="#wsl-file-system-issues" id="markdown-toc-wsl-file-system-issues">WSL File System Issues</a></li>
-            </ul>
-          </li>
-          <li>
-<a href="#performance-optimization" id="markdown-toc-performance-optimization">Performance Optimization</a>            <ul>
-              <li><a href="#memory-issues" id="markdown-toc-memory-issues">Memory Issues</a></li>
-              <li><a href="#build-speed" id="markdown-toc-build-speed">Build Speed</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
-      <li><a href="#performance-targets" id="markdown-toc-performance-targets">Performance Targets</a></li>
-      <li><a href="#getting-help" id="markdown-toc-getting-help">Getting Help</a></li>
+<a href="#quick-setup-overview" id="markdown-toc-quick-setup-overview">Quick Setup Overview</a>    <ul>
+      <li><a href="#essential-commands" id="markdown-toc-essential-commands">Essential Commands</a></li>
+      <li><a href="#technology-stack" id="markdown-toc-technology-stack">Technology Stack</a></li>
     </ul>
   </li>
+  <li>
+<a href="#core-architecture" id="markdown-toc-core-architecture">Core Architecture</a>    <ul>
+      <li><a href="#workspace-structure" id="markdown-toc-workspace-structure">Workspace Structure</a></li>
+      <li><a href="#development-philosophy" id="markdown-toc-development-philosophy">Development Philosophy</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#development-workflows" id="markdown-toc-development-workflows">Development Workflows</a>    <ul>
+      <li><a href="#-quick-start-development" id="markdown-toc--quick-start-development">🚀 Quick Start Development</a></li>
+      <li><a href="#-testing-workflows" id="markdown-toc--testing-workflows">🧪 Testing Workflows</a></li>
+      <li><a href="#%EF%B8%8F-build--deployment" id="markdown-toc-️-build--deployment">🏗️ Build &amp; Deployment</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#key-features--capabilities" id="markdown-toc-key-features--capabilities">Key Features &amp; Capabilities</a>    <ul>
+      <li><a href="#typescript-development" id="markdown-toc-typescript-development">TypeScript Development</a></li>
+      <li><a href="#jekyll-documentation" id="markdown-toc-jekyll-documentation">Jekyll Documentation</a></li>
+      <li><a href="#testing-excellence" id="markdown-toc-testing-excellence">Testing Excellence</a></li>
+      <li><a href="#quality-assurance" id="markdown-toc-quality-assurance">Quality Assurance</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#development-environment-setup" id="markdown-toc-development-environment-setup">Development Environment Setup</a>    <ul>
+      <li><a href="#nodejs--typescript" id="markdown-toc-nodejs--typescript">Node.js &amp; TypeScript</a></li>
+      <li><a href="#ruby--jekyll" id="markdown-toc-ruby--jekyll">Ruby &amp; Jekyll</a></li>
+      <li>
+<a href="#code-examples" id="markdown-toc-code-examples">Code Examples</a>        <ul>
+          <li><a href="#typescript-function-with-types" id="markdown-toc-typescript-function-with-types">TypeScript Function with Types</a></li>
+          <li><a href="#jekyll-front-matter-configuration" id="markdown-toc-jekyll-front-matter-configuration">Jekyll Front Matter Configuration</a></li>
+          <li><a href="#packagejson-script-examples" id="markdown-toc-packagejson-script-examples">Package.json Script Examples</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+<a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a>    <ul>
+      <li>
+<a href="#common-setup-issues" id="markdown-toc-common-setup-issues">Common Setup Issues</a>        <ul>
+          <li><a href="#nodejs-version-problems" id="markdown-toc-nodejs-version-problems">Node.js Version Problems</a></li>
+          <li><a href="#rubyjekyll-issues" id="markdown-toc-rubyjekyll-issues">Ruby/Jekyll Issues</a></li>
+          <li><a href="#permission-errors" id="markdown-toc-permission-errors">Permission Errors</a></li>
+          <li><a href="#port-conflicts" id="markdown-toc-port-conflicts">Port Conflicts</a></li>
+          <li><a href="#build-cache-corruption" id="markdown-toc-build-cache-corruption">Build Cache Corruption</a></li>
+          <li><a href="#wsl-file-system-issues" id="markdown-toc-wsl-file-system-issues">WSL File System Issues</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#performance-optimization" id="markdown-toc-performance-optimization">Performance Optimization</a>        <ul>
+          <li><a href="#memory-issues" id="markdown-toc-memory-issues">Memory Issues</a></li>
+          <li><a href="#build-speed" id="markdown-toc-build-speed">Build Speed</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+  <li><a href="#performance-targets" id="markdown-toc-performance-targets">Performance Targets</a></li>
+  <li><a href="#getting-help" id="markdown-toc-getting-help">Getting Help</a></li>
 </ul>
 
 <!-- prettier-ignore-end -->
@@ -968,7 +962,7 @@ npm run health-check          <span class="c"># Comprehensive environment valida
 
 <h3 id="workspace-structure">Workspace Structure</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mijug-dot-net-project/          # Development workspace
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mijug-dot-net-project/          # Development workspace
 ├── src/                        # TypeScript source code
 ├── docs/                       # Jekyll documentation site
 ├── tests/                      # Jest unit tests
