@@ -6,7 +6,7 @@
     <!-- Homepage - Highest priority -->
     <url>
         <loc>https://www.mijug.net/</loc>
-        <lastmod>2026-05-26T22:51:21-04:00</lastmod>
+        <lastmod>2026-06-02T21:04:30-04:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -17,6 +17,15 @@
     
     
 
+    
+    
+    <url>
+        <loc>https://www.mijug.net/2026/06/02/beautiful-weather-today/</loc>
+        <lastmod>2026-06-02T20:57:10-04:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        
+    </url>
     
     
     <url>
@@ -462,7 +471,7 @@
         
         <url>
             <loc>https://www.mijug.net/category/announcements/</loc>
-            <lastmod>2025-10-01T21:53:42-04:00</lastmod>
+            <lastmod>2026-06-02T15:55:00-04:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.7</priority>
         </url>
@@ -550,7 +559,7 @@
         
         <url>
             <loc>https://www.mijug.net/category/home/</loc>
-            <lastmod>2025-08-29T14:26:54-04:00</lastmod>
+            <lastmod>2026-06-02T15:55:00-04:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.7</priority>
         </url>
@@ -1038,13 +1047,13 @@
     <!-- Essential utility pages -->
     <url>
         <loc>https://www.mijug.net/tags/</loc>
-        <lastmod>2026-05-26T22:51:21-04:00</lastmod>
+        <lastmod>2026-06-02T21:04:30-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://www.mijug.net/categories/</loc>
-        <lastmod>2026-05-26T22:51:21-04:00</lastmod>
+        <lastmod>2026-06-02T21:04:30-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
