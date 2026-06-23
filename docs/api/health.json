@@ -1,12 +1,12 @@
 {
   "status": "ok",
-  "timestamp": "2026-06-23 16:15:18 UTC",
+  "timestamp": "2026-06-23 16:47:40 UTC",
   "version": "1.0.0",
   "services": {
     "website": {
       "status": "operational",
       "response_time": "fast",
-      "last_updated": "2026-06-23 16:15:18 UTC"
+      "last_updated": "2026-06-23 16:47:40 UTC"
     },
     "jekyll": {
       "status": "operational",
@@ -19,7 +19,7 @@
     "total_docs": 22,
     "total_pages": 4,
     "categories": 26,
-    "tags": 92
+    "tags": 91
   },
   "uptime": {
     "status": "monitoring",
