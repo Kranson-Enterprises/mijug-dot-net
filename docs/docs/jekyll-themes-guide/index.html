@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
+
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' nonce-f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681 data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' nonce-f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681 data: https://www.googletagmanager.com https://cdn.jsdelivr.net https://csi.gstatic.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://csi.gstatic.com ;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https: https://www.google-analytics.com https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      frame-src 'self' https://www.google.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+  
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+  
+  
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+  <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+  
+  
+
+  <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+  <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+  <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0052a3;
+  --nav-bg: #ffffff;
+  --border-color: #d1d5db;
+  --header-color: #1f2937;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cookie consent banner styles */
+#cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
+  overflow: hidden;
+}
+
+#cookie-consent-banner.visible {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+  <title>Jekyll Themes: Complete Usage Guide</title>
+  
+  <meta name="version" content="Jun 23, 2026" />
+  
+
+  
+  <meta name="docs-nav-order" content="50" />
+  <meta name="docs-section" content="documentation" />
+  
+  <meta name="priority-doc" content="true" />
+  
+  
+
+  <meta name="google-site-verification" content="googlece83719b3f856e56" />
+  <meta name="cache-version" content="20260519" />
+
+  <link rel="stylesheet" href="/assets/main.css?v=6337baa2321ffc8e64bdf3196a356510728fe4be2b0989cdd81efee1968a0581" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2022 baseline)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES13 feature detection (syntax-only check) -->
+  
+  
+  
+  
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" type="module">
+    (async () => {
+
+      var supportsEcmascript13 = false;
+      const html = document.documentElement;
+      const candidatePaths = ['/assets/js/mijug-es13.min.js', '/assets/js/mijug-es13-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES13Features === 'function') {
+            try {
+              mod.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else if (typeof window.testES13Features === 'function') {
+            try {
+              window.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else {
+            console.debug('ES13 test module loaded but `testES13Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES13 test module not present or failed to import:', path, err);
+        }
+      }
+      if (!supportsEcmascript13) {
+        html.classList.add('no-ES2022');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2022 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+  <script type="module" src="/assets/js/mijug-es13.min.js?v=f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" defer crossorigin="anonymous"></script>
+
+  <link rel="alternate" type="application/rss+xml" title="My Info Just Under Glass"
+    href="/feed.xml" />
+  
+  
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260519" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260519" />
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  
+
+  <meta name="description" content="A complete guide to using, customizing, and developing Jekyll themes—layouts, collections, customization, and help-API integration patterns." />
+<meta property="og:title" content="Jekyll Themes: Complete Usage Guide" />
+<meta property="og:description" content="A complete guide to using, customizing, and developing Jekyll themes—layouts, collections, customization, and help-API integration patterns." />
+<meta property="og:url" content="https://www.mijug.net/docs/jekyll-themes-guide/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/jekyll-themes-guide/" />
+
+
+  
+
+  
+
+    <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20260519";
+</script>
+
+    
+    <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
+      window.MIJUG_DISABLE_PRINT = true;
+      // Disable context menu without inline event handler (CSP compliant)
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+    </script>
+    
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+    <noscript>
+      <div class="legacy-browser-notice" role="alert">
+        <strong>No Commerce Available</strong>
+        <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+      </div>
+    </noscript>
+
+    <div class="wrapper">
+      <a class="site-title" rel="home" href="/">
+        
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260519" alt="My Info Just Under Glass" width="50" height="50">
+         My Info Just Under Glass
+      </a>
+
+      <!-- Mobile navigation toggle button -->
+      <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+        <img src="/assets/logo-mijug-48x48.png" alt="logo" width="24" height="24" aria-hidden="true">
+         Menu
+      </button>
+
+      <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+      <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
+
+        <!-- Full navigation for modern browsers -->
+        <div class="modern-nav-content">
+          <button class="nav-close" type="button" aria-label="Close navigation menu">
+            <span aria-hidden="true">×</span>
+          </button>
+          <ul role="list" id="nav-items-static">
+            <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </ul>
+          <!-- Dynamic navigation items load here via JavaScript -->
+          <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+        </div>
+      </nav>
+
+      <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">Jekyll Themes: Complete Usage Guide</h1>
+  </header>
+
+  <div class="post-content">
+<p>
+  Jekyll themes provide a powerful way to create consistent, maintainable
+  websites while separating content from presentation. This comprehensive guide
+  covers everything from basic theme usage to advanced API integration patterns.
+</p>
+
+<h2>Table of Contents</h2>
+
+<ol>
+  <li>
+    <a href="#understanding-jekyll-themes">Understanding Jekyll Themes</a>
+  </li>
+  <li><a href="#theme-installation-methods">Theme Installation Methods</a></li>
+  <li>
+    <a href="#theme-structure-and-components">Theme Structure and Components</a>
+  </li>
+  <li><a href="#customizing-themes">Customizing Themes</a></li>
+  <li><a href="#advanced-theme-development">Advanced Theme Development</a></li>
+  <li>
+    <a href="#creating-help-apis-with-themes">Creating Help APIs with Themes</a>
+  </li>
+  <li>
+    <a href="#collections-and-data-integration">Collections and Data Integration</a>
+  </li>
+  <li><a href="#theme-best-practices">Theme Best Practices</a></li>
+  <li>
+    <a href="#troubleshooting-common-issues">Troubleshooting Common Issues</a>
+  </li>
+  <li><a href="#resources-and-references">Resources and References</a></li>
+</ol>
+
+<h2 id="understanding-jekyll-themes">Understanding Jekyll Themes</h2>
+
+<h3>What Are Jekyll Themes?</h3>
+
+<p>Jekyll themes are reusable packages that contain:</p>
+
+<ul>
+  <li>
+<strong>Layouts</strong>: HTML templates that define page structure</li>
+  <li>
+<strong>Includes</strong>: Reusable HTML snippets</li>
+  <li>
+<strong>Sass files</strong>: Stylesheets for visual design</li>
+  <li>
+<strong>Assets</strong>: Images, JavaScript, and other static files</li>
+  <li>
+<strong>Configuration</strong>: Default settings and options</li>
+</ul>
+
+<h3>Theme Types</h3>
+
+<h4>Gem-based Themes</h4>
+
+<pre><code class="language-yaml"># _config.yml
+theme: minima</code></pre>
+
+<h4>Fork-based Themes</h4>
+
+<ul>
+  <li>Clone the entire theme repository</li>
+  <li>Full control over all files</li>
+  <li>Easier customization but harder to update</li>
+</ul>
+
+<h4>GitHub Pages Compatible Themes</h4>
+
+<pre><code class="language-yaml"># _config.yml
+remote_theme: jekyll/minima</code></pre>
+
+<h2 id="theme-installation-methods">Theme Installation Methods</h2>
+
+<h3>Method 1: Gem-based Installation</h3>
+
+<h4>Step 1: Add theme to Gemfile</h4>
+
+<pre><code class="language-ruby"># Gemfile
+gem "theme-name", "~&gt; 1.0"</code></pre>
+
+<h4>Step 2: Update configuration</h4>
+
+<pre><code class="language-yaml"># _config.yml
+theme: theme-name</code></pre>
+
+<h4>Step 3: Install and build</h4>
+
+<pre><code class="language-bash">bundle install
+bundle exec jekyll serve</code></pre>
+
+<h3>Method 2: Remote Theme (GitHub Pages)</h3>
+
+<pre><code class="language-yaml"># _config.yml
+remote_theme: username/theme-repository
+plugins:
+  - jekyll-remote-theme</code></pre>
+
+<h3>Method 3: Fork and Customize</h3>
+
+<pre><code class="language-bash"># Clone theme repository
+git clone https://github.com/username/theme-name.git my-site
+cd my-site
+
+# Install dependencies
+bundle install
+
+# Customize and build
+bundle exec jekyll serve</code></pre>
+
+<h2 id="theme-structure-and-components">Theme Structure and Components</h2>
+
+<h3>Essential Theme Files</h3>
+
+<pre><code>theme-name/
+├── _layouts/
+│   ├── default.html      # Base layout
+│   ├── page.html         # Page layout
+│   ├── post.html         # Blog post layout
+│   └── home.html         # Homepage layout
+├── _includes/
+│   ├── header.html       # Site header
+│   ├── footer.html       # Site footer
+│   ├── head.html         # HTML head section
+│   └── navigation.html   # Navigation menu
+├── _sass/
+│   ├── _variables.scss   # Theme variables
+│   ├── _base.scss        # Base styles
+│   └── _layout.scss      # Layout styles
+├── assets/
+│   ├── main.scss         # Main stylesheet
+│   ├── js/              # JavaScript files
+│   └── images/          # Theme images
+├── _config.yml          # Theme configuration
+└── theme-name.gemspec   # Gem specification</code></pre>
+
+<h3>Layout Hierarchy</h3>
+
+<pre><code class="language-yaml">---
+layout: default # Inherits from default.html
+---</code></pre>
+
+<h4>Layout inheritance example:</h4>
+
+<pre><code class="language-html">&lt;!-- _layouts/default.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    {% include head.html %}
+  &lt;/head&gt;
+  &lt;body&gt;
+    {% include header.html %}
+    &lt;main&gt;{{ content }}&lt;/main&gt;
+    {% include footer.html %}
+  &lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- _layouts/post.html --&gt;
+---
+layout: default
+---
+&lt;article class="post"&gt;
+  &lt;h1&gt;{{ page.title }}&lt;/h1&gt;
+  &lt;div class="post-content"&gt;{{ content }}&lt;/div&gt;
+&lt;/article&gt;</code></pre>
+
+<h2 id="customizing-themes">Customizing Themes</h2>
+
+<h3>Override Theme Files</h3>
+
+<p>Create files with the same path in your site to override theme files:</p>
+
+<pre><code>your-site/
+├── _layouts/
+│   └── post.html         # Overrides theme's post.html
+├── _includes/
+│   └── header.html       # Overrides theme's header.html
+└── _sass/
+    └── _variables.scss   # Overrides theme variables</code></pre>
+
+<h3>Customize Variables</h3>
+
+<pre><code class="language-scss">// _sass/_variables.scss
+$primary-color: #2c5aa0;
+$font-family: 'Helvetica Neue', Arial, sans-serif;
+$content-width: 800px;
+
+// Import theme styles after variables
+@import 'theme-name';</code></pre>
+
+<h3>Add Custom CSS</h3>
+
+<pre><code class="language-scss">// assets/main.scss
+---
+---
+@import "theme-name";
+
+// Custom styles
+.custom-section {
+  background-color: var(--custom-bg);
+  padding: 2rem;
+}</code></pre>
+
+<h3>Configuration Customization</h3>
+
+<pre><code class="language-yaml"># _config.yml
+title: 'My Custom Site'
+description: 'Powered by Jekyll Theme'
+
+# Theme-specific settings
+theme_settings:
+  navigation:
+    - title: 'Home'
+      url: '/'
+    - title: 'About'
+      url: '/about/'
+
+  social_links:
+    github: 'username'
+    twitter: 'username'
+
+# Override theme defaults
+permalink: /:categories/:year/:month/:day/:title/
+paginate: 10</code></pre>
+
+<h2 id="advanced-theme-development">Advanced Theme Development</h2>
+
+<h3>Creating Custom Layouts</h3>
+
+<pre><code class="language-html">&lt;!-- _layouts/api-docs.html --&gt;
+---
+layout: default
+---
+&lt;div class="api-documentation"&gt;
+  &lt;aside class="api-sidebar"&gt;&lt;!-- {% include api-navigation.html %} --&gt;&lt;/aside&gt;
+
+  &lt;main class="api-content"&gt;
+    &lt;header class="api-header"&gt;
+      &lt;h1&gt;{{ page.title }}&lt;/h1&gt;
+      {% if page.api_version %}
+      &lt;span class="api-version"&gt;{{ page.api_version }}&lt;/span&gt;
+      {% endif %}
+    &lt;/header&gt;
+
+    &lt;div class="api-body"&gt;{{ content }}&lt;/div&gt;
+
+    {% if page.code_examples %}
+    &lt;section class="code-examples"&gt;
+      {% for example in page.code_examples %}
+      &lt;div class="code-example"&gt;
+        &lt;h3&gt;{{ example.title }}&lt;/h3&gt;
+        &lt;pre&gt;&lt;code class="{{ example.language }}"&gt;{{ example.code }}&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      {% endfor %}
+    &lt;/section&gt;
+    {% endif %}
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+
+<h3>Theme Configuration Schema</h3>
+
+<pre><code class="language-ruby"># theme-name.gemspec
+Gem::Specification.new do |spec|
+  spec.name          = "theme-name"
+  spec.version       = "1.0.0"
+  spec.authors       = ["Your Name"]
+  spec.email         = ["your.email@example.com"]
+
+  spec.summary       = "A Jekyll theme for documentation"
+  spec.homepage      = "https://github.com/username/theme-name"
+  spec.license       = "MIT"
+
+  spec.files         = `git ls-files -z`.split("\x0").select do |f|
+    f.match(%r{^(assets|_layouts|_includes|_sass|LICENSE|README)}i)
+  end
+
+  spec.add_runtime_dependency "jekyll", "~&gt; 4.0"
+  spec.add_runtime_dependency "jekyll-feed", "~&gt; 0.9"
+  spec.add_runtime_dependency "jekyll-sitemap", "~&gt; 1.0"
+end</code></pre>
+
+<h2 id="creating-help-apis-with-themes">Creating Help APIs with Themes</h2>
+
+<h3>Setting Up Collections for API Content</h3>
+
+<pre><code class="language-yaml"># _config.yml
+collections:
+  tooltips:
+    output: false
+  api_docs:
+    output: true
+    permalink: /:collection/:name/</code></pre>
+
+<h3>Creating Tooltip Definitions</h3>
+
+<pre><code class="language-yaml"># _data/definitions.yml
+api_key: 'A unique identifier used to authenticate API requests. Keep this secure and never expose it in client-side code.'
+
+response_codes: 'HTTP status codes returned by the API. 200 indicates success, 4xx indicates client errors, 5xx indicates server errors.'
+
+rate_limiting: 'The practice of limiting the number of API requests a client can make within a specific time period to prevent abuse and ensure fair usage.'</code></pre>
+
+<h3>Tooltip Collection Pages</h3>
+
+<pre><code class="language-markdown">&lt;!-- _tooltips/api-key.md --&gt;
+---
+doc_id: api_key
+product: mijug_api
+category: authentication
+---
+
+{{ site.data.definitions.api_key }}</code></pre>
+
+<h3>JSON API Generation</h3>
+
+<pre><code class="language-liquid">---
+layout: null
+search: exclude
+---
+{
+  "entries": [
+    {% for page in site.tooltips %}
+      {% if page.product == "mijug_api" %}
+        {
+          "doc_id": "{{ page.doc_id }}",
+          "category": "{{ page.category }}",
+          "body": "{{ page.content | strip_newlines | replace: '\', '\\\\' | replace: '"', '\\"' }}"
+        }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+    {% endfor %}
+  ],
+  "metadata": {
+    "generated": "{{ site.time | date_to_xmlschema }}",
+    "version": "{{ site.data.api.version }}",
+    "total_entries": {{ site.tooltips | where: "product", "mijug_api" | size }}
+  }
+}</code></pre>
+
+<h3>Advanced API Integration</h3>
+
+<pre><code class="language-javascript">// assets/js/theme-api.js
+class ThemeAPIHelper {
+  constructor(apiUrl) {
+    this.apiUrl = apiUrl;
+    this.cache = new Map();
+  }
+
+  async loadTooltips() {
+    if (this.cache.has('tooltips')) {
+      return this.cache.get('tooltips');
+    }
+
+    try {
+      const response = await fetch(`${this.apiUrl}/tooltips.json`);
+      const data = await response.json();
+      this.cache.set('tooltips', data);
+      return data;
+    } catch (error) {
+      console.error('Failed to load tooltips:', error);
+      return { entries: [] };
+    }
+  }
+
+  async initializeTooltips() {
+    const data = await this.loadTooltips();
+
+    data.entries.forEach(entry =&gt; {
+      const elements = document.querySelectorAll(
+        `[data-tooltip="${entry.doc_id}"]`
+      );
+      elements.forEach(element =&gt; {
+        this.attachTooltip(element, entry.body);
+      });
+    });
+  }
+
+  attachTooltip(element, content) {
+    // Bootstrap popover integration
+    if (typeof bootstrap !== 'undefined') {
+      new bootstrap.Popover(element, {
+        content: content,
+        html: true,
+        placement: 'top',
+        trigger: 'hover focus',
+      });
+    }
+  }
+}
+
+// Initialize API helper
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  const apiHelper = new ThemeAPIHelper('/api');
+  apiHelper.initializeTooltips();
+});</code></pre>
+
+<h2 id="collections-and-data-integration">Collections and Data Integration</h2>
+
+<h3>Multi-language Support</h3>
+
+<pre><code class="language-yaml"># _config.yml
+collections:
+  docs_en:
+    output: true
+    permalink: /en/:name/
+  docs_es:
+    output: true
+    permalink: /es/:name/
+
+defaults:
+  - scope:
+      path: '_docs_en'
+    values:
+      lang: 'en'
+      layout: 'docs'
+  - scope:
+      path: '_docs_es'
+    values:
+      lang: 'es'
+      layout: 'docs'</code></pre>
+
+<h3>Data-driven Navigation</h3>
+
+<pre><code class="language-yaml"># _data/navigation.yml
+main:
+  - title: 'Documentation'
+    url: '/docs/'
+    children:
+      - title: 'Getting Started'
+        url: '/docs/getting-started/'
+      - title: 'API Reference'
+        url: '/docs/api/'
+        children:
+          - title: 'Authentication'
+            url: '/docs/api/auth/'
+          - title: 'Endpoints'
+            url: '/docs/api/endpoints/'
+
+footer:
+  - title: 'Resources'
+    links:
+      - title: 'GitHub'
+        url: 'https://github.com/username/repo'
+      - title: 'Issues'
+        url: 'https://github.com/username/repo/issues'</code></pre>
+
+<h3>Dynamic Content Generation</h3>
+
+<pre><code class="language-html">&lt;!-- _includes/api-navigation.html --&gt;
+&lt;nav class="api-navigation"&gt;
+  {% assign api_pages = site.api_docs | sort: 'order' %}
+  {% for page in api_pages %}
+    &lt;div class="nav-section"&gt;
+      &lt;h3&gt;{{ page.section }}&lt;/h3&gt;
+      &lt;ul&gt;
+        {% assign section_pages = site.api_docs | where: 'section', page.section | sort: 'order' %}
+        {% for section_page in section_pages %}
+          &lt;li&gt;
+            &lt;a href="{{ section_page.url | relative_url }}"
+               {% if section_page.url == page.url %}class="active"{% endif %}&gt;
+              {{ section_page.title }}
+            &lt;/a&gt;
+          &lt;/li&gt;
+        {% endfor %}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  {% endfor %}
+&lt;/nav&gt;</code></pre>
+
+<h2 id="theme-best-practices">Theme Best Practices</h2>
+
+<h3>Performance Optimization</h3>
+
+<pre><code class="language-scss">// Optimize CSS loading
+@import "variables";
+@import "mixins";
+
+// Load critical styles first
+@import "base";
+@import "layout";
+
+// Load component styles conditionally
+{% if page.layout == "post" %}
+  @import "post";
+{% endif %}</code></pre>
+
+<h3>Accessibility Standards</h3>
+
+<pre><code class="language-html">&lt;!-- _includes/accessible-navigation.html --&gt;
+&lt;nav role="navigation" aria-label="Main navigation"&gt;
+  &lt;button
+    class="nav-toggle"
+    aria-expanded="false"
+    aria-controls="nav-menu"
+    aria-label="Toggle navigation menu"
+  &gt;
+    &lt;span class="sr-only"&gt;Menu&lt;/span&gt;
+  &lt;/button&gt;
+
+  &lt;ul id="nav-menu" class="nav-menu"&gt;
+    {% for item in site.data.navigation.main %}
+    &lt;li&gt;
+      &lt;a
+        href="{{ item.url | relative_url }}"
+        {% if item.url == page.url %}aria-current="page"{% endif %}
+      &gt;
+        {{ item.title }}
+      &lt;/a&gt;
+    &lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+<h3>SEO Integration</h3>
+
+<pre><code class="language-html">&lt;!-- _includes/seo.html --&gt;
+&lt;meta
+  name="description"
+  content="{{ page.description | default: site.description | escape }}"
+/&gt;
+&lt;meta name="keywords" content="{{ page.tags | join: ', ' }}" /&gt;
+
+&lt;!-- Open Graph --&gt;
+&lt;meta property="og:title" content="{{ page.title | default: site.title }}" /&gt;
+&lt;meta
+  property="og:description"
+  content="{{ page.description | default: site.description }}"
+/&gt;
+&lt;meta property="og:url" content="{{ page.url | absolute_url }}" /&gt;
+
+&lt;!-- Schema.org --&gt;
+&lt;script type="application/ld+json"&gt;
+  {
+    "@context": "https://schema.org",
+    "@type": "{{ page.schema_type | default: 'WebPage' }}",
+    "name": "{{ page.title | escape }}",
+    "description": "{{ page.description | escape }}"
+  }
+&lt;/script&gt;</code></pre>
+
+<h3>Cross-Origin Resource Sharing (CORS)</h3>
+
+<p>For themes that serve APIs or data files:</p>
+
+<pre><code class="language-apache"># .htaccess
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type"</code></pre>
+
+<h2 id="troubleshooting-common-issues">Troubleshooting Common Issues</h2>
+
+<h3>Theme Not Loading</h3>
+
+<h4>Problem: Theme styles not applying</h4>
+
+<pre><code class="language-bash"># Check if theme is installed
+bundle list | grep theme-name
+
+# Reinstall theme
+bundle clean --force
+bundle install</code></pre>
+
+<h4>Solution: Verify theme configuration</h4>
+
+<pre><code class="language-yaml"># _config.yml
+theme: correct-theme-name # Check spelling</code></pre>
+
+<h3>Override Not Working</h3>
+
+<h4>Problem: Custom files not overriding theme files</h4>
+
+<pre><code class="language-bash"># Check file paths match exactly
+bundle info theme-name --path</code></pre>
+
+<h4>Solution: Ensure correct directory structure</h4>
+
+<pre><code>your-site/
+├── _layouts/
+│   └── post.html        # Must match theme path exactly</code></pre>
+
+<h3>Build Errors</h3>
+
+<h4>Problem: Liquid syntax errors</h4>
+
+<pre><code>Liquid Exception: undefined method `title' for nil:NilClass</code></pre>
+
+<h4>Solution: Add null checks</h4>
+
+<pre><code class="language-liquid">{% if page.title %}
+  &lt;h1&gt;{{ page.title }}&lt;/h1&gt;
+{% endif %}</code></pre>
+
+<h3>Performance Issues</h3>
+
+<h4>Problem: Slow build times</h4>
+
+<pre><code class="language-yaml"># _config.yml
+incremental: true
+profile: true</code></pre>
+
+<h4>Solution: Optimize loops and includes</h4>
+
+<pre><code class="language-html">&lt;!-- Cache expensive operations --&gt;
+{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% for post in sorted_posts limit: 10 %}
+  &lt;!-- Content --&gt;
+{% endfor %}</code></pre>
+
+<h2 id="resources-and-references">Resources and References</h2>
+
+<h3>Official Documentation</h3>
+
+<ul>
+  <li>
+    <a href="https://jekyllrb.com/docs/themes/" rel="noopener noreferrer" target="_blank">Jekyll Themes Documentation</a>
+  </li>
+  <li>
+    <a href="https://jekyllrb.com/docs/collections/" rel="noopener noreferrer" target="_blank">Jekyll Collections</a>
+  </li>
+  <li>
+    <a href="https://shopify.github.io/liquid/" rel="noopener noreferrer" target="_blank">Liquid Template Language</a>
+  </li>
+</ul>
+
+<h3>Popular Themes</h3>
+
+<ul>
+  <li>
+    <a href="https://github.com/jekyll/minima" rel="noopener noreferrer" target="_blank">Minima</a>
+    - Jekyll's default theme
+  </li>
+  <li>
+    <a href="https://github.com/mmistakes/minimal-mistakes" rel="noopener noreferrer" target="_blank">Minimal Mistakes</a>
+    - Feature-rich theme
+  </li>
+  <li>
+    <a href="https://github.com/pmarsceill/just-the-docs" rel="noopener noreferrer" target="_blank">Just the Docs</a>
+    - Documentation theme
+  </li>
+</ul>
+
+<h3>Development Tools</h3>
+
+<ul>
+  <li>
+    <a href="https://github.com/jekyll/jekyll-theme-inspector" rel="noopener noreferrer" target="_blank">Jekyll Theme Inspector</a>
+  </li>
+  <li>
+    <a href="https://github.com/ashmaroli/jekyll-theme-validator" rel="noopener noreferrer" target="_blank">Theme Validation</a>
+  </li>
+  <li>
+    <a href="https://www.webpagetest.org/" rel="noopener noreferrer" target="_blank">Performance Testing</a>
+  </li>
+</ul>
+
+<h3>Community Resources</h3>
+
+<ul>
+  <li>
+    <a href="https://talk.jekyllrb.com/" rel="noopener noreferrer" target="_blank">Jekyll Talk Forum</a>
+  </li>
+  <li>
+    <a href="https://jekyllthemes.io/" rel="noopener noreferrer" target="_blank">Jekyll Themes Gallery</a>
+  </li>
+  <li>
+    <a href="https://pages.github.com/themes/" rel="noopener noreferrer" target="_blank">GitHub Pages Themes</a>
+  </li>
+</ul>
+
+<hr>
+
+<h2>Conclusion</h2>
+
+<p>
+  Jekyll themes provide a powerful foundation for creating maintainable,
+  scalable websites. By understanding theme structure, customization patterns,
+  and advanced features like API integration, you can create sophisticated
+  documentation sites that serve both human readers and automated systems.
+</p>
+
+<p>
+  The integration of help APIs through collections and JSON generation allows
+  themes to extend beyond static content, creating dynamic, interactive
+  experiences while maintaining the simplicity and performance benefits of
+  static site generation.
+</p>
+
+<p>
+  Whether you're using an existing theme or developing your own, following these
+  best practices will ensure your Jekyll site is accessible, performant, and
+  maintainable for years to come.
+</p>
+
+<hr>
+
+<h2>Bibliography</h2>
+
+<h3>Primary Sources</h3>
+
+<ol>
+  <li>
+    <strong>Jekyll Official Documentation</strong>
+    <ul>
+      <li>
+        Jekyll Themes Documentation:
+        <a href="https://jekyllrb.com/docs/themes/" rel="noopener noreferrer" target="_blank">https://jekyllrb.com/docs/themes/</a>
+      </li>
+      <li>
+        Jekyll Collections Guide:
+        <a href="https://jekyllrb.com/docs/collections/" rel="noopener noreferrer" target="_blank">https://jekyllrb.com/docs/collections/</a>
+      </li>
+      <li>
+        Jekyll Configuration Reference:
+        <a href="https://jekyllrb.com/docs/configuration/" rel="noopener noreferrer" target="_blank">https://jekyllrb.com/docs/configuration/</a>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Liquid Template Language</strong>
+    <ul>
+      <li>
+        Official Liquid Documentation:
+        <a href="https://shopify.github.io/liquid/" rel="noopener noreferrer" target="_blank">https://shopify.github.io/liquid/</a>
+      </li>
+      <li>
+        Jekyll Liquid Extensions:
+        <a href="https://jekyllrb.com/docs/liquid/" rel="noopener noreferrer" target="_blank">https://jekyllrb.com/docs/liquid/</a>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3>API Integration References</h3>
+
+<ol start="3">
+  <li>
+    <strong>MyDoc Help API Documentation</strong>
+    <ul>
+      <li>
+        SuperScary MyDoc Help API:
+        <a href="https://superscary.github.io/mydoc_help_api.html" rel="noopener noreferrer" target="_blank">https://superscary.github.io/mydoc_help_api.html</a>
+      </li>
+      <li>API Integration Patterns and Collection-based Help Systems</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Web Standards and Accessibility</strong>
+    <ul>
+      <li>
+        WCAG 2.1 Guidelines:
+        <a href="https://www.w3.org/WAI/WCAG21/Understanding/" rel="noopener noreferrer" target="_blank">https://www.w3.org/WAI/WCAG21/Understanding/</a>
+      </li>
+      <li>
+        Schema.org Structured Data:
+        <a href="https://schema.org/" rel="noopener noreferrer" target="_blank">https://schema.org/</a>
+      </li>
+      <li>
+        Open Graph Protocol:
+        <a href="https://ogp.me/" rel="noopener noreferrer" target="_blank">https://ogp.me/</a>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Theme Development Resources</h3>
+
+<ol start="5">
+  <li>
+    <strong>Popular Jekyll Themes</strong>
+    <ul>
+      <li>
+        Minima Theme:
+        <a href="https://github.com/jekyll/minima" rel="noopener noreferrer" target="_blank">https://github.com/jekyll/minima</a>
+      </li>
+      <li>
+        Minimal Mistakes:
+        <a href="https://github.com/mmistakes/minimal-mistakes" rel="noopener noreferrer" target="_blank">https://github.com/mmistakes/minimal-mistakes</a>
+      </li>
+      <li>
+        Just the Docs:
+        <a href="https://github.com/pmarsceill/just-the-docs" rel="noopener noreferrer" target="_blank">https://github.com/pmarsceill/just-the-docs</a>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Development Tools and Validation</strong>
+    <ul>
+      <li>
+        Jekyll Theme Inspector:
+        <a href="https://github.com/jekyll/jekyll-theme-inspector" rel="noopener noreferrer" target="_blank">https://github.com/jekyll/jekyll-theme-inspector</a>
+      </li>
+      <li>
+        WebPageTest Performance Analysis:
+        <a href="https://www.webpagetest.org/" rel="noopener noreferrer" target="_blank">https://www.webpagetest.org/</a>
+      </li>
+      <li>
+        GitHub Pages Themes:
+        <a href="https://pages.github.com/themes/" rel="noopener noreferrer" target="_blank">https://pages.github.com/themes/</a>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Community and Support</h3>
+
+<ol start="7">
+  <li>
+    <strong>Jekyll Community Resources</strong>
+    <ul>
+      <li>
+        Jekyll Talk Forum:
+        <a href="https://talk.jekyllrb.com/" rel="noopener noreferrer" target="_blank">https://talk.jekyllrb.com/</a>
+      </li>
+      <li>
+        Jekyll Themes Gallery:
+        <a href="https://jekyllthemes.io/" rel="noopener noreferrer" target="_blank">https://jekyllthemes.io/</a>
+      </li>
+      <li>
+        Jekyll GitHub Repository:
+        <a href="https://github.com/jekyll/jekyll" rel="noopener noreferrer" target="_blank">https://github.com/jekyll/jekyll</a>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Technical Standards</h3>
+
+<ol start="8">
+  <li>
+    <strong>Web Performance and Security</strong>
+    <ul>
+      <li>
+        MDN Web Docs - CORS:
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" rel="noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</a>
+      </li>
+      <li>
+        Bootstrap Framework:
+        <a href="https://getbootstrap.com/" rel="noopener noreferrer" target="_blank">https://getbootstrap.com/</a>
+      </li>
+      <li>
+        Sass/SCSS Documentation:
+        <a href="https://sass-lang.com/documentation" rel="noopener noreferrer" target="_blank">https://sass-lang.com/documentation</a>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<hr>
+
+<h3>Citation Format</h3>
+
+<p>
+  This document follows the Chicago Manual of Style for web resources. All URLs
+  were verified as accessible on July 31, 2025. For the most current
+  information, please refer to the original sources as web content may change
+  over time.
+</p>
+
+<p>
+  <strong>Special Acknowledgment</strong>: The API integration patterns and
+  collection-based help system concepts in this guide are significantly
+  influenced by the MyDoc Help API documentation by SuperScary, which provides
+  excellent examples of Jekyll-based API generation and tooltip systems.
+</p>
+
+<hr>
+
+<p>
+  <em>This guide is part of the MIJUG.NET documentation series. For updates and
+    additional resources, visit
+    <a href="/" rel="home">MIJUG.NET</a>.</em>
+</p>
+
+</div>
+</article>
+</div>
+    <div class="customad-container" id="adslot-1" data-ad-slot="12345678" role="region" aria-label="Advertisement"></div>
+  </main>
+
+  <footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <a href="/terms-of-service.html">Terms of Service</a><br>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-col footer-col-2">
+          <a href="/contact/">Contact Us</a>
+        </div>
+        <div class="footer-col footer-col-3">
+          <p>
+            © 2026
+            <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                subscribe
+            <a href="/feed.xml">via RSS<svg class="svg-icon">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+
+  
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-W1M1N0DCD4');
+  </script>
+
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
+  
+
+  <!-- Cookie consent system -->
+  <!-- %  include google-adsense.html % -->
+  <!-- % include cookie-consent.html % -->}
+  <!-- Accessibility enhancement for Rouge code blocks: preserve code semantics with accessible labels -->
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
+    // Code block accessibility - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const enhanceCodeBlocks = () => {
+        try {
+          // Use :not() to skip already enhanced blocks (performance)
+          const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([data-a11y-enhanced])');
+          if (blocks.length === 0) return;
+
+          blocks.forEach((el) => {
+            const code = el.querySelector('pre code');
+            const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+
+            // Extract language using optional chaining and nullish coalescing (ES2020)
+            const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+            const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+            // Preserve semantic code/pre structure and add a descriptive label only
+            el.setAttribute('aria-label', label);
+            el.setAttribute('data-a11y-enhanced', 'true');
+          });
+        } catch (e) {
+          console.warn('EnhanceCodeBlocks error', e);
+        }
+      };
+
+      // Modern API check (ES2020)
+      document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+        : enhanceCodeBlocks();
+    })();
+  </script>
+
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
+    // Navigation toggle functionality - ES2020 optimized
+    (() => {
+      'use strict';
+
+      // Cache DOM elements (ES2020 const, destructuring)
+      const elements = {
+        toggle: document.querySelector('.nav-toggle'),
+        close: document.querySelector('.nav-close'),
+        nav: document.getElementById('primary-navigation'),
+        status: document.getElementById('menu-status'),
+        body: document.body
+      };
+
+      // Early return if required elements missing (optional chaining ES2020)
+      if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+        return;
+      }
+
+      // Initialize navigation as overlay
+      elements.nav.classList.add('nav-overlay');
+
+      // Toggle navigation with modern API (arrow function ES2020)
+      const toggleNavigation = () => {
+        const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+        const action = isExpanded ? 'remove' : 'add';
+
+        // Batch DOM updates for performance
+        elements.nav.classList[action]('nav-visible');
+        elements.body.classList[action]('nav-open');
+        elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+        elements.nav.setAttribute('aria-hidden', String(isExpanded));
+        elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+      };
+
+      // Event delegation with passive listeners for scroll performance
+      const handleClick = (e) => {
+        // Check if toggle button or close button clicked
+        if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
+          e.preventDefault();
+          toggleNavigation();
+          return;
+        }
+
+        // Close on click outside (only when open)
+        if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+          if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+            toggleNavigation();
+          }
+        }
+      };
+
+      // Keyboard navigation (ES2020 nullish coalescing ??)
+      const handleKeydown = (e) => {
+        if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+          toggleNavigation();
+          elements.toggle.focus();
+        }
+      };
+
+      // Single event listener with delegation (better performance)
+      document.addEventListener('click', handleClick, { passive: false });
+      document.addEventListener('keydown', handleKeydown, { passive: true });
+    })();
+  </script>
+
+  <!-- Navigation data for lazy-loading (optimization #7) -->
+  <script id="nav-data-dynamic" type="application/json">
+    {
+      "sections": [
+        
+        {
+          "key": "main",
+          "title": "Main",
+          "icon": "🏠",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "docs",
+          "title": "Documentation",
+          "icon": "📚",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "posts",
+          "title": "Posts",
+          "icon": "📝",
+          "sortBy": "date"
+        },
+        
+        {
+          "key": "categories",
+          "title": "Categories",
+          "icon": "📂",
+          "sortBy": "name"
+        },
+        
+        {
+          "key": "tags",
+          "title": "Tags",
+          "icon": "🏷️",
+          "sortBy": "name"
+        }
+        
+      ],
+      "items": [
+        
+        
+        
+        {
+          "sectionKey": "main",
+          "title": "Blog",
+          "permalink": "/blog/",
+          "ariaLabel": "Navigate to Blog",
+          "current": false,
+          "navOrder": 1
+        },
+        
+        {
+          "sectionKey": "main",
+          "title": "About",
+          "permalink": "/about/",
+          "ariaLabel": "Navigate to About",
+          "current": false,
+          "navOrder": 2
+        },
+        
+        {
+          "sectionKey": "main",
+          "title": "Services",
+          "permalink": "/services/",
+          "ariaLabel": "Navigate to Services",
+          "current": false,
+          "navOrder": 3
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Tags and Categories System Guide",
+          "permalink": "/docs/tags-and-categories-guide/",
+          "ariaLabel": "Navigate to Tags and Categories System Guide",
+          "current": false,
+          "navOrder": 17
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Cache Management Strategies",
+          "permalink": "/docs/cache-management/",
+          "ariaLabel": "Navigate to Cache Management Strategies",
+          "current": false,
+          "navOrder": 28
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "The rel Attribute in HTML Links: A Comprehensive Guide",
+          "permalink": "/docs/rel-attribute-guide/",
+          "ariaLabel": "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+          "current": false,
+          "navOrder": 46
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Chips and Windows - 18 Years of Evolution",
+          "permalink": "/2026/04/24/chips-and-windows/",
+          "ariaLabel": "Navigate to Chips and Windows - 18 Years of Evolution",
+          "current": false,
+          "navOrder": 61
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Computer Backup Checklist",
+          "permalink": "/2025/12/15/computer-backup-checklist/",
+          "ariaLabel": "Navigate to Computer Backup Checklist",
+          "current": false,
+          "navOrder": 62
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Welcome to MIJUG.NET!",
+          "permalink": "/2025/07/02/welcome-to-mijug-dot-net/",
+          "ariaLabel": "Navigate to Welcome to MIJUG.NET!",
+          "current": false,
+          "navOrder": 81
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Reviving the Role of Computer Operators",
+          "permalink": "/2026/05/07/reviving-the-role-of-computer-operators/",
+          "ariaLabel": "Navigate to Reviving the Role of Computer Operators",
+          "current": false,
+          "navOrder": 83
+        }
+        
+      ]
+    }
+  </script>
+
+  <!-- Lazy-load dynamic navigation items (optimization #7) -->
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
+    // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
+    (() => {
+      'use strict';
+
+      // Load remaining navigation items on first interaction (optimization #7)
+      const loadDynamicNav = () => {
+        const staticList = document.getElementById('nav-items-static');
+        const dynamicList = document.getElementById('nav-items-dynamic');
+
+        if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+        // All navigation items embedded as data (generated at build time)
+        const navDataEl = document.getElementById('nav-data-dynamic');
+        const navPayload = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
+
+        // Backward-compatible: support both legacy array and section-aware object payloads
+        const sections = Array.isArray(navPayload?.sections) ? navPayload.sections : [];
+        const allItems = Array.isArray(navPayload)
+          ? navPayload
+          : (Array.isArray(navPayload?.items) ? navPayload.items : []);
+
+        const sectionOrder = new Map(sections.map((section, index) => [section.key, index]));
+        const sectionTitles = new Map(sections.map((section) => [section.key, section.title]));
+        const sectionIcons = new Map(sections.map((section) => [section.key, section.icon]));
+        const sortedItems = [...allItems].sort((a, b) => {
+          const sectionA = sectionOrder.get(a.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          const sectionB = sectionOrder.get(b.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          if (sectionA !== sectionB) return sectionA - sectionB;
+
+          const navOrderA = Number(a.navOrder ?? Number.MAX_SAFE_INTEGER);
+          const navOrderB = Number(b.navOrder ?? Number.MAX_SAFE_INTEGER);
+          if (navOrderA !== navOrderB) return navOrderA - navOrderB;
+
+          return String(a.title ?? '').localeCompare(String(b.title ?? ''));
+        });
+
+        let lastSectionKey = null;
+        sortedItems.forEach((item) => {
+          if (item.sectionKey !== lastSectionKey) {
+            if (lastSectionKey !== null) {
+              const separator = document.createElement('li');
+              separator.className = 'nav-section-separator';
+              separator.setAttribute('role', 'separator');
+              separator.setAttribute('aria-hidden', 'true');
+              separator.style.borderTop = '1px solid rgba(255, 255, 255, 0.28)';
+              separator.style.margin = '0.5rem 0';
+              separator.style.listStyle = 'none';
+              separator.style.height = '0';
+              dynamicList.appendChild(separator);
+            }
+
+            const heading = document.createElement('li');
+            heading.className = 'nav-section-heading';
+
+            const headingText = document.createElement('h3');
+            headingText.style.fontSize = '0.78rem';
+            headingText.style.opacity = '0.85';
+            headingText.style.padding = '0.25rem 0';
+            headingText.style.textTransform = 'uppercase';
+            headingText.style.letterSpacing = '0.05em';
+            headingText.style.margin = '0';
+            headingText.style.fontWeight = '600';
+
+            const sectionTitle = sectionTitles.get(item.sectionKey) ?? String(item.sectionKey ?? '').toUpperCase();
+            const sectionIcon = sectionIcons.get(item.sectionKey);
+            headingText.textContent = sectionIcon ? `${sectionIcon} ${sectionTitle}` : sectionTitle;
+            heading.appendChild(headingText);
+            dynamicList.appendChild(heading);
+          }
+
+          const li = document.createElement('li');
+          li.setAttribute('role', 'listitem');
+          const a = document.createElement('a');
+          a.href = item.permalink;
+          a.setAttribute('aria-label', item.ariaLabel);
+          if (item.current) {
+            a.className = 'active';
+            a.setAttribute('aria-current', 'page');
+          }
+          a.textContent = item.title;
+          li.appendChild(a);
+          dynamicList.appendChild(li);
+          lastSectionKey = item.sectionKey;
+        });
+
+        // Show dynamic list
+        dynamicList.style.display = '';
+      };
+
+      // Load on first interaction with navigation toggle (optimization #7)
+      const toggleBtn = document.querySelector('.nav-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+      }
+
+      // Also load on requestIdleCallback if available (optimization #7)
+      if (window.requestIdleCallback) {
+        requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+      } else {
+        setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
