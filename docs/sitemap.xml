@@ -6,7 +6,7 @@
     <!-- Homepage - Highest priority -->
     <url>
         <loc>https://www.mijug.net/</loc>
-        <lastmod>2026-06-23T16:47:40-04:00</lastmod>
+        <lastmod>2026-06-23T17:06:29-04:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -17,6 +17,20 @@
     
     
 
+    
+    
+    <url>
+        <loc>https://www.mijug.net/</loc>
+        <lastmod>2026-06-23T17:04:53-04:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        
+        <image:image>
+            <image:loc>https://www.mijug.net</image:loc>
+            <image:title>Understanding WordPress Plugin Confusion</image:title>
+        </image:image>
+        
+    </url>
     
     
     <url>
@@ -544,7 +558,7 @@
         
         <url>
             <loc>https://www.mijug.net/category/guides/</loc>
-            <lastmod>2026-05-13T05:38:20-04:00</lastmod>
+            <lastmod>2026-06-23T16:57:33-04:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.7</priority>
         </url>
@@ -972,6 +986,13 @@
         
         
         
+        <url>
+            <loc>https://www.mijug.net/tag/guides/</loc>
+            <lastmod>2026-06-23T16:57:33-04:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </url>
+        
     
         
         
@@ -1054,13 +1075,13 @@
     <!-- Essential utility pages -->
     <url>
         <loc>https://www.mijug.net/tags/</loc>
-        <lastmod>2026-06-23T16:47:40-04:00</lastmod>
+        <lastmod>2026-06-23T17:06:29-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://www.mijug.net/categories/</loc>
-        <lastmod>2026-06-23T16:47:40-04:00</lastmod>
+        <lastmod>2026-06-23T17:06:29-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
