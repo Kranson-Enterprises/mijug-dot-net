@@ -6,7 +6,7 @@
     <!-- Homepage - Highest priority -->
     <url>
         <loc>https://www.mijug.net/</loc>
-        <lastmod>2026-06-23T17:24:57-04:00</lastmod>
+        <lastmod>2026-06-30T15:18:24-04:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -20,8 +20,17 @@
     
     
     <url>
+        <loc>https://www.mijug.net/2026/06/30/corn-mash-and-distilling-ai/</loc>
+        <lastmod>2026-06-30T15:17:38-04:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        
+    </url>
+    
+    
+    <url>
         <loc>https://www.mijug.net/2026/06/23/understanding-wordpress-plugin-confusion/</loc>
-        <lastmod>2026-06-23T17:18:35-04:00</lastmod>
+        <lastmod>2026-06-23T17:25:44-04:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         
@@ -320,7 +329,7 @@
     
     <url>
         <loc>https://www.mijug.net/docs/cache-management/</loc>
-        <lastmod>2025-09-25T18:00:10-04:00</lastmod>
+        <lastmod>2026-06-30T15:17:38-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -553,7 +562,7 @@
         
         <url>
             <loc>https://www.mijug.net/category/guides/</loc>
-            <lastmod>2026-06-23T16:57:33-04:00</lastmod>
+            <lastmod>2026-06-30T15:00:50-04:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.7</priority>
         </url>
@@ -791,6 +800,13 @@
     
         
         
+        
+        <url>
+            <loc>https://www.mijug.net/tag/ai/</loc>
+            <lastmod>2026-06-30T15:00:50-04:00</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </url>
         
     
         
@@ -1057,26 +1073,19 @@
         
         
         
-        <url>
-            <loc>https://www.mijug.net/tag/linux/</loc>
-            <lastmod>2026-04-24T20:00:00-04:00</lastmod>
-            <changefreq>monthly</changefreq>
-            <priority>0.6</priority>
-        </url>
-        
     
     
 
     <!-- Essential utility pages -->
     <url>
         <loc>https://www.mijug.net/tags/</loc>
-        <lastmod>2026-06-23T17:24:57-04:00</lastmod>
+        <lastmod>2026-06-30T15:18:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://www.mijug.net/categories/</loc>
-        <lastmod>2026-06-23T17:24:57-04:00</lastmod>
+        <lastmod>2026-06-30T15:18:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
