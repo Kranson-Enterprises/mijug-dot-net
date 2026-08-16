@@ -99,6 +99,8 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    /* Must stack above nav list items, whose `contain: content` creates later-painting stacking contexts */
+    z-index: 1;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -696,7 +698,8 @@ img {
 
         <!-- Mobile navigation toggle button -->
         <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
-          <img src="/assets/logo-mijug-48x48.png" alt="logo" width="24" height="24" aria-hidden="true">
+          
+          <img src="/assets/logo-mijug-48x48.png?v=20260623" alt="logo" width="24" height="24" aria-hidden="true">
            Menu
         </button>
 

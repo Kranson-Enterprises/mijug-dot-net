@@ -106,6 +106,8 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    /* Must stack above nav list items, whose `contain: content` creates later-painting stacking contexts */
+    z-index: 1;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -706,7 +708,8 @@ img {
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
-        <img src="/assets/logo-mijug-48x48.png" alt="logo" width="24" height="24" aria-hidden="true">
+        
+        <img src="/assets/logo-mijug-48x48.png?v=20260518" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -1276,6 +1279,10 @@ img {
               #digital-legacy <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/digital-workflows/" class="tag-link">
+              #digital-workflows <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/diy/" class="tag-link">
               #diy <span class="tag-count">(2)</span>
             </a>
@@ -1336,6 +1343,10 @@ img {
               #hands-on <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/handwriting/" class="tag-link">
+              #handwriting <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/hardware/" class="tag-link">
               #hardware <span class="tag-count">(1)</span>
             </a>
@@ -1388,6 +1399,10 @@ img {
               #mainframes <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/markdown/" class="tag-link">
+              #markdown <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/memorial-day/" class="tag-link">
               #memorial-day <span class="tag-count">(1)</span>
             </a>
@@ -1416,6 +1431,10 @@ img {
               #nodejs <span class="tag-count">(1)</span>
             </a>
           
+            <a href="/tag/note-taking/" class="tag-link">
+              #note-taking <span class="tag-count">(1)</span>
+            </a>
+          
             <a href="/tag/organization/" class="tag-link">
               #organization <span class="tag-count">(1)</span>
             </a>
@@ -1426,6 +1445,10 @@ img {
           
             <a href="/tag/performance/" class="tag-link">
               #performance <span class="tag-count">(1)</span>
+            </a>
+          
+            <a href="/tag/plain-text/" class="tag-link">
+              #plain-text <span class="tag-count">(1)</span>
             </a>
           
             <a href="/tag/planning/" class="tag-link">

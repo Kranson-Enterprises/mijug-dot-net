@@ -106,6 +106,8 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    /* Must stack above nav list items, whose `contain: content` creates later-painting stacking contexts */
+    z-index: 1;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -727,7 +729,8 @@ img {
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
-        <img src="/assets/logo-mijug-48x48.png" alt="logo" width="24" height="24" aria-hidden="true">
+        
+        <img src="/assets/logo-mijug-48x48.png?v=20260630" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -992,7 +995,7 @@ img {
 <h3 id="liquid-template-cache-busting">Liquid Template Cache Busting</h3>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/main.css?v=1782847104"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/main.css?v=1786848178"</span> <span class="nt">/&gt;</span>
 </code></pre></div></div>
 
 <h2 id="http-headers-for-cache-control">HTTP Headers for Cache Control</h2>

@@ -106,6 +106,8 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    /* Must stack above nav list items, whose `contain: content` creates later-painting stacking contexts */
+    z-index: 1;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -554,13 +556,13 @@ img {
 
   <title>writing</title>
   
-  <meta name="version" content="Jun 30, 2026" />
+  <meta name="version" content="Aug 15, 2026" />
   
 
   
 
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
-  <meta name="cache-version" content="20260630" />
+  <meta name="cache-version" content="20260815" />
 
   <link rel="stylesheet" href="/assets/main.css?v=6337baa2321ffc8e64bdf3196a356510728fe4be2b0989cdd81efee1968a0581" media="print">
 
@@ -642,8 +644,8 @@ img {
     href="/feed.xml" />
   
   
-  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260630" />
-  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260630" />
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260815" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260815" />
   
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   
@@ -662,7 +664,7 @@ img {
 
     <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20260630";
+  window.MIJUG.cacheVersion = "20260815";
 </script>
 
     
@@ -700,13 +702,14 @@ img {
     <div class="wrapper">
       <a class="site-title" rel="home" href="/">
         
-        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260630" alt="My Info Just Under Glass" width="50" height="50">
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260815" alt="My Info Just Under Glass" width="50" height="50">
          My Info Just Under Glass
       </a>
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
-        <img src="/assets/logo-mijug-48x48.png" alt="logo" width="24" height="24" aria-hidden="true">
+        
+        <img src="/assets/logo-mijug-48x48.png?v=20260815" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -836,9 +839,13 @@ img {
         <h3 class="post-title">
           <a class="post-link" href="/2025/09/01/pencil-to-markdown/"> Pencil to Markdown: The Evolution of Human Thought Capture </a>
         </h3>
-<p class="post-excerpt">Witness the extraordinary metamorphosis from cave paintings to collaborative code—how humanity's quest to capture thought has undergone its most dramatic transformation in the digital age.</p>
-<div class="post-meta-tags"><span class="post-categories">
-            Categories: <a href="/category/writing/" class="category-link">writing</a>, <a href="/category/tools/" class="category-link">tools</a>, <a href="/category/history/" class="category-link">history</a>, <a href="/category/evolution/" class="category-link">evolution</a>, <a href="/category/productivity/" class="category-link">productivity</a></span></div>
+<p class="post-excerpt">Trace the evolution of thought capture from handwriting and cave paintings to plain text, Markdown, and real-time collaborative documents.</p>
+<div class="post-meta-tags">
+<span class="post-categories">
+            Categories: <a href="/category/writing/" class="category-link">writing</a>, <a href="/category/tools/" class="category-link">tools</a>, <a href="/category/history/" class="category-link">history</a>, <a href="/category/evolution/" class="category-link">evolution</a>, <a href="/category/productivity/" class="category-link">productivity</a></span><span class="post-meta-separator"><br></span>
+            <span class="post-tags">
+            Tags: <a href="/tag/markdown/" class="tag-link">markdown</a>, <a href="/tag/handwriting/" class="tag-link">handwriting</a>, <a href="/tag/plain-text/" class="tag-link">plain-text</a>, <a href="/tag/note-taking/" class="tag-link">note-taking</a>, <a href="/tag/digital-workflows/" class="tag-link">digital-workflows</a></span>
+</div>
 </li></ul>
 </div>
 

@@ -106,6 +106,8 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    /* Must stack above nav list items, whose `contain: content` creates later-painting stacking contexts */
+    z-index: 1;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -727,7 +729,8 @@ img {
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
-        <img src="/assets/logo-mijug-48x48.png" alt="logo" width="24" height="24" aria-hidden="true">
+        
+        <img src="/assets/logo-mijug-48x48.png?v=20260519" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -1422,7 +1425,7 @@ img {
 <p>The system integrates with the project’s cache busting functionality:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Cache version tracking</span>
-<span class="kd">const</span> <span class="nx">CACHE_VERSION</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">20260630151824</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">CACHE_VERSION</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">20260815224258</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="c1">// Cache busting utilities</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">MIJUG</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">MIJUG</span> <span class="o">||</span> <span class="p">{};</span>

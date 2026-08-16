@@ -106,6 +106,8 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
+    /* Must stack above nav list items, whose `contain: content` creates later-painting stacking contexts */
+    z-index: 1;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -706,7 +708,8 @@ img {
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
-        <img src="/assets/logo-mijug-48x48.png" alt="logo" width="24" height="24" aria-hidden="true">
+        
+        <img src="/assets/logo-mijug-48x48.png?v=20260429" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -864,7 +867,7 @@ img {
         <h3 class="post-title">
           <a class="post-link" href="/2026/06/02/beautiful-weather-today/"> Beautiful Weather Today - A Perfect Tech Break </a>
         </h3>
-<p class="post-excerpt">Crystal-clear skies and comfortable temperatures make today perfect for stepping away from the screen and enjoying nature's UI.</p>
+<p class="post-excerpt">Crystal-clear skies make today a perfect tech break — plus a quick look at the bobkranson-ollama MCP server setup that helped generate this post.</p>
 <div class="post-meta-tags">
 <span class="post-categories">
             Categories: <a href="/category/announcements/" class="category-link">announcements</a>, <a href="/category/home/" class="category-link">home</a></span><span class="post-meta-separator"><br></span>
@@ -1046,9 +1049,13 @@ img {
         <h3 class="post-title">
           <a class="post-link" href="/2025/09/01/pencil-to-markdown/"> Pencil to Markdown: The Evolution of Human Thought Capture </a>
         </h3>
-<p class="post-excerpt">Witness the extraordinary metamorphosis from cave paintings to collaborative code—how humanity's quest to capture thought has undergone its most dramatic transformation in the digital age.</p>
-<div class="post-meta-tags"><span class="post-categories">
-            Categories: <a href="/category/writing/" class="category-link">writing</a>, <a href="/category/tools/" class="category-link">tools</a>, <a href="/category/history/" class="category-link">history</a>, <a href="/category/evolution/" class="category-link">evolution</a>, <a href="/category/productivity/" class="category-link">productivity</a></span></div>
+<p class="post-excerpt">Trace the evolution of thought capture from handwriting and cave paintings to plain text, Markdown, and real-time collaborative documents.</p>
+<div class="post-meta-tags">
+<span class="post-categories">
+            Categories: <a href="/category/writing/" class="category-link">writing</a>, <a href="/category/tools/" class="category-link">tools</a>, <a href="/category/history/" class="category-link">history</a>, <a href="/category/evolution/" class="category-link">evolution</a>, <a href="/category/productivity/" class="category-link">productivity</a></span><span class="post-meta-separator"><br></span>
+            <span class="post-tags">
+            Tags: <a href="/tag/markdown/" class="tag-link">markdown</a>, <a href="/tag/handwriting/" class="tag-link">handwriting</a>, <a href="/tag/plain-text/" class="tag-link">plain-text</a>, <a href="/tag/note-taking/" class="tag-link">note-taking</a>, <a href="/tag/digital-workflows/" class="tag-link">digital-workflows</a></span>
+</div>
 </li>
 <li class="post-item">
         <span class="post-meta">Sep 1, 2025</span>
