@@ -554,13 +554,13 @@ img {
 </script>
 
 
-  <title>Cache Management Strategies</title>
+  <title>Workspace State 2026: What Changed Since the Docs Were Written</title>
   
-  <meta name="version" content="Aug 30, 2025" />
+  <meta name="version" content="Aug 18, 2026" />
   
 
   
-  <meta name="docs-nav-order" content="10" />
+  <meta name="docs-nav-order" content="3" />
   <meta name="docs-section" content="documentation" />
   
   <meta name="priority-doc" content="true" />
@@ -568,7 +568,7 @@ img {
   
 
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
-  <meta name="cache-version" content="20260817" />
+  <meta name="cache-version" content="20260818" />
 
   <link rel="stylesheet" href="/assets/main.css?v=6337baa2321ffc8e64bdf3196a356510728fe4be2b0989cdd81efee1968a0581" media="print">
 
@@ -650,18 +650,18 @@ img {
     href="/feed.xml" />
   
   
-  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
-  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260818" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260818" />
   
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   
 
-  <meta name="description" content="Cache management strategies including cache busting, performance optimization, and deployment considerations" />
-<meta property="og:title" content="Cache Management Strategies" />
-<meta property="og:description" content="Cache management strategies including cache busting, performance optimization, and deployment considerations" />
-<meta property="og:url" content="https://www.mijug.net/docs/cache-management/" />
+  <meta name="description" content="Point-in-time summary (August 2026, v15.0.0) of the repository's current functionality, why it evolved, and how each older documentation page maps to today's..." />
+<meta property="og:title" content="Workspace State 2026: What Changed Since the Docs Were Written" />
+<meta property="og:description" content="Point-in-time summary (August 2026, v15.0.0) of the repository's current functionality, why it evolved, and how each older documentation page maps to today's..." />
+<meta property="og:url" content="https://www.mijug.net/docs/workspace-state-2026/" />
 <meta property="og:site_name" content="My Info Just Under Glass" />
-<meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/cache-management/" />
+<meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/workspace-state-2026/" />
 
   <script type="application/ld+json">
   {
@@ -697,10 +697,10 @@ img {
     {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Cache Management Strategies",
-    "description": "Cache management strategies including cache busting, performance optimization, and deployment considerations",
-    "url": "https://www.mijug.net/docs/cache-management/",
-    "position": 10,
+    "name": "Workspace State 2026: What Changed Since the Docs Were Written",
+    "description": "Point-in-time summary (August 2026, v15.0.0) of the repository&#39;s current functionality, why it evolved, and how each older documentation page maps to today&#39;s...",
+    "url": "https://www.mijug.net/docs/workspace-state-2026/",
+    "position": 3,
     "isPartOf": {
     "@type": "WebSite",
     "name": "My Info Just Under Glass",
@@ -712,7 +712,7 @@ img {
 
     <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20260817";
+  window.MIJUG.cacheVersion = "20260818";
 </script>
 
     
@@ -750,14 +750,14 @@ img {
     <div class="wrapper">
       <a class="site-title" rel="home" href="/">
         
-        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260817" alt="My Info Just Under Glass" width="50" height="50">
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260818" alt="My Info Just Under Glass" width="50" height="50">
          My Info Just Under Glass
       </a>
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
         
-        <img src="/assets/logo-mijug-48x48.png?v=20260817" alt="logo" width="24" height="24" aria-hidden="true">
+        <img src="/assets/logo-mijug-48x48.png?v=20260818" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -876,367 +876,194 @@ img {
     <div class="wrapper">
 <article class="post">
   <header class="post-header">
-    <h1 class="post-title">Cache Management Strategies</h1>
+    <h1 class="post-title">Workspace State 2026: What Changed Since the Docs Were Written</h1>
   </header>
 
   <div class="post-content">
-<p>Effective cache management is crucial for web application performance and ensuring users receive the latest updates. This guide covers cache busting strategies and performance optimization techniques.</p>
+<p>The documentation in this section was written across 2025 and early 2026, and the workspace has kept moving since. Rather than rewriting each page, this document is the <strong>current-state map</strong>: what the repository actually does today (version 15.0.0, August 2026), why it changed, and which older pages each change updates. The older pages remain as written — treat them as accurate for their concepts and history, and this page as the authority on versions, paths, and workflow facts.</p>
 
-<h2 id="why-cache-management-matters">Why Cache Management Matters</h2>
+<h2 id="table-of-contents">Table of Contents</h2>
 
-<h3 id="the-cache-dilemma">The Cache Dilemma</h3>
+<!-- prettier-ignore-start -->
+
+<ul id="markdown-toc">
+  <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
+  <li><a href="#platform-and-toolchain" id="markdown-toc-platform-and-toolchain">Platform and Toolchain</a></li>
+  <li><a href="#repository-layout-and-versioning" id="markdown-toc-repository-layout-and-versioning">Repository Layout and Versioning</a></li>
+  <li><a href="#deployment-local-and-deliberate-not-ci-driven" id="markdown-toc-deployment-local-and-deliberate-not-ci-driven">Deployment: Local and Deliberate, Not CI-Driven</a></li>
+  <li><a href="#accessibility-wcag-22-aa-is-canonical" id="markdown-toc-accessibility-wcag-22-aa-is-canonical">Accessibility: WCAG 2.2 AA Is Canonical</a></li>
+  <li><a href="#build-test-and-quality-gates" id="markdown-toc-build-test-and-quality-gates">Build, Test, and Quality Gates</a></li>
+  <li><a href="#content-pipeline-cms-plus-enforced-validation" id="markdown-toc-content-pipeline-cms-plus-enforced-validation">Content Pipeline: CMS Plus Enforced Validation</a></li>
+  <li><a href="#theme-structure-self-contained-layouts" id="markdown-toc-theme-structure-self-contained-layouts">Theme Structure: Self-Contained Layouts</a></li>
+  <li><a href="#ai-assisted-engineering-new-since-the-docs-were-written" id="markdown-toc-ai-assisted-engineering-new-since-the-docs-were-written">AI-Assisted Engineering (New Since the Docs Were Written)</a></li>
+  <li><a href="#reading-map-older-document-status-at-a-glance" id="markdown-toc-reading-map-older-document-status-at-a-glance">Reading Map: Older Document Status at a Glance</a></li>
+</ul>
+
+<!-- prettier-ignore-end -->
+
+<h2 id="platform-and-toolchain">Platform and Toolchain</h2>
+
+<p><strong>Current state</strong>: Node.js ≥24 &lt;25 with npm ≥11 &lt;12 · Ruby 3.4.5 with YJIT · Jekyll 4.4.1 · TypeScript in strict mode targeting ES2022 · ESLint 10 flat config with zero-warning enforcement · Prettier · Jest 30 · Playwright with axe-core. The workspace runs on native Linux today (including ARM); the WSL guidance in older pages remains usable on Windows hosts but is no longer the primary environment.</p>
+
+<p><strong>Why</strong>: staying on current LTS lines (Node 22 → 24, Ruby 3.3.8 → 3.4.5), YJIT’s measurable build-time gains, and stricter typing (ES2020 → ES2022 strict) that catches errors the older config allowed.</p>
+
+<p><strong>Updates these pages</strong>:</p>
 
 <ul>
   <li>
-<strong>Performance vs. Freshness</strong>: Caching improves load times but can serve stale content</li>
+<a href="/docs/getting-started/">Getting Started</a> — states Ruby 3.3.8+YJIT and Node.js 22.8+; the setup flow is still correct, only the version floors moved.</li>
   <li>
-<strong>User Experience</strong>: Cached content loads faster but may not reflect recent changes</li>
+<a href="/docs/welcome-mijug-workspace/">Welcome to MIJUG .NET Workspace</a> — states TypeScript 5.5+/ES2020 and a WSL-first environment.</li>
   <li>
-<strong>CDN Efficiency</strong>: Content delivery networks rely on aggressive caching for global performance</li>
-  <li>
-<strong>Development Challenges</strong>: Developers need to ensure updates reach users promptly</li>
+<a href="/docs/testing-performance-evolution/">Testing Performance and Development Evolution</a> — references Jest 29; the suite now runs Jest 30.</li>
 </ul>
 
-<h3 id="common-cache-problems">Common Cache Problems</h3>
+<h2 id="repository-layout-and-versioning">Repository Layout and Versioning</h2>
 
-<ol>
-  <li>
-<strong>Stale Content</strong>: Users see outdated versions of your site</li>
-  <li>
-<strong>Mixed Versions</strong>: Some files update while others remain cached</li>
-  <li>
-<strong>Development Confusion</strong>: Changes don’t appear immediately during testing</li>
-  <li>
-<strong>Deployment Issues</strong>: Production updates don’t propagate to users</li>
-</ol>
+<p><strong>Current state</strong>: the Jekyll site source lives in <code class="language-plaintext highlighter-rouge">jekyll-site/</code> at the repository root. The former root folder name was <code class="language-plaintext highlighter-rouge">docs/</code>, renamed in August 2026 — a breaking layout change that drove the major version bump to <strong>15.0.0</strong>. The <code class="language-plaintext highlighter-rouge">_docs</code> collection (this documentation) and its <code class="language-plaintext highlighter-rouge">/docs/...</code> URLs are unchanged; only the source folder moved.</p>
 
-<h2 id="cache-busting-strategies">Cache Busting Strategies</h2>
+<p><strong>Why</strong>: one word, three meanings — the root source folder (<code class="language-plaintext highlighter-rouge">docs/</code>), this documentation collection (<code class="language-plaintext highlighter-rouge">_docs</code>), and the public repository’s GitHub Pages serving folder (<code class="language-plaintext highlighter-rouge">/docs</code>) all collided in tooling, scripts, and conversation. The rename removed the ambiguity; roughly 70 files (scripts, configs, tests) were updated and verified in the same change.</p>
 
-<h3 id="1-version-based-cache-busting">1. Version-Based Cache Busting</h3>
+<p><strong>Updates these pages</strong>: any older page showing <code class="language-plaintext highlighter-rouge">docs/</code> as the site source folder in a tree or command — notably <a href="/docs/getting-started/">Getting Started</a> and <a href="/docs/welcome-mijug-workspace/">Welcome to MIJUG .NET Workspace</a>. Substitute <code class="language-plaintext highlighter-rouge">jekyll-site/</code> when following along.</p>
 
-<p>Add version parameters to asset URLs:</p>
+<h2 id="deployment-local-and-deliberate-not-ci-driven">Deployment: Local and Deliberate, Not CI-Driven</h2>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- CSS with version parameter --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/main.css?v=1.2.3"</span> <span class="nt">/&gt;</span>
+<p><strong>Current state</strong>: publishing is a <strong>local, operator-driven</strong> flow — a deploy script builds the site with strict frontmatter checking and syncs the output into the public repository, where the final commit and push are a manual step. GitHub Actions deployment workflows exist but are intentionally disabled; CI runs checks, not releases. Guardrails (both tooling hooks and permission rules) prevent editing the public repository or the generated <code class="language-plaintext highlighter-rouge">_site</code> output directly.</p>
 
-<span class="c">&lt;!-- JavaScript with version parameter --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/app.js?v=1.2.3"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<p><strong>Why</strong>: a one-person operation values a deliberate publish gate over automation speed. Disabling CI deploys eliminated an entire class of surprise-publish and drift failures, and the guardrails make the safe path the only path.</p>
 
-<span class="c">&lt;!-- Images with cache busting --&gt;</span>
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/images/logo.png?v=1.2.3"</span> <span class="na">alt=</span><span class="s">"Logo"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<p><strong>Pros:</strong></p>
-
-<ul>
-  <li>Simple to implement</li>
-  <li>Works with any asset type</li>
-  <li>Easy to understand and debug</li>
-</ul>
-
-<p><strong>Cons:</strong></p>
-
-<ul>
-  <li>Manual version management</li>
-  <li>All assets invalidated together</li>
-  <li>Query parameters may be ignored by some proxies</li>
-</ul>
-
-<h3 id="2-file-hash-based-cache-busting">2. File Hash-Based Cache Busting</h3>
-
-<p>Use content hashes in filenames:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- CSS with content hash --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/main-a1b2c3d4.css"</span> <span class="nt">/&gt;</span>
-
-<span class="c">&lt;!-- JavaScript with content hash --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/app-e5f6g7h8.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div></div>
-
-<p><strong>Pros:</strong></p>
-
-<ul>
-  <li>Automatic invalidation when content changes</li>
-  <li>Granular cache control per file</li>
-  <li>More reliable than query parameters</li>
-</ul>
-
-<p><strong>Cons:</strong></p>
-
-<ul>
-  <li>Requires build process integration</li>
-  <li>More complex deployment</li>
-  <li>Need to update references</li>
-</ul>
-
-<h3 id="3-directory-based-versioning">3. Directory-Based Versioning</h3>
-
-<p>Use version numbers in directory paths:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Versioned directory structure --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/v1.2.3/assets/main.css"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/v1.2.3/assets/app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div></div>
-
-<p><strong>Pros:</strong></p>
-
-<ul>
-  <li>Clean separation of versions</li>
-  <li>Easy rollback capability</li>
-  <li>Clear version identification</li>
-</ul>
-
-<p><strong>Cons:</strong></p>
-
-<ul>
-  <li>Increased storage requirements</li>
-  <li>Complex deployment process</li>
-  <li>Manual path management</li>
-</ul>
-
-<h2 id="jekyll-specific-cache-busting">Jekyll-Specific Cache Busting</h2>
-
-<h3 id="site-variables-for-cache-busting">Site Variables for Cache Busting</h3>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config.yml</span>
-<span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1.2.3"</span>
-<span class="na">cache_bust</span><span class="pi">:</span> <span class="s">20240130-143022</span>
-</code></pre></div></div>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- In templates --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/main.css?v=1.0.0"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/app.js?v=true"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div></div>
-
-<h3 id="build-time-cache-busting">Build-Time Cache Busting</h3>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config.yml</span>
-<span class="na">plugins</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">jekyll-cache-bust</span>
-
-<span class="na">cache_bust</span><span class="pi">:</span>
-  <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
-  <span class="na">strategy</span><span class="pi">:</span> <span class="s2">"</span><span class="s">content_hash"</span>
-</code></pre></div></div>
-
-<h3 id="liquid-template-cache-busting">Liquid Template Cache Busting</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/main.css?v=1787055143"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<h2 id="http-headers-for-cache-control">HTTP Headers for Cache Control</h2>
-
-<h3 id="cache-control-headers">Cache-Control Headers</h3>
-
-<div class="language-apache highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># .htaccess for Apache</span>
-<span class="p">&lt;</span><span class="nl">IfModule</span><span class="sr"> mod_expires.c</span><span class="p">&gt;
-</span>    <span class="nc">ExpiresActive</span> <span class="ss">on</span>
-
-    <span class="c"># CSS and JavaScript (1 year with versioning)</span>
-    <span class="nc">ExpiresByType</span> text/css "access plus 1 year"
-    <span class="nc">ExpiresByType</span> application/javascript "access plus 1 year"
-
-    <span class="c"># Images (1 month)</span>
-    <span class="nc">ExpiresByType</span> image/png "access plus 1 month"
-    <span class="nc">ExpiresByType</span> image/jpg "access plus 1 month"
-    <span class="nc">ExpiresByType</span> image/jpeg "access plus 1 month"
-    <span class="nc">ExpiresByType</span> image/gif "access plus 1 month"
-    <span class="nc">ExpiresByType</span> image/svg+xml "access plus 1 month"
-
-    <span class="c"># HTML (1 hour for dynamic content)</span>
-    <span class="nc">ExpiresByType</span> text/html "access plus 1 hour"
-<span class="p">&lt;/</span><span class="nl">IfModule</span><span class="p">&gt;
-</span>
-<span class="c"># Cache control headers</span>
-<span class="p">&lt;</span><span class="nl">IfModule</span><span class="sr"> mod_headers.c</span><span class="p">&gt;
-</span>    <span class="c"># Versioned assets - cache aggressively</span>
-    <span class="p">&lt;</span><span class="nl">FilesMatch</span><span class="sr"> "\.(css|js|png|jpg|jpeg|gif|svg)$"</span><span class="p">&gt;
-</span>        <span class="nc">Header</span> <span class="ss">set</span> Cache-Control "public, max-age=31536000, immutable"
-    <span class="p">&lt;/</span><span class="nl">FilesMatch</span><span class="p">&gt;
-</span>
-    <span class="c"># HTML - short cache with revalidation</span>
-    <span class="p">&lt;</span><span class="nl">FilesMatch</span><span class="sr"> "\.html$"</span><span class="p">&gt;
-</span>        <span class="nc">Header</span> <span class="ss">set</span> Cache-Control "public, max-age=3600, must-revalidate"
-    <span class="p">&lt;/</span><span class="nl">FilesMatch</span><span class="p">&gt;
-&lt;/</span><span class="nl">IfModule</span><span class="p">&gt;
-</span></code></pre></div></div>
-
-<h3 id="nginx-configuration">Nginx Configuration</h3>
-
-<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># nginx.conf</span>
-<span class="k">location</span> <span class="p">~</span><span class="sr">*</span> <span class="err">\</span><span class="s">.(css|js|png|jpg|jpeg|gif|svg)</span>$ <span class="p">{</span>
-    <span class="kn">expires</span> <span class="s">1y</span><span class="p">;</span>
-    <span class="kn">add_header</span> <span class="s">Cache-Control</span> <span class="s">"public,</span> <span class="s">immutable"</span><span class="p">;</span>
-    <span class="kn">add_header</span> <span class="s">Vary</span> <span class="s">Accept-Encoding</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">location</span> <span class="p">~</span><span class="sr">*</span> <span class="err">\</span><span class="s">.html</span>$ <span class="p">{</span>
-    <span class="kn">expires</span> <span class="s">1h</span><span class="p">;</span>
-    <span class="kn">add_header</span> <span class="s">Cache-Control</span> <span class="s">"public,</span> <span class="s">must-revalidate"</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="meta-tags-for-html-caching">Meta Tags for HTML Caching</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Prevent caching of HTML pages --&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Cache-Control"</span> <span class="na">content=</span><span class="s">"no-cache, no-store, must-revalidate"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Pragma"</span> <span class="na">content=</span><span class="s">"no-cache"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Expires"</span> <span class="na">content=</span><span class="s">"0"</span> <span class="nt">/&gt;</span>
-
-<span class="c">&lt;!-- Or allow short-term caching --&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Cache-Control"</span> <span class="na">content=</span><span class="s">"public, max-age=3600"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<h2 id="cdn-and-performance-optimization">CDN and Performance Optimization</h2>
-
-<h3 id="cdn-cache-busting">CDN Cache Busting</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Version in CDN URLs --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.example.com/v1.2.3/app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-<span class="c">&lt;!-- Hash-based CDN URLs --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.example.com/main-a1b2c3d4.css"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<h3 id="preloading-critical-assets">Preloading Critical Assets</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Preload critical CSS --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/assets/critical.css?v=1.2.3"</span> <span class="na">as=</span><span class="s">"style"</span> <span class="nt">/&gt;</span>
-
-<span class="c">&lt;!-- Preload important JavaScript --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/assets/app.js?v=1.2.3"</span> <span class="na">as=</span><span class="s">"script"</span> <span class="nt">/&gt;</span>
-
-<span class="c">&lt;!-- Preload hero images --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/images/hero.jpg?v=1.2.3"</span> <span class="na">as=</span><span class="s">"image"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<h3 id="resource-hints">Resource Hints</h3>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- DNS prefetch for external resources --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"dns-prefetch"</span> <span class="na">href=</span><span class="s">"//cdn.example.com"</span> <span class="nt">/&gt;</span>
-
-<span class="c">&lt;!-- Preconnect to external domains --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preconnect"</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com"</span> <span class="na">crossorigin</span> <span class="nt">/&gt;</span>
-
-<span class="c">&lt;!-- Prefetch next page resources --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"prefetch"</span> <span class="na">href=</span><span class="s">"/next-page.html"</span> <span class="nt">/&gt;</span>
-</code></pre></div></div>
-
-<h2 id="development-vs-production">Development vs. Production</h2>
-
-<h3 id="development-environment">Development Environment</h3>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config_dev.yml</span>
-<span class="na">cache_bust</span><span class="pi">:</span> <span class="kc">false</span>
-<span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">dev"</span>
-
-<span class="c1"># Disable caching in development</span>
-<span class="na">plugins</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">jekyll-cache-bust</span>
-
-<span class="na">cache_bust</span><span class="pi">:</span>
-  <span class="na">enabled</span><span class="pi">:</span> <span class="kc">false</span>
-</code></pre></div></div>
-
-<h3 id="production-environment">Production Environment</h3>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># _config_prod.yml</span>
-<span class="na">cache_bust</span><span class="pi">:</span> <span class="kc">true</span>
-<span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1.2.3"</span>
-
-<span class="c1"># Enable aggressive caching in production</span>
-<span class="na">plugins</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">jekyll-cache-bust</span>
-
-<span class="na">cache_bust</span><span class="pi">:</span>
-  <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
-  <span class="na">strategy</span><span class="pi">:</span> <span class="s2">"</span><span class="s">content_hash"</span>
-  <span class="na">extensions</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">css"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">js"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">png"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">jpg"</span><span class="pi">]</span>
-</code></pre></div></div>
-
-<h2 id="monitoring-and-testing">Monitoring and Testing</h2>
-
-<h3 id="cache-validation-tools">Cache Validation Tools</h3>
+<p><strong>Updates these pages</strong>:</p>
 
 <ul>
   <li>
-<strong>Browser DevTools</strong>: Check cache status in Network tab</li>
+<a href="/docs/welcome-mijug-workspace/">Welcome to MIJUG .NET Workspace</a> — describes “Automated CI/CD with GitHub Actions” and an “Automated deployment” workflow arrow; both now describe the disabled path, not the real one.</li>
   <li>
-<strong>GTmetrix</strong>: Analyze caching effectiveness</li>
-  <li>
-<strong>WebPageTest</strong>: Detailed cache analysis</li>
-  <li>
-<strong>Lighthouse</strong>: Performance auditing with cache recommendations</li>
+<a href="/docs/exploring-limitations-of-gitea-and-ruby/">Exploring the Limitations of Gitea and Ruby</a> — the Actions-simulation experiments it documents are historical context for a pipeline that no longer deploys.</li>
 </ul>
 
-<h3 id="testing-cache-behavior">Testing Cache Behavior</h3>
+<h2 id="accessibility-wcag-22-aa-is-canonical">Accessibility: WCAG 2.2 AA Is Canonical</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Test cache headers</span>
-curl <span class="nt">-I</span> https://yoursite.com/assets/main.css
+<p><strong>Current state</strong>: the workspace targets <strong>WCAG 2.2 Level AA</strong> everywhere — test suites, content rules, and component guidance. The automated accessibility suite currently runs 52 checks green via Playwright + axe-core, alongside contrast validation and a test-harness URL parameter for manual passes.</p>
 
-<span class="c"># Test with different user agents</span>
-curl <span class="nt">-H</span> <span class="s2">"User-Agent: Mozilla/5.0..."</span> <span class="nt">-I</span> https://yoursite.com/
+<p><strong>Why</strong>: 2.2 is a superset of the 2.1 criteria older pages cite, and several of its additions (focus appearance, dragging alternatives, consistent help) directly serve this site’s 55+ audience. Standardizing on one target also ended the 2.1-here/2.2-there drift between documents.</p>
 
-<span class="c"># Check cache validation</span>
-curl <span class="nt">-H</span> <span class="s2">"If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT"</span> <span class="nt">-I</span> https://yoursite.com/
-</code></pre></div></div>
+<p><strong>Updates these pages</strong>:</p>
 
-<h3 id="cache-debugging">Cache Debugging</h3>
+<ul>
+  <li>
+<a href="/docs/accessibility-testing/">Accessibility Testing Configuration</a> — mixes 2.1 and 2.2 references; read every “2.1 AA” as “2.2 AA” today.</li>
+  <li>
+<a href="/docs/rouge-syntax-highlighter-demo/">Rouge Syntax Highlighter Demo</a> and <a href="/docs/rel-attribute-guide/">HTML rel Attribute Guide</a> — cite 2.1 AA compliance; the highlighter and link guidance themselves are still current.</li>
+</ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Check if resource was served from cache</span>
-<span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">entries</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nf">getEntriesByType</span><span class="p">(</span><span class="dl">"</span><span class="s2">resource</span><span class="dl">"</span><span class="p">);</span>
-  <span class="nx">entries</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">entry</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if </span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">transferSize</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">From cache:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">From network:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div></div>
+<h2 id="build-test-and-quality-gates">Build, Test, and Quality Gates</h2>
 
-<h2 id="best-practices">Best Practices</h2>
+<p><strong>Current state</strong>: the npm script surface has grown to ~216 scripts, distilled into a small set of key commands: a full <code class="language-plaintext highlighter-rouge">precheckin</code> gate (format → lint → build → test → validate) before any push, a quick deploy-readiness check, fast smoke tests, and the accessibility suite. The unit suite stands at 126 tests; smoke and browser-compatibility E2E suites run in under a minute. Zero-warning linting is enforced, and the Prettier configuration is honored consistently by both the npm scripts and editor tooling (a subtle ignore-file mismatch was fixed in August 2026).</p>
 
-<h3 id="asset-organization">Asset Organization</h3>
+<p><strong>Why</strong>: the older pages’ “70+ npm commands” grew threefold; without a distilled command map and a single all-in gate, the script surface itself became a source of errors. The evolution documented in the testing pages (unit-first, consolidated E2E) is still the strategy — it has simply compounded.</p>
 
-<ol>
-  <li>
-<strong>Separate Static from Dynamic</strong>: Cache static assets aggressively, dynamic content conservatively</li>
-  <li>
-<strong>Version Critical Assets</strong>: Ensure important updates reach users quickly</li>
-  <li>
-<strong>Use Immutable Caching</strong>: Set <code class="language-plaintext highlighter-rouge">immutable</code> flag for versioned assets</li>
-  <li>
-<strong>Optimize Cache Hierarchies</strong>: Consider browser, CDN, and proxy caches</li>
-</ol>
+<p><strong>Updates these pages</strong>: <a href="/docs/welcome-mijug-workspace/">Welcome to MIJUG .NET Workspace</a> (command count), <a href="/docs/performance-optimization/">Performance Optimization Guide</a> and <a href="/docs/testing-performance-evolution/">Testing Performance and Development Evolution</a> (strategy current; specific timings and counts have shifted), <a href="/docs/browser-compatibility-testing/">Browser Compatibility Testing</a>, <a href="/docs/browser-compatibility-system/">Browser Compatibility Detection &amp; Testing System</a>, <a href="/docs/browser-management/">Browser Management for Testing</a>, and <a href="/docs/mermaid-test-runner/">Mermaid Test Runner</a> (all operational and current in approach).</p>
 
-<h3 id="deployment-strategies">Deployment Strategies</h3>
+<h2 id="content-pipeline-cms-plus-enforced-validation">Content Pipeline: CMS Plus Enforced Validation</h2>
 
-<ol>
-  <li>
-<strong>Atomic Deployments</strong>: Update all references simultaneously</li>
-  <li>
-<strong>Graceful Rollouts</strong>: Allow time for cache propagation</li>
-  <li>
-<strong>Rollback Preparation</strong>: Keep previous versions accessible</li>
-  <li>
-<strong>Cache Warming</strong>: Pre-populate CDN caches after deployment</li>
-</ol>
+<p><strong>Current state</strong>: FrontMatter CMS remains the visual content-management layer, but frontmatter correctness is now <strong>enforced by automated validation hooks</strong> at edit time — required fields per collection, filename-date rules for posts, and YAML validity — because production builds run with strict frontmatter checking that would otherwise fail at deploy time. Content scaffolding follows a draft → preview → publish flow with a standardized author byline, and the tags/categories vocabularies are the source of truth for taxonomy.</p>
 
-<h3 id="performance-guidelines">Performance Guidelines</h3>
+<p><strong>Why</strong>: strict frontmatter only applies to production configs, so an error could pass every dev build and still break a deploy — validation at edit time closes that gap at the moment the mistake is made.</p>
 
-<ol>
-  <li>
-<strong>Minimize Cache Misses</strong>: Use predictable versioning schemes</li>
-  <li>
-<strong>Optimize Cache Hit Ratio</strong>: Balance freshness with performance</li>
-  <li>
-<strong>Reduce Cache Churn</strong>: Avoid unnecessary version bumps</li>
-  <li>
-<strong>Monitor Cache Effectiveness</strong>: Track hit rates and performance impact</li>
-</ol>
+<p><strong>Updates these pages</strong>: <a href="/docs/frontmatter-cms/">FrontMatter CMS Usage</a> (still accurate for the CMS itself; the validation layer on top is new), <a href="/docs/tags-and-categories-guide/">Tags and Categories System Guide</a> and <a href="/docs/liquid-tags-examples/">Liquid Tags Examples</a> (current).</p>
+
+<h2 id="theme-structure-self-contained-layouts">Theme Structure: Self-Contained Layouts</h2>
+
+<p><strong>Current state</strong>: this site’s active layouts (<code class="language-plaintext highlighter-rouge">default</code> and its no-ads variant) are <strong>self-contained</strong> — they carry their own head and footer markup inline rather than composing <code class="language-plaintext highlighter-rouge">head.html</code> and <code class="language-plaintext highlighter-rouge">footer.html</code> includes. The long-unused include copies of those files were removed in August 2026 after verification that nothing referenced them. Recent additions to the include library: structured-data markup for local search (a LocalBusiness schema sourced from site config) and a reusable newsletter sign-up section; the footer now carries the business phone number and service area on every page.</p>
+
+<p><strong>Why</strong>: the dead include copies were a trap — edits to them silently changed nothing, since the layouts never read them. Deleting them made the real structure honest. The schema, phone, and service-area additions serve local-search visibility for the consulting practice.</p>
+
+<p><strong>Updates these pages</strong>: <a href="/docs/jekyll-themes-guide/">Jekyll Themes: Complete Usage Guide</a> — its layout-inheritance example (<code class="language-plaintext highlighter-rouge">{% include head.html %}</code> in a shared default layout) describes the classic Jekyll pattern, which is exactly what this repository <em>doesn’t</em> do; read it as general Jekyll education, not a description of this site.</p>
+
+<h2 id="ai-assisted-engineering-new-since-the-docs-were-written">AI-Assisted Engineering (New Since the Docs Were Written)</h2>
+
+<p><strong>Current state</strong>: the private workspace carries a consolidated AI-agent configuration — canonical instructions, always-on safety rules (deploy guardrails, secrets protection), edit-time hooks (the frontmatter validation above, auto-formatting, session context), specialized subagents, and a curated business knowledge base. Bulk extraction and summarization work is routed local-first to self-hosted models on the LAN, selected per task from a benchmark-validated routing table, with cloud models reviewing and synthesizing. Earlier generations of AI tooling configuration were reconciled into this single setup and retired.</p>
+
+<p><strong>Why</strong>: three generations of assistant config had accumulated with duplicated, drifting guidance; one canonical source ended the drift. The local-first policy keeps bulk content work fast, private, and inexpensive, with quality control retained at the review tier.</p>
+
+<p><strong>Updates these pages</strong>: none directly — this capability postdates the documentation set. It is the reason recent site content and documentation (this page included) carry consistent validation and provenance discipline.</p>
+
+<h2 id="reading-map-older-document-status-at-a-glance">Reading Map: Older Document Status at a Glance</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Document</th>
+      <th>Status today</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/docs/welcome-mijug-workspace/">Welcome to MIJUG .NET Workspace</a></td>
+      <td>Concepts current; versions, command count, CI-deploy claims, and WSL framing superseded above</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/getting-started/">Getting Started</a></td>
+      <td>Flow current; version floors and <code class="language-plaintext highlighter-rouge">docs/</code> → <code class="language-plaintext highlighter-rouge">jekyll-site/</code> paths superseded</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/accessibility-testing/">Accessibility Testing Configuration</a></td>
+      <td>Current; read all WCAG 2.1 references as 2.2 AA</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/browser-compatibility-system/">Browser compatibility &amp; management pages</a></td>
+      <td>Current</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/cache-management/">Cache Management Strategies</a></td>
+      <td>Current</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/eslint-9-upgrade-guide/">ESLint 10 Upgrade guide</a></td>
+      <td>Current (already updated for ESLint 10; permalink keeps its historical name)</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/exploring-limitations-of-gitea-and-ruby/">Exploring the Limitations of Gitea and Ruby</a></td>
+      <td>Historical — the deploy pipeline it explores is disabled by design</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/frontmatter-cms/">FrontMatter CMS Usage</a></td>
+      <td>Current; hook-enforced validation now sits on top</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/jekyll-themes-guide/">Jekyll Themes guide</a></td>
+      <td>General education; this site’s layouts are self-contained, not include-composed</td>
+    </tr>
+    <tr>
+      <td>
+<a href="/docs/liquid-tags-examples/">Liquid Tags</a> / <a href="/docs/tags-and-categories-guide/">Tags &amp; Categories</a>
+</td>
+      <td>Current</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/mermaid-quick-start/">Mermaid pages</a></td>
+      <td>Current</td>
+    </tr>
+    <tr>
+      <td>
+<a href="/docs/performance-optimization/">Performance Optimization</a> / <a href="/docs/testing-performance-evolution/">Testing Evolution</a>
+</td>
+      <td>Strategy current; specific numbers have moved (Jest 30, 126 unit tests, 216 scripts)</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/rel-attribute-guide/">HTML rel Attribute Guide</a></td>
+      <td>Current (2026-05 revision)</td>
+    </tr>
+    <tr>
+      <td><a href="/docs/rouge-syntax-highlighter-demo/">Rouge Syntax Highlighter Demo</a></td>
+      <td>Current; read WCAG 2.1 as 2.2 AA</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<p><em>This page is a point-in-time snapshot (2026-08-18, v15.0.0). When the next structural change lands, update this page’s facts and lastmod rather than rewriting the historical pages.</em></p>
 </div>
 </article>
 </div>
@@ -1485,7 +1312,7 @@ curl <span class="nt">-H</span> <span class="s2">"If-Modified-Since: Wed, 21 Oct
           "title": "Cache Management Strategies",
           "permalink": "/docs/cache-management/",
           "ariaLabel": "Navigate to Cache Management Strategies",
-          "current": true,
+          "current": false,
           "navOrder": 28
         },
         
