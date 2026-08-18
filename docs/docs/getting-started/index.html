@@ -568,7 +568,7 @@ img {
   
 
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
-  <meta name="cache-version" content="20260519" />
+  <meta name="cache-version" content="20260817" />
 
   <link rel="stylesheet" href="/assets/main.css?v=6337baa2321ffc8e64bdf3196a356510728fe4be2b0989cdd81efee1968a0581" media="print">
 
@@ -650,8 +650,8 @@ img {
     href="/feed.xml" />
   
   
-  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260519" />
-  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260519" />
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
   
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   
@@ -662,6 +662,33 @@ img {
 <meta property="og:url" content="https://www.mijug.net/docs/getting-started/" />
 <meta property="og:site_name" content="My Info Just Under Glass" />
 <meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/getting-started/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.mijug.net/#business",
+    "name": "Kranson Enterprises",
+    "alternateName": "My Info Just Under Glass",
+    "url": "https://www.mijug.net/",
+    "logo": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "image": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "telephone": "586-237-9857",
+    "email": "devopsbob@outlook.com",
+    "description": "MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by Kranson Enterprises for sharing knowledge and connecting communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Bob Kranson",
+      "jobTitle": "Vice President of Engineering"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "MI",
+      "addressCountry": "US"
+    },
+    "areaServed": [{ "@type": "AdministrativeArea", "name": "Southeast Michigan" },{ "@type": "AdministrativeArea", "name": "Ohio" },{ "@type": "AdministrativeArea", "name": "Florida" }]
+  }
+</script>
 
 
   
@@ -685,7 +712,7 @@ img {
 
     <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20260519";
+  window.MIJUG.cacheVersion = "20260817";
 </script>
 
     
@@ -723,14 +750,14 @@ img {
     <div class="wrapper">
       <a class="site-title" rel="home" href="/">
         
-        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260519" alt="My Info Just Under Glass" width="50" height="50">
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260817" alt="My Info Just Under Glass" width="50" height="50">
          My Info Just Under Glass
       </a>
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
         
-        <img src="/assets/logo-mijug-48x48.png?v=20260519" alt="logo" width="24" height="24" aria-hidden="true">
+        <img src="/assets/logo-mijug-48x48.png?v=20260817" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -938,7 +965,7 @@ img {
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. Install dependencies</span>
 npm <span class="nb">install
-cd </span>docs <span class="o">&amp;&amp;</span> bundle <span class="nb">install</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+cd </span>jekyll-site <span class="o">&amp;&amp;</span> bundle <span class="nb">install</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
 
 <span class="c"># 2. Start development (process-safe)</span>
 npm run dev:safe            <span class="c"># Checks for conflicts first</span>
@@ -974,14 +1001,14 @@ npm run health-check          <span class="c"># Comprehensive environment valida
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mijug-dot-net-project/          # Development workspace
 ├── src/                        # TypeScript source code
-├── docs/                       # Jekyll documentation site
+├── jekyll-site/                       # Jekyll documentation site
 ├── tests/                      # Jest unit tests
 ├── e2e/                        # Playwright E2E tests
 ├── scripts/                    # Build and deployment automation
 └── package.json               # 70+ npm commands for all workflows
 
 mijug-dot-net/                  # Auto-generated public repository
-└── docs/                       # Deployed Jekyll site
+└── jekyll-site/                       # Deployed Jekyll site
 </code></pre></div></div>
 
 <h3 id="development-philosophy">Development Philosophy</h3>
@@ -1113,7 +1140,7 @@ ruby <span class="nt">--version</span>
 bundle <span class="nt">--version</span>
 
 <span class="c"># Jekyll development</span>
-<span class="nb">cd </span>docs
+<span class="nb">cd </span>jekyll-site
 bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span> <span class="nt">--drafts</span>  <span class="c"># Development server</span>
 bundle <span class="nb">exec </span>jekyll build                        <span class="c"># Production build</span>
 </code></pre></div></div>
@@ -1197,7 +1224,7 @@ nvm <span class="nb">alias </span>default node
 <span class="nb">source</span> ~/.bashrc
 
 <span class="c"># Reinstall dependencies</span>
-<span class="nb">cd </span>docs
+<span class="nb">cd </span>jekyll-site
 bundle clean <span class="nt">--force</span>
 bundle <span class="nb">install</span>
 </code></pre></div></div>
@@ -1370,7 +1397,9 @@ npm run cache:optimize
           <a href="/privacy-policy.html">Privacy Policy</a>
         </div>
         <div class="footer-col footer-col-2">
-          <a href="/contact/">Contact Us</a>
+          <a href="/contact/">Contact Us</a><br>
+          <a href="tel:586-237-9857">586-237-9857</a><br>
+          <span>Serving Southeast Michigan, Ohio, Florida</span>
         </div>
         <div class="footer-col footer-col-3">
           <p>

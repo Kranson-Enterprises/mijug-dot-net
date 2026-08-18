@@ -568,7 +568,7 @@ img {
   
 
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
-  <meta name="cache-version" content="20260814" />
+  <meta name="cache-version" content="20260817" />
 
   <link rel="stylesheet" href="/assets/main.css?v=6337baa2321ffc8e64bdf3196a356510728fe4be2b0989cdd81efee1968a0581" media="print">
 
@@ -650,8 +650,8 @@ img {
     href="/feed.xml" />
   
   
-  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260814" />
-  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260814" />
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
   
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   
@@ -662,6 +662,33 @@ img {
 <meta property="og:url" content="https://www.mijug.net/docs/tags-and-categories-guide/" />
 <meta property="og:site_name" content="My Info Just Under Glass" />
 <meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/tags-and-categories-guide/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.mijug.net/#business",
+    "name": "Kranson Enterprises",
+    "alternateName": "My Info Just Under Glass",
+    "url": "https://www.mijug.net/",
+    "logo": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "image": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "telephone": "586-237-9857",
+    "email": "devopsbob@outlook.com",
+    "description": "MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by Kranson Enterprises for sharing knowledge and connecting communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Bob Kranson",
+      "jobTitle": "Vice President of Engineering"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "MI",
+      "addressCountry": "US"
+    },
+    "areaServed": [{ "@type": "AdministrativeArea", "name": "Southeast Michigan" },{ "@type": "AdministrativeArea", "name": "Ohio" },{ "@type": "AdministrativeArea", "name": "Florida" }]
+  }
+</script>
 
 
   
@@ -685,7 +712,7 @@ img {
 
     <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20260814";
+  window.MIJUG.cacheVersion = "20260817";
 </script>
 
     
@@ -723,14 +750,14 @@ img {
     <div class="wrapper">
       <a class="site-title" rel="home" href="/">
         
-        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260814" alt="My Info Just Under Glass" width="50" height="50">
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260817" alt="My Info Just Under Glass" width="50" height="50">
          My Info Just Under Glass
       </a>
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
         
-        <img src="/assets/logo-mijug-48x48.png?v=20260814" alt="logo" width="24" height="24" aria-hidden="true">
+        <img src="/assets/logo-mijug-48x48.png?v=20260817" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -897,7 +924,7 @@ img {
 
 <p>Taxonomy definitions are stored in:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docs/_data/
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll-site/_data/
 ├── categories.yml  # Category definitions with metadata
 └── tags.yml        # Tag definitions with metadata
 </code></pre></div></div>
@@ -1052,7 +1079,7 @@ img {
   <li>
 <strong>Clear Purpose</strong>: Define specific content area</li>
   <li>
-<strong>Update Data File</strong>: Add to <code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code>
+<strong>Update Data File</strong>: Add to <code class="language-plaintext highlighter-rouge">jekyll-site/_data/categories.yml</code>
 </li>
 </ol>
 
@@ -1213,7 +1240,7 @@ img {
   <li>
 <strong>Validate Uniqueness</strong>: Ensure no duplicates or near-duplicates</li>
   <li>
-<strong>Update Data File</strong>: Add to <code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code>
+<strong>Update Data File</strong>: Add to <code class="language-plaintext highlighter-rouge">jekyll-site/_data/tags.yml</code>
 </li>
   <li>
 <strong>Consider Aliases</strong>: Think about alternative names</li>
@@ -1264,8 +1291,8 @@ img {
 
 <p>Before publishing:</p>
 
-<p>A. Category exists in <code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code>
-B. All tags exist in <code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code>
+<p>A. Category exists in <code class="language-plaintext highlighter-rouge">jekyll-site/_data/categories.yml</code>
+B. All tags exist in <code class="language-plaintext highlighter-rouge">jekyll-site/_data/tags.yml</code>
 C. Category aligns with main content topic
 D. Tags are specific and relevant
 E. Spelling and formatting are correct</p>
@@ -1360,7 +1387,7 @@ E. Spelling and formatting are correct</p>
 
 <h4 id="categories-data-file">Categories Data File</h4>
 
-<p>Location: <code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code></p>
+<p>Location: <code class="language-plaintext highlighter-rouge">jekyll-site/_data/categories.yml</code></p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">category-name</span><span class="pi">:</span>
   <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Display</span><span class="nv"> </span><span class="s">Name"</span>
@@ -1371,7 +1398,7 @@ E. Spelling and formatting are correct</p>
 
 <h4 id="tags-data-file">Tags Data File</h4>
 
-<p>Location: <code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code></p>
+<p>Location: <code class="language-plaintext highlighter-rouge">jekyll-site/_data/tags.yml</code></p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">tag-name</span><span class="pi">:</span>
   <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Display</span><span class="nv"> </span><span class="s">Name"</span>
@@ -1401,7 +1428,7 @@ E. Spelling and formatting are correct</p>
 <h4 id="validation-commands">Validation Commands</h4>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Test Jekyll build with new taxonomy</span>
-<span class="nb">cd </span>docs
+<span class="nb">cd </span>jekyll-site
 bundle <span class="nb">exec </span>jekyll build <span class="nt">--drafts</span>
 
 <span class="c"># Check for missing data file entries</span>
@@ -1456,13 +1483,13 @@ npm run taxonomy:validate  <span class="c"># If available</span>
 <h4 id="check-taxonomy-consistency">Check Taxonomy Consistency</h4>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Find posts without categories</span>
-<span class="nb">grep</span> <span class="nt">-L</span> <span class="s2">"categories:"</span> docs/_posts/<span class="k">*</span>.md
+<span class="nb">grep</span> <span class="nt">-L</span> <span class="s2">"categories:"</span> jekyll-site/_posts/<span class="k">*</span>.md
 
 <span class="c"># Find posts without tags</span>
-<span class="nb">grep</span> <span class="nt">-L</span> <span class="s2">"tags:"</span> docs/_posts/<span class="k">*</span>.md
+<span class="nb">grep</span> <span class="nt">-L</span> <span class="s2">"tags:"</span> jekyll-site/_posts/<span class="k">*</span>.md
 
 <span class="c"># List all used taxonomy terms</span>
-<span class="nb">grep</span> <span class="nt">-h</span> <span class="s2">"categories:</span><span class="se">\|</span><span class="s2">tags:"</span> docs/_posts/<span class="k">*</span>.md | <span class="nb">sort</span> | <span class="nb">uniq</span>
+<span class="nb">grep</span> <span class="nt">-h</span> <span class="s2">"categories:</span><span class="se">\|</span><span class="s2">tags:"</span> jekyll-site/_posts/<span class="k">*</span>.md | <span class="nb">sort</span> | <span class="nb">uniq</span>
 </code></pre></div></div>
 
 <h2 id="-advanced-features">📈 Advanced Features</h2>
@@ -1471,7 +1498,7 @@ npm run taxonomy:validate  <span class="c"># If available</span>
 
 <p>Create specialized archive templates:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docs/_layouts/
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll-site/_layouts/
 ├── archive.html        # Default archive layout
 ├── category-archive.html  # Category-specific layout
 └── tag-archive.html    # Tag-specific layout
@@ -1546,11 +1573,11 @@ npm run taxonomy:validate  <span class="c"># If available</span>
   <li>
 <code class="language-plaintext highlighter-rouge">frontmatter.json</code>: FrontMatter CMS configuration</li>
   <li>
-<code class="language-plaintext highlighter-rouge">docs/_config.yml</code>: Jekyll site configuration</li>
+<code class="language-plaintext highlighter-rouge">jekyll-site/_config.yml</code>: Jekyll site configuration</li>
   <li>
-<code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code>: Category definitions</li>
+<code class="language-plaintext highlighter-rouge">jekyll-site/_data/categories.yml</code>: Category definitions</li>
   <li>
-<code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code>: Tag definitions</li>
+<code class="language-plaintext highlighter-rouge">jekyll-site/_data/tags.yml</code>: Tag definitions</li>
 </ul>
 
 <h3 id="archive-examples">Archive Examples</h3>
@@ -1589,7 +1616,9 @@ npm run taxonomy:validate  <span class="c"># If available</span>
           <a href="/privacy-policy.html">Privacy Policy</a>
         </div>
         <div class="footer-col footer-col-2">
-          <a href="/contact/">Contact Us</a>
+          <a href="/contact/">Contact Us</a><br>
+          <a href="tel:586-237-9857">586-237-9857</a><br>
+          <span>Serving Southeast Michigan, Ohio, Florida</span>
         </div>
         <div class="footer-col footer-col-3">
           <p>

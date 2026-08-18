@@ -568,7 +568,7 @@ img {
   
 
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
-  <meta name="cache-version" content="20260519" />
+  <meta name="cache-version" content="20260817" />
 
   <link rel="stylesheet" href="/assets/main.css?v=6337baa2321ffc8e64bdf3196a356510728fe4be2b0989cdd81efee1968a0581" media="print">
 
@@ -650,8 +650,8 @@ img {
     href="/feed.xml" />
   
   
-  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260519" />
-  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260519" />
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
   
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   
@@ -662,6 +662,33 @@ img {
 <meta property="og:url" content="https://www.mijug.net/docs/frontmatter-cms/" />
 <meta property="og:site_name" content="My Info Just Under Glass" />
 <meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/frontmatter-cms/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.mijug.net/#business",
+    "name": "Kranson Enterprises",
+    "alternateName": "My Info Just Under Glass",
+    "url": "https://www.mijug.net/",
+    "logo": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "image": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "telephone": "586-237-9857",
+    "email": "devopsbob@outlook.com",
+    "description": "MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by Kranson Enterprises for sharing knowledge and connecting communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Bob Kranson",
+      "jobTitle": "Vice President of Engineering"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "MI",
+      "addressCountry": "US"
+    },
+    "areaServed": [{ "@type": "AdministrativeArea", "name": "Southeast Michigan" },{ "@type": "AdministrativeArea", "name": "Ohio" },{ "@type": "AdministrativeArea", "name": "Florida" }]
+  }
+</script>
 
 
   
@@ -685,7 +712,7 @@ img {
 
     <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20260519";
+  window.MIJUG.cacheVersion = "20260817";
 </script>
 
     
@@ -723,14 +750,14 @@ img {
     <div class="wrapper">
       <a class="site-title" rel="home" href="/">
         
-        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260519" alt="My Info Just Under Glass" width="50" height="50">
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260817" alt="My Info Just Under Glass" width="50" height="50">
          My Info Just Under Glass
       </a>
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
         
-        <img src="/assets/logo-mijug-48x48.png?v=20260519" alt="logo" width="24" height="24" aria-hidden="true">
+        <img src="/assets/logo-mijug-48x48.png?v=20260817" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -989,7 +1016,7 @@ img {
 <ul>
   <li>Simple pages with basic metadata</li>
   <li>Used for: About pages, landing pages, etc.</li>
-  <li>Location: <code class="language-plaintext highlighter-rouge">docs/</code> directory</li>
+  <li>Location: <code class="language-plaintext highlighter-rouge">jekyll-site/</code> directory</li>
 </ul>
 
 <h3 id="blog-posts">Blog Posts</h3>
@@ -997,7 +1024,7 @@ img {
 <ul>
   <li>Full-featured blog posts with advanced metadata</li>
   <li>Used for: News, tutorials, announcements</li>
-  <li>Location: <code class="language-plaintext highlighter-rouge">docs/_posts/</code> directory</li>
+  <li>Location: <code class="language-plaintext highlighter-rouge">jekyll-site/_posts/</code> directory</li>
   <li>Filename format: <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title.md</code>
 </li>
 </ul>
@@ -1007,7 +1034,7 @@ img {
 <ul>
   <li>Technical documentation with navigation order</li>
   <li>Used for: User guides, API docs, tutorials</li>
-  <li>Location: <code class="language-plaintext highlighter-rouge">docs/_docs/</code> directory</li>
+  <li>Location: <code class="language-plaintext highlighter-rouge">jekyll-site/_docs/</code> directory</li>
 </ul>
 
 <h2 id="creating-content">Creating Content</h2>
@@ -1298,10 +1325,10 @@ img {
 
 <ul>
   <li>
-<strong>Public Folder</strong>: <code class="language-plaintext highlighter-rouge">docs/assets/</code>
+<strong>Public Folder</strong>: <code class="language-plaintext highlighter-rouge">jekyll-site/assets/</code>
 </li>
   <li>
-<strong>Image Storage</strong>: <code class="language-plaintext highlighter-rouge">docs/assets/images/</code>
+<strong>Image Storage</strong>: <code class="language-plaintext highlighter-rouge">jekyll-site/assets/images/</code>
 </li>
   <li>
 <strong>Automatic Processing</strong>: Images are automatically linked and optimized</li>
@@ -1343,8 +1370,8 @@ img {
 <p>Taxonomies are managed through YAML data files:</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">docs/_data/categories.yml</code></li>
-  <li><code class="language-plaintext highlighter-rouge">docs/_data/tags.yml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-site/_data/categories.yml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-site/_data/tags.yml</code></li>
 </ul>
 
 <h2 id="workflow-integration">Workflow Integration</h2>
@@ -1390,9 +1417,9 @@ img {
 <p>Templates are automatically applied based on content type:</p>
 
 <ul>
-  <li>Posts: <code class="language-plaintext highlighter-rouge">docs/_posts/YYYY-MM-DD-title.md</code>
+  <li>Posts: <code class="language-plaintext highlighter-rouge">jekyll-site/_posts/YYYY-MM-DD-title.md</code>
 </li>
-  <li>Documentation: <code class="language-plaintext highlighter-rouge">docs/_docs/title.md</code>
+  <li>Documentation: <code class="language-plaintext highlighter-rouge">jekyll-site/_docs/title.md</code>
 </li>
 </ul>
 
@@ -1430,7 +1457,7 @@ img {
   <li>
 <code class="language-plaintext highlighter-rouge">frontmatter.json</code>: Main CMS configuration (primary configuration)</li>
   <li>
-<code class="language-plaintext highlighter-rouge">docs/_config.yml</code>: Jekyll site configuration</li>
+<code class="language-plaintext highlighter-rouge">jekyll-site/_config.yml</code>: Jekyll site configuration</li>
   <li>
 <code class="language-plaintext highlighter-rouge">workspace.code-workspace</code>: VS Code integration (minimal FrontMatter settings)</li>
 </ul>
@@ -1476,7 +1503,9 @@ img {
           <a href="/privacy-policy.html">Privacy Policy</a>
         </div>
         <div class="footer-col footer-col-2">
-          <a href="/contact/">Contact Us</a>
+          <a href="/contact/">Contact Us</a><br>
+          <a href="tel:586-237-9857">586-237-9857</a><br>
+          <span>Serving Southeast Michigan, Ohio, Florida</span>
         </div>
         <div class="footer-col footer-col-3">
           <p>
