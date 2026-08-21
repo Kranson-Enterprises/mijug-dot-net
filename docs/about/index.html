@@ -12,8 +12,7 @@
     <!-- CSP tailored to MIJUG .NET requirements (no-ads variant) -->
 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-      script-src 'self' 'unsafe-eval' 'unsafe-inline' nonce-f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681 data: https://cdn.jsdelivr.net ;
-      script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' nonce-f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681 data: https://cdn.jsdelivr.net ;
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' 'nonce-f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681' 'strict-dynamic' https: http:;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
       style-src-elem 'self' 'unsafe-inline' ;
       img-src 'self' data: https: https://www.google-analytics.com;
@@ -631,7 +630,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es13.min.js?v=f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" defer crossorigin="anonymous"></script>
+    <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" type="module" src="/assets/js/mijug-es13.min.js?v=f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -1126,7 +1125,7 @@ img {
 
     // Cache busting configuration
     
-    const CACHE_VERSION = '20260821002602';
+    const CACHE_VERSION = '20260821010436';
     
     const PAGE_LOAD_TIME = Date.now();
 

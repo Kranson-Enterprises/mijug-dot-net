@@ -12,8 +12,7 @@
     <!-- CSP tailored to MIJUG .NET requirements (no-ads variant) -->
 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-      script-src 'self' 'unsafe-eval' 'unsafe-inline' nonce-f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681 data: https://cdn.jsdelivr.net https://calendar.google.com https://www.google.com;
-      script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' nonce-f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681 data: https://cdn.jsdelivr.net https://calendar.google.com https://www.google.com;
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' 'nonce-f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681' 'strict-dynamic' https: http:;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://calendar.google.com https://fonts.google.com;
       style-src-elem 'self' 'unsafe-inline' https://calendar.google.com https://fonts.googleapis.com;
       img-src 'self' data: https: https://www.google-analytics.com;
@@ -555,7 +554,7 @@ img {
     
 
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
-    <meta name="cache-version" content="20260817" />
+    <meta name="cache-version" content="20260821" />
 
     <link rel="preload" as="style" href="/assets/main.css?v=1f37ded9a152369dc7afe7ec1ba3589410bc212f3d3db39bb884910b8d8018ef" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=1f37ded9a152369dc7afe7ec1ba3589410bc212f3d3db39bb884910b8d8018ef" media="print">
 
@@ -631,7 +630,7 @@ img {
     })();
   </script>
     <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
-    <script type="module" src="/assets/js/mijug-es13.min.js?v=f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" defer crossorigin="anonymous"></script>
+    <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" type="module" src="/assets/js/mijug-es13.min.js?v=f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" defer crossorigin="anonymous"></script>
 
     <link
       rel="alternate"
@@ -641,8 +640,8 @@ img {
     />
     
     
-    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
-    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
+    <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260821" />
+    <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260821" />
     
     <link
       rel="shortcut icon"
@@ -692,7 +691,7 @@ img {
 
     <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20260817";
+  window.MIJUG.cacheVersion = "20260821";
 </script>
 
   
@@ -724,7 +723,7 @@ img {
         >
           
           <img
-            src="/assets/kranson_enterprises_logo_180x180.png?v=20260817"
+            src="/assets/kranson_enterprises_logo_180x180.png?v=20260821"
             alt="My Info Just Under Glass"
             width="50"
             height="50"
@@ -740,7 +739,7 @@ img {
           aria-expanded="false"
           aria-label="Toggle navigation menu">
           
-          <img src="/assets/logo-mijug-48x48.png?v=20260817" alt="logo" width="24" height="24" aria-hidden="true" />
+          <img src="/assets/logo-mijug-48x48.png?v=20260821" alt="logo" width="24" height="24" aria-hidden="true" />
           &nbsp;Menu
         </button>
 
@@ -874,8 +873,8 @@ img {
 <!-- Google Calendar Appointment Scheduling begin -->
 <div class="calendar-appointment-container">
   <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet external" />
-  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-  <script>
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
     (function () {
       var target = document.currentScript;
       window.addEventListener("load", function () {
