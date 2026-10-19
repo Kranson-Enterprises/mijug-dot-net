@@ -6,7 +6,7 @@
     <!-- Homepage - Highest priority -->
     <url>
         <loc>https://www.mijug.net/</loc>
-        <lastmod>2026-08-21T01:04:49-04:00</lastmod>
+        <lastmod>2026-10-18T20:32:50-04:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -20,9 +20,18 @@
     
     
     <url>
+        <loc>https://www.mijug.net/2026/10/18/alligator-skins-in-the-highway-can-slow-you-down/</loc>
+        <lastmod>2026-10-18T20:27:58-04:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        
+    </url>
+    
+    
+    <url>
         <loc>https://www.mijug.net/2026/08/15/woodward-weekend-and-the-brakes-i-thought-i-knew/</loc>
         <lastmod>2026-08-17T20:36:16-04:00</lastmod>
-        <changefreq>weekly</changefreq>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
     </url>
@@ -607,7 +616,7 @@
         
         <url>
             <loc>https://www.mijug.net/category/history/</loc>
-            <lastmod>2026-08-15T19:19:09-04:00</lastmod>
+            <lastmod>2026-10-18T19:45:00-04:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.7</priority>
         </url>
@@ -1120,13 +1129,13 @@
     <!-- Essential utility pages -->
     <url>
         <loc>https://www.mijug.net/tags/</loc>
-        <lastmod>2026-08-21T01:04:49-04:00</lastmod>
+        <lastmod>2026-10-18T20:32:50-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://www.mijug.net/categories/</loc>
-        <lastmod>2026-08-21T01:04:49-04:00</lastmod>
+        <lastmod>2026-10-18T20:32:50-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
