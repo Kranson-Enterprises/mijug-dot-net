@@ -13,3 +13,6 @@ package.json
 
 # Ignore that other branch gh-pages has .nojekyll file
 .nojekyll
+
+# GitHub Pages publishes from /docs: this .nojekyll must be tracked (mijug-dot-net-project F20)
+!docs/.nojekyll
