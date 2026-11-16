@@ -465,25 +465,21 @@ img {
   object-fit: cover;
 }
 
-/* Cookie consent banner styles */
-#cookie-consent-banner {
+/* Consent banner: fixed from first paint so it never shifts layout before main.css arrives (full styles in main.scss) */
+.mijug-consent {
   position: fixed;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  z-index: 1000;
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
-  overflow: hidden;
+  z-index: 1001;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #fff;
+  border-top: 4px solid #1a3660;
 }
 
-#cookie-consent-banner.visible {
-  max-height: 200px;
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform 0.3s, opacity 0.3s;
+.mijug-consent[hidden] {
+  display: none;
 }
 
 /* Advertisement container styles */
@@ -572,7 +568,7 @@ img {
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
   <meta name="cache-version" content="20260817" />
 
-  <link rel="stylesheet" href="/assets/main.css?v=1f37ded9a152369dc7afe7ec1ba3589410bc212f3d3db39bb884910b8d8018ef" media="print">
+  <link rel="stylesheet" href="/assets/main.css?v=20261108000000" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -715,16 +711,9 @@ img {
     </script>
     
 
-    
-<!-- Microsoft Clarity tracking (project xf9fa0avlg) for https://www.mijug.net -->
-<script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
-  (function (c, l, a, r, i, t, y) {
-    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
-    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-  })(window, document, "clarity", "script", "xf9fa0avlg");
-</script>
-
+    <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" src="/assets/js/mijug-consent.min.js?v=f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681"
+  data-policy-version="1"
+  data-max-age-days="180" data-ga-id="G-W1M1N0DCD4" data-clarity-id="xf9fa0avlg" data-adsense-client="ca-pub-3383458876439157"></script>
 
 </head>
 
@@ -1076,7 +1065,8 @@ img {
       <div class="footer-col-wrapper">
         <div class="footer-col footer-col-1">
           <a href="/terms-of-service.html">Terms of Service</a><br>
-          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/privacy-policy.html">Privacy Policy</a><br>
+          <button type="button" class="mijug-consent-link" data-consent-action="customize">Cookie &amp; privacy choices</button>
         </div>
         <div class="footer-col footer-col-2">
           <a href="/contact/">Contact Us</a><br>
@@ -1098,127 +1088,73 @@ img {
     </div>
   </footer>
 
-  
+  <section id="mijug-consent-banner" class="mijug-consent" aria-labelledby="mijug-consent-title" hidden>
+  <div class="mijug-consent__inner">
+    <h2 id="mijug-consent-title" class="mijug-consent__title">Your privacy choices</h2>
+    <p class="mijug-consent__text">
+      This site uses a few cookies. One simply remembers the choice you make here. The others are optional: they
+      help me see which pages people find useful, and let Google pick ads that match your interests. You will see
+      ads either way — if you say no, they are chosen by the page you are reading instead of by you.
+      <a href="/privacy-policy.html#cookies">Read the privacy policy</a>.
+    </p>
+    <div class="mijug-consent__actions">
+      <button type="button" class="mijug-consent__btn" data-consent-action="accept">Accept all</button>
+      <button type="button" class="mijug-consent__btn" data-consent-action="reject">Necessary only</button>
+      <button type="button" class="mijug-consent__btn mijug-consent__btn--secondary" data-consent-action="customize">
+        Let me choose
+      </button>
+    </div>
+  </div>
+</section>
 
-  
-  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+<dialog id="mijug-consent-dialog" class="mijug-consent-dialog" aria-labelledby="mijug-consent-dialog-title">
+  <form method="dialog">
+    <h2 id="mijug-consent-dialog-title">Cookie and privacy choices</h2>
+    <p>
+      Choose what you are comfortable with. You can change this any time with the “Cookie &amp; privacy
+      choices” link at the bottom of every page.
+    </p>
+    <fieldset>
+      <legend>Optional cookies</legend>
+      <div class="mijug-consent-dialog__option">
+        <p class="mijug-consent-dialog__fixed"><strong>Necessary</strong> — always on</p>
+        <p class="mijug-consent-dialog__desc">One small cookie that remembers the choice you make here. Nothing else.</p>
+      </div>
+      <div class="mijug-consent-dialog__option">
+        <label for="mijug-consent-analytics">
+          <input type="checkbox" id="mijug-consent-analytics" name="analytics" aria-describedby="mijug-consent-analytics-desc">
+          Site improvement (analytics)
+        </label>
+        <p id="mijug-consent-analytics-desc" class="mijug-consent-dialog__desc">
+          Google Analytics and Microsoft Clarity count visits and show me where a page is confusing. I see totals
+          and patterns, not who you are.
+        </p>
+      </div>
+      <div class="mijug-consent-dialog__option" id="mijug-consent-ads-option">
+        <label for="mijug-consent-ads">
+          <input type="checkbox" id="mijug-consent-ads" name="ads" aria-describedby="mijug-consent-ads-desc">
+          Personalized ads
+        </label>
+        <p id="mijug-consent-ads-desc" class="mijug-consent-dialog__desc">
+          Lets Google use cookies to choose ads based on your interests and to measure them. If you leave this off,
+          you still see ads, but they are based on the page you are reading.
+        </p>
+      </div>
+      <p id="mijug-consent-gpc-note" class="mijug-consent-dialog__note" hidden>
+        Your browser is sending a “do not sell or share my information” signal (Global Privacy Control or
+        Do Not Track). I honor it, so personalized ads stay off on this device.
+      </p>
+    </fieldset>
+    <div class="mijug-consent-dialog__actions">
+      <button type="submit" value="save" class="mijug-consent__btn">Save my choices</button>
+      <button type="submit" value="cancel" class="mijug-consent__btn mijug-consent__btn--secondary">Cancel</button>
+    </div>
+  </form>
+</dialog>
 
-    gtag('consent', 'default', {
-      analytics_storage: 'denied',
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-    });
+<p id="mijug-consent-status" class="sr-only" role="status" aria-live="polite"></p>
 
-    gtag('js', new Date());
-    gtag('config', 'G-W1M1N0DCD4');
-  </script>
 
-  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" src="https://www.googletagmanager.com/gtag/js?id=G-W1M1N0DCD4" crossorigin="anonymous" async></script>
-  
-
-  
-  <!-- Google AdSense with MIJUG Cookie Consent Integration -->
-<script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
-  (function() {
-    'use strict';
-
-    // Privacy and consent checks
-    if (window.doNotTrack === '1' ||
-        navigator.doNotTrack === '1' ||
-        navigator.doNotTrack === 'yes' ||
-        navigator.msDoNotTrack === '1' ||
-        localStorage.getItem('mijug-ads-disabled') === 'true') {
-      return;
-    }
-
-    // Development environment bypass
-    if (location.hostname === 'localhost' ||
-        location.hostname === '127.0.0.1' ||
-        location.protocol === 'file:') {
-      console.log('[MIJUG AdSense] Skipped - Development environment');
-      return;
-    }
-
-    // URL parameter bypass for testing
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('skip-ads') === 'true') {
-      console.log('[MIJUG AdSense] Skipped - URL parameter override');
-      return;
-    }
-
-    // Initialize consent mode with MIJUG defaults
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    window.gtag = gtag;
-
-    // Set default consent state (MIJUG privacy-first approach)
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied'
-    });
-
-    // Load AdSense with error handling
-    function loadAdSense() {
-      try {
-        const script = document.createElement('script');
-        script.async = true;
-        script.crossOrigin = 'anonymous';
-        script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3383458876439157';
-        script.onerror = function() {
-          console.warn('[MIJUG AdSense] Failed to load AdSense script');
-        };
-        document.head.appendChild(script);
-
-        console.log('[MIJUG AdSense] AdSense script loaded');
-
-      } catch (error) {
-        console.warn('[MIJUG AdSense] Initialization error:', error);
-      }
-    }
-
-    // MIJUG cookie consent integration
-    if (typeof window.MijugCookieConsent !== 'undefined') {
-      window.MijugCookieConsent.onReady(function(consent) {
-        if (consent.advertising) {
-          // Update consent for AdSense
-          gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            ad_personalization: consent.personalization ? 'granted' : 'denied'
-          });
-
-          loadAdSense();
-        } else {
-          console.log('[MIJUG AdSense] Skipped - Advertising cookies declined');
-        }
-      });
-
-      // Handle consent changes
-      window.MijugCookieConsent.onConsentChange(function(consent) {
-        gtag('consent', 'update', {
-          ad_storage: consent.advertising ? 'granted' : 'denied',
-          ad_user_data: consent.advertising ? 'granted' : 'denied',
-          ad_personalization: (consent.advertising && consent.personalization) ? 'granted' : 'denied'
-        });
-      });
-    } else {
-      // Fallback: Load with denied consent if no cookie system
-      console.log('[MIJUG AdSense] Loading with default denied consent - no cookie system detected');
-      loadAdSense();
-    }
-
-  })();
-</script>
-
-  
-  <!-- Cookie consent system (not yet wired): % include cookie-consent.html % -->
   <!-- Accessibility enhancement for Rouge code blocks: preserve code semantics with accessible labels -->
   <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
     // Code block accessibility - ES2020 optimized

@@ -449,25 +449,21 @@ img {
   object-fit: cover;
 }
 
-/* Cookie consent banner styles */
-#cookie-consent-banner {
+/* Consent banner: fixed from first paint so it never shifts layout before main.css arrives (full styles in main.scss) */
+.mijug-consent {
   position: fixed;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  z-index: 1000;
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: transform 0.3s, opacity 0.3s, max-height 0s 0.3s;
-  overflow: hidden;
+  z-index: 1001;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #fff;
+  border-top: 4px solid #1a3660;
 }
 
-#cookie-consent-banner.visible {
-  max-height: 200px;
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform 0.3s, opacity 0.3s;
+.mijug-consent[hidden] {
+  display: none;
 }
 
 /* Advertisement container styles */
@@ -548,7 +544,7 @@ img {
 
     <title>Privacy Policy</title>
     
-    <meta name="version" content="Jul 30, 2025" />
+    <meta name="version" content="Nov 15, 2026" />
     
 
     
@@ -556,7 +552,7 @@ img {
     <meta name="google-site-verification" content="googlece83719b3f856e56" />
     <meta name="cache-version" content="20260817" />
 
-    <link rel="preload" as="style" href="/assets/main.css?v=1f37ded9a152369dc7afe7ec1ba3589410bc212f3d3db39bb884910b8d8018ef" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=1f37ded9a152369dc7afe7ec1ba3589410bc212f3d3db39bb884910b8d8018ef" media="print">
+    <link rel="preload" as="style" href="/assets/main.css?v=20261108000000" media="print" crossorigin><link rel="stylesheet" href="/assets/main.css?v=20261108000000" media="print">
 
   <noscript>
     <div class="legacy-browser-notice" role="alert">
@@ -704,7 +700,10 @@ img {
       }, { once: false });
     }, { once: true });
   </script>
-  
+  <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681" src="/assets/js/mijug-consent.min.js?v=f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681"
+  data-policy-version="1"
+  data-max-age-days="180"></script>
+
   </head>
   <body>
     <header class="site-header" role="banner">
@@ -865,7 +864,7 @@ img {
     <h1 class="post-title">Privacy Policy</h1>
   </header>
 
-  <div class="post-content"><p><strong>Effective Date:</strong> July 30, 2025</p>
+  <div class="post-content"><p><strong>Effective Date:</strong> November 15, 2026</p>
 <br />
 <p>
   Your privacy is important to us. This Privacy Policy explains how we collect,
@@ -887,43 +886,70 @@ img {
   </li>
 </ul>
 
-<h2>Use of Cookies and Google AdSense</h2>
+<h2 id="cookies">Cookies and Your Choices</h2>
 <p>
-  We use Google AdSense to display advertisements on our website. Google may use
-  cookies to serve ads based on your prior visits to this website or other
-  websites. These cookies enable Google and its partners to serve ads based on
-  your interests.
+  The first time you visit, a notice at the bottom of the page asks what you are comfortable with. You can
+  accept all cookies, keep only the necessary one, or choose for yourself. You can change your mind at any time
+  with the <button type="button" class="mijug-consent-link" data-consent-action="customize">Cookie &amp; privacy
+  choices</button> link, which is also at the bottom of every page. We remember your choice for 180 days, and we
+  ask again sooner if the kinds of cookies we use change.
+</p>
+<ul>
+  <li>
+    <strong>Necessary (always on):</strong> one cookie named <code>mijug_consent</code> that remembers the choice
+    you made. It is not shared with anyone.
+  </li>
+  <li>
+    <strong>Site improvement (analytics, optional):</strong> Google Analytics and Microsoft Clarity count visits
+    and show us where a page is confusing. Until you say yes, they run without cookies and we see only anonymous
+    totals.
+  </li>
+  <li>
+    <strong>Personalized ads (optional):</strong> lets Google use cookies to choose ads based on your interests.
+    If you say no, you still see ads, but they are chosen by the page you are reading instead of by you.
+  </li>
+</ul>
+<p>
+  If you turn an optional category off after turning it on, we delete that category's cookies from this site.
 </p>
 
+<h2>Advertising (Google AdSense)</h2>
 <p>
-  <strong>For EU Visitors:</strong> In compliance with the General Data
-  Protection Regulation (GDPR), we provide a comprehensive cookie consent banner
-  that appears on your first visit. You can accept all cookies, decline optional
-  cookies, or customize your preferences through our cookie settings panel. Your
-  consent choices are remembered for one year.
+  We use Google AdSense to show advertisements. Third-party vendors, including Google, use cookies to serve ads
+  based on your prior visits to this website or other websites. Google's advertising cookies let it and its
+  partners serve ads based on your visits to this site and other sites on the Internet. Learn more in
+  <a href="https://policies.google.com/technologies/partner-sites" rel="external noopener noreferrer"
+    target="_blank">How Google uses information from sites that use its services</a>.
+</p>
+<p>
+  You can opt out of personalized advertising with the choices above, or for all sites through Google&rsquo;s
+  <a href="https://adssettings.google.com/" rel="external noopener noreferrer" target="_blank">Ad
+  Settings</a>. You can opt out of other vendors&rsquo; use of cookies for personalized advertising at
+  <a href="https://www.aboutads.info/choices/" rel="external noopener noreferrer"
+    target="_blank">aboutads.info</a>.
 </p>
 
+<h2>Privacy Signals We Honor</h2>
 <p>
-  <strong>For US Visitors:</strong> In compliance with the California Consumer
-  Privacy Act (CCPA), you have the right to opt out of the sale of your personal
-  information. While we do not sell personal information, you can manage your ad
-  preferences through Google’s
-  <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer"
-    >Ad Settings</a
-  >.
+  If your browser sends a Global Privacy Control signal (or the older Do Not Track signal), we treat it as a
+  request not to sell or share your information: personalized ads stay off on that device, whatever else you
+  choose. We do not sell personal information.
+</p>
+<p>
+  <strong>Visitors in Europe, the UK, and Switzerland:</strong> no analytics or advertising code loads until you
+  choose to allow it, and any ads you allow are not personalized.
 </p>
 
-<h2>Managing Cookies</h2>
+<h2>Managing Cookies in Your Browser</h2>
 <p>
-  You can manage or disable cookies through your browser settings. Note that
-  disabling cookies may affect the functionality of this website.
+  You can also block or delete cookies in your browser settings, or use an ad blocker. The site keeps working
+  either way; you may simply see fewer or no ads.
 </p>
 
 <h2>Third-Party Services</h2>
 <p>
-  We may use third-party services, such as Google Analytics, to analyze website
-  traffic and improve user experience. These services may collect and process
-  data in accordance with their own privacy policies.
+  Google (Analytics and AdSense) and Microsoft (Clarity) process data under their own privacy policies. They only
+  receive information from this site in the ways described above.
 </p>
 
 <h2>Your Rights</h2>
@@ -969,7 +995,8 @@ img {
         <div class="footer-col-wrapper">
           <div class="footer-col footer-col-1">
             <a href="/terms-of-service.html">Terms of Service</a><br />
-            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/privacy-policy.html">Privacy Policy</a><br />
+            <button type="button" class="mijug-consent-link" data-consent-action="customize">Cookie &amp; privacy choices</button>
           </div>
           <div class="footer-col footer-col-2">
             <a href="/contact/">Contact Us</a><br />
@@ -995,6 +1022,75 @@ img {
       </div>
     </footer>
 
+    <section id="mijug-consent-banner" class="mijug-consent" aria-labelledby="mijug-consent-title" hidden>
+  <div class="mijug-consent__inner">
+    <h2 id="mijug-consent-title" class="mijug-consent__title">Your privacy choices</h2>
+    <p class="mijug-consent__text">
+      This site uses a few cookies. One simply remembers the choice you make here. The others are optional: they
+      help me see which pages people find useful, and let Google pick ads that match your interests. You will see
+      ads either way &mdash; if you say no, they are chosen by the page you are reading instead of by you.
+      <a href="/privacy-policy.html#cookies">Read the privacy policy</a>.
+    </p>
+    <div class="mijug-consent__actions">
+      <button type="button" class="mijug-consent__btn" data-consent-action="accept">Accept all</button>
+      <button type="button" class="mijug-consent__btn" data-consent-action="reject">Necessary only</button>
+      <button type="button" class="mijug-consent__btn mijug-consent__btn--secondary" data-consent-action="customize">
+        Let me choose
+      </button>
+    </div>
+  </div>
+</section>
+
+<dialog id="mijug-consent-dialog" class="mijug-consent-dialog" aria-labelledby="mijug-consent-dialog-title">
+  <form method="dialog">
+    <h2 id="mijug-consent-dialog-title">Cookie and privacy choices</h2>
+    <p>
+      Choose what you are comfortable with. You can change this any time with the &ldquo;Cookie &amp; privacy
+      choices&rdquo; link at the bottom of every page.
+    </p>
+    <fieldset>
+      <legend>Optional cookies</legend>
+      <div class="mijug-consent-dialog__option">
+        <p class="mijug-consent-dialog__fixed"><strong>Necessary</strong> &mdash; always on</p>
+        <p class="mijug-consent-dialog__desc">One small cookie that remembers the choice you make here. Nothing else.</p>
+      </div>
+      <div class="mijug-consent-dialog__option">
+        <label for="mijug-consent-analytics">
+          <input type="checkbox" id="mijug-consent-analytics" name="analytics"
+            aria-describedby="mijug-consent-analytics-desc" />
+          Site improvement (analytics)
+        </label>
+        <p id="mijug-consent-analytics-desc" class="mijug-consent-dialog__desc">
+          Google Analytics and Microsoft Clarity count visits and show me where a page is confusing. I see totals
+          and patterns, not who you are.
+        </p>
+      </div>
+      <div class="mijug-consent-dialog__option" id="mijug-consent-ads-option">
+        <label for="mijug-consent-ads">
+          <input type="checkbox" id="mijug-consent-ads" name="ads" aria-describedby="mijug-consent-ads-desc" />
+          Personalized ads
+        </label>
+        <p id="mijug-consent-ads-desc" class="mijug-consent-dialog__desc">
+          Lets Google use cookies to choose ads based on your interests and to measure them. If you leave this off,
+          you still see ads, but they are based on the page you are reading.
+        </p>
+      </div>
+      <p id="mijug-consent-gpc-note" class="mijug-consent-dialog__note" hidden>
+        Your browser is sending a &ldquo;do not sell or share my information&rdquo; signal (Global Privacy Control or
+        Do Not Track). I honor it, so personalized ads stay off on this device.
+      </p>
+    </fieldset>
+    <div class="mijug-consent-dialog__actions">
+      <button type="submit" value="save" class="mijug-consent__btn">Save my choices</button>
+      <button type="submit" value="cancel" class="mijug-consent__btn mijug-consent__btn--secondary">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<p id="mijug-consent-status" class="sr-only" role="status" aria-live="polite"></p>
+
+
+
     <!-- Bot detection for no-ads layout -->
     <script type="module" nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
       try {
@@ -1011,9 +1107,6 @@ img {
 
     
 
-    <!-- Cookie consent system -->
-    <!-- %  include google-adsense.html % -->
-    <!-- % include cookie-consent.html % -->}
     <!-- Accessibility enhancement for Rouge code blocks: preserve code semantics with accessible labels -->
     <script nonce="f84a0d81ee503511d68780fdc18e7a72c926338ec2f978680c1b725b93a44681">
       // Code block accessibility - ES2020 optimized
