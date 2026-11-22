@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
+
+  <!--
+    script-src follows Google's AdSense-supported "strict CSP" shape (support.google.com/adsense/answer/16283098):
+    modern browsers enforce 'nonce' + 'strict-dynamic' (host allowlists are ignored, dynamically injected
+    ad/analytics scripts inherit trust); older browsers fall back to 'unsafe-inline' + https:/http:.
+    Every executable script element in CSP-bearing layouts must therefore carry the site.cache_buster_js nonce.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' 'nonce-b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162' 'strict-dynamic' https: http:;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https:;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.g.doubleclick.net https://*.adtrafficquality.google https://*.google.com https://*.clarity.ms https://c.bing.com ;
+      frame-src 'self' https://www.google.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+  
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+  
+  
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+  <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+  
+  
+  <link rel="preconnect" href="https://www.clarity.ms" crossorigin="anonymous" />
+  
+  
+
+  <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    /* Must stack above nav list items, whose `contain: content` creates later-painting stacking contexts */
+    z-index: 1;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+  <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+  <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0052a3;
+  --nav-bg: #ffffff;
+  --border-color: #d1d5db;
+  --header-color: #1f2937;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Consent banner: fixed from first paint so it never shifts layout before main.css arrives (full styles in main.scss) */
+.mijug-consent {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #fff;
+  border-top: 4px solid #1a3660;
+}
+
+.mijug-consent[hidden] {
+  display: none;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+  <title>How Many Guests Can the Little Box Host?</title>
+  
+  <meta name="version" content="Nov 22, 2026" />
+  
+
+  
+
+  <meta name="google-site-verification" content="googlece83719b3f856e56" />
+  <meta name="cache-version" content="20261122" />
+
+  <link rel="stylesheet" href="/assets/main.css?v=40dc499214a9742935dcce70041840c679a03e3b04a9051a36dd7839d747f890" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2022 baseline)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES13 feature detection (syntax-only check) -->
+  
+  
+  
+  
+  <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162" type="module">
+    (async () => {
+
+      var supportsEcmascript13 = false;
+      const html = document.documentElement;
+      const candidatePaths = ['/assets/js/mijug-es13.min.js', '/assets/js/mijug-es13-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES13Features === 'function') {
+            try {
+              mod.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else if (typeof window.testES13Features === 'function') {
+            try {
+              window.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else {
+            console.debug('ES13 test module loaded but `testES13Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES13 test module not present or failed to import:', path, err);
+        }
+      }
+      if (!supportsEcmascript13) {
+        html.classList.add('no-ES2022');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2022 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+  <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162" type="module" src="/assets/js/mijug-es13.min.js?v=b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162" defer crossorigin="anonymous"></script>
+
+  <link rel="alternate" type="application/rss+xml" title="My Info Just Under Glass"
+    href="/feed.xml" />
+  
+  
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20261122" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20261122" />
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  
+
+  <meta name="description" content="Our little Raspberry Pi doorman handles a household with ease. Here is what would happen at a barbecue, a wedding reception, a stadium, and an airport, and w..." />
+<meta property="og:title" content="How Many Guests Can the Little Box Host?" />
+<meta property="og:description" content="Our little Raspberry Pi doorman handles a household with ease. Here is what would happen at a barbecue, a wedding reception, a stadium, and an airport, and w..." />
+<meta property="og:url" content="https://www.mijug.net/2026/11/22/how-many-guests-can-the-little-box-host/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="article" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><meta property="article:author" content="https://www.linkedin.com/in/bobkranson" /><link rel="canonical" href="https://www.mijug.net/2026/11/22/how-many-guests-can-the-little-box-host/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.mijug.net/#business",
+    "name": "Kranson Enterprises",
+    "alternateName": "My Info Just Under Glass",
+    "url": "https://www.mijug.net/",
+    "logo": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "image": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "telephone": "586-237-9857",
+    "email": "devopsbob@outlook.com",
+    "description": "MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by Kranson Enterprises for sharing knowledge and connecting communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Bob Kranson",
+      "jobTitle": "Vice President of Engineering"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "MI",
+      "addressCountry": "US"
+    },
+    "areaServed": [{ "@type": "AdministrativeArea", "name": "Southeast Michigan" },{ "@type": "AdministrativeArea", "name": "Ohio" },{ "@type": "AdministrativeArea", "name": "Florida" }]
+  }
+</script>
+
+
+    <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20261122";
+</script>
+
+    
+    <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162">
+      window.MIJUG_DISABLE_PRINT = true;
+      // Disable context menu without inline event handler (CSP compliant)
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+    </script>
+    
+
+    <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162" src="/assets/js/mijug-consent.min.js?v=b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162"
+  data-policy-version="1"
+  data-max-age-days="180" data-ga-id="G-W1M1N0DCD4" data-clarity-id="xf9fa0avlg" data-adsense-client="ca-pub-3383458876439157"></script>
+
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+    <noscript>
+      <div class="legacy-browser-notice" role="alert">
+        <strong>No Commerce Available</strong>
+        <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+      </div>
+    </noscript>
+
+    <div class="wrapper">
+      <a class="site-title" rel="home" href="/">
+        
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20261122" alt="My Info Just Under Glass" width="50" height="50">
+         My Info Just Under Glass
+      </a>
+
+      <!-- Mobile navigation toggle button -->
+      <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+        
+        <img src="/assets/logo-mijug-48x48.png?v=20261122" alt="logo" width="24" height="24" aria-hidden="true">
+         Menu
+      </button>
+
+      <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+      <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
+
+        <!-- Full navigation for modern browsers -->
+        <div class="modern-nav-content">
+          <button class="nav-close" type="button" aria-label="Close navigation menu">
+            <span aria-hidden="true">×</span>
+          </button>
+          <ul role="list" id="nav-items-static">
+            <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </ul>
+          <!-- Dynamic navigation items load here via JavaScript -->
+          <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+        </div>
+      </nav>
+
+      <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How Many Guests Can the Little Box Host?</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2026-11-22T13:30:00-05:00" itemprop="datePublished">
+        Published Nov 22, 2026
+      </time><span class="post-meta-separator"> • </span>
+      <time class="dt-modified" datetime="2026-11-22T13:32:58-05:00" itemprop="dateModified">
+        Updated Nov 22, 2026
+      </time><span class="post-meta-separator"> • </span>
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-author h-card" itemprop="name">BOBKRANSON</span>
+      </span></p>
+<p class="post-description">Our little Raspberry Pi doorman handles a household with ease. Here is what would happen at a barbecue, a wedding reception, a stadium, and an airport, and why the router and the Wi-Fi matter more than the box.</p>
+<div class="post-tags">
+<a href="/tag/whimsy/" class="tag-link">#whimsy</a><a href="/tag/security/" class="tag-link">#security</a><a href="/tag/performance/" class="tag-link">#performance</a><a href="/tag/lessons-learned/" class="tag-link">#lessons-learned</a>
+</div></header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+<p>Last week I asked our little doorman a silly question: <em>“How big a party could you really handle?”</em></p>
+
+<p>If you missed his introduction, he is <a href="/2026/11/15/the-little-box-that-says-no/">the little box that says no</a>. He’s a Raspberry Pi about the size of a deck of cards. Every time a phone, TV or computer in our house wants to visit a website, it first asks him where that website lives. He looks it up, turns away the ads and trackers, and sends everyone on their way.</p>
+
+<p>He runs our household without breaking a sweat. But a household is a small party, so I spent an evening working out what would happen if the guest list grew. The answer turned out to be more about hallways and coat hooks than about the doorman himself.</p>
+
+<h2 id="first-a-confession-about-his-nap">First, a Confession About His Nap</h2>
+
+<p>In my last post I promised he would take his scheduled nap (a planned restart) on 22 November and again on 29 November. He did not nap on the 22nd.</p>
+
+<p>Before you worry: that was my mistake, not his. His naps are every <em>other</em> Sunday, and the 22nd was an off week. He wrote himself a little note that morning saying exactly that, at ten past five, and went right back to work. The 29th is the real one. I miscounted; the doorman didn’t.</p>
+
+<h2 id="sunday-dinner-10-to-20-guests">Sunday Dinner: 10 to 20 Guests</h2>
+
+<p>This is our house today: a couple dozen phones, tablets, TVs and computers, with ten or fifteen of them chattering at any one time.</p>
+
+<p>How busy is he? In a test, he answered roughly <strong>fourteen hundred questions a second</strong> and never found his limit. Our whole household asks him, on average, about <strong>one question every three seconds.</strong> He could host our Sunday dinner four hundred times over.</p>
+
+<p>At a party this size, the doorman is never the problem. What matters is the porch and the front walk, which is to say the router and the Wi-Fi. More on that in a minute.</p>
+
+<h2 id="the-backyard-barbecue-20-to-50-guests">The Backyard Barbecue: 20 to 50 Guests</h2>
+
+<p>Here’s where it gets interesting. Many modern phones whisper their questions: they use encrypted lookups so nobody can overhear them. To whisper, each phone keeps a private phone line open to the doorman for as long as it’s awake.</p>
+
+<p>Each of those open lines needs a <strong>coat hook</strong> inside the house. Out of the box, the doorman’s back room had ten hooks. With just a handful of whispering phones plus the laptops, our own household sometimes ran out at busy moments. A guest would get a polite but confusing “sorry, network trouble” for no good reason.</p>
+
+<p>So we put up forty hooks. The hiccups stopped completely.</p>
+
+<p>There’s a second lesson from the barbecue, and it comes from our real life. Now and then we switch the doorman’s screening off for a few minutes when setting up a new account. First-time logins and sign-ups often need a window with the blocker turned off. At home that’s harmless: one family, one short window. At a fifty-person barbecue, that same switch would open the gate for <em>everyone</em> just to help one guest. Bigger gatherings need a way to walk one person past the velvet rope without unhooking it for the whole crowd.</p>
+
+<h2 id="the-wedding-reception-50-to-100-guests">The Wedding Reception: 50 to 100 Guests</h2>
+
+<p>The doorman still has plenty of energy at a hundred guests. Even the busiest moments would use only a few percent of what he can do. But a wedding reception has problems a dinner party doesn’t.</p>
+
+<ul>
+  <li>
+<strong>The coat check doesn’t match the cloakroom.</strong> The front desk hands out sixty coat-check tags, but the back room has forty hooks. Coat number forty-one gets turned away in the hallway, after it was already accepted at the door. That’s the one mismatch I found in the whole house, and it would only show up at a very large party.</li>
+  <li>
+<strong>One greeter is a risk.</strong> If the only greeter steps away, nobody gets in. A hundred guests deserve a second greeter: a second little box standing by.</li>
+  <li>
+<strong>The guest book gets heavy.</strong> The doorman keeps three months of notes about who asked for what, on purpose, so we can look back if something strange ever happens. With a hundred guests, those notes belong on a sturdier book than a small memory card.</li>
+  <li>
+<strong>Beware the table captain.</strong> Sometimes another router collects everyone’s questions and brings them to the doorman all at once, like a waiter taking orders for a whole table. The doorman then thinks <em>one</em> guest has ordered fifty dinners, and his politeness rule (“no more than so many requests a minute per guest”) cuts the whole table off.</li>
+</ul>
+
+<h2 id="the-stadium-or-the-airport-100-to-100000-guests">The Stadium or the Airport: 100 to 100,000 Guests</h2>
+
+<p>Nobody hires one usher for a stadium, and nobody runs an airport with one ticket agent. To see why, follow a single phone through the front door.</p>
+
+<h3 id="first-stop-the-ticket-window">First Stop: The Ticket Window</h3>
+
+<p>A phone that walks onto a network doesn’t start with the doorman. First it stops at the ticket window and asks for an address, which is its seat number for the visit. In most homes the router runs the ticket window. In ours, the doorman handles that job too.</p>
+
+<p>Our ticket window has 253 seats, and each one stays reserved for two days. That’s generous for a household and hopeless for a stadium. Ticket number 254 hears “sold out” while most of the crowd is still in the parking lot.</p>
+
+<p>The airport is sneakier. Travelers stay an hour, but our window holds every seat for two days. By breakfast it’s sold out, and half the “reserved” seats belong to people who are already in Denver. Some phones make it worse by changing disguises now and then to protect their privacy. A phone wearing a new fake mustache looks like a brand-new guest and gets a second seat.</p>
+
+<h3 id="then-come-the-questions">Then Come the Questions</h3>
+
+<p>Once a phone has its seat, it turns to the doorman and starts asking where things live: the weather, the email, the photo album, the scores. He never hears what anyone says once they get there, only the name of the place they asked about. On a big day, though, the names alone tell quite a story. Here’s what I imagine his notepad would look like.</p>
+
+<p><strong>At the ballpark, Sunday afternoon:</strong></p>
+
+<ul>
+  <li>
+<strong>First pitch.</strong> Forty thousand phones ask where the photo-sharing site lives, all in the same ten seconds.</li>
+  <li>
+<strong>Section 214.</strong> A fellow who called in sick this morning asks where his office email lives, then the weather, then the ballpark’s own website, to check the score of the game he’s sitting at.</li>
+  <li>
+<strong>The fourth-inning restroom line.</strong> Fifteen hundred phones, every one of them suddenly very interested in the news.</li>
+  <li>
+<strong>The kiss cam</strong> lands on a couple who look very surprised to be seen together. Eleven thousand phones ask where the video-sharing site lives. The couple’s two phones ask where the airline lives. Somewhere far away, I’d guess.</li>
+  <li>
+<strong>The seventh-inning stretch.</strong> A surprising number of phones ask where the dating apps live. One of them belongs to the grandmother in Row 12. Good for her.</li>
+  <li>
+<strong>Row 30</strong> asks where the bank lives, then the sports betting app, then the bank again, a little more quietly.</li>
+</ul>
+
+<p><strong>At the airport, overnight:</strong></p>
+
+<ul>
+  <li>
+<strong>Gate B7, flight delayed.</strong> Two hundred phones ask where the airline app lives, over and over, as if asking more often will bring the plane sooner.</li>
+  <li>
+<strong>2 a.m., in a certain desert city famous for quick weddings.</strong> Forty phones in a row ask where the all-night wedding chapel lives. By 9 a.m., four of them are asking where the annulment lawyer lives.</li>
+  <li>
+<strong>The bachelor party, flying home.</strong> One phone asks where the tattoo-removal clinic lives. Another asks where the bail bondsman lives. Nobody seems to know where the groom is.</li>
+  <li>
+<strong>The security line.</strong> Eighty phones ask where the travel-rules page lives, each owner clutching a jar of homemade jam and hoping it counts as a solid.</li>
+</ul>
+
+<p>Mixed in with all of that are the questions nobody typed: ad companies and trackers checking in. In his first hours on the job at our house, about one knock in three was one of those, and he turned every one away. At a stadium, that’s an awful lot of polite no’s.</p>
+
+<p>It’s also why a stadium’s guest book needs a lock of its own. The doorman doesn’t eavesdrop, but his notepad does know who went looking for the annulment lawyer.</p>
+
+<h3 id="why-one-doorman-isnt-enough">Why One Doorman Isn’t Enough</h3>
+
+<p>By my rough estimate, a hundred thousand phones at their busiest moment could ask about sixty thousand questions a second. Think of the whole crowd posting the same home run, or every phone reconnecting at once after the lights flicker. Our doorman answered fourteen hundred a second without finding his limit, so on speed alone a few dozen doormen could keep up.</p>
+
+<p>But speed is the easy part. Past a hundred or so devices, the answer is not a bigger doorman but a different building: separate sections for staff, guests and gadgets, a ticket window for each section with seats that free up in hours instead of days, two or more doormen at every gate, and the guest book kept somewhere central, under lock and key. The doorman’s tricks still work; there are just a lot more doors.</p>
+
+<h2 id="the-rule-of-the-hallway">The Rule of the Hallway</h2>
+
+<p>If there’s one lesson in all of this, it’s what I’ve started calling the rule of the hallway:</p>
+
+<p><strong>Every room down the hall should hold at least as many guests as the room before it.</strong></p>
+
+<p>You’ve seen this go wrong at a restaurant on Mother’s Day. The hostess says “right this way” to sixty parties, but the dining room has forty tables. So the manager opens the overflow room in back, the one with the folding chairs and last year’s Christmas garland, and it’s set for ten. Party fifty-one ends up standing in the hallway between the kitchen door and the restrooms, holding menus, while the waiters squeeze past with hot gravy. Meanwhile the fellow who only came in to pick up a carry-out pie can’t even reach the counter.</p>
+
+<p>A government office can pull off the same trick. Picture the Secretary of State office (the DMV, for our friends outside Michigan) on the Friday before a holiday weekend. The guard at security waves everyone through, the ticket machine hands out number 112, and the waiting room has forty chairs. Numbers 41 through 112 fill the hallway, the stairs and the space around the water fountain. Now even the security line can’t move, because there’s nowhere to put the people it has already checked. Everyone would have been better off waiting outside, where at least the coffee shop next door could sell them a muffin.</p>
+
+<p>Our doorman’s wedding-reception mismatch, sixty coat-check tags at the front desk and forty hooks in the back, is the same mistake in miniature. The fix is the same too: make every room down the hall at least as big as the one before it, and when the house is full, say so at the door. A polite “one moment, please” on the porch is much kinder than a pile-up in the middle of the house.</p>
+
+<h2 id="a-dollhouse-is-a-real-house-only-smaller">A Dollhouse Is a Real House, Only Smaller</h2>
+
+<p>Here’s what surprised me most. Our little box is a scale model of the big, expensive equipment that runs office buildings and internet companies.</p>
+
+<p>A dollhouse has the same rooms, doors and hallways as a real house, only smaller. The big gear has the same coat hooks, the same guest book and the same front desk as our doorman. It just has far more of each, and usually <strong>two of everything</strong>: two greeters, two power cords, two paths to the street.</p>
+
+<p>His smaller cousins, the even tinier computers with less memory and sometimes no wired plug at all, can host Sunday dinner just fine. The one thing I’d avoid is a doorman who only has Wi-Fi. That’s like asking him to stand out in the middle of the crowd instead of at the door.</p>
+
+<h2 id="when-the-power-company-swaps-the-transformer">When the Power Company Swaps the Transformer</h2>
+
+<p>You may have seen stories over the years about internet routers that stopped working, or kept restarting, after an automatic update. Internet companies send updates to the routers in our homes, and the router often restarts to finish the job, sometimes in the middle of the day with no warning.</p>
+
+<p>That’s like the power company swapping the transformer on your street while you’re hosting. In our house the Wi-Fi lives inside the router, so the <strong>porch light goes out.</strong> The doorman is still standing at the door, but the guests out on the Wi-Fi lawn can’t find the house. The guests already indoors, on wired connections, still get answers for familiar places, because he remembers recent addresses.</p>
+
+<p>Then the lights come back on, and <strong>everyone rushes the door at once.</strong> Every phone and TV reconnects in the same minute. That rush is the busiest moment of the doorman’s day, and the bigger the party, the bigger the rush. He has handled every one in our house so far without a single stumble.</p>
+
+<p>One more thing I learned: when the internet feels “slow,” the doorman is usually standing there idle. On a crowded Wi-Fi lawn a question can get lost on the way, and some computers wait five full seconds before asking again.</p>
+
+<h2 id="new-locks-no-extra-effort">New Locks, No Extra Effort</h2>
+
+<p>This month’s update also gave him tougher locks on a few doors he never uses. I wondered whether all that armor would slow him down. It didn’t. His memory use stayed right where it was, a little over a quarter of a gigabyte out of eight, and he’s still busy less than one-tenth of one percent of the time.</p>
+
+<h2 id="what-this-means-for-you">What This Means for You</h2>
+
+<ul>
+  <li>
+<strong>At home, a little doorman is plenty.</strong> Our whole household uses a tiny sliver of what he can do.</li>
+  <li>
+<strong>Treat the router and the Wi-Fi as the front porch.</strong> If the porch light goes out, the best doorman in the world can’t help the guests outside.</li>
+  <li>
+<strong>For a church, club or small office</strong>, plan on a second doorman, a sturdier guest book, and a way to let one guest past the rope without opening the gate for everyone.</li>
+</ul>
+
+<p>If you’re the curious type, I wrote up the full technical version, with every coat hook counted, as part of the open-source project on GitHub: <a href="https://github.com/Kranson-Enterprises/ke-net-screen/blob/main/SCALING.md" rel="external noopener noreferrer" target="_blank">scaling the ke-net-screen appliance</a>.</p>
+
+<p>As for our doorman, he has a nap scheduled for Sunday the 29th. This time I counted twice.</p>
+</div>
+<div class="post-categories">
+    <strong>Categories:</strong> <a href="/category/history/" class="category-link">history</a>
+</div>
+<footer class="post-footer">
+    <div class="post-nav"><div class="prev-post">
+        <a rel="prev" href="/2026/11/15/the-little-box-that-says-no/" class="prev-link"> ← The Little Box That Says No </a>
+      </div></div>
+  </footer>
+
+  <a class="u-url" rel="canonical" href="/2026/11/22/how-many-guests-can-the-little-box-host/" hidden></a>
+</article>
+
+<style>
+  .post-meta-separator {
+    color: #666;
+  }
+
+  .post-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .post-tags {
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    color: #555;
+  }
+
+  .post-categories {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .category-link {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  .category-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+
+  .prev-link,
+  .next-link {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: 500;
+  }
+
+  .prev-link:hover,
+  .next-link:hover {
+    text-decoration: underline;
+  }
+
+  .next-post {
+    text-align: right;
+  }
+</style>
+</div>
+    <div class="customad-container" id="adslot-1" data-ad-slot="12345678" role="region" aria-label="Advertisement"></div>
+  </main>
+
+  <footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <a href="/terms-of-service.html">Terms of Service</a><br>
+          <a href="/privacy-policy.html">Privacy Policy</a><br>
+          <button type="button" class="mijug-consent-link" data-consent-action="customize">Cookie &amp; privacy choices</button>
+        </div>
+        <div class="footer-col footer-col-2">
+          <a href="/contact/">Contact Us</a><br>
+          <a href="tel:586-237-9857">586-237-9857</a><br>
+          <span>Serving Southeast Michigan, Ohio, Florida</span>
+        </div>
+        <div class="footer-col footer-col-3">
+          <p>
+            © 2026
+            <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                subscribe
+            <a href="/feed.xml">via RSS<svg class="svg-icon">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <section id="mijug-consent-banner" class="mijug-consent" aria-labelledby="mijug-consent-title" hidden>
+  <div class="mijug-consent__inner">
+    <h2 id="mijug-consent-title" class="mijug-consent__title">Your privacy choices</h2>
+    <p class="mijug-consent__text">
+      This site uses a few cookies. One simply remembers the choice you make here. The others are optional: they
+      help me see which pages people find useful, and let Google pick ads that match your interests. You will see
+      ads either way — if you say no, they are chosen by the page you are reading instead of by you.
+      <a href="/privacy-policy.html#cookies">Read the privacy policy</a>.
+    </p>
+    <div class="mijug-consent__actions">
+      <button type="button" class="mijug-consent__btn" data-consent-action="accept">Accept all</button>
+      <button type="button" class="mijug-consent__btn" data-consent-action="reject">Necessary only</button>
+      <button type="button" class="mijug-consent__btn mijug-consent__btn--secondary" data-consent-action="customize">
+        Let me choose
+      </button>
+    </div>
+  </div>
+</section>
+
+<dialog id="mijug-consent-dialog" class="mijug-consent-dialog" aria-labelledby="mijug-consent-dialog-title">
+  <form method="dialog">
+    <h2 id="mijug-consent-dialog-title">Cookie and privacy choices</h2>
+    <p>
+      Choose what you are comfortable with. You can change this any time with the “Cookie &amp; privacy
+      choices” link at the bottom of every page.
+    </p>
+    <fieldset>
+      <legend>Optional cookies</legend>
+      <div class="mijug-consent-dialog__option">
+        <p class="mijug-consent-dialog__fixed"><strong>Necessary</strong> — always on</p>
+        <p class="mijug-consent-dialog__desc">One small cookie that remembers the choice you make here. Nothing else.</p>
+      </div>
+      <div class="mijug-consent-dialog__option">
+        <label for="mijug-consent-analytics">
+          <input type="checkbox" id="mijug-consent-analytics" name="analytics" aria-describedby="mijug-consent-analytics-desc">
+          Site improvement (analytics)
+        </label>
+        <p id="mijug-consent-analytics-desc" class="mijug-consent-dialog__desc">
+          Google Analytics and Microsoft Clarity count visits and show me where a page is confusing. I see totals
+          and patterns, not who you are.
+        </p>
+      </div>
+      <div class="mijug-consent-dialog__option" id="mijug-consent-ads-option">
+        <label for="mijug-consent-ads">
+          <input type="checkbox" id="mijug-consent-ads" name="ads" aria-describedby="mijug-consent-ads-desc">
+          Personalized ads
+        </label>
+        <p id="mijug-consent-ads-desc" class="mijug-consent-dialog__desc">
+          Lets Google use cookies to choose ads based on your interests and to measure them. If you leave this off,
+          you still see ads, but they are based on the page you are reading.
+        </p>
+      </div>
+      <p id="mijug-consent-gpc-note" class="mijug-consent-dialog__note" hidden>
+        Your browser is sending a “do not sell or share my information” signal (Global Privacy Control or
+        Do Not Track). I honor it, so personalized ads stay off on this device.
+      </p>
+    </fieldset>
+    <div class="mijug-consent-dialog__actions">
+      <button type="submit" value="save" class="mijug-consent__btn">Save my choices</button>
+      <button type="submit" value="cancel" class="mijug-consent__btn mijug-consent__btn--secondary">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<p id="mijug-consent-status" class="sr-only" role="status" aria-live="polite"></p>
+
+
+  <!-- Accessibility enhancement for Rouge code blocks: preserve code semantics with accessible labels -->
+  <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162">
+    // Code block accessibility - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const enhanceCodeBlocks = () => {
+        try {
+          // Use :not() to skip already enhanced blocks (performance)
+          const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([data-a11y-enhanced])');
+          if (blocks.length === 0) return;
+
+          blocks.forEach((el) => {
+            const code = el.querySelector('pre code');
+            const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+
+            // Extract language using optional chaining and nullish coalescing (ES2020)
+            const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+            const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+            // Preserve semantic code/pre structure and add a descriptive label only
+            el.setAttribute('aria-label', label);
+            el.setAttribute('data-a11y-enhanced', 'true');
+          });
+        } catch (e) {
+          console.warn('EnhanceCodeBlocks error', e);
+        }
+      };
+
+      // Modern API check (ES2020)
+      document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+        : enhanceCodeBlocks();
+    })();
+  </script>
+
+  <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162">
+    // Navigation toggle functionality - ES2020 optimized
+    (() => {
+      'use strict';
+
+      // Cache DOM elements (ES2020 const, destructuring)
+      const elements = {
+        toggle: document.querySelector('.nav-toggle'),
+        close: document.querySelector('.nav-close'),
+        nav: document.getElementById('primary-navigation'),
+        status: document.getElementById('menu-status'),
+        body: document.body
+      };
+
+      // Early return if required elements missing (optional chaining ES2020)
+      if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+        return;
+      }
+
+      // Initialize navigation as overlay
+      elements.nav.classList.add('nav-overlay');
+
+      // Toggle navigation with modern API (arrow function ES2020)
+      const toggleNavigation = () => {
+        const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+        const action = isExpanded ? 'remove' : 'add';
+
+        // Batch DOM updates for performance
+        elements.nav.classList[action]('nav-visible');
+        elements.body.classList[action]('nav-open');
+        elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+        elements.nav.setAttribute('aria-hidden', String(isExpanded));
+        elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+      };
+
+      // Event delegation with passive listeners for scroll performance
+      const handleClick = (e) => {
+        // Check if toggle button or close button clicked
+        if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
+          e.preventDefault();
+          toggleNavigation();
+          return;
+        }
+
+        // Close on click outside (only when open)
+        if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+          if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+            toggleNavigation();
+          }
+        }
+      };
+
+      // Keyboard navigation (ES2020 nullish coalescing ??)
+      const handleKeydown = (e) => {
+        if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+          toggleNavigation();
+          elements.toggle.focus();
+        }
+      };
+
+      // Single event listener with delegation (better performance)
+      document.addEventListener('click', handleClick, { passive: false });
+      document.addEventListener('keydown', handleKeydown, { passive: true });
+    })();
+  </script>
+
+  <!-- Navigation data for lazy-loading (optimization #7) -->
+  <script id="nav-data-dynamic" type="application/json">
+    {
+      "sections": [
+        
+        {
+          "key": "main",
+          "title": "Main",
+          "icon": "🏠",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "posts",
+          "title": "Posts",
+          "icon": "📝",
+          "sortBy": "date"
+        },
+        
+        {
+          "key": "docs",
+          "title": "Documentation",
+          "icon": "📚",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "categories",
+          "title": "Categories",
+          "icon": "📂",
+          "sortBy": "name"
+        },
+        
+        {
+          "key": "tags",
+          "title": "Tags",
+          "icon": "🏷️",
+          "sortBy": "name"
+        }
+        
+      ],
+      "items": [
+        
+        
+        
+        {
+          "sectionKey": "main",
+          "title": "Blog",
+          "permalink": "/blog/",
+          "ariaLabel": "Navigate to Blog",
+          "current": false,
+          "navOrder": 1
+        },
+        
+        {
+          "sectionKey": "main",
+          "title": "About",
+          "permalink": "/about/",
+          "ariaLabel": "Navigate to About",
+          "current": false,
+          "navOrder": 2
+        },
+        
+        {
+          "sectionKey": "main",
+          "title": "Services",
+          "permalink": "/services/",
+          "ariaLabel": "Navigate to Services",
+          "current": false,
+          "navOrder": 3
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Tags and Categories System Guide",
+          "permalink": "/docs/tags-and-categories-guide/",
+          "ariaLabel": "Navigate to Tags and Categories System Guide",
+          "current": false,
+          "navOrder": 17
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Cache Management Strategies",
+          "permalink": "/docs/cache-management/",
+          "ariaLabel": "Navigate to Cache Management Strategies",
+          "current": false,
+          "navOrder": 28
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "The rel Attribute in HTML Links: A Comprehensive Guide",
+          "permalink": "/docs/rel-attribute-guide/",
+          "ariaLabel": "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+          "current": false,
+          "navOrder": 46
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Chips and Windows - 18 Years of Evolution",
+          "permalink": "/2026/04/24/chips-and-windows/",
+          "ariaLabel": "Navigate to Chips and Windows - 18 Years of Evolution",
+          "current": false,
+          "navOrder": 61
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Computer Backup Checklist",
+          "permalink": "/2025/12/15/computer-backup-checklist/",
+          "ariaLabel": "Navigate to Computer Backup Checklist",
+          "current": false,
+          "navOrder": 62
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Welcome to MIJUG.NET!",
+          "permalink": "/2025/07/02/welcome-to-mijug-dot-net/",
+          "ariaLabel": "Navigate to Welcome to MIJUG.NET!",
+          "current": false,
+          "navOrder": 81
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Reviving the Role of Computer Operators",
+          "permalink": "/2026/05/07/reviving-the-role-of-computer-operators/",
+          "ariaLabel": "Navigate to Reviving the Role of Computer Operators",
+          "current": false,
+          "navOrder": 83
+        }
+        
+      ]
+    }
+  </script>
+
+  <!-- Lazy-load dynamic navigation items (optimization #7) -->
+  <script nonce="b55d9c19a468bd7ded344e0e32988831033186b6a8d61ebd85bc51bd5577c162">
+    // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
+    (() => {
+      'use strict';
+
+      // Load remaining navigation items on first interaction (optimization #7)
+      const loadDynamicNav = () => {
+        const staticList = document.getElementById('nav-items-static');
+        const dynamicList = document.getElementById('nav-items-dynamic');
+
+        if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+        // All navigation items embedded as data (generated at build time)
+        const navDataEl = document.getElementById('nav-data-dynamic');
+        const navPayload = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
+
+        // Backward-compatible: support both legacy array and section-aware object payloads
+        const sections = Array.isArray(navPayload?.sections) ? navPayload.sections : [];
+        const allItems = Array.isArray(navPayload)
+          ? navPayload
+          : (Array.isArray(navPayload?.items) ? navPayload.items : []);
+
+        const sectionOrder = new Map(sections.map((section, index) => [section.key, index]));
+        const sectionTitles = new Map(sections.map((section) => [section.key, section.title]));
+        const sectionIcons = new Map(sections.map((section) => [section.key, section.icon]));
+        const sortedItems = [...allItems].sort((a, b) => {
+          const sectionA = sectionOrder.get(a.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          const sectionB = sectionOrder.get(b.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          if (sectionA !== sectionB) return sectionA - sectionB;
+
+          const navOrderA = Number(a.navOrder ?? Number.MAX_SAFE_INTEGER);
+          const navOrderB = Number(b.navOrder ?? Number.MAX_SAFE_INTEGER);
+          if (navOrderA !== navOrderB) return navOrderA - navOrderB;
+
+          return String(a.title ?? '').localeCompare(String(b.title ?? ''));
+        });
+
+        let lastSectionKey = null;
+        sortedItems.forEach((item) => {
+          if (item.sectionKey !== lastSectionKey) {
+            if (lastSectionKey !== null) {
+              const separator = document.createElement('li');
+              separator.className = 'nav-section-separator';
+              separator.setAttribute('role', 'separator');
+              separator.setAttribute('aria-hidden', 'true');
+              separator.style.borderTop = '1px solid rgba(255, 255, 255, 0.28)';
+              separator.style.margin = '0.5rem 0';
+              separator.style.listStyle = 'none';
+              separator.style.height = '0';
+              dynamicList.appendChild(separator);
+            }
+
+            const heading = document.createElement('li');
+            heading.className = 'nav-section-heading';
+
+            const headingText = document.createElement('h3');
+            headingText.style.fontSize = '0.78rem';
+            headingText.style.opacity = '0.85';
+            headingText.style.padding = '0.25rem 0';
+            headingText.style.textTransform = 'uppercase';
+            headingText.style.letterSpacing = '0.05em';
+            headingText.style.margin = '0';
+            headingText.style.fontWeight = '600';
+
+            const sectionTitle = sectionTitles.get(item.sectionKey) ?? String(item.sectionKey ?? '').toUpperCase();
+            const sectionIcon = sectionIcons.get(item.sectionKey);
+            headingText.textContent = sectionIcon ? `${sectionIcon} ${sectionTitle}` : sectionTitle;
+            heading.appendChild(headingText);
+            dynamicList.appendChild(heading);
+          }
+
+          const li = document.createElement('li');
+          li.setAttribute('role', 'listitem');
+          const a = document.createElement('a');
+          a.href = item.permalink;
+          a.setAttribute('aria-label', item.ariaLabel);
+          if (item.current) {
+            a.className = 'active';
+            a.setAttribute('aria-current', 'page');
+          }
+          a.textContent = item.title;
+          li.appendChild(a);
+          dynamicList.appendChild(li);
+          lastSectionKey = item.sectionKey;
+        });
+
+        // Show dynamic list
+        dynamicList.style.display = '';
+      };
+
+      // Load on first interaction with navigation toggle (optimization #7)
+      const toggleBtn = document.querySelector('.nav-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+      }
+
+      // Also load on requestIdleCallback if available (optimization #7)
+      if (window.requestIdleCallback) {
+        requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+      } else {
+        setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
