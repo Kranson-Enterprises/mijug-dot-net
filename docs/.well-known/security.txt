@@ -3,6 +3,6 @@
 # sensitive personal data in the first message.
 Contact: mailto:devopsbob@outlook.com
 Contact: https://www.mijug.net/contact/
-Expires: 2027-11-17T13:36:00-05:00
+Expires: 2027-11-20T15:59:06-05:00
 Preferred-Languages: en
 Canonical: https://www.mijug.net/.well-known/security.txt
