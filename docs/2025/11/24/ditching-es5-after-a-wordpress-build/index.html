@@ -559,7 +559,7 @@ img {
 
 
   
-  <title>Moving to ES2020 (ES11) for Better Security | MIJUG.net</title>
+  <title>Moving to ES2020 (ES11) for Sturdier Websites | MIJUG.net</title>
   
   <meta name="version" content="Nov 25, 2025" />
   
@@ -656,7 +656,7 @@ img {
   
 
   <meta name="description" content="A WordPress project convinced me to stop supporting very old JavaScript. Here&#39;s why ES2020 is a safer minimum, explained with locks, seatbelts, and table saws." />
-<meta property="og:title" content="Moving to ES2020 (ES11) for Better Security" />
+<meta property="og:title" content="Moving to ES2020 (ES11) for Sturdier Websites" />
 <meta property="og:description" content="A WordPress project convinced me to stop supporting very old JavaScript. Here&#39;s why ES2020 is a safer minimum, explained with locks, seatbelts, and table saws." />
 <meta property="og:url" content="https://www.mijug.net/2025/11/24/ditching-es5-after-a-wordpress-build/" />
 <meta property="og:site_name" content="My Info Just Under Glass" />
@@ -852,12 +852,12 @@ img {
     <div class="wrapper">
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Moving to ES2020 (ES11) for Better Security</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Moving to ES2020 (ES11) for Sturdier Websites</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="2025-11-24T19:01:03-05:00" itemprop="datePublished">
         Published Nov 24, 2025
       </time><span class="post-meta-separator"> • </span>
-      <time class="dt-modified" datetime="2026-11-25T16:45:37-05:00" itemprop="dateModified">
+      <time class="dt-modified" datetime="2026-11-25T17:22:25-05:00" itemprop="dateModified">
         Updated Nov 25, 2026
       </time><span class="post-meta-separator"> • </span>
       <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="p-author h-card u-url" itemprop="url" rel="author external noopener noreferrer" target="_blank" href="https://github.com/devopsbob"><span itemprop="name">Bob Kranson</span><span class="visually-hidden">, on GitHub, opens in a new tab</span></a><link itemprop="sameAs" href="https://github.com/devopsbob">
@@ -974,7 +974,7 @@ img {
   </thead>
   <tbody>
     <tr>
-      <td>iPhone 12+ / iOS 14+</td>
+      <td>iPhone 6s and later / iOS 14+</td>
       <td>2020</td>
       <td>Optional chaining, nullish coalescing</td>
     </tr>
@@ -1006,12 +1006,15 @@ img {
 <p><strong>Browser Coverage in 2025:</strong></p>
 
 <ul>
-  <li>Devices from 2020-2025 (5 years): <strong>95%+ of web users</strong> have ES2020 support</li>
+  <li>Devices from 2020-2025 (5 years): Full ES2020 support, and they make up <strong>the vast majority of visitors’ browsers</strong>
+</li>
   <li>Devices from 2017-2019 (3 years): May need polyfills for some ES2020 features</li>
-  <li>Devices older than 2017: Represent less than 2% of users and have known security limitations</li>
+  <li>Devices older than 2017: A small, shrinking share of visitors, with known security limitations</li>
 </ul>
 
-<p><strong>Summary:</strong> By requiring ES2020, you get simpler, sturdier code for 95%+ of your users while excluding only very old, potentially insecure devices.</p>
+<p>For current figures on any individual feature, caniuse.com shows how many of the browsers people actually use support it.</p>
+
+<p><strong>Summary:</strong> By requiring ES2020, you get simpler, sturdier code for the vast majority of your visitors while excluding only very old, potentially insecure devices.</p>
 
 <hr>
 
@@ -1090,7 +1093,7 @@ img {
   <li>
 <strong>BigInt</strong> — Keeps very large whole numbers exact. Ordinary JavaScript numbers don’t “overflow” the way some languages’ numbers do; above 2^53 − 1 (<code class="language-plaintext highlighter-rouge">Number.MAX_SAFE_INTEGER</code>, about 9 quadrillion) they quietly lose precision, so a huge database ID, a big total counted in cents, or a cryptography value can come out slightly wrong. BigInt stores whole numbers of any size exactly.</li>
   <li>
-<strong>Promise.allSettled()</strong> — Better error handling for multiple operations</li>
+<strong>Promise.allSettled()</strong> — Waits for every operation and reports each result, even when some fail</li>
   <li>
 <strong>Dynamic import</strong> — Code splitting loads code only when a page needs it, so pages start faster</li>
   <li>
@@ -1199,15 +1202,11 @@ Requiring ES2020 is like requiring modern seatbelts (3-point with airbags) inste
 
 <ul>
   <li>WordPress first launched in 2003.</li>
+  <li>Over the years, WordPress dropped old browsers in steps: version 3.2 dropped Internet Explorer 6, 4.4 dropped IE 7, and 4.8 dropped IE 8 through 10.</li>
   <li>On December 6, 2018, WordPress 5.0 introduced the block editor (Gutenberg), built with modern JavaScript.</li>
   <li>In July 2021, WordPress 5.8 dropped support for Internet Explorer 11, and in January 2022, WordPress 5.9 introduced block themes and full site editing.</li>
-  <li>As of 2025, WordPress 6.5+ fully supports ES2020 (ES11) in block themes and modern plugins.
-    <ul>
-      <li>WordPress supported ES5 JavaScript since around version 2.8 (2009), which enabled compatibility with older browsers and classic themes for many years.</li>
-      <li>
+  <li>
 <strong>Recommendation for 2025:</strong> New WordPress sites should target ES2020 as the minimum to take advantage of its built-in safety features.</li>
-    </ul>
-  </li>
 </ul>
 
 <h2 id="block-themes-and-the-gutenberg-project-design-objectives">Block themes and the Gutenberg project: design objectives</h2>
@@ -1289,7 +1288,7 @@ Requiring ES2020 is like requiring modern seatbelts (3-point with airbags) inste
   <li>
 <strong>Target ES2020 (ES11) as your minimum</strong> — Use optional chaining (<code class="language-plaintext highlighter-rouge">?.</code>) and nullish coalescing (<code class="language-plaintext highlighter-rouge">??</code>) to prevent common crash bugs.</li>
   <li>
-<strong>Use modern web tools</strong> (ES2020 modules, block themes) for new projects — they have security features built in.</li>
+<strong>Use modern web tools</strong> (JavaScript modules, block themes) for new projects. JavaScript modules date from ES2015: each module file gets its own scope and runs in strict mode automatically, which catches some careless mistakes.</li>
   <li>
 <strong>Exchange content as Markdown documents</strong> — they’re easier to move into target pages and reduce formatting drift.</li>
   <li>
@@ -1297,7 +1296,7 @@ Requiring ES2020 is like requiring modern seatbelts (3-point with airbags) inste
   <li>
 <strong>Keep classic themes for legacy sites only</strong> — but update the JavaScript to ES2020 where possible.</li>
   <li>
-<strong>If you must support very old browsers (pre-2020)</strong>, create a basic fallback version with reduced functionality—don’t compromise security for 5% of users.</li>
+<strong>If you must support very old browsers (pre-2020)</strong>, create a basic fallback version with reduced functionality—don’t compromise security for a small share of visitors.</li>
   <li>
 <strong>Use browser analytics</strong> to understand your actual audience before making support decisions.</li>
 </ol>
@@ -1309,7 +1308,7 @@ Requiring ES2020 is like requiring modern seatbelts (3-point with airbags) inste
 </li>
   <li>Always use nullish coalescing for default values: <code class="language-plaintext highlighter-rouge">count ?? 0</code>
 </li>
-  <li>Use <code class="language-plaintext highlighter-rouge">Promise.allSettled()</code> instead of <code class="language-plaintext highlighter-rouge">Promise.all()</code> for better error handling</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">Promise.allSettled()</code> when you want every result even if some fail; <code class="language-plaintext highlighter-rouge">Promise.all()</code> stops at the first failure</li>
   <li>Use dynamic imports to load code only when it’s needed, so pages start faster</li>
   <li>Use BigInt for whole numbers that can grow past <code class="language-plaintext highlighter-rouge">Number.MAX_SAFE_INTEGER</code> (such as large IDs or big totals in cents) so they stay exact</li>
 </ul>
@@ -1337,7 +1336,7 @@ Requiring ES2020 is like requiring modern seatbelts (3-point with airbags) inste
 
 <h2 id="conclusion--security-is-not-optional">Conclusion — Security Is Not Optional</h2>
 
-<p>We’re not abandoning anyone. We’re choosing to protect the 95%+ of users who have modern, secure browsers. By requiring ES2020 (ES11) as your minimum JavaScript version in 2025, you:</p>
+<p>We’re not abandoning anyone. We’re choosing to protect the vast majority of visitors, who already have modern, secure browsers. By requiring ES2020 (ES11) as your minimum JavaScript version in 2025, you:</p>
 
 <ul>
   <li>

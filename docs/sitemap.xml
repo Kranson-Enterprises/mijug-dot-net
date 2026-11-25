@@ -6,7 +6,7 @@
     <!-- Homepage - Highest priority -->
     <url>
         <loc>https://www.mijug.net/</loc>
-        <lastmod>2026-11-25T16:59:33-05:00</lastmod>
+        <lastmod>2026-11-25T17:26:42-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -120,7 +120,7 @@
     
     <url>
         <loc>https://www.mijug.net/2026/04/24/chips-and-windows/</loc>
-        <lastmod>2026-11-25T16:45:37-05:00</lastmod>
+        <lastmod>2026-11-25T17:22:25-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -138,7 +138,7 @@
     
     <url>
         <loc>https://www.mijug.net/2025/11/24/ditching-es5-after-a-wordpress-build/</loc>
-        <lastmod>2026-11-25T16:45:37-05:00</lastmod>
+        <lastmod>2026-11-25T17:22:25-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -1160,13 +1160,13 @@
     <!-- Essential utility pages -->
     <url>
         <loc>https://www.mijug.net/tags/</loc>
-        <lastmod>2026-11-25T16:59:33-05:00</lastmod>
+        <lastmod>2026-11-25T17:26:42-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://www.mijug.net/categories/</loc>
-        <lastmod>2026-11-25T16:59:33-05:00</lastmod>
+        <lastmod>2026-11-25T17:26:42-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
