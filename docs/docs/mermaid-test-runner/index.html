@@ -573,7 +573,7 @@ img {
   
 
   <meta name="google-site-verification" content="googlece83719b3f856e56" />
-  <meta name="cache-version" content="20260817" />
+  <meta name="cache-version" content="20261125" />
 
   <link rel="stylesheet" href="/assets/main.css?v=40dc499214a9742935dcce70041840c679a03e3b04a9051a36dd7839d747f890" media="print">
 
@@ -655,15 +655,15 @@ img {
     href="/feed.xml" />
   
   
-  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
-  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20260817" />
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20261125" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20261125" />
   
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   
 
-  <meta name="description" content="Dedicated test runner for Mermaid diagram functionality with multi-browser support and comprehensive testing options" />
+  <meta name="description" content="How to run only the Mermaid diagram tests with one command in Chromium, Firefox, or WebKit, with headed, debug, and verbose options, plus troubleshooting tips." />
 <meta property="og:title" content="Mermaid Test Runner" />
-<meta property="og:description" content="Dedicated test runner for Mermaid diagram functionality with multi-browser support and comprehensive testing options" />
+<meta property="og:description" content="How to run only the Mermaid diagram tests with one command in Chromium, Firefox, or WebKit, with headed, debug, and verbose options, plus troubleshooting tips." />
 <meta property="og:url" content="https://www.mijug.net/docs/mermaid-test-runner/" />
 <meta property="og:site_name" content="My Info Just Under Glass" />
 <meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/mermaid-test-runner/" />
@@ -698,7 +698,7 @@ img {
 
     <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44">
   window.MIJUG = window.MIJUG || {};
-  window.MIJUG.cacheVersion = "20260817";
+  window.MIJUG.cacheVersion = "20261125";
 </script>
 
     
@@ -732,14 +732,14 @@ img {
     <div class="wrapper">
       <a class="site-title" rel="home" href="/">
         
-        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20260817" alt="My Info Just Under Glass" width="50" height="50">
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20261125" alt="My Info Just Under Glass" width="50" height="50">
          My Info Just Under Glass
       </a>
 
       <!-- Mobile navigation toggle button -->
       <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
         
-        <img src="/assets/logo-mijug-48x48.png?v=20260817" alt="logo" width="24" height="24" aria-hidden="true">
+        <img src="/assets/logo-mijug-48x48.png?v=20261125" alt="logo" width="24" height="24" aria-hidden="true">
          Menu
       </button>
 
@@ -872,13 +872,14 @@ img {
 
 <ul>
   <li>
-<strong>Automatic Test Discovery</strong>: Finds all mermaid-related test files in the e2e directory</li>
+<strong>Automatic Test Discovery</strong>: Finds all mermaid-related test files in the <code class="language-plaintext highlighter-rouge">tests/e2e</code> directory</li>
   <li>
 <strong>Multi-Browser Support</strong>: Tests with Chromium, Firefox, and WebKit</li>
   <li>
-<strong>Browser Management</strong>: Automatic browser installation and verification</li>
+<strong>Browser Management</strong>: Checks which browsers work before every run, and installs them first when you add <code class="language-plaintext highlighter-rouge">--ensure-browsers</code>
+</li>
   <li>
-<strong>Flexible Options</strong>: Headed/headless modes, debug mode, custom worker counts</li>
+<strong>Flexible Options</strong>: Headed/headless modes, debug mode, custom worker counts, and a memory-optimized mode</li>
   <li>
 <strong>Error Handling</strong>: Robust error handling with helpful messages</li>
   <li>
@@ -900,7 +901,15 @@ npm run <span class="nb">test</span>:mermaid:debug
 
 <span class="c"># Run with Firefox browser</span>
 npm run <span class="nb">test</span>:mermaid:firefox
+
+<span class="c"># Run with WebKit (Safari engine)</span>
+npm run <span class="nb">test</span>:mermaid:webkit
+
+<span class="c"># Run Chromium, then Firefox, then WebKit</span>
+npm run <span class="nb">test</span>:mermaid:all-browsers
 </code></pre></div></div>
+
+<p>These npm scripts don’t install browsers. Add <code class="language-plaintext highlighter-rouge">-- --ensure-browsers</code> (for example <code class="language-plaintext highlighter-rouge">npm run test:mermaid -- --ensure-browsers</code>) when a browser is missing.</p>
 
 <h3 id="advanced-options">Advanced Options</h3>
 
@@ -959,6 +968,11 @@ node scripts/test-mermaid-diagrams.js <span class="nt">--help</span>
       <td><code class="language-plaintext highlighter-rouge">--verbose</code></td>
     </tr>
     <tr>
+      <td><code class="language-plaintext highlighter-rouge">--memory-optimized</code></td>
+      <td>Single worker; stop after 3 failures</td>
+      <td><code class="language-plaintext highlighter-rouge">--memory-optimized</code></td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">--help</code></td>
       <td>Show help message</td>
       <td><code class="language-plaintext highlighter-rouge">--help</code></td>
@@ -966,37 +980,53 @@ node scripts/test-mermaid-diagrams.js <span class="nt">--help</span>
   </tbody>
 </table>
 
+<p>Behind the scenes, <code class="language-plaintext highlighter-rouge">--project=chromium</code> runs the Playwright project <code class="language-plaintext highlighter-rouge">mermaid-chromium</code> (likewise <code class="language-plaintext highlighter-rouge">mermaid-firefox</code> and <code class="language-plaintext highlighter-rouge">mermaid-webkit</code>), defined in <code class="language-plaintext highlighter-rouge">playwright.config.ts</code>. Firefox runs get a 60-second test timeout automatically.</p>
+
 <h2 id="test-files-covered">Test Files Covered</h2>
 
-<p>The script automatically discovers and runs these test files:</p>
+<p>The script runs every <code class="language-plaintext highlighter-rouge">tests/e2e/*mermaid*.spec.ts</code> file it finds. Today that is one file, <strong><code class="language-plaintext highlighter-rouge">tests/e2e/mermaid-consolidated.spec.ts</code></strong>, with 13 tests in six groups:</p>
 
 <ol>
   <li>
-<strong><code class="language-plaintext highlighter-rouge">e2e/mermaid-basic-visual.spec.ts</code></strong>
+<strong>Basic Mermaid Rendering</strong>
     <ul>
-      <li>Tests basic mermaid diagram rendering</li>
-      <li>Validates SVG generation and visual elements</li>
+      <li>Diagrams render as SVG, not code, with no syntax errors</li>
+      <li>Diagrams contain recognizable shapes</li>
     </ul>
   </li>
   <li>
-<strong><code class="language-plaintext highlighter-rouge">e2e/mermaid-default-layout.spec.ts</code></strong>
+<strong>Advanced Mermaid Rendering</strong>
     <ul>
-      <li>Tests mermaid rendering in default page layout</li>
-      <li>Validates sequence diagrams and syntax error handling</li>
+      <li>The diagrams sample page renders SVG images, not code blocks</li>
+      <li>Specific diagram types display correctly</li>
     </ul>
   </li>
   <li>
-<strong><code class="language-plaintext highlighter-rouge">e2e/mermaid-diagrams-visual.spec.ts</code></strong>
+<strong>Visual Layout Testing</strong>
     <ul>
-      <li>Tests visual diagram sample page</li>
-      <li>Validates multiple diagram types and SVG content</li>
+      <li>Diagram layout in the default theme</li>
+      <li>Responsive layout</li>
     </ul>
   </li>
   <li>
-<strong><code class="language-plaintext highlighter-rouge">e2e/mermaid-documentation.spec.ts</code></strong>
+<strong>Error Handling and Edge Cases</strong>
     <ul>
-      <li>Tests documentation pages</li>
-      <li>Validates quick start, configuration guide, and examples</li>
+      <li>Pages without Mermaid diagrams</li>
+      <li>Pages with mixed content</li>
+    </ul>
+  </li>
+  <li>
+<strong>Performance and Loading</strong>
+    <ul>
+      <li>Diagrams load and render within a reasonable time</li>
+      <li>Diagram quality stays consistent across page loads</li>
+    </ul>
+  </li>
+  <li>
+<strong>Documentation and Content</strong>
+    <ul>
+      <li>The quick start, configuration guide, and examples pages load with their content</li>
+      <li>The examples page renders multiple diagram types</li>
     </ul>
   </li>
 </ol>
@@ -1047,9 +1077,26 @@ node scripts/test-mermaid-diagrams.js <span class="nt">--help</span>
 
 <h2 id="integration-with-cicd">Integration with CI/CD</h2>
 
-<p>The script is designed to work in continuous integration environments:</p>
+<p>The script is designed to work in continuous integration environments. When <code class="language-plaintext highlighter-rouge">CI</code> is set (GitHub Actions sets it automatically), Playwright builds the Jekyll site and starts the server itself, so the job needs Node, Ruby, and the Playwright browsers:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example GitHub Actions usage</span>
+<span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+<span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v4</span>
+  <span class="na">with</span><span class="pi">:</span>
+    <span class="na">node-version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">26"</span>
+    <span class="na">cache</span><span class="pi">:</span> <span class="s2">"</span><span class="s">npm"</span>
+<span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm ci</span>
+<span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+  <span class="na">with</span><span class="pi">:</span>
+    <span class="na">ruby-version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">4.0.10"</span>
+    <span class="na">bundler</span><span class="pi">:</span> <span class="s2">"</span><span class="s">4"</span>
+    <span class="na">bundler-cache</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">working-directory</span><span class="pi">:</span> <span class="s">jekyll-site</span>
+
+<span class="c1"># With browser installation</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install Playwright browsers</span>
+  <span class="na">run</span><span class="pi">:</span> <span class="s">npx playwright install --with-deps chromium firefox webkit</span>
+
 <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Run Mermaid Tests</span>
   <span class="na">run</span><span class="pi">:</span> <span class="s">npm run test:mermaid</span>
 
@@ -1057,12 +1104,9 @@ node scripts/test-mermaid-diagrams.js <span class="nt">--help</span>
 <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Run Mermaid Tests (Firefox)</span>
   <span class="na">run</span><span class="pi">:</span> <span class="s">npm run test:mermaid:firefox</span>
 
-<span class="c1"># With browser installation</span>
+<span class="c1"># All three browsers, one after another</span>
 <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Run Mermaid Tests (All Browsers)</span>
-  <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
-    <span class="s">npm run test:mermaid -- --ensure-browsers --project=chromium</span>
-    <span class="s">npm run test:mermaid -- --project=firefox</span>
-    <span class="s">npm run test:mermaid -- --project=webkit</span>
+  <span class="na">run</span><span class="pi">:</span> <span class="s">npm run test:mermaid:all-browsers</span>
 </code></pre></div></div>
 
 <h2 id="performance-considerations">Performance Considerations</h2>
@@ -1085,8 +1129,9 @@ node scripts/test-mermaid-diagrams.js <span class="nt">--help</span>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run in debug mode with browser UI</span>
 npm run <span class="nb">test</span>:mermaid:debug
 
-<span class="c"># Run specific test file in headed mode</span>
-node scripts/test-mermaid-diagrams.js <span class="nt">--headed</span> <span class="nt">--project</span><span class="o">=</span>chromium e2e/mermaid-basic-visual.spec.ts
+<span class="c"># Run one group of tests in headed mode, directly with Playwright</span>
+<span class="c"># (the runner always runs every Mermaid test file and ignores file arguments)</span>
+npx playwright <span class="nb">test</span> <span class="nt">--project</span><span class="o">=</span>mermaid-chromium <span class="nt">--grep</span> <span class="s2">"Basic Mermaid Rendering"</span> <span class="nt">--headed</span>
 
 <span class="c"># Enable verbose output for detailed logs</span>
 node scripts/test-mermaid-diagrams.js <span class="nt">--verbose</span> <span class="nt">--headed</span>
@@ -1096,24 +1141,37 @@ node scripts/test-mermaid-diagrams.js <span class="nt">--verbose</span> <span cl
 
 <p>The script respects the Playwright configuration in <code class="language-plaintext highlighter-rouge">playwright.config.ts</code> but allows overrides via command line arguments.</p>
 
+<ul>
+  <li>
+<strong>Test server</strong>: Playwright starts Jekyll at <code class="language-plaintext highlighter-rouge">http://localhost:4000</code>, or reuses a server already running there. Locally it serves the last build without rebuilding first, so run <code class="language-plaintext highlighter-rouge">npm run build:jekyll</code> first if you have changed content.</li>
+  <li>
+<strong>Test artifacts</strong>: Screenshots and other artifacts from failed tests are saved in <code class="language-plaintext highlighter-rouge">test-results/</code>.</li>
+</ul>
+
 <h2 id="output-example">Output Example</h2>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>🎨 Mermaid Diagrams Test Runner Starting...
+<p>A run with <code class="language-plaintext highlighter-rouge">--ensure-browsers</code>, abridged (timing lines marked ⚡ and the per-test lines are left out):</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ℹ️  🎨 Mermaid Diagrams Test Runner Starting...
 ℹ️  🔧 Ensuring browsers are installed...
 ✅ All browsers are ready for testing!
+ℹ️  Detecting available browser engines...
+✅ chromium is available
+✅ firefox is available
+✅ webkit is available
 ℹ️  📊 Browser Engine Summary:
 ℹ️    🎯 (selected) chromium - Available
 ℹ️    ✅ firefox - Available
 ℹ️    ✅ webkit - Available
+ℹ️  ⚙️  Workers: 1
+ℹ️  🎯 Target browser: chromium
 ℹ️  🚀 Starting Mermaid diagram tests...
-ℹ️  Found 4 mermaid test files:
-🔍   - e2e/mermaid-basic-visual.spec.ts
-🔍   - e2e/mermaid-default-layout.spec.ts
-🔍   - e2e/mermaid-diagrams-visual.spec.ts
-🔍   - e2e/mermaid-documentation.spec.ts
+ℹ️  Found 1 mermaid test files:
+🔍   - e2e/mermaid-consolidated.spec.ts
+ℹ️  Running: npx playwright test e2e/mermaid-consolidated.spec.ts --project=mermaid-chromium --workers=1 --reporter=list
 
-Running 7 tests using 1 worker
-  ✓  All tests passed
+Running 13 tests using 1 worker
+  13 passed
 ✅ ✅ All Mermaid tests completed successfully!
 </code></pre></div></div>
 
@@ -1134,8 +1192,9 @@ npm run <span class="nb">test</span>:mermaid <span class="nt">--</span> <span cl
     <p><strong>Permission Errors</strong></p>
 
     <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="c"># Solution: Run with proper permissions or use skipIfNoPermissions</span>
-node scripts/test-mermaid-diagrams.js <span class="nt">--ensure-browsers</span> <span class="nt">--skip-if-no-permissions</span>
+<div class="highlight"><pre class="highlight"><code><span class="c"># Solution: Set up browsers in safe mode (skips installing if you lack permissions), then run the tests</span>
+npm run browsers:ensure-safe
+npm run <span class="nb">test</span>:mermaid
 </code></pre></div>    </div>
   </li>
   <li>
