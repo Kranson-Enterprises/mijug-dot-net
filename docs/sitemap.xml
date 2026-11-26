@@ -6,7 +6,7 @@
     <!-- Homepage - Highest priority -->
     <url>
         <loc>https://www.mijug.net/</loc>
-        <lastmod>2026-11-25T17:26:42-05:00</lastmod>
+        <lastmod>2026-11-25T20:16:44-05:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -102,7 +102,7 @@
     
     <url>
         <loc>https://www.mijug.net/2026/05/07/reviving-the-role-of-computer-operators/</loc>
-        <lastmod>2026-11-25T16:45:37-05:00</lastmod>
+        <lastmod>2026-11-25T19:32:45-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -138,7 +138,7 @@
     
     <url>
         <loc>https://www.mijug.net/2025/11/24/ditching-es5-after-a-wordpress-build/</loc>
-        <lastmod>2026-11-25T17:22:25-05:00</lastmod>
+        <lastmod>2026-11-25T19:32:45-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -156,7 +156,7 @@
     
     <url>
         <loc>https://www.mijug.net/2025/10/03/browser-support-for-es5-and-es6-what-you-need-to-know/</loc>
-        <lastmod>2026-11-25T16:45:37-05:00</lastmod>
+        <lastmod>2026-11-25T19:32:45-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -170,7 +170,7 @@
     
     <url>
         <loc>https://www.mijug.net/2025/10/01/september-2025-a-look-back-at-the-sessions/</loc>
-        <lastmod>2026-11-25T16:45:37-05:00</lastmod>
+        <lastmod>2026-11-25T19:32:45-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -188,7 +188,7 @@
     
     <url>
         <loc>https://www.mijug.net/2025/09/12/inperson-seminars-agenda-and-highlights/</loc>
-        <lastmod>2026-11-25T16:45:37-05:00</lastmod>
+        <lastmod>2026-11-25T19:32:45-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -220,7 +220,7 @@
     
     <url>
         <loc>https://www.mijug.net/2025/09/01/digital-rights-management-guide-and-windows-media-backup/</loc>
-        <lastmod>2026-11-25T16:45:37-05:00</lastmod>
+        <lastmod>2026-11-25T19:32:45-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -229,7 +229,7 @@
     
     <url>
         <loc>https://www.mijug.net/2025/08/30/safeguarding-your-bitlocker-key-essential-tips/</loc>
-        <lastmod>2026-11-25T16:45:37-05:00</lastmod>
+        <lastmod>2026-11-25T19:32:45-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         
@@ -364,15 +364,15 @@
     </url>
     
     <url>
-        <loc>https://www.mijug.net/docs/cache-management/</loc>
-        <lastmod>2026-11-25T16:22:09-05:00</lastmod>
+        <loc>https://www.mijug.net/docs/cache-buster/</loc>
+        <lastmod>2026-11-25T19:43:22-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://www.mijug.net/docs/mermaid-diagrams-sample/</loc>
-        <lastmod>2026-08-17T20:31:04-04:00</lastmod>
+        <loc>https://www.mijug.net/docs/cache-management/</loc>
+        <lastmod>2026-11-25T19:32:10-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -436,6 +436,13 @@
     <url>
         <loc>https://www.mijug.net/docs/mermaid-examples/</loc>
         <lastmod>2026-11-25T15:28:31-05:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.mijug.net/docs/mermaid-diagrams-sample/</loc>
+        <lastmod>2026-11-25T19:46:29-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -1160,13 +1167,13 @@
     <!-- Essential utility pages -->
     <url>
         <loc>https://www.mijug.net/tags/</loc>
-        <lastmod>2026-11-25T17:26:42-05:00</lastmod>
+        <lastmod>2026-11-25T20:16:44-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>https://www.mijug.net/categories/</loc>
-        <lastmod>2026-11-25T17:26:42-05:00</lastmod>
+        <lastmod>2026-11-25T20:16:44-05:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>

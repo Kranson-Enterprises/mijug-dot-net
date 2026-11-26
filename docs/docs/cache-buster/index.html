@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Security headers: X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin (configured via web server) -->
+
+  <!--
+    script-src follows Google's AdSense-supported "strict CSP" shape (support.google.com/adsense/answer/16283098):
+    modern browsers enforce 'nonce' + 'strict-dynamic' (host allowlists are ignored, dynamically injected
+    ad/analytics scripts inherit trust); older browsers fall back to 'unsafe-inline' + https:/http:.
+    Every executable script element in CSP-bearing layouts must therefore carry the site.cache_buster_js nonce.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' 'nonce-ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44' 'strict-dynamic' https: http:;
+      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net ;
+      style-src-elem 'self' 'unsafe-inline' ;
+      img-src 'self' data: https:;
+      font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:;
+      connect-src 'self'  https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.g.doubleclick.net https://*.adtrafficquality.google https://*.google.com https://*.clarity.ms https://c.bing.com ;
+      frame-src 'self' https://www.google.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.adtrafficquality.google ;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';block-all-mixed-content;upgrade-insecure-requests">
+
+  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+  
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" />
+  
+  
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin="anonymous" />
+  <meta name="google-adsense-account" content="ca-pub-3383458876439157" />
+  
+  
+  <link rel="preconnect" href="https://www.clarity.ms" crossorigin="anonymous" />
+  
+  
+
+  <!-- Critical navigation styles - always inlined for immediate user interaction -->
+<style>
+  /* Navigation Components - Performance Optimized */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    z-index: 101;
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Progressive enhancement - hide desktop nav when JS enabled */
+  html.js nav.primary-nav {
+    display: none;
+  }
+
+  /* Overlay navigation - use display:none for performance (optimization #1) */
+  nav.primary-nav.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 100;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Show navigation overlay (optimization #1: display instead of opacity) */
+  nav.primary-nav.nav-overlay.nav-visible {
+    display: block;
+  }
+
+  /* Navigation modal - CSS Grid for layout efficiency (optimization #11) */
+  .modern-nav-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 101;
+    contain: layout style paint;
+  }
+
+  /* Navigation close button */
+  .nav-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    /* Must stack above nav list items, whose `contain: content` creates later-painting stacking contexts */
+    z-index: 1;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-close:hover,
+  .nav-close:focus {
+    color: #333;
+    background-color: #f0f0f0;
+  }
+
+  .modern-nav-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modern-nav-content li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .modern-nav-content a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modern-nav-content a:hover,
+  .modern-nav-content a:focus {
+    background-color: #f0f0f0;
+    color: #2c5aa0;
+  }
+
+  /* Body scroll lock when overlay is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Performance optimizations */
+  html {
+    font-display: swap;
+  }
+
+  .site-header .wrapper {
+    min-height: 55.95px;
+  }
+</style>
+
+  <!-- Preload fonts for better performance -->
+  <link
+    rel="preload"
+    href="/assets/fonts/InterVariable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+    immutable
+  />
+  
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  
+
+  <!-- Critical CSS for above-the-fold content -->
+<style>
+/**
+ * Critical path CSS for above-the-fold content
+ * Optimized for < 12s build target and initial viewport rendering
+ */
+
+/* Base variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --accent-color: #1e8449; /* WCAG AA compliant green */
+  --link-color: #0052a3;
+  --nav-bg: #ffffff;
+  --border-color: #d1d5db;
+  --header-color: #1f2937;
+  --focus-outline: 2px solid #1e8449;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Base element styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper for content layout */
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: calc(100% - 30px);
+}
+
+/* Critical header and navigation styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  min-height: 56px;
+  background-color: var(--nav-bg);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  color: var(--header-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+}
+
+.site-title img {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.site-title.long-title {
+  font-size: 1.25rem;
+}
+
+/* Navigation styling */
+.site-nav {
+  position: relative;
+  line-height: 56px;
+}
+
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+  line-height: 1.5;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.site-nav .page-link:hover {
+  color: var(--accent-color);
+}
+
+.nav-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Main content area */
+.page-content {
+  padding: 30px 0;
+  flex: 1;
+}
+
+/* Skip link - accessibility feature */
+.skip-to-content {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 10px;
+}
+
+/* Focus outline for accessibility */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Basic media query for responsive design */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon > svg {
+    width: 18px;
+    height: 15px;
+  }
+
+  .site-nav .trigger {
+    clear: both;
+    display: none;
+    padding-bottom: 5px;
+  }
+
+  .site-nav:not([popover]) .nav-trigger:checked ~ .trigger {
+    display: block;
+  }
+
+  .site-nav .page-link {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}
+
+/* SR-only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Basic typography for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* SVG icon in header */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+  flex-shrink: 0;
+  box-sizing: content-box;
+}
+
+/* Image aspect ratio and container styles */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.image-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.image-container--16-9 {
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.image-container--4-3 {
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+}
+
+.image-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Consent banner: fixed from first paint so it never shifts layout before main.css arrives (full styles in main.scss) */
+.mijug-consent {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #fff;
+  border-top: 4px solid #1a3660;
+}
+
+.mijug-consent[hidden] {
+  display: none;
+}
+
+/* Advertisement container styles */
+.ad-container {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  margin: 1rem 0;
+  overflow: hidden;
+  contain: layout size;
+}
+
+.ad-container::before {
+  content: "Advertisement";
+  color: #777;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Mermaid diagram container styles */
+.mermaid-container {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin: 1.5rem 0;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.mermaid-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, transparent 25%, rgba(255,255,255,.5) 50%, transparent 75%) -200% 0 / 400% 100%,
+    linear-gradient(rgba(0,0,0,.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,.1) 100%);
+  animation: loading 1.5s infinite linear;
+  opacity: 0.5;
+}
+
+[popover] {
+  contain: layout size;
+}
+
+.site-nav[popover] {
+  /* Pre-compute layout position */
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  z-index: 100;
+  /* Prevent layout shift during animations */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
+<link rel="preload" href="/assets/main.css" as="style" id="main-css-preload">
+<noscript><link rel="stylesheet" href="/assets/main.css"></noscript>
+<script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44">
+  // Convert preload to stylesheet after load (CSP compliant)
+  var preload = document.getElementById('main-css-preload');
+  if (preload) {
+    preload.addEventListener('load', function() {
+      this.onload = null;
+      this.rel = 'stylesheet';
+    });
+  }
+</script>
+
+
+  
+  <title>Cache Buster: Versioning the Site&#39;s CSS and JS | MIJUG.net</title>
+  
+  <meta name="version" content="Nov 25, 2026" />
+  
+
+  
+  <meta name="docs-nav-order" content="19" />
+  <meta name="docs-section" content="documentation" />
+  
+  <meta name="priority-doc" content="true" />
+  
+  
+
+  <meta name="google-site-verification" content="googlece83719b3f856e56" />
+  <meta name="cache-version" content="20261125" />
+
+  <link rel="stylesheet" href="/assets/main.css?v=0529b100fa6c414f9deabc4e32e01ec81b538c9c4984eae767d660093e679094" media="print">
+
+  <noscript>
+    <div class="legacy-browser-notice" role="alert">
+      <strong>No Script Support Available</strong>
+      <span class="notice-detail">Your browser does not support modern features required.</span>
+    </div>
+  </noscript>
+  <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44">
+    // Enhanced module support detection - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const html = document.documentElement;
+      html.lang = "en";
+
+      // Modern module support check (ES2022 baseline)
+      const supportsModules = 'noModule' in HTMLScriptElement.prototype;
+
+      // Early return for legacy browsers (optional chaining available in modern browsers)
+      if (!supportsModules) {
+        html.classList.add('no-modules');
+        // Show legacy browser notice
+        const notice = document.createElement('div');
+        notice.className = 'legacy-browser-notice';
+        notice.role = 'alert';
+        notice.innerHTML = '<strong>No Module Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span>';
+        document.body?.prepend(notice);
+        return;
+      }
+    })();
+  </script>
+  <!-- Attempt to load and run ES13 feature detection (syntax-only check) -->
+  
+  
+  
+  
+  <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44" type="module">
+    (async () => {
+
+      var supportsEcmascript13 = false;
+      const html = document.documentElement;
+      const candidatePaths = ['/assets/js/mijug-es13.min.js', '/assets/js/mijug-es13-bundle.js'];
+      for (const path of candidatePaths) {
+        try {
+          const mod = await import(path);
+          if (mod && typeof mod.testES13Features === 'function') {
+            try {
+              mod.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else if (typeof window.testES13Features === 'function') {
+            try {
+              window.testES13Features();
+              supportsEcmascript13 = true;
+              break;
+            } catch (e) { console.error('ES13 test failed:', e); }
+          } else {
+            console.debug('ES13 test module loaded but `testES13Features` not found.');
+          }
+        } catch (err) {
+          console.debug('ES13 test module not present or failed to import:', path, err);
+        }
+      }
+      if (!supportsEcmascript13) {
+        html.classList.add('no-ES2022');
+        // Show legacy browser notice for commerce functionality
+        document.write('<div class="legacy-browser-notice" role="alert"><strong>No ES2022 Support Available</strong><span class="notice-detail">Your browser does not support modern features required.</span></div>');
+        return; // Exit early for legacy browsers
+      }
+    })();
+  </script>
+  <!-- WCAG 2.1 AA Accessibility Enhancements for scrollable regions -->
+  <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44" type="module" src="/assets/js/mijug-es13.min.js?v=ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44" defer crossorigin="anonymous"></script>
+
+  <link rel="alternate" type="application/rss+xml" title="My Info Just Under Glass"
+    href="/feed.xml" />
+  
+  
+  <link rel="icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20261125" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/kranson_enterprises_logo_180x180.png?v=20261125" />
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  
+
+  <meta name="description" content="How MIJUG.net versions its CSS and JavaScript URLs: the two cache-buster scripts and their flags, what deploy:production refreshes, checks, and known issues." />
+<meta property="og:title" content="Cache Buster: Versioning the Site&#39;s CSS and JS" />
+<meta property="og:description" content="How MIJUG.net versions its CSS and JavaScript URLs: the two cache-buster scripts and their flags, what deploy:production refreshes, checks, and known issues." />
+<meta property="og:url" content="https://www.mijug.net/docs/cache-buster/" />
+<meta property="og:site_name" content="My Info Just Under Glass" />
+<meta property="og:type" content="website" /><meta property="og:image" content="https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png" /><link rel="canonical" href="https://www.mijug.net/docs/cache-buster/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.mijug.net/#business",
+    "name": "Kranson Enterprises",
+    "alternateName": "My Info Just Under Glass",
+    "url": "https://www.mijug.net/",
+    "logo": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "image": "https://www.mijug.net/assets/kranson_enterprises_logo_180x180.png",
+    "telephone": "586-237-9857",
+    "email": "devopsbob@outlook.com",
+    "description": "MIJUG.NET serves the communities of Southeast Michigan, Ohio, and Florida with technology, sustainability, and community engagement resources. A platform by Kranson Enterprises for sharing knowledge and connecting communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Bob Kranson",
+      "jobTitle": "Vice President of Engineering"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "MI",
+      "addressCountry": "US"
+    },
+    "areaServed": [{ "@type": "AdministrativeArea", "name": "Southeast Michigan" },{ "@type": "AdministrativeArea", "name": "Ohio" },{ "@type": "AdministrativeArea", "name": "Florida" }]
+  }
+</script>
+
+
+    <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44">
+  window.MIJUG = window.MIJUG || {};
+  window.MIJUG.cacheVersion = "20261125";
+</script>
+
+    
+    <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44">
+      window.MIJUG_DISABLE_PRINT = true;
+      // Disable context menu without inline event handler (CSP compliant)
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+    </script>
+    
+
+    <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44" src="/assets/js/mijug-consent.min.js?v=ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44"
+  data-policy-version="1"
+  data-max-age-days="180" data-ga-id="G-W1M1N0DCD4" data-clarity-id="xf9fa0avlg" data-adsense-client="ca-pub-3383458876439157"></script>
+
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+    <noscript>
+      <div class="legacy-browser-notice" role="alert">
+        <strong>No Commerce Available</strong>
+        <span class="notice-detail">JavaScript is required for commerce functionality.</span>
+      </div>
+    </noscript>
+
+    <div class="wrapper">
+      <a class="site-title" rel="home" href="/">
+        
+        <img src="/assets/kranson_enterprises_logo_180x180.png?v=20261125" alt="My Info Just Under Glass" width="50" height="50">
+         My Info Just Under Glass
+      </a>
+
+      <!-- Mobile navigation toggle button -->
+      <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+        
+        <img src="/assets/logo-mijug-48x48.png?v=20261125" alt="logo" width="24" height="24" aria-hidden="true">
+         Menu
+      </button>
+
+      <!-- Full navigation for modern browsers (enhanced by JavaScript) -->
+      <nav id="primary-navigation" class="primary-nav js-enhanced-nav" role="dialog" aria-modal="true" aria-hidden="true">
+
+        <!-- Full navigation for modern browsers -->
+        <div class="modern-nav-content">
+          <button class="nav-close" type="button" aria-label="Close navigation menu">
+            <span aria-hidden="true">×</span>
+          </button>
+          <ul role="list" id="nav-items-static">
+            <!-- Pinned navigation items (optimization #7: split static/dynamic) -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </ul>
+          <!-- Dynamic navigation items load here via JavaScript -->
+          <ul role="list" id="nav-items-dynamic" class="nav-items-dynamic" style="display: none;"></ul>
+        </div>
+      </nav>
+
+      <div id="menu-status" class="visually-hidden" role="status" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">Cache Buster: Versioning the Site's CSS and JS</h1>
+  </header>
+
+  <div class="post-content">
+<p>Browsers keep copies of stylesheets and scripts so pages load faster. When the site changes one of those files, the file needs a new address, or visitors’ browsers keep using the old copy. MIJUG.net handles this with a <code class="language-plaintext highlighter-rouge">?v=</code> value on each asset URL. This page covers the scripts that set and check those values, as they work in November 2026. For general caching strategies (version strings, file hashes, cache headers, CDNs), see <a href="/docs/cache-management/">Cache Management Strategies</a>.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<!-- prettier-ignore-start -->
+
+<ul id="markdown-toc">
+  <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
+  <li>
+<a href="#how-it-works" id="markdown-toc-how-it-works">How It Works</a>    <ul>
+      <li><a href="#the-values-in-the-production-configs" id="markdown-toc-the-values-in-the-production-configs">The Values in the Production Configs</a></li>
+      <li><a href="#what-gives-build_time-a-new-value" id="markdown-toc-what-gives-build_time-a-new-value">What Gives <code class="language-plaintext highlighter-rouge">build_time</code> a New Value</a></li>
+      <li><a href="#files-the-script-writes" id="markdown-toc-files-the-script-writes">Files the Script Writes</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#commands" id="markdown-toc-commands">Commands</a>    <ul>
+      <li><a href="#writing-the-values-cache-buster-managerjs" id="markdown-toc-writing-the-values-cache-buster-managerjs">Writing the Values: cache-buster-manager.js</a></li>
+      <li><a href="#checking-the-built-site-cache-managerjs" id="markdown-toc-checking-the-built-site-cache-managerjs">Checking the Built Site: cache-manager.js</a></li>
+      <li><a href="#related-scripts" id="markdown-toc-related-scripts">Related Scripts</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#deploying" id="markdown-toc-deploying">Deploying</a>    <ul>
+      <li><a href="#commit-the-refreshed-values" id="markdown-toc-commit-the-refreshed-values">Commit the Refreshed Values</a></li>
+    </ul>
+  </li>
+  <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a></li>
+  <li><a href="#known-issues" id="markdown-toc-known-issues">Known Issues</a></li>
+  <li><a href="#files-involved" id="markdown-toc-files-involved">Files Involved</a></li>
+</ul>
+
+<!-- prettier-ignore-end -->
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>Two scripts share the job:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">scripts/cache-buster-manager.js</code> <strong>writes</strong> the cache-buster values into the two production Jekyll configs, <code class="language-plaintext highlighter-rouge">jekyll-site/_config_prod.yml</code> and <code class="language-plaintext highlighter-rouge">jekyll-site/_config_prod_enhanced.yml</code>, before a build.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">scripts/cache-manager.js</code> <strong>checks</strong> the built site in <code class="language-plaintext highlighter-rouge">jekyll-site/_site/</code> and reports any local stylesheet, script, or image URL that lacks a valid <code class="language-plaintext highlighter-rouge">?v=</code> value.</li>
+</ul>
+
+<p>Templates turn the values into URLs through the <code class="language-plaintext highlighter-rouge">cached-asset.html</code> include. Only the production configs carry the values. Development builds (<code class="language-plaintext highlighter-rouge">_config_dev.yml</code>) have none, so they fall back to the build time and every dev build gets fresh URLs.</p>
+
+<h3 id="the-values-in-the-production-configs">The Values in the Production Configs</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Format</th>
+      <th>How it is computed</th>
+      <th>Where it is used</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cache_buster_js</code></td>
+      <td>64-character hex</td>
+      <td>SHA3-256 over the source trees <code class="language-plaintext highlighter-rouge">src/assets/js/es13/</code> and <code class="language-plaintext highlighter-rouge">src/assets/js/consent/</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">?v=</code> on JavaScript loaded through <code class="language-plaintext highlighter-rouge">cached-asset.html</code> and on the consent script.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cache_buster_css</code></td>
+      <td>64-character hex</td>
+      <td>SHA3-256 over <code class="language-plaintext highlighter-rouge">jekyll-site/assets/main.scss</code> and every file directly inside <code class="language-plaintext highlighter-rouge">jekyll-site/assets/css/</code>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">?v=</code> on every other asset type loaded through <code class="language-plaintext highlighter-rouge">cached-asset.html</code>: stylesheets, images, fonts, icons, the manifest, and plain links</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">build_time</code></td>
+      <td>14 digits, <code class="language-plaintext highlighter-rouge">YYYYMMDDHHMMSS</code>, local time</td>
+      <td>The time of the run that detected a change</td>
+      <td>Only the session-information script in the About page layout</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cache_bust</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code>
+</td>
+      <td>Set by the script flags</td>
+      <td>Only the About page layout. Asset URLs do not check it</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The two hash values come from file contents, so they change only when those sources change. A new <code class="language-plaintext highlighter-rouge">build_time</code> on its own does <strong>not</strong> give the CSS or JavaScript a new URL.</p>
+
+<p>In a template:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>cached-asset.html<span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s2">"css"</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s2">"/assets/main.css"</span><span class="w"> </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>cached-asset.html<span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s2">"js"</span><span class="w"> </span><span class="na">path</span><span class="o">=</span><span class="s2">"/assets/js/mijug-es13.min.js"</span><span class="w"> </span><span class="na">module</span><span class="o">=</span><span class="kc">true</span><span class="w"> </span><span class="na">defer</span><span class="o">=</span><span class="kc">true</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<p>renders as (hashes shortened):</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/main.css?v=40dc4992..."</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"/assets/js/mijug-es13.min.js?v=ba147ed8..."</span> <span class="na">defer</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>If <code class="language-plaintext highlighter-rouge">cache_buster_js</code> or <code class="language-plaintext highlighter-rouge">cache_buster_css</code> is empty, <code class="language-plaintext highlighter-rouge">cached-asset.html</code> uses the build time instead. A separate include, <code class="language-plaintext highlighter-rouge">cache-bust.html</code>, versions the logos, favicons, and slide-deck stylesheets with an 8-digit date (the page’s <code class="language-plaintext highlighter-rouge">last_modified_at</code>, otherwise the build date) and writes the <code class="language-plaintext highlighter-rouge">cache-version</code> meta tag. The scripts do not manage that date.</p>
+
+<h3 id="what-gives-build_time-a-new-value">What Gives <code class="language-plaintext highlighter-rouge">build_time</code> a New Value</h3>
+
+<p>A plain run hashes these directories and compares the result with the <code class="language-plaintext highlighter-rouge">assetHash</code> saved in <code class="language-plaintext highlighter-rouge">.cache-buster-state.json</code>:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-site/assets/</code></li>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-site/_includes/</code></li>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-site/_layouts/</code></li>
+  <li>
+<code class="language-plaintext highlighter-rouge">jekyll-site/_sass/</code> (still on the watch list, but the directory no longer exists, so it adds nothing)</li>
+</ul>
+
+<p>Adding, removing, renaming, or editing any file under them counts as a change. The script also writes a new <code class="language-plaintext highlighter-rouge">build_time</code> when you pass <code class="language-plaintext highlighter-rouge">--force</code>, and when the state file is missing or unreadable. The state file is gitignored, so the first run on a fresh clone always writes a new one.</p>
+
+<p>In practice <code class="language-plaintext highlighter-rouge">build_time</code> changes on almost every <code class="language-plaintext highlighter-rouge">npm run deploy:production</code>. <code class="language-plaintext highlighter-rouge">jekyll-site/assets/js/</code> holds the obfuscated bundles that the previous build wrote, and the obfuscator configs set no fixed seed, so each rebuild produces different bytes.</p>
+
+<p>The 2025 version of this page listed seven “trigger files” (<code class="language-plaintext highlighter-rouge">main.scss</code>, <code class="language-plaintext highlighter-rouge">mermaid.min.js</code>, and others). That list is still in the script as <code class="language-plaintext highlighter-rouge">_CACHE_TRIGGER_FILES</code>, but nothing reads it.</p>
+
+<h3 id="files-the-script-writes">Files the Script Writes</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>In git</th>
+      <th>Contents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-site/_config_prod.yml</code> and <code class="language-plaintext highlighter-rouge">jekyll-site/_config_prod_enhanced.yml</code>
+</td>
+      <td>Yes</td>
+      <td>The <code class="language-plaintext highlighter-rouge">cache_bust</code>, <code class="language-plaintext highlighter-rouge">build_time</code>, <code class="language-plaintext highlighter-rouge">cache_buster_js</code>, and <code class="language-plaintext highlighter-rouge">cache_buster_css</code> lines</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.cache-buster-state.json</code></td>
+      <td>No (gitignored)</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">assetHash</code> and <code class="language-plaintext highlighter-rouge">timestamp</code> from the last detected change</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">.last-es13-src-hash</code> and <code class="language-plaintext highlighter-rouge">.last-css-asset-hash</code>
+</td>
+      <td>Yes</td>
+      <td>The JavaScript and CSS hashes, kept as a record. No script reads them back</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="commands">Commands</h2>
+
+<h3 id="writing-the-values-cache-buster-managerjs">Writing the Values: cache-buster-manager.js</h3>
+
+<p>These commands change the production configs. Review the result and commit it (see <a href="#deploying">Deploying</a>).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>npm script</th>
+      <th>Direct flag</th>
+      <th>What it does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:manage</code></td>
+      <td>(none)</td>
+      <td>Recomputes both hashes and writes them, sets <code class="language-plaintext highlighter-rouge">cache_bust: true</code>, and writes a new <code class="language-plaintext highlighter-rouge">build_time</code> only if the watched directories changed</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:force-update</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--force</code></td>
+      <td>The same, but always writes a new <code class="language-plaintext highlighter-rouge">build_time</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:disable</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--disable</code></td>
+      <td>Sets <code class="language-plaintext highlighter-rouge">cache_bust: false</code> and empties <code class="language-plaintext highlighter-rouge">build_time</code>. Leaves both hashes and the state file alone, so asset URLs keep their <code class="language-plaintext highlighter-rouge">?v=</code> values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:enable</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--enable-only</code></td>
+      <td>Sets <code class="language-plaintext highlighter-rouge">cache_bust: true</code> and restores <code class="language-plaintext highlighter-rouge">build_time</code> from the state file. Does not recompute the hashes</td>
+    </tr>
+    <tr>
+      <td>(none)</td>
+      <td><code class="language-plaintext highlighter-rouge">--quiet</code></td>
+      <td>Prints errors only</td>
+    </tr>
+    <tr>
+      <td>(none)</td>
+      <td><code class="language-plaintext highlighter-rouge">--debug</code></td>
+      <td>Accepted, but the script has no debug messages, so it changes nothing</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you pass more than one mode flag, <code class="language-plaintext highlighter-rouge">--enable-only</code> wins, then <code class="language-plaintext highlighter-rouge">--disable</code>, then <code class="language-plaintext highlighter-rouge">--force</code>. When <code class="language-plaintext highlighter-rouge">--enable-only</code> finds no saved timestamp, it writes a new one and saves a state file with an empty asset hash, so the next plain run writes another new <code class="language-plaintext highlighter-rouge">build_time</code>.</p>
+
+<p>Output after an asset change (captured 2026-11-25 from <code class="language-plaintext highlighter-rouge">npm run build:all</code>, which calls the same routine):</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✅ SUCCESS: Enabled cache busting in _config_prod.yml with timestamp 20261125194224
+✅ SUCCESS: Enabled cache busting in _config_prod_enhanced.yml with timestamp 20261125194224
+✅ SUCCESS: Cache busting values updated due to asset changes
+</code></pre></div></div>
+
+<p>With no asset change since the last run, the last line reads “No asset changes detected, keeping existing cache busting values” and <code class="language-plaintext highlighter-rouge">build_time</code> stays the same.</p>
+
+<p>No command prints the current values. Read them from the config:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-E</span> <span class="s1">'^(cache_bust|build_time|cache_buster_(js|css)):'</span> jekyll-site/_config_prod.yml
+</code></pre></div></div>
+
+<h3 id="checking-the-built-site-cache-managerjs">Checking the Built Site: cache-manager.js</h3>
+
+<p>This script needs a build first. It reads the HTML in <code class="language-plaintext highlighter-rouge">jekyll-site/_site/</code>, and for every <code class="language-plaintext highlighter-rouge">&lt;link rel="stylesheet"&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;script src&gt;</code>, and <code class="language-plaintext highlighter-rouge">&lt;img src&gt;</code> with a local URL it checks for <code class="language-plaintext highlighter-rouge">?v=</code> followed by an 8-digit date, a 14-digit timestamp, or a 64-character hex hash. It skips external URLs, inline SVG data URIs, anything inside <code class="language-plaintext highlighter-rouge">&lt;noscript&gt;</code>, and elements that carry a <code class="language-plaintext highlighter-rouge">data-skip-cache-bust</code> attribute. By default it checks only the category and tag archive pages; <code class="language-plaintext highlighter-rouge">--all</code> checks the whole site.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>npm script</th>
+      <th>Runs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:verify</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">--verify</code> (category and tag pages)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:verify:all</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--verify --all</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:verify:verbose</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--verify --verbose</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:verify:debug</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--verify --debug</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:status</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--verify --quiet</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:check-page -- &lt;path&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--verify --page &lt;path&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:fix:dry-run</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--fix --dry-run</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:fix</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--fix</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:fix:all</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--fix --all</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:fix-page -- &lt;path&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--fix --page &lt;path&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">npm run cache:check-and-fix</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">--verify</code>, then <code class="language-plaintext highlighter-rouge">--fix</code> if the check fails</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--verify</code></td>
+      <td>Check only. This is the default: any run without <code class="language-plaintext highlighter-rouge">--fix</code> is a check</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--fix</code></td>
+      <td>Appends <code class="language-plaintext highlighter-rouge">?v=&lt;current timestamp&gt;</code> (or <code class="language-plaintext highlighter-rouge">&amp;v=</code>) to each failing URL and rewrites that HTML file in <code class="language-plaintext highlighter-rouge">jekyll-site/_site/</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--dry-run</code></td>
+      <td>With <code class="language-plaintext highlighter-rouge">--fix</code>, lists the fixes without writing anything</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--all</code></td>
+      <td>Checks the whole site instead of the category and tag pages</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--page &lt;path&gt;</code></td>
+      <td>Checks one file. Give the HTML file itself, such as <code class="language-plaintext highlighter-rouge">/index.html</code> or <code class="language-plaintext highlighter-rouge">/docs/cache-buster/index.html</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--quiet</code></td>
+      <td>Prints nothing. The exit code is the only result</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--verbose</code></td>
+      <td>Adds skip counts and lists the cache-related includes and which layouts use them</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--debug</code></td>
+      <td>Everything in <code class="language-plaintext highlighter-rouge">--verbose</code>, plus an element snippet for each issue</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--continue-on-css-error</code></td>
+      <td>Skips pages the HTML parser cannot read instead of stopping</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--no-exit-code</code></td>
+      <td>Exits 0 even when issues are found</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--fix-specific</code></td>
+      <td>Not listed in <code class="language-plaintext highlighter-rouge">--help</code>. Limits the run to files already flagged in the same run; that list starts empty, so the run checks nothing</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--help</code></td>
+      <td>Prints usage</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The exit code is 1 when a check finds issues (unless <code class="language-plaintext highlighter-rouge">--no-exit-code</code>), when <code class="language-plaintext highlighter-rouge">jekyll-site/_site/</code> is missing, or when a page cannot be parsed. Otherwise it is 0.</p>
+
+<p><code class="language-plaintext highlighter-rouge">--fix</code> edits generated files only, and the next build replaces them. Treat it as a stopgap and fix the template, usually by loading the asset through <code class="language-plaintext highlighter-rouge">cached-asset.html</code>.</p>
+
+<p>Output of <code class="language-plaintext highlighter-rouge">npm run cache:verify</code> (captured 2026-11-25):</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>📋 INFO: Starting cache busting verification...
+📋 INFO: Processing jekyll-site/_site/category...
+📋 INFO: Processing jekyll-site/_site/tag...
+📋 INFO: Processing jekyll-site/_site/categories...
+📋 INFO: Processing jekyll-site/_site/tags...
+📋 INFO:
+📋 INFO: Cache Busting Verification Summary:
+📋 INFO: ⏱️ Execution time: 4.06s
+📋 INFO: 📄 Files processed: 132
+📋 INFO: 📊 Resources checked: 640
+📋 INFO: ⚠️ Issues found: 0
+✅ SUCCESS: All resources have proper cache busting! 🎉
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">npm run cache:verify:all</code> checked 242 files and 1,013 resources on the same build, with no issues.</p>
+
+<p><code class="language-plaintext highlighter-rouge">npm run cache:status</code> no longer prints a status summary. Apart from npm’s own <code class="language-plaintext highlighter-rouge">npm notice run</code> lines, it prints nothing, so read the exit code:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run cache:status<span class="p">;</span> <span class="nb">echo</span> <span class="s2">"exit code: </span><span class="nv">$?</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>0 means no issues. 1 means issues were found or there is no build. Use the <code class="language-plaintext highlighter-rouge">grep</code> command above to see the values themselves.</p>
+
+<h3 id="related-scripts">Related Scripts</h3>
+
+<p><code class="language-plaintext highlighter-rouge">npm run cache:validate</code> (<code class="language-plaintext highlighter-rouge">scripts/cache-validation.js</code>) checks build-cache settings for Jekyll and TypeScript, not asset URLs. <code class="language-plaintext highlighter-rouge">cache:optimize</code> runs a full-site check and then a parallel build, <code class="language-plaintext highlighter-rouge">cache:performance</code> adds a performance check after that, and <code class="language-plaintext highlighter-rouge">cache:force-rebuild</code> cleans and rebuilds Jekyll. None of them changes the cache-buster values.</p>
+
+<h2 id="deploying">Deploying</h2>
+
+<p><code class="language-plaintext highlighter-rouge">npm run deploy:production</code> (<code class="language-plaintext highlighter-rouge">scripts/deploy-optimized.js</code>) refreshes the values before anything is cleaned or built:</p>
+
+<ol>
+  <li>It runs <code class="language-plaintext highlighter-rouge">node scripts/cache-buster-manager.js</code> with no flags, which updates both production configs and the state file.</li>
+  <li>It rewrites <code class="language-plaintext highlighter-rouge">.last-es13-src-hash</code> with the output of <code class="language-plaintext highlighter-rouge">scripts/hash-es13-src.js</code>, which hashes <code class="language-plaintext highlighter-rouge">src/assets/js/es13/</code> only. After a deploy, that file therefore no longer equals <code class="language-plaintext highlighter-rouge">cache_buster_js</code>, which also covers the consent sources.</li>
+  <li>If either step fails, it logs the error and carries on with the values already in the configs.</li>
+  <li>The production build then runs with <code class="language-plaintext highlighter-rouge">_config.yml,_config_prod_enhanced.yml</code>, so the new values end up in every page that ships.</li>
+</ol>
+
+<p>Plain <code class="language-plaintext highlighter-rouge">npm run deploy</code> (<code class="language-plaintext highlighter-rouge">scripts/deploy.js</code>) and <code class="language-plaintext highlighter-rouge">npm run build:jekyll-prod</code> skip the refresh. They use whatever values are already in the configs.</p>
+
+<h3 id="commit-the-refreshed-values">Commit the Refreshed Values</h3>
+
+<p>After a production deploy, the configs hold the values that are now live. Commit them so the repository matches the site. A later <code class="language-plaintext highlighter-rouge">build:jekyll-prod</code> or plain <code class="language-plaintext highlighter-rouge">deploy</code> then reproduces the same URLs.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status <span class="nt">--short</span> jekyll-site/_config_prod.yml jekyll-site/_config_prod_enhanced.yml .last-es13-src-hash .last-css-asset-hash
+git add jekyll-site/_config_prod.yml jekyll-site/_config_prod_enhanced.yml .last-es13-src-hash .last-css-asset-hash
+git commit <span class="nt">-m</span> <span class="s2">"chore(deploy): refresh cache-buster values for the vX.Y.Z deploy"</span>
+</code></pre></div></div>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p><strong>A change does not show for visitors.</strong> View the page source on the live site and compare the <code class="language-plaintext highlighter-rouge">?v=</code> on the stylesheet or script with the value in <code class="language-plaintext highlighter-rouge">jekyll-site/_config_prod.yml</code>. If the two match but the content is old, the changed file is probably outside the hashed set (for example <code class="language-plaintext highlighter-rouge">jekyll-site/assets/fonts/inter.css</code>), so its URL did not change. An edit to the hashed sources gives a new value on the next <code class="language-plaintext highlighter-rouge">deploy:production</code>.</p>
+
+<p><strong>The state file is damaged or deleted.</strong> The script warns, treats it as empty, and writes a new <code class="language-plaintext highlighter-rouge">build_time</code> on the next run. That is the same result as <code class="language-plaintext highlighter-rouge">cache:force-update</code>, so no manual reset is needed.</p>
+
+<p><strong>Check a fresh production build:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build:jekyll-prod
+npm run cache:verify:all
+</code></pre></div></div>
+
+<p><strong><code class="language-plaintext highlighter-rouge">cache:check-page</code> reports success but checked 0 resources.</strong> See the <code class="language-plaintext highlighter-rouge">--page</code> entry under <a href="#known-issues">Known Issues</a> and pass the HTML file path.</p>
+
+<h2 id="known-issues">Known Issues</h2>
+
+<ul>
+  <li>
+<strong><code class="language-plaintext highlighter-rouge">--page</code> with a folder path reports success without checking anything.</strong> A path such as <code class="language-plaintext highlighter-rouge">/about</code> or <code class="language-plaintext highlighter-rouge">/docs/cache-buster/</code> matches the folder before its <code class="language-plaintext highlighter-rouge">index.html</code>, fails with <code class="language-plaintext highlighter-rouge">EISDIR</code>, and still ends with “All resources have proper cache busting!” and exit code 0. A path that matches nothing also exits 0. Pass the HTML file path and confirm that “Resources checked” is above zero.</li>
+  <li>
+<strong><code class="language-plaintext highlighter-rouge">cache-manager.js --quiet</code> hides errors too,</strong> although <code class="language-plaintext highlighter-rouge">--help</code> describes it as “errors and results only”.</li>
+  <li>
+<strong>Gaps in what is hashed.</strong> <code class="language-plaintext highlighter-rouge">jekyll-site/_sass/</code> is still watched but no longer exists, and the CSS hash ignores stylesheets outside <code class="language-plaintext highlighter-rouge">main.scss</code> and the top level of <code class="language-plaintext highlighter-rouge">jekyll-site/assets/css/</code>.</li>
+</ul>
+
+<h2 id="files-involved">Files Involved</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Path</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scripts/cache-buster-manager.js</code></td>
+      <td>Writes the values into the production configs</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scripts/cache-manager.js</code></td>
+      <td>Checks the built HTML for <code class="language-plaintext highlighter-rouge">?v=</code> values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scripts/deploy-optimized.js</code></td>
+      <td>Runs the writer before every <code class="language-plaintext highlighter-rouge">deploy:production</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scripts/hash-es13-src.js</code></td>
+      <td>Hashes <code class="language-plaintext highlighter-rouge">src/assets/js/es13/</code> for <code class="language-plaintext highlighter-rouge">.last-es13-src-hash</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">jekyll-site/_includes/cached-asset.html</code></td>
+      <td>Turns the values into asset URLs</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">jekyll-site/_includes/cache-bust.html</code></td>
+      <td>Date-based <code class="language-plaintext highlighter-rouge">?v=</code> for logos, favicons, and slide stylesheets</td>
+    </tr>
+    <tr>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-site/_config_prod.yml</code> and <code class="language-plaintext highlighter-rouge">jekyll-site/_config_prod_enhanced.yml</code>
+</td>
+      <td>Hold the production values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">jekyll-site/_config_dev.yml</code></td>
+      <td>Sets <code class="language-plaintext highlighter-rouge">cache_bust: false</code> and no hashes, so dev URLs use the build time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.cache-buster-state.json</code></td>
+      <td>The last asset hash and timestamp (gitignored)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</article>
+</div>
+  </main>
+
+  <footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+    <div class="wrapper">
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <a href="/terms-of-service.html">Terms of Service</a><br>
+          <a href="/privacy-policy.html">Privacy Policy</a><br>
+          <button type="button" class="mijug-consent-link" data-consent-action="customize">Cookie &amp; privacy choices</button>
+        </div>
+        <div class="footer-col footer-col-2">
+          <a href="/contact/">Contact Us</a><br>
+          <a href="tel:586-237-9857">586-237-9857</a><br>
+          <span>Serving Southeast Michigan, Ohio, Florida</span>
+        </div>
+        <div class="footer-col footer-col-3">
+          <p>
+            © 2026
+            <a rel="external nofollow" href="https://share.google/8Ir6br641K4uU74l2">Kranson Enterprises</a><br>
+                subscribe
+            <a href="/feed.xml">via RSS<svg class="svg-icon">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <section id="mijug-consent-banner" class="mijug-consent" aria-labelledby="mijug-consent-title" hidden>
+  <div class="mijug-consent__inner">
+    <h2 id="mijug-consent-title" class="mijug-consent__title">Your privacy choices</h2>
+    <p class="mijug-consent__text">
+      This site uses a few cookies. One simply remembers the choice you make here. The others are optional: they
+      help me see which pages people find useful, and let Google pick ads that match your interests. You will see
+      ads either way — if you say no, they are chosen by the page you are reading instead of by you.
+      <a href="/privacy-policy.html#cookies">Read the privacy policy</a>.
+    </p>
+    <div class="mijug-consent__actions">
+      <button type="button" class="mijug-consent__btn" data-consent-action="accept">Accept all</button>
+      <button type="button" class="mijug-consent__btn" data-consent-action="reject">Necessary only</button>
+      <button type="button" class="mijug-consent__btn mijug-consent__btn--secondary" data-consent-action="customize">
+        Let me choose
+      </button>
+    </div>
+  </div>
+</section>
+
+<dialog id="mijug-consent-dialog" class="mijug-consent-dialog" aria-labelledby="mijug-consent-dialog-title">
+  <form method="dialog">
+    <h2 id="mijug-consent-dialog-title">Cookie and privacy choices</h2>
+    <p>
+      Choose what you are comfortable with. You can change this any time with the “Cookie &amp; privacy
+      choices” link at the bottom of every page.
+    </p>
+    <fieldset>
+      <legend>Optional cookies</legend>
+      <div class="mijug-consent-dialog__option">
+        <p class="mijug-consent-dialog__fixed"><strong>Necessary</strong> — always on</p>
+        <p class="mijug-consent-dialog__desc">One small cookie that remembers the choice you make here. Nothing else.</p>
+      </div>
+      <div class="mijug-consent-dialog__option">
+        <label for="mijug-consent-analytics">
+          <input type="checkbox" id="mijug-consent-analytics" name="analytics" aria-describedby="mijug-consent-analytics-desc">
+          Site improvement (analytics)
+        </label>
+        <p id="mijug-consent-analytics-desc" class="mijug-consent-dialog__desc">
+          Google Analytics and Microsoft Clarity count visits and show me where a page is confusing. I see totals
+          and patterns, not who you are.
+        </p>
+      </div>
+      <div class="mijug-consent-dialog__option" id="mijug-consent-ads-option">
+        <label for="mijug-consent-ads">
+          <input type="checkbox" id="mijug-consent-ads" name="ads" aria-describedby="mijug-consent-ads-desc">
+          Personalized ads
+        </label>
+        <p id="mijug-consent-ads-desc" class="mijug-consent-dialog__desc">
+          Lets Google use cookies to choose ads based on your interests and to measure them. If you leave this off,
+          you still see ads, but they are based on the page you are reading.
+        </p>
+      </div>
+      <p id="mijug-consent-gpc-note" class="mijug-consent-dialog__note" hidden>
+        Your browser is sending a “do not sell or share my information” signal (Global Privacy Control or
+        Do Not Track). I honor it, so personalized ads stay off on this device.
+      </p>
+    </fieldset>
+    <div class="mijug-consent-dialog__actions">
+      <button type="submit" value="save" class="mijug-consent__btn">Save my choices</button>
+      <button type="submit" value="cancel" class="mijug-consent__btn mijug-consent__btn--secondary">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<p id="mijug-consent-status" class="sr-only" role="status" aria-live="polite"></p>
+
+
+  <!-- Accessibility enhancement for Rouge code blocks: preserve code semantics with accessible labels -->
+  <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44">
+    // Code block accessibility - ES2020 optimized
+    (() => {
+      'use strict';
+
+      const enhanceCodeBlocks = () => {
+        try {
+          // Use :not() to skip already enhanced blocks (performance)
+          const blocks = document.querySelectorAll('div.highlighter-rouge div.highlight:not([data-a11y-enhanced])');
+          if (blocks.length === 0) return;
+
+          blocks.forEach((el) => {
+            const code = el.querySelector('pre code');
+            const preview = code?.textContent?.trim()?.split('\n')[0]?.slice(0, 57) ?? '';
+
+            // Extract language using optional chaining and nullish coalescing (ES2020)
+            const language = el.parentElement?.className?.match(/language-(\w+)/)?.[1] ?? '';
+            const label = `Code example${language ? ` in ${language}` : ''}${preview ? `: ${preview}${preview.length >= 57 ? '...' : ''}` : ''}`;
+
+            // Preserve semantic code/pre structure and add a descriptive label only
+            el.setAttribute('aria-label', label);
+            el.setAttribute('data-a11y-enhanced', 'true');
+          });
+        } catch (e) {
+          console.warn('EnhanceCodeBlocks error', e);
+        }
+      };
+
+      // Modern API check (ES2020)
+      document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', enhanceCodeBlocks, { once: true })
+        : enhanceCodeBlocks();
+    })();
+  </script>
+
+  <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44">
+    // Navigation toggle functionality - ES2020 optimized
+    (() => {
+      'use strict';
+
+      // Cache DOM elements (ES2020 const, destructuring)
+      const elements = {
+        toggle: document.querySelector('.nav-toggle'),
+        close: document.querySelector('.nav-close'),
+        nav: document.getElementById('primary-navigation'),
+        status: document.getElementById('menu-status'),
+        body: document.body
+      };
+
+      // Early return if required elements missing (optional chaining ES2020)
+      if (!elements.toggle?.isConnected || !elements.nav?.isConnected || !elements.status?.isConnected) {
+        return;
+      }
+
+      // Initialize navigation as overlay
+      elements.nav.classList.add('nav-overlay');
+
+      // Toggle navigation with modern API (arrow function ES2020)
+      const toggleNavigation = () => {
+        const isExpanded = elements.toggle.getAttribute('aria-expanded') === 'true';
+        const action = isExpanded ? 'remove' : 'add';
+
+        // Batch DOM updates for performance
+        elements.nav.classList[action]('nav-visible');
+        elements.body.classList[action]('nav-open');
+        elements.toggle.setAttribute('aria-expanded', String(!isExpanded));
+        elements.nav.setAttribute('aria-hidden', String(isExpanded));
+        elements.status.textContent = `Menu ${isExpanded ? 'closed' : 'opened'}`;
+      };
+
+      // Event delegation with passive listeners for scroll performance
+      const handleClick = (e) => {
+        // Check if toggle button or close button clicked
+        if (e.target.closest('.nav-toggle') || e.target.closest('.nav-close')) {
+          e.preventDefault();
+          toggleNavigation();
+          return;
+        }
+
+        // Close on click outside (only when open)
+        if (elements.toggle.getAttribute('aria-expanded') === 'true') {
+          if (!elements.nav.contains(e.target) && !elements.toggle.contains(e.target)) {
+            toggleNavigation();
+          }
+        }
+      };
+
+      // Keyboard navigation (ES2020 nullish coalescing ??)
+      const handleKeydown = (e) => {
+        if (e.key === 'Escape' && elements.toggle.getAttribute('aria-expanded') === 'true') {
+          toggleNavigation();
+          elements.toggle.focus();
+        }
+      };
+
+      // Single event listener with delegation (better performance)
+      document.addEventListener('click', handleClick, { passive: false });
+      document.addEventListener('keydown', handleKeydown, { passive: true });
+    })();
+  </script>
+
+  <!-- Navigation data for lazy-loading (optimization #7) -->
+  <script id="nav-data-dynamic" type="application/json">
+    {
+      "sections": [
+        
+        {
+          "key": "main",
+          "title": "Main",
+          "icon": "🏠",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "posts",
+          "title": "Posts",
+          "icon": "📝",
+          "sortBy": "date"
+        },
+        
+        {
+          "key": "docs",
+          "title": "Documentation",
+          "icon": "📚",
+          "sortBy": "nav_order"
+        },
+        
+        {
+          "key": "categories",
+          "title": "Categories",
+          "icon": "📂",
+          "sortBy": "name"
+        },
+        
+        {
+          "key": "tags",
+          "title": "Tags",
+          "icon": "🏷️",
+          "sortBy": "name"
+        }
+        
+      ],
+      "items": [
+        
+        
+        
+        {
+          "sectionKey": "main",
+          "title": "Blog",
+          "permalink": "/blog/",
+          "ariaLabel": "Navigate to Blog",
+          "current": false,
+          "navOrder": 1
+        },
+        
+        {
+          "sectionKey": "main",
+          "title": "About",
+          "permalink": "/about/",
+          "ariaLabel": "Navigate to About",
+          "current": false,
+          "navOrder": 2
+        },
+        
+        {
+          "sectionKey": "main",
+          "title": "Services",
+          "permalink": "/services/",
+          "ariaLabel": "Navigate to Services",
+          "current": false,
+          "navOrder": 3
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Tags and Categories System Guide",
+          "permalink": "/docs/tags-and-categories-guide/",
+          "ariaLabel": "Navigate to Tags and Categories System Guide",
+          "current": false,
+          "navOrder": 17
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "Cache Management Strategies",
+          "permalink": "/docs/cache-management/",
+          "ariaLabel": "Navigate to Cache Management Strategies",
+          "current": false,
+          "navOrder": 28
+        },
+        
+        {
+          "sectionKey": "docs",
+          "title": "The rel Attribute in HTML Links: A Comprehensive Guide",
+          "permalink": "/docs/rel-attribute-guide/",
+          "ariaLabel": "Navigate to The rel Attribute in HTML Links: A Comprehensive Guide",
+          "current": false,
+          "navOrder": 46
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Chips and Windows - 18 Years of Evolution",
+          "permalink": "/2026/04/24/chips-and-windows/",
+          "ariaLabel": "Navigate to Chips and Windows - 18 Years of Evolution",
+          "current": false,
+          "navOrder": 61
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Computer Backup Checklist",
+          "permalink": "/2025/12/15/computer-backup-checklist/",
+          "ariaLabel": "Navigate to Computer Backup Checklist",
+          "current": false,
+          "navOrder": 62
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Welcome to MIJUG.NET!",
+          "permalink": "/2025/07/02/welcome-to-mijug-dot-net/",
+          "ariaLabel": "Navigate to Welcome to MIJUG.NET!",
+          "current": false,
+          "navOrder": 81
+        },
+        
+        {
+          "sectionKey": "posts",
+          "title": "Reviving the Role of Computer Operators",
+          "permalink": "/2026/05/07/reviving-the-role-of-computer-operators/",
+          "ariaLabel": "Navigate to Reviving the Role of Computer Operators",
+          "current": false,
+          "navOrder": 83
+        }
+        
+      ]
+    }
+  </script>
+
+  <!-- Lazy-load dynamic navigation items (optimization #7) -->
+  <script nonce="ba147ed81976d6c056193713ce80668f349a49c2bd6d11b50da4bd550aadad44">
+    // @ts-nocheck -- Liquid template tags are not valid JS; suppress false-positive parse errors
+    (() => {
+      'use strict';
+
+      // Load remaining navigation items on first interaction (optimization #7)
+      const loadDynamicNav = () => {
+        const staticList = document.getElementById('nav-items-static');
+        const dynamicList = document.getElementById('nav-items-dynamic');
+
+        if (!staticList || !dynamicList || dynamicList.children.length > 0) return; // Already loaded
+
+        // All navigation items embedded as data (generated at build time)
+        const navDataEl = document.getElementById('nav-data-dynamic');
+        const navPayload = navDataEl ? JSON.parse(navDataEl.textContent ?? '[]') : [];
+
+        // Backward-compatible: support both legacy array and section-aware object payloads
+        const sections = Array.isArray(navPayload?.sections) ? navPayload.sections : [];
+        const allItems = Array.isArray(navPayload)
+          ? navPayload
+          : (Array.isArray(navPayload?.items) ? navPayload.items : []);
+
+        const sectionOrder = new Map(sections.map((section, index) => [section.key, index]));
+        const sectionTitles = new Map(sections.map((section) => [section.key, section.title]));
+        const sectionIcons = new Map(sections.map((section) => [section.key, section.icon]));
+        const sortedItems = [...allItems].sort((a, b) => {
+          const sectionA = sectionOrder.get(a.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          const sectionB = sectionOrder.get(b.sectionKey) ?? Number.MAX_SAFE_INTEGER;
+          if (sectionA !== sectionB) return sectionA - sectionB;
+
+          const navOrderA = Number(a.navOrder ?? Number.MAX_SAFE_INTEGER);
+          const navOrderB = Number(b.navOrder ?? Number.MAX_SAFE_INTEGER);
+          if (navOrderA !== navOrderB) return navOrderA - navOrderB;
+
+          return String(a.title ?? '').localeCompare(String(b.title ?? ''));
+        });
+
+        let lastSectionKey = null;
+        sortedItems.forEach((item) => {
+          if (item.sectionKey !== lastSectionKey) {
+            if (lastSectionKey !== null) {
+              const separator = document.createElement('li');
+              separator.className = 'nav-section-separator';
+              separator.setAttribute('role', 'separator');
+              separator.setAttribute('aria-hidden', 'true');
+              separator.style.borderTop = '1px solid rgba(255, 255, 255, 0.28)';
+              separator.style.margin = '0.5rem 0';
+              separator.style.listStyle = 'none';
+              separator.style.height = '0';
+              dynamicList.appendChild(separator);
+            }
+
+            const heading = document.createElement('li');
+            heading.className = 'nav-section-heading';
+
+            const headingText = document.createElement('h3');
+            headingText.style.fontSize = '0.78rem';
+            headingText.style.opacity = '0.85';
+            headingText.style.padding = '0.25rem 0';
+            headingText.style.textTransform = 'uppercase';
+            headingText.style.letterSpacing = '0.05em';
+            headingText.style.margin = '0';
+            headingText.style.fontWeight = '600';
+
+            const sectionTitle = sectionTitles.get(item.sectionKey) ?? String(item.sectionKey ?? '').toUpperCase();
+            const sectionIcon = sectionIcons.get(item.sectionKey);
+            headingText.textContent = sectionIcon ? `${sectionIcon} ${sectionTitle}` : sectionTitle;
+            heading.appendChild(headingText);
+            dynamicList.appendChild(heading);
+          }
+
+          const li = document.createElement('li');
+          li.setAttribute('role', 'listitem');
+          const a = document.createElement('a');
+          a.href = item.permalink;
+          a.setAttribute('aria-label', item.ariaLabel);
+          if (item.current) {
+            a.className = 'active';
+            a.setAttribute('aria-current', 'page');
+          }
+          a.textContent = item.title;
+          li.appendChild(a);
+          dynamicList.appendChild(li);
+          lastSectionKey = item.sectionKey;
+        });
+
+        // Show dynamic list
+        dynamicList.style.display = '';
+      };
+
+      // Load on first interaction with navigation toggle (optimization #7)
+      const toggleBtn = document.querySelector('.nav-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', loadDynamicNav, { once: true });
+      }
+
+      // Also load on requestIdleCallback if available (optimization #7)
+      if (window.requestIdleCallback) {
+        requestIdleCallback(loadDynamicNav, { timeout: 3000 });
+      } else {
+        setTimeout(loadDynamicNav, 2000); // Fallback: load after 2s
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
